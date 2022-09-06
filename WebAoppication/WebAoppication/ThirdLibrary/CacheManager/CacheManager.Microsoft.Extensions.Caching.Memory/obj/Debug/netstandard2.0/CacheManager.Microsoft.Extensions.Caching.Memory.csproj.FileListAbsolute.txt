@@ -1,0 +1,16 @@
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\bin\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.deps.json
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\bin\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\bin\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.pdb
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\bin\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\bin\Debug\netstandard2.0\CacheManager.Core.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\bin\Debug\netstandard2.0\CacheManager.Core.pdb
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\bin\Debug\netstandard2.0\CacheManager.Core.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.csproj.CopyComplete
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\obj\Debug\netstandard2.0\CacheManager.Microsoft.Extensions.Caching.Memory.pdb

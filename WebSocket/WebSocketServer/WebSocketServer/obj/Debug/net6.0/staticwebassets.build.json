@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "IGYf1lHkRLyVTCNNlQoTms01i19UmvEvLkLBlbavgVk=",
+  "Source": "WebSocketServer",
+  "BasePath": "_content/WebSocketServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebSocketServer\\wwwroot",
+      "Source": "WebSocketServer",
+      "ContentRoot": "D:\\GitHub_\\exercise\\WebSocketServer\\WebSocketServer\\wwwroot\\",
+      "BasePath": "_content/WebSocketServer",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\GitHub_\\exercise\\WebSocketServer\\WebSocketServer\\wwwroot\\index.html",
+      "SourceId": "WebSocketServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub_\\exercise\\WebSocketServer\\WebSocketServer\\wwwroot\\",
+      "BasePath": "_content/WebSocketServer",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}

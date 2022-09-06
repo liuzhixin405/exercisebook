@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "90a2789a-ab8e-475c-9e1c-4be4c0e5d399": {
+      "ProjectGuid": "90a2789a-ab8e-475c-9e1c-4be4c0e5d399",
+      "DisplayName": "EventBus.Test",
+      "ColorIndex": 0
+    },
+    "c6d8a6eb-90a9-4c66-a991-365beed7bf16": {
+      "ProjectGuid": "c6d8a6eb-90a9-4c66-a991-365beed7bf16",
+      "DisplayName": "EventBus",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "GxzDaDvwNe5ui+vM5OA7jQpccUoOLz7ZwMRtbZ0p30iNgw70NEwXmdFLKtGIlE9QIwB5JsZ4eVtDOJIrFkXBVQ==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub_\\exercise\\Learn_Event\\BackGroundMediatoR\\BackGroundMediatR.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.1\\mediatr.extensions.microsoft.dependencyinjection.10.0.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

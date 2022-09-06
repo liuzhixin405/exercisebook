@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3dd799bb-b097-4f26-9673-1f7c4d54b7a9": {
+      "ProjectGuid": "3dd799bb-b097-4f26-9673-1f7c4d54b7a9",
+      "DisplayName": "AspNetCoreFilters",
+      "ColorIndex": 0
+    },
+    "5c7fc554-3fa7-48fd-9a48-3d7706978e8f": {
+      "ProjectGuid": "5c7fc554-3fa7-48fd-9a48-3d7706978e8f",
+      "DisplayName": "AspNetCoreMidddleware",
+      "ColorIndex": 1
+    },
+    "2579ab26-dcdd-4c2f-bdce-b5dddf79d147": {
+      "ProjectGuid": "2579ab26-dcdd-4c2f-bdce-b5dddf79d147",
+      "DisplayName": "TestProject",
+      "ColorIndex": 2
+    },
+    "3ae19f42-d186-4903-82da-1126415f2d9e": {
+      "ProjectGuid": "3ae19f42-d186-4903-82da-1126415f2d9e",
+      "DisplayName": "ConsoleAspNectCore",
+      "ColorIndex": 3
+    },
+    "b1bbf04f-c61e-450e-950d-a112e0aeeeaa": {
+      "ProjectGuid": "b1bbf04f-c61e-450e-950d-a112e0aeeeaa",
+      "DisplayName": "AspNetCore",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}

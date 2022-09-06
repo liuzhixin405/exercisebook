@@ -1,0 +1,17 @@
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.Host.deps.json
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.Host.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.Host.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.Host.DependencyResolver.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.Host.DependencyResolver.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\bin\Debug\netstandard2.1\SlimMessageBus.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.csproj.CopyComplete
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host\obj\Debug\netstandard2.1\SlimMessageBus.Host.pdb

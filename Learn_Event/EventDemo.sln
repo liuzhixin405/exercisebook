@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleBackGround", "ConsoleBackGround\ConsoleBackGround.csproj", "{FBF63547-91D9-43DA-971B-B0B9126A94A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackGroundMediatR", "BackGroundMediatoR\BackGroundMediatR.csproj", "{C939C737-56D5-4ED7-9FCD-D58F235C921C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClickEvent", "ClickEvent\ClickEvent.csproj", "{8379FC4D-383B-4BD9-91E4-E39E5C1EBF55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackGroundTask", "BackGroundTask\BackGroundTask.csproj", "{C28FCD9F-78EC-431C-B0E0-A2EB84636468}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBF63547-91D9-43DA-971B-B0B9126A94A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF63547-91D9-43DA-971B-B0B9126A94A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF63547-91D9-43DA-971B-B0B9126A94A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF63547-91D9-43DA-971B-B0B9126A94A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C939C737-56D5-4ED7-9FCD-D58F235C921C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C939C737-56D5-4ED7-9FCD-D58F235C921C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C939C737-56D5-4ED7-9FCD-D58F235C921C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C939C737-56D5-4ED7-9FCD-D58F235C921C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8379FC4D-383B-4BD9-91E4-E39E5C1EBF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8379FC4D-383B-4BD9-91E4-E39E5C1EBF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8379FC4D-383B-4BD9-91E4-E39E5C1EBF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8379FC4D-383B-4BD9-91E4-E39E5C1EBF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28FCD9F-78EC-431C-B0E0-A2EB84636468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28FCD9F-78EC-431C-B0E0-A2EB84636468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28FCD9F-78EC-431C-B0E0-A2EB84636468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28FCD9F-78EC-431C-B0E0-A2EB84636468}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3BD92C1-8F12-4F85-A3D2-E80B9CDE571A}
+	EndGlobalSection
+EndGlobal

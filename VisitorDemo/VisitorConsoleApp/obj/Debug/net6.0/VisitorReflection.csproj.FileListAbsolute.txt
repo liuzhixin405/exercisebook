@@ -1,0 +1,15 @@
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\bin\Debug\net6.0\VisitorReflection.exe
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\bin\Debug\net6.0\VisitorReflection.deps.json
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\bin\Debug\net6.0\VisitorReflection.runtimeconfig.json
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\bin\Debug\net6.0\VisitorReflection.dll
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\bin\Debug\net6.0\VisitorReflection.pdb
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.AssemblyInfo.cs
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.dll
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\refint\VisitorReflection.dll
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.pdb
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\VisitorReflection.genruntimeconfig.cache
+D:\GitHub_\exercise\VisitorDemo\VisitorConsoleApp\obj\Debug\net6.0\ref\VisitorReflection.dll

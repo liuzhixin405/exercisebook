@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "166d2bbe-84ce-4291-8afe-2fba0bf4807a": {
+      "ProjectGuid": "166d2bbe-84ce-4291-8afe-2fba0bf4807a",
+      "DisplayName": "CustomAuthorizationFilter",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

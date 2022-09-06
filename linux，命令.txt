@@ -1,0 +1,349 @@
+nohup dotnet CrawlerConsole.dll > runtime.log 2>&1 &       爬虫守护进程 搭配exit,不能直接关闭xshell，只能通过命令exit退出。否则守护进程被关闭
+nohup  dotnet Unibone.WebRouter.dll --urls=http://172.17.0.14:5000 ip=172.17.0.14 port=5000  > runtime.log 2>&1 &   tarpa后台
+jobs -l  查看后台运行进程   
+kill -s  9 进程号   关闭守护进程
+chmod +x chromedriver
+sudo htop
+sudo glances
+服务器重启都需要手动关闭防火墙
+sudo ufw disable
+ while (true)
+                {
+                    Thread.Sleep(10000);
+                    LoggerHelper.Info($"working{DateTime.Now.ToString()}");
+                }  提到Console.WriteLine()  避免守护进程跑不起来
+
+rabbitmq http://122.51.209.158:15672/   lzx 123456
+
+ls -l 文件名   查看权限
+chmod 777 文件名称
+
+redis 配置文件 下protected-mode no    
+bind 127.0.0.1 改成 bind 0.0.0.0  关闭防火墙或者开启端口
+
+mongod 122.51.209.158:27017
+
+mysql   122.51.209.158:3306  root lx123456
+
+sudo systemctl enable --now mysqld
+sudo systemctl status mysqld
+
+目录下操作：
+rabbitmq-server -detached
+rabbitmqctl stop
+rabbitmqctl status
+
+目录下操作：
+[root@localhost conf]# /usr/local/soft/redis5/bin/redis-server /usr/local/soft/redis5/conf/redis.conf
+检查状态
+netstat -anp | grep 6379
+启动客户端： /usr/local/soft/redis5/bin/redis-cli
+ 后输入 CONFIG SET stop-writes-on-bgsave-error no 解决持久化报错 ， flushall方法报错
+
+启动
+systemctl start redis    
+查看状态
+systemctl status redis
+使开机启动
+systemctl enable redis
+systemctl stop redis   
+
+
+防火墙有关
+yum install firewalld systemd -y
+systemctl status firewalld
+systemctl start firewalld.service
+systemctl stop firewalld.service
+systemctl enable firewalld.service
+systemctl disable firewalld.service
+
+
+/usr/local/mongodb/bin/mongod -f   /usr/local/mongodb/conf/master.conf
+/usr/local/mongodb/bin/mongod -f  /usr/local/mongodb/conf/slaver.conf
+/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/conf/arbiter.conf
+
+#连接到节点
+  ./mongo 127.0.0.1:27017
+  >use admin
+  >cfg={ _id:"test", members:[ {_id:0,host:'127.0.0.1:27017',priority:2}, {_id:1,host:'127.0.0.1:27019',priority:1}, {_id:2,host:'127.0.0.1:27018',arbiterOnly:true}] };
+  >rs.initiate(cfg)
+  >rs.status()
+  >{
+  "set" : "test",
+  "date" : ISODate("2016-03-29T16:47:12.395Z"),
+  "myState" : 1,
+  "term" : NumberLong(5),
+  "heartbeatIntervalMillis" : NumberLong(2000),
+  "members" : [
+      {
+          "_id" : 0,
+          "name" : "127.0.0.1:27017",
+          "health" : 1,
+          "state" : 1,
+          "stateStr" : "PRIMARY",
+          "uptime" : 44,
+          "optime" : {
+              "ts" : Timestamp(1459269999, 2),
+              "t" : NumberLong(5)
+          },
+          "optimeDate" : ISODate("2016-03-29T16:46:39Z"),
+          "electionTime" : Timestamp(1459269999, 1),
+          "electionDate" : ISODate("2016-03-29T16:46:39Z"),
+          "configVersion" : 1,
+          "self" : true
+      },
+      {
+          "_id" : 1,
+          "name" : "10.10.24.39:27017",
+          "health" : 1,
+          "state" : 2,
+          "stateStr" : "SECONDARY",
+          "uptime" : 42,
+          "optime" : {
+              "ts" : Timestamp(1459269999, 2),
+              "t" : NumberLong(5)
+          },
+          "optimeDate" : ISODate("2016-03-29T16:46:39Z"),
+          "lastHeartbeat" : ISODate("2016-03-29T16:47:11.726Z"),
+          "lastHeartbeatRecv" : ISODate("2016-03-29T16:47:10.637Z"),
+          "pingMs" : NumberLong(0),
+          "syncingTo" : "10.10.24.38:27017",
+          "configVersion" : 1
+      },
+      {
+          "_id" : 2,
+          "name" : "10.10.24.39:27018",
+          "health" : 1,
+          "state" : 7,
+          "stateStr" : "ARBITER",
+          "uptime" : 42,
+          "lastHeartbeat" : ISODate("2016-03-29T16:47:11.697Z"),
+          "lastHeartbeatRecv" : ISODate("2016-03-29T16:47:11.258Z"),
+          "pingMs" : NumberLong(0),
+          "configVersion" : 1
+      }
+  ],
+  "ok" : 1
+  }
+
+netstat -anutp
+netstat -antup | grep 22
+
+
+
+本地mongodb
+mongod --config D:\MongoDB\config\rs1.conf
+mongod --config D:\MongoDB\config\rs2.conf
+mongod --config D:\MongoDB\config\rs3.conf
+
+win10下 开启rabbitmq:
+安装目录拷贝到硬盘
+cmd 到sbin目录 
+
+用户目录下 .erlang.cookie文件拷贝到sbin下和 C:\Windows\System32\config\systemprofile下
+rabbitmq-service install
+rabbitmq-service enable
+rabbitmq-service start
+rabbitmqctl  status
+rabbitmqctl add_user  lx 123456
+rabbitmqctl set_permissions lx ".*" ".*" ".*"
+rabbitmqctl set_user_tags lx administrator
+
+
+http://127.0.0.1:15672/无法访问 ，需要开启ctl
+1、rabbitmqctl start_app
+
+2、rabbitmq-plugins enable rabbitmq_management
+
+3、rabbitmqctl stop
+
+
+1.安装selenium
+ 
+sudo pip install selenium
+ 
+2.安装Chrome
+ 
+
+第一步：sudo apt-get install libxss1 libappindicator1 libindicator7
+第二步：wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+第三步：sudo apt-get install -f
+第四步：sudo dpkg -i google-chrome-stable_current_amd64.deb
+ 
+
+3.安装chromedriver
+复制代码
+第一步：wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
+第二步：unzip chromedriver_linux64.zip
+第三步：chmod +x chromedriver
+第四步：sudo mv -f chromedriver /usr/local/share/chromedriver
+第五步： sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+第六步：sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedrive
+
+
+重点 ：首先安装好浏览器 ，再按照对应浏览器去下载chromedriver
+
+mariadb 密码 lx123456
+free -h  查看内存
+sar -u 1 5 查看cpu
+sudo glances
+
+centos7防火墙设置:
+firewall-cmd --state
+systemctl start firewalld.service
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+systemctl restart firewalld.service
+firewall-cmd --reload
+
+google-chrome --version
+
+mysql命令登录
+mysql -uroot -p密码（注意-p和密码之间没有空格）
+
+
+# 删除容器
+docker rm 容器ID
+
+# 删除所有容器
+docker rm $(docker ps -a) 
+
+指定内存解决内存不足服务器带不动情况
+docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms100m -Xmx200m"   elasticsearch:7.2.0
+
+docker exec -it 容器id /bin/bash    进入容器实例
+vi 文件名
+
+git clone https://github.com/.../skywalking-docker.git
+cd skywalking-docker/6.x/docker-compose/
+docker-compose up -d
+
+查看容器ip等信息
+docker inspect 容器id 
+
+//获取指定容器的ip
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' 68f0d84be6ad
+
+//获取所有容器ip
+docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+
+docker-compose down --volumes  //停止删除所有分卷
+
+刚刚新装的CentOS8.1，默认是图形界面，因为主要是当web服务器用，所以没必要用图形界面（主要是占用内存更多），参照下面命令改下就可以切换了。
+获取系统当前启动模式命令
+systemctl get-default
+修改系统启动模式命令
+
+systemctl set-default multi-user.target     #修改为命令行模式
+或者
+
+systemctl set-default graphical.target     #修改为图形化模式
+重启系统就可进入新设置的启动模式
+centos7安装docker命令yum install -y docker-ce会无效 需要使用yum install -y docker-ce-cli
+
+iptables -I INPUT -p tcp --dport 端口号 -j ACCEPT
+
+
+docker 下没有vim 安装命令:
+apt-get update 
+apt-get install vim 
+
+codefirst生成表三部曲：
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Add-Migration MyFirstMigration
+Update-Database
+
+docker 内存 cpu占用查询
+top c
+
+docker stats  查看docker资源
+
+
+kafka查看topic和消息内容命令
+
+先进入容器： 打开opt 再打开kafka_2.13-2.7.1 目录
+1、查询topic，进入kafka目录：
+bin/kafka-topics.sh --list --zookeeper localhost:2181
+ 
+2、查询topic内容：
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicName --from-beginning
+tail -n5000 /var/log/messages|more
+
+
+ps -e -o 'pid,comm,args,pcpu,rsz,vsz,stime,user,uid' 
+
+
+////////////////////////////////////////////curl 请求/////////////////////////////////////////////////////////////////////////
+
+curl  -H  "token:570e3e3e2a22b6d902713a0415811764"  -d coinId=1xx3-k3olkGgIwEiPqwXMw -d amount=1 -d side=1 https://xxx/api/xxx
+
+
+注意：win cmd下面 -d后面没有单引号 ，linux有
+
+curl   -H "Accept:application/json" -H  "Content-Type:application/json" -X POST -d "{\"id\":\"4\",\"title\":\"123\",\"artist\":\"1234\",\"price\":4.1}"  http://127.0.0.1:8000/savealbums
+
+//获取账单
+curl https://xxx/api/xxx  -H "token:7c30aa66225499b38c913a03bf138bd2"   -X POST -H "Content-Type:application/json"
+
+ssh root@ip
+
+SELECT  LOWER(REPLACE(LTRIM(NEWID()),'-',''))
+
+获取可用余额
+curl  -H  "token:128772e74762267c67cc3a042b393396"  -d coinId=1xx3-k3olkGgIwEiPqwXMw  https://xxx/api/xxx    -X POST 
+
+开仓
+curl  -H  "token:9c30857a6f95517d8ccd3a053204ccdf"  -d Symbol=BTCUSDT -d Price=1  -d Size=1  -d UnitMode=1  -d MarginMode=1 https://xxx/api/xxx    -X POST  
+获取客户信息
+curl  -H  "token:128772e74762267c67cc3a042b393396"  -X POST  https://xxx/api/xxx
+
+获取枚举
+curl  -H  "token:c55eee70c254a5c688eb3a046e43b3f4"  -X POST  https://xxx/api/xxx/GetEnumType?typeName=OrderType
+获取历史订单
+curl  -H  "token:4223c755296b48b877b63a04723a3d0f"  -X POST  https://xxx/api/xxx  -d pageIndex=1 -d pageSize=10
+
+获取本地后台登录token
+curl -X POSThttps://xxx/api/xxx -d "{\"userName\":\"idcs@idcs.com\",\"password\":\"0123456789Aa\"}"  -H "Accept:application/json" -H  "Content-Type:application/json"
+
+获取生产登录token
+curl -X POST https://xxx/api/xxx -d "{\"userName\":\"idcs@idcs.com\",\"password\":\"IDCM52Ed@EZ63key$8x\"}"  -H "Accept:application/json" -H  "Content-Type:application/json"
+获取生产登录token
+curl -X POST https://xxx/api/xxx -d "{\"userName\":\"idcs@idcs.com\",\"password\":\"IDCM52Ed@EZ63key$8x\"}"  -H "Accept:application/json" -H  "Content-Type:application/json"
+//预发布后台创建报表
+curl  -X POST https://xxx/api/xxx/CreateByDateTime?startDate=2022-04-01&endDate=2022-03-05 -H "Accept: application/json"  -H  "Authorization: Bearer :  一大串token" 
+
+//获取登录信息
+curl  -X POST https://xxx/api/xxx  -H "Accept: application/json"  -H  "Authorization: Bearer  一大串token"  
+
+cmd bug不能识别post 第二个query，用vscode restclient
+restclient
+POST https://xxx/api/xxx/CreateByDateTime?startDate=2022-04-01&endDate=2022-03-05 HTTP/1.1
+content-type: application/json
+Authorization: Bearer  一大串token
+
+dotnet restore "xxx.csproj" --configfile NuGet.config
+///////////////////////////////git合并分支主干////////////////////////////////////////
+git---主分支同步到子分支
+在进行git项目协同开发的时候，每个分支的代码会被合并到主分支 master 分支上，但是如何将master分支上的代码合并到子分支上呢？
+
+第一步：切换到本地的仓库，更新为最新的代码。
+
+第二步：切换到要同步的子分支上。
+
+第三步：在子分支上运行 git merge master（或者分支 如origin/V1.0） 就会将主分支的代码同步到子分支上。
+
+第四步：在子分支查看当前的代码状态 git status
+
+第五步：git add . 将代码添加到本地仓库
+
+第六步：git commit -m '主分支同步到子分支'
+
+第七步：git push 将同步后的代码上传到git 服务器上托管。
+
+
+分支到主干 
+
+切换到V1.0主干
+git checkout V1.0
+
+git merge V1.0
+git push V1.0

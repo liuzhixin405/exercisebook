@@ -1,0 +1,15 @@
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.AssemblyInfo.cs
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\bin\Debug\net6.0\AutoMapperDemo.exe
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\bin\Debug\net6.0\AutoMapperDemo.deps.json
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\bin\Debug\net6.0\AutoMapperDemo.runtimeconfig.json
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\bin\Debug\net6.0\AutoMapperDemo.dll
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\bin\Debug\net6.0\AutoMapperDemo.pdb
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.dll
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\refint\AutoMapperDemo.dll
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.pdb
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\AutoMapperDemo.genruntimeconfig.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AutoMapperDemo\obj\Debug\net6.0\ref\AutoMapperDemo.dll

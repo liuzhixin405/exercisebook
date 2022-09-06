@@ -1,0 +1,10 @@
+D:\IDCM\contract\ThirdLibrary\DeepCloner\bin\Debug\netstandard2.1\DeepCloner.deps.json
+D:\IDCM\contract\ThirdLibrary\DeepCloner\bin\Debug\netstandard2.1\DeepCloner.dll
+D:\IDCM\contract\ThirdLibrary\DeepCloner\bin\Debug\netstandard2.1\DeepCloner.pdb
+D:\IDCM\contract\ThirdLibrary\DeepCloner\bin\Debug\netstandard2.1\DeepCloner.xml
+D:\IDCM\contract\ThirdLibrary\DeepCloner\obj\Debug\netstandard2.1\DeepCloner.Core.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\DeepCloner\obj\Debug\netstandard2.1\DeepCloner.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\DeepCloner\obj\Debug\netstandard2.1\DeepCloner.Core.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\DeepCloner\obj\Debug\netstandard2.1\DeepCloner.dll
+D:\IDCM\contract\ThirdLibrary\DeepCloner\obj\Debug\netstandard2.1\DeepCloner.xml
+D:\IDCM\contract\ThirdLibrary\DeepCloner\obj\Debug\netstandard2.1\DeepCloner.pdb

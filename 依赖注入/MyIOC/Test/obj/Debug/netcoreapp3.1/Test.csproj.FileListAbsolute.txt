@@ -1,0 +1,17 @@
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Test.exe
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Test.deps.json
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.json
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.dev.json
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Test.dll
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Test.pdb
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Lzx.IOCDI.Framework.dll
+C:\Users\lzx\source\repos\MyIOC\Test\bin\Debug\netcoreapp3.1\Lzx.IOCDI.Framework.pdb
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.csprojAssemblyReference.cache
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfoInputs.cache
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.AssemblyInfo.cs
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.csproj.CoreCompileInputs.cache
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.csproj.CopyComplete
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.dll
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.pdb
+C:\Users\lzx\source\repos\MyIOC\Test\obj\Debug\netcoreapp3.1\Test.genruntimeconfig.cache

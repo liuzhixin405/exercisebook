@@ -1,0 +1,282 @@
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Crawler.Common;
+using Crawler.Models;
+using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
+
+
+namespace Crawler.Selenium.Helper
+{
+    public class SeleniumHelper
+    {
+        /// <summary>
+        /// 返回(remotedriver,message)
+        /// </summary>
+        /// <param name="jsonCookie"></param>
+        /// <param name="url"></param>
+        /// <param name="isShowChrome"></param>
+        /// <returns></returns>
+        public (RemoteWebDriver,string) Login(Dictionary<string, string> jsonCookie, string url, bool isShowChrome = false)
+        {
+            string message = string.Empty;
+            RemoteWebDriver driver = null;
+            if (!CommonHelper.IsUrl(url))
+            {
+                throw new Exception($"this {url} url address is error");
+            }
+            try
+            {
+                var chromeOptions = new ChromeOptions();
+
+                chromeOptions.AddArguments("start-maximized");
+                chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.images", 2);  //禁止加载图片 可用
+                chromeOptions.AddArguments("--no-sandbox");
+                chromeOptions.AddArgument("disable-gpu");
+                List<string> ls = new List<string>();
+                ls.Add("enable-automation");
+                chromeOptions.AddExcludedArguments(ls);
+                if (!isShowChrome)
+                    chromeOptions.AddArgument("--headless"); //后台运行模式
+
+                DateTime nowDatetime = DateTime.Now;
+
+                Task.Delay(5000).ContinueWith((o) =>
+                {
+                    driver = new ChromeDriver(chromeOptions);
+                }).GetAwaiter().GetResult();
+
+                driver.Url = url;
+                Thread.Sleep(3000);
+
+                foreach (var item in jsonCookie)
+                {
+                    if (!string.IsNullOrWhiteSpace(item.Value))
+                    {
+                        driver.Manage().Cookies.AddCookie(new Cookie(item.Key, item.Value));
+                    }
+                }
+                driver.Url = url;
+                Thread.Sleep(2000);
+
+                message = CheckIsLogin(message, driver);
+                return (driver, message);
+            }
+            catch (Exception ex)
+            {
+                if (null != driver)
+                {
+                    driver.Quit();
+                }
+                throw ex;
+            }
+ 
+        }
+
+        private string CheckIsLogin(string message, RemoteWebDriver driver)
+        {
+            if (FindElementsByXPath(driver, "//*[@id='loginForm']/div/div[3]/button/div").Count > 0)
+            {
+                message = "登录失败,请检查cookie重试";
+                driver.Quit();
+            }
+            else if (FindElementsByXPath(driver, "//*[@id='react-root']/section/div/div/div[2]/form/span/button").Count > 0)
+            {
+                message = "账户已锁,请解锁后重试";
+                driver.Quit();
+            }
+            else
+            {
+                Console.WriteLine("登陆成功");
+            }
+
+            return message;
+        }
+
+        /// <summary>
+        /// 登录获取driver
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="user"></param>
+        /// <param name="password"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public RemoteWebDriver LoginByUp(string url, string user, string password, Func<string, string, string, RemoteWebDriver> func)
+        {
+            return func.Invoke(url, user, password);
+        }
+        
+        public (RemoteWebDriver,string) LoginByAccount(string url, string user, string password,string useragent, bool isShowChrome = false) {
+            var message = string.Empty;
+            ChromeOptions chromeOptions = new ChromeOptions();
+            List<string> ls = new List<string>();
+            ls.Add("enable-automation");
+            chromeOptions.AddExcludedArguments(ls);
+            chromeOptions.AddArguments("start-maximized");
+            chromeOptions.AddUserProfilePreference("profile.default_content_setting_values.images", 2);  //禁止加载图片 可用
+            chromeOptions.AddArguments("--no-sandbox");
+            chromeOptions.AddArgument("disable-gpu");
+            chromeOptions.AddArgument("--disable-extensions");
+            chromeOptions.AddArgument("--disable-dev-shm-usage");
+            chromeOptions.AddArgument($"user-agent='{useragent}'");
+
+            if (!isShowChrome)
+            chromeOptions.AddArgument("--headless"); //后台运行模式
+
+            RemoteWebDriver webDriver = new ChromeDriver(chromeOptions);
+            webDriver.Url = url;
+            Thread.Sleep(3000);
+
+            webDriver.FindElementByXPath(@"//*[@id='loginForm']/div/div[1]/div/label/input").SendKeys(user);
+            webDriver.FindElementByXPath(@"//*[@id='loginForm']/div/div[2]/div/label/input").SendKeys(password);
+            webDriver.FindElementByXPath(@"//*[@id='loginForm']/div/div[3]").Click();
+            Thread.Sleep(3000);
+            message = CheckIsLogin(message, webDriver);
+            return (webDriver,message);
+        }
+        /// <summary>
+        /// 通过xpath获取元素信息
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="xpath"></param>
+        /// <returns></returns>
+        public string FindElementByXPath(RemoteWebDriver driver, string xpath)
+        {
+            return driver.FindElementByXPath(xpath).Text;
+        }
+
+        /// <summary>
+        /// 通过css样式获取元素
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="xpath"></param>
+        /// <returns></returns>
+        public string FindElementByCSs(RemoteWebDriver driver, string xpath)
+        {
+            return driver.FindElementByXPath(xpath).Text;
+        }
+
+        /// <summary>
+        /// 通过xpath获取元素列表
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="xpath"></param>
+        /// <returns></returns>
+        public ReadOnlyCollection<IWebElement> FindElementsByXPath(RemoteWebDriver driver, string xpath)
+        {
+            return driver.FindElementsByXPath(xpath);
+        }
+
+        /// <summary>
+        /// 通过css样式获取列表
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <param name="xpath"></param>
+        /// <returns></returns>
+        public ReadOnlyCollection<IWebElement> FindElementsByCSs(RemoteWebDriver driver, string xpath)
+        {
+            return driver.FindElementsByXPath(xpath);
+        }
+
+        /// <summary>
+        /// 获取浏览器高度
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <returns></returns>
+        public object ExecuteRtnScrollHeight(RemoteWebDriver driver)
+        {
+            return driver.ExecuteScript("return  document.body.scrollHeight;");
+        }
+
+        /// <summary>
+        /// 获取网络请求列表
+        /// </summary>
+        /// <param name="driver"></param>
+        /// <returns></returns>
+        public ReadOnlyCollection<object> ExecuteNetWorkList(RemoteWebDriver driver)
+        {
+            String scriptToExecute = "var performance = window.performance || window.mozPerformance || window.msPerformance || window.webkitPerformance || {}; var network = performance.getEntries() || {}; return network;";
+            ReadOnlyCollection<object> netData = ((IJavaScriptExecutor)driver).ExecuteScript(scriptToExecute) as ReadOnlyCollection<object>;
+            return netData;
+        }
+
+        /// <summary>
+        /// 鼠标滚动
+        /// </summary>
+        public void ScrollMouse(RemoteWebDriver driver, int scrollHeight, int millisecondsTimeout)
+        {
+            object obj = driver.ExecuteScript($"scroll(0,{scrollHeight})");   //鼠标滚动
+            //driver.ExecuteScript("document.body.scrollTop = document.body.scrollHeight;");
+            Thread.Sleep(millisecondsTimeout);
+        }
+
+        /// <summary>
+        /// 获取页面高度
+        /// </summary>
+        /// <returns></returns>
+        public object GetScrollHeight(RemoteWebDriver driver)
+        {
+            var scrolHeight = driver.ExecuteScript("return  document.body.scrollHeight;");    //获取高度
+            return scrolHeight;
+        }
+
+        public void Click(string button, RemoteWebDriver driver)
+        {
+            if (string.IsNullOrWhiteSpace(button))
+                button = @"//*[@id='react-root']/section/main/article/div[2]/div[1]/div/form/div[4]/button/div";
+            var btnLogin = driver.FindElementByXPath(button);
+            Thread.Sleep(1000);
+            if (btnLogin != null && btnLogin.Displayed == true)
+            {
+                btnLogin.Click();
+            }
+        }
+
+        /// <summary>
+        /// 获取shortcode写入队列
+        /// </summary>
+        /// <param name="cls"></param>
+        /// <param name="driver"></param>
+        /// <param name="queueList"></param>
+        public List<string> EnqueueShortCode(string cls, RemoteWebDriver driver, ConcurrentQueue<string> queueList)
+        {
+            List<string> result = new List<string>();
+            IEnumerable<IWebElement> listres = driver.FindElementsByClassName(cls);          //获取最新数据          
+            foreach (var item in listres)
+            {
+                var href = string.Empty;
+                try
+                {
+                    var div_a = item.FindElement(By.TagName("div a"));
+                    if (div_a != null)
+                    {
+                        href = div_a.GetAttribute("href");
+                    }
+                    if (!string.IsNullOrEmpty(href))
+                    {
+                        var res = href.Substring(href.LastIndexOf('/', (href.LastIndexOf("/") - 1)) + 1).TrimEnd('/');
+                        if (!queueList.Contains(res))
+                        {
+                            queueList.Enqueue(res);
+                            result.Add(res);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            return result;
+        }
+    }
+}

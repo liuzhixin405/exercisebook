@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ba6a6cfc-658e-47a9-81bc-e38a6f0b5934": {
+      "ProjectGuid": "ba6a6cfc-658e-47a9-81bc-e38a6f0b5934",
+      "DisplayName": "WebMVC",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    },
+    "a68a397a-61e8-4bc3-82ef-351987dd5790": {
+      "ProjectGuid": "a68a397a-61e8-4bc3-82ef-351987dd5790",
+      "DisplayName": "WebAPI",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

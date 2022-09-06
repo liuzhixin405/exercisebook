@@ -1,0 +1,12 @@
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\netstandard2.0\CacheManager.Core.deps.json
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\netstandard2.0\CacheManager.Core.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\netstandard2.0\CacheManager.Core.pdb
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\netstandard2.0\CacheManager.Core.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\netstandard2.0\CacheManager.Core.pdb

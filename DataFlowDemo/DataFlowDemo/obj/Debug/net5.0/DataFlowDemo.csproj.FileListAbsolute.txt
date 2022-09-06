@@ -1,0 +1,16 @@
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\bin\Debug\net5.0\DataFlowDemo.exe
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\bin\Debug\net5.0\DataFlowDemo.deps.json
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\bin\Debug\net5.0\DataFlowDemo.runtimeconfig.json
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\bin\Debug\net5.0\DataFlowDemo.runtimeconfig.dev.json
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\bin\Debug\net5.0\DataFlowDemo.dll
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\bin\Debug\net5.0\ref\DataFlowDemo.dll
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\bin\Debug\net5.0\DataFlowDemo.pdb
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.AssemblyInfo.cs
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.dll
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\ref\DataFlowDemo.dll
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.pdb
+C:\Users\admin\source\repos\DataFlowDemo\DataFlowDemo\obj\Debug\net5.0\DataFlowDemo.genruntimeconfig.cache

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus", "EventBus\EventBus.csproj", "{C6D8A6EB-90A9-4C66-A991-365BEED7BF16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Test", "EventBus.Test\EventBus.Test.csproj", "{90A2789A-AB8E-475C-9E1C-4BE4C0E5D399}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6D8A6EB-90A9-4C66-A991-365BEED7BF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D8A6EB-90A9-4C66-A991-365BEED7BF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D8A6EB-90A9-4C66-A991-365BEED7BF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D8A6EB-90A9-4C66-A991-365BEED7BF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A2789A-AB8E-475C-9E1C-4BE4C0E5D399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A2789A-AB8E-475C-9E1C-4BE4C0E5D399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A2789A-AB8E-475C-9E1C-4BE4C0E5D399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A2789A-AB8E-475C-9E1C-4BE4C0E5D399}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8B5C10B-9DDF-4ECC-96D3-CFA9E5566947}
+	EndGlobalSection
+EndGlobal

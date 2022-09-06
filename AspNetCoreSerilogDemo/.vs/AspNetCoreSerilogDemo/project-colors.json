@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3565c871-07f9-41c5-b32d-20e82dfdec19": {
+      "ProjectGuid": "3565c871-07f9-41c5-b32d-20e82dfdec19",
+      "DisplayName": "AspNetCoreSerilogDemo",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

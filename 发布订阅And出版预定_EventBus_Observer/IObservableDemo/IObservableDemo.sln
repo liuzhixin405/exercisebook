@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31521.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IObservableDemo", "IObservableDemo\IObservableDemo.csproj", "{512F24E5-6F5B-4622-A240-B98764A19FAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{512F24E5-6F5B-4622-A240-B98764A19FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512F24E5-6F5B-4622-A240-B98764A19FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512F24E5-6F5B-4622-A240-B98764A19FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512F24E5-6F5B-4622-A240-B98764A19FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {547AD7B4-4A73-4268-830E-2E39D27155D0}
+	EndGlobalSection
+EndGlobal

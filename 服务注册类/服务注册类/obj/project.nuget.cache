@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "GAZ8joKzD67CmDaiHOKUdkGPpbzqXXuwyk7xbXFRLiDzhfqXEPGihmfCKwVQRRASqyolv19TPOlg1ipKZ+b2/w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\admin\\source\\repos\\服务注册类\\服务注册类\\服务注册类.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\autofac\\6.3.0\\autofac.6.3.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

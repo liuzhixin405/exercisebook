@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "UIuYtEYcmSkglcSM8mP0d/omVqJklXop51RySA17IYy06kBhjfpceejFUaMW3W8vSpwbIXUGXkI/AFtss06dhA==",
+  "success": true,
+  "projectFilePath": "D:\\github-exercise\\netcore.demo\\RestSharpComponent\\RestSharpClient\\RestSharpClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lzx\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\lzx\\.nuget\\packages\\restsharp\\106.12.0\\restsharp.106.12.0.nupkg.sha512"
+  ],
+  "logs": []
+}

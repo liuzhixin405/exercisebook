@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{9FEBF391-5954-4C85-AB47-6F4F6538F5A3}|Default">
+  <MonoDevelop.Ide.ItemProperties.sample.nettcore6 PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="sample.nettcore6/Program.cs">
+    <Files>
+      <File FileName="sample.nettcore6/Program.cs" Line="43" Column="4" />
+      <File FileName="sample.nettcore6/ICake.cs" Line="7" Column="22" />
+      <File FileName="sample.nettcore6/ICakeMessageDecorator.cs" Line="6" Column="33" />
+      <File FileName="sample.nettcore6/Service/VanillaCake.cs" Line="6" Column="3" />
+      <File FileName="sample.nettcore6/Service/ChocolateCake.cs" Line="20" Column="1" />
+      <File FileName="sample.nettcore6/Service/CakeMessageDecorator.cs" Line="15" Column="1" />
+      <File FileName="sample.nettcore6/sample.nettcore6.csproj" Line="1" Column="36" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="sample.nettcore6" expanded="True" selected="True">
+            <Node name="sample.nettcore6" expanded="True">
+              <Node name="IService" expanded="True" />
+              <Node name="Service" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatcherproject.QuartzNet", "Dispatcherproject.QuartzNet\Dispatcherproject.QuartzNet.csproj", "{03FE08B6-8483-49F1-9B33-648871D1970A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimingJobConsole", "TimingJobConsole\TimingJobConsole.csproj", "{C0A8C60B-D193-4959-BC10-47C787A97F97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03FE08B6-8483-49F1-9B33-648871D1970A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03FE08B6-8483-49F1-9B33-648871D1970A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03FE08B6-8483-49F1-9B33-648871D1970A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03FE08B6-8483-49F1-9B33-648871D1970A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0A8C60B-D193-4959-BC10-47C787A97F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0A8C60B-D193-4959-BC10-47C787A97F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0A8C60B-D193-4959-BC10-47C787A97F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0A8C60B-D193-4959-BC10-47C787A97F97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {273DD3FC-42F3-4F28-A7A0-8541DFCCB32C}
+	EndGlobalSection
+EndGlobal

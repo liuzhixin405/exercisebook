@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="components/Titlehead.js"></script>
+   
+    <script src="views/main.js"></script>
+    <script src="views/jobList.js"></script>
+    <script src="router/index.js"></script>
+    <link rel="stylesheet" href="css/TitleHead.css" >
+</head>
+<body>
+    <div id="app">  
+        <titlehead :username='userName'></titlehead>
+        <div class="navi">
+          
+            <router-link to="/main">首页</router-link>
+            <router-link to="/jobList">职务列表</router-link>
+        </div>
+        <router-view></router-view>
+        </div>
+<script>
+    var vm = new Vue({
+            el: "#app",
+            data: {
+               
+                userName:"自定义用户"
+            },
+            router
+          
+        }
+        );
+
+   
+</script>
+<style>
+   
+</style>
+</body>
+</html>

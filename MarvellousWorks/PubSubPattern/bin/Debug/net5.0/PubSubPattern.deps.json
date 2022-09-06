@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "PubSubPattern/1.0.0": {
+        "runtime": {
+          "PubSubPattern.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PubSubPattern/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,16 @@
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\bin\Debug\net6.0\CancellationTokenSourceDemo.exe
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\bin\Debug\net6.0\CancellationTokenSourceDemo.deps.json
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\bin\Debug\net6.0\CancellationTokenSourceDemo.runtimeconfig.json
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\bin\Debug\net6.0\CancellationTokenSourceDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\bin\Debug\net6.0\ref\CancellationTokenSourceDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\bin\Debug\net6.0\CancellationTokenSourceDemo.pdb
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.AssemblyInfo.cs
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.ImplicitNamespaceImports.cs
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\ref\CancellationTokenSourceDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.pdb
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\CancellationTokenSourceDemo\obj\Debug\net6.0\CancellationTokenSourceDemo.genruntimeconfig.cache

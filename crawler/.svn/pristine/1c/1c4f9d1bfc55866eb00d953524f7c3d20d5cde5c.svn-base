@@ -1,0 +1,39 @@
+{
+  "AllowedHosts": "*",
+  "Cookie2": "ig_did=4247EEB0-D8EB-42C8-8B51-B637F49E5C42; mid=X45ZFAALAAFbUC8DN3bIvDb86EhT; ig_nrcb=1; shbid=15346; ds_user_id=43783375853; csrftoken=h1raNxD7ExPS6KfydzkSOxwNrPtwnmBe; fbm_124024574287414=base_domain=.instagram.com; shbts=1604912215.7543063; sessionid=43783375853%3AhelPkDHeM64Ux7%3A22; rur=ATN; urlgen=\"{\\\"45.78.34.12\\\": 25820}:1kcgAJ:UKpVWwSHG9A6NWD6TpI_nvltE4k\"",
+  "Cookie": "ig_did=ABAD2670-DCFF-4899-9A10-46A0F92CE0D4; mid=X6kF1wALAAEqt6nGkvV6odBgY2jY; ig_nrcb=1; ds_user_id=44441290583; csrftoken=dXSv50nu52b0JLnTZDOjIq3s11MiItkd; rur=ATN; sessionid=44441290583%3AEJvqNWUcxJ3PdS%3A25; shbid=17937; shbts=1607407413.580766; urlgen=\"{\\\"45.78.34.12\\\": 25820}:1kmW7o:D045-BZu8LldlodURkSo9uxmPgs\"",
+  "CookieInfoOptions": {
+    "ig_did": "6F144A7F-EB4B-41F0-B279-43DE19675D7B",
+    "mid": "X2AthwALAAFHoSzbiOeUMVdJnAMH",
+    "rur": "ASH",
+    "csrftoken": "bfDnaD7cEv5pwRlvVV7lGPxjEtFlQ5iV",
+    "ds_user_id": "43783375853",
+    "urlgen": "\"{\\\"45.78.34.12\\\": 25820}:1kTGLl:Ht38mD2_LnYmSZukiDVUTHC6dwE\"",
+    "fbm_124024574287414": "base_domain=.instagram.com",
+    "sessionid": "43783375853%3A1njAES72WGbNKe%3A26"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "ReqUrl": {
+    "remoteUrl": "https://unibone.dev.heywind.cn/",
+    "CreateInstagramPostUrl": "https://unibone.uat.heywind.cn/Tarpa/InstagramPosts/CreateInstagramPost",
+    "UpdateInstagramPostUrl": "https://unibone.uat.heywind.cn/Tarpa/InstagramPosts/UpdateInstagramPost",
+    "UpdateInstagramUserUrl": "https://unibone.uat.heywind.cn/Tarpa/Kols/UpdateInstagramUser",
+    "UniboneTokenUrl": "https://unibone.uat.heywind.cn/token",
+    "CommandQueueUrl": "https://unibone.uat.heywind.cn/Tarpa/CommandQueues/GetCommandQueue",
+    "CommandQueueListUrl": "https://unibone.uat.heywind.cn/Tarpa/CommandQueues/GetCommandQueueList",
+    "IgUrl": "https://www.instagram.com",
+    "CommandHost": "https://unibone.uat.heywind.cn"
+  },
+  "ExecutionInterval": {
+    "EveryDayZero": " 0 0 0 * * ? *  ",
+    "EveryTenMin": " 0 0/10 * * * ? * ",
+    "EveryOneMin": " 0 0/1 * * * ? * "
+  },
+  "IsRepeatedJudgment": false
+}

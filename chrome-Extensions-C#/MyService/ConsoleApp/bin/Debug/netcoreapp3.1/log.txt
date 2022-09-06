@@ -1,0 +1,3 @@
+2021-01-27 09:18:11,496 [1] INFO  NETCorelog4net - stdin= System.ConsolePal+WindowsConsoleStream
+2021-01-27 09:18:11,518 [1] INFO  NETCorelog4net - input= 
+2021-01-27 09:18:11,519 [1] INFO  NETCorelog4net - --------------------My application starts with Chrome Extension message: ---------------------------------

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFlowDemo", "DataFlowDemo\DataFlowDemo.csproj", "{91BFA6FB-61B3-4706-B39D-36FA011B8AC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BufferBlockDemo", "BufferBlockDemo\BufferBlockDemo.csproj", "{BBF4942D-A117-4B06-BE1E-4D3A1DACEF5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91BFA6FB-61B3-4706-B39D-36FA011B8AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91BFA6FB-61B3-4706-B39D-36FA011B8AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91BFA6FB-61B3-4706-B39D-36FA011B8AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91BFA6FB-61B3-4706-B39D-36FA011B8AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBF4942D-A117-4B06-BE1E-4D3A1DACEF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBF4942D-A117-4B06-BE1E-4D3A1DACEF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBF4942D-A117-4B06-BE1E-4D3A1DACEF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF4942D-A117-4B06-BE1E-4D3A1DACEF5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {876083F6-6097-496C-BFB2-A943F82A9645}
+	EndGlobalSection
+EndGlobal

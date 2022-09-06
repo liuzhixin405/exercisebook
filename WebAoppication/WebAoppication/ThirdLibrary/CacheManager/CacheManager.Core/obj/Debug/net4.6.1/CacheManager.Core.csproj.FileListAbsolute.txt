@@ -1,0 +1,17 @@
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\CacheManager.Core.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\CacheManager.Core.pdb
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\CacheManager.Core.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\System.Configuration.ConfigurationManager.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\System.Diagnostics.PerformanceCounter.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\System.Security.AccessControl.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\System.Security.Permissions.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\bin\Debug\net4.6.1\System.Security.Principal.Windows.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.csproj.CopyComplete
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Core\obj\Debug\net4.6.1\CacheManager.Core.pdb

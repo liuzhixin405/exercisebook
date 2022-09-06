@@ -1,0 +1,202 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "NServiceKit.Common/1.0.31": {
+        "type": "package",
+        "dependencies": {
+          "NServiceKit.Text": "[1.0.0, 2.0.0)"
+        },
+        "compile": {
+          "lib/net35/NServiceKit.Common.dll": {},
+          "lib/net35/NServiceKit.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/net35/NServiceKit.Common.dll": {},
+          "lib/net35/NServiceKit.Interfaces.dll": {}
+        }
+      },
+      "NServiceKit.Redis/1.0.20": {
+        "type": "package",
+        "dependencies": {
+          "NServiceKit.Common": "[1.0.31, 2.0.0)",
+          "NServiceKit.Text": "[1.0.0, 2.0.0)"
+        },
+        "compile": {
+          "lib/net35/NServiceKit.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net35/NServiceKit.Redis.dll": {}
+        }
+      },
+      "NServiceKit.Text/1.0.10": {
+        "type": "package",
+        "compile": {
+          "lib/net35/NServiceKit.Text.dll": {}
+        },
+        "runtime": {
+          "lib/net35/NServiceKit.Text.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NServiceKit.Common/1.0.31": {
+      "sha512": "N/Ym0S3OYP0J1cVqu8ghldHE02/GSqlzeB2uBoSASuckAvjF3j2AG/+SMq9GdHxSJd5RkGoujc47E/C7BpGfqw==",
+      "type": "package",
+      "path": "nservicekit.common/1.0.31",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/NServiceKit.Common.XML",
+        "lib/net35/NServiceKit.Common.dll",
+        "lib/net35/NServiceKit.Interfaces.dll",
+        "lib/net35/NServiceKit.Interfaces.xml",
+        "lib/sl5/NServiceKit.Common.XML",
+        "lib/sl5/NServiceKit.Common.dll",
+        "lib/sl5/NServiceKit.Interfaces.dll",
+        "lib/sl5/NServiceKit.Interfaces.xml",
+        "nservicekit.common.1.0.31.nupkg.sha512",
+        "nservicekit.common.nuspec"
+      ]
+    },
+    "NServiceKit.Redis/1.0.20": {
+      "sha512": "BYl0aoZcL3Fil4BIjoiKVz9kJVak1lh1HM5bmQj15HSGoXFgsSXvtaBbwvhUfmELwCQ4BvRRqHSfut3zjENxkw==",
+      "type": "package",
+      "path": "nservicekit.redis/1.0.20",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/NServiceKit.Redis.XML",
+        "lib/net35/NServiceKit.Redis.dll",
+        "nservicekit.redis.1.0.20.nupkg.sha512",
+        "nservicekit.redis.nuspec"
+      ]
+    },
+    "NServiceKit.Text/1.0.10": {
+      "sha512": "ySxZIjt/6yywQSTJ+AiRvbfT6sVNLHEmY2mxITl40ZBt94/73wRh93wun/i33B1UMNbg4O7Buhbg+5qlg+5oQg==",
+      "type": "package",
+      "path": "nservicekit.text/1.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/NServiceKit.Text.XML",
+        "lib/net35/NServiceKit.Text.dll",
+        "lib/sl5/NServiceKit.Text.XML",
+        "lib/sl5/NServiceKit.Text.dll",
+        "nservicekit.text.1.0.10.nupkg.sha512",
+        "nservicekit.text.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "NServiceKit.Redis >= 1.0.20"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\l\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\WebApi幂等性\\ConsoleApp\\ConsoleApp.csproj",
+      "projectName": "ConsoleApp",
+      "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\WebApi幂等性\\ConsoleApp\\ConsoleApp.csproj",
+      "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
+      "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\WebApi幂等性\\ConsoleApp\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "NServiceKit.Redis": {
+            "target": "Package",
+            "version": "[1.0.20, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "NServiceKit.Redis 1.0.20 依赖于 NServiceKit.Text (>= 1.0.0 && < 2.0.0)，但找不到 NServiceKit.Text 1.0.0。 已解决 NServiceKit.Text 1.0.10 的近似最佳匹配。 ",
+      "libraryId": "NServiceKit.Text",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“net5.0”还原包“NServiceKit.Common 1.0.31”。此包可能与项目不完全兼容。",
+      "libraryId": "NServiceKit.Common",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“net5.0”还原包“NServiceKit.Redis 1.0.20”。此包可能与项目不完全兼容。",
+      "libraryId": "NServiceKit.Redis",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“net5.0”还原包“NServiceKit.Text 1.0.10”。此包可能与项目不完全兼容。",
+      "libraryId": "NServiceKit.Text",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+dotnet DistributedRedisSession.dll --urls="https://*:8081" --ip="127.0.0.1" --port="8081"
+dotnet DistributedRedisSession.dll --urls="https://*:1641" --ip="127.0.0.1" --port="1641"

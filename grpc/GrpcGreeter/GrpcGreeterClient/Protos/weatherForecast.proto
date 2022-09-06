@@ -1,0 +1,39 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcGreeterClient";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+package weatherForecast;
+
+service WeatherForecaster {
+	rpc GetWeatherForecastById (WeatherForecastRequest) returns (WeatherForecastDetailResponse);
+    rpc GetWeatherForecast (google.protobuf.Empty) returns (WeatherForecastResponse);
+     rpc GetWeatherForecasts (google.protobuf.Empty) returns (WeatherForecastListResponse);
+}
+
+message WeatherForecastDetailResponse {
+
+        int32 WeatherFId = 1;
+        google.protobuf.Timestamp Date =2 ;
+
+        int32 TemperatureC =3 ;
+
+        int32 TemperatureF = 4;
+
+        string Summary=5 ;
+
+}
+
+message WeatherForecastRequest {
+    int32 WeatherFId = 1;
+}
+
+message WeatherForecastResponse {
+    string message =1;
+}
+
+message WeatherForecastListResponse {
+    double total = 1;
+    repeated WeatherForecastDetailResponse WeatherForecasts = 2;
+}

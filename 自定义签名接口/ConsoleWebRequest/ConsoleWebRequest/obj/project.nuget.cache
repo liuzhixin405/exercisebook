@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "K/U9CVeLgpw2qNY9Zge0FUf9UhO/2NJmiS/PD9CUaoA0wyc+xMyezJMGyPzCbt9ZTJe4AZ5GkKSZBl5/8VBUuA==",
+  "success": true,
+  "projectFilePath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\自定义签名接口\\ConsoleWebRequest\\ConsoleWebRequest\\ConsoleWebRequest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\l\\.nuget\\packages\\restsharp\\106.13.0\\restsharp.106.13.0.nupkg.sha512"
+  ],
+  "logs": []
+}

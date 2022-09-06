@@ -1,0 +1,13 @@
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.csproj.AssemblyReference.cache
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.GeneratedMSBuildEditorConfig.editorconfig
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.AssemblyInfoInputs.cache
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.AssemblyInfo.cs
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.ImplicitNamespaceImports.cs
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.csproj.CoreCompileInputs.cache
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\bin\Debug\net6.0\Lx.Project.Unicache.deps.json
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\bin\Debug\net6.0\Lx.Project.Unicache.dll
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\bin\Debug\net6.0\ref\Lx.Project.Unicache.dll
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\bin\Debug\net6.0\Lx.Project.Unicache.pdb
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.dll
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\ref\Lx.Project.Unicache.dll
+D:\Lx.Project.Cachaing\Lx.Project.Unicache\obj\Debug\net6.0\Lx.Project.Unicache.pdb

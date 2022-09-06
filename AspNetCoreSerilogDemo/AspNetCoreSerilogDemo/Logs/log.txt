@@ -1,0 +1,259 @@
+2022-02-19 13:16:14.444 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 13:16:14.452 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 13:16:14.462 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 13:16:14.463 +08:00 [INF] Hosting environment: Development
+2022-02-19 13:16:14.464 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 13:16:14.884 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 13:16:15.090 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 153.7667ms
+2022-02-19 13:16:15.099 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:16:15.104 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 4.3227ms
+2022-02-19 13:16:15.104 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 225.0842ms
+2022-02-19 13:16:15.232 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 13:16:15.296 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 63.0763ms
+2022-02-19 13:16:15.298 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 66.5963ms
+2022-02-19 13:19:38.206 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 13:19:38.219 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 13:19:38.229 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 13:19:38.230 +08:00 [INF] Hosting environment: Development
+2022-02-19 13:19:38.231 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 13:19:38.625 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 13:19:38.846 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 169.7595ms
+2022-02-19 13:19:38.851 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:19:38.857 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 236.7215ms
+2022-02-19 13:19:38.857 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 5.8314ms
+2022-02-19 13:19:38.985 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 13:19:39.056 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 69.4212ms
+2022-02-19 13:19:39.061 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 76.0645ms
+2022-02-19 13:21:20.705 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/SeriLogDemo - -
+2022-02-19 13:21:20.726 +08:00 [INF] Executing endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.String (AspNetCoreSerilogDemo)'
+2022-02-19 13:21:20.736 +08:00 [INF] Route matched with {action = "String", controller = "SeriLogDemo"}. Executing controller action with signature System.String String() on controller AspNetCoreSerilogDemo.Controllers.SeriLogDemoController (AspNetCoreSerilogDemo).
+2022-02-19 13:21:20.797 +08:00 [INF] Executing action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.String (AspNetCoreSerilogDemo) - Validation state: "Valid"
+2022-02-19 13:21:20.799 +08:00 [INF] this is serilog...
+2022-02-19 13:21:20.803 +08:00 [INF] Executed action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.String (AspNetCoreSerilogDemo), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.8572ms.
+2022-02-19 13:21:20.811 +08:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2022-02-19 13:21:20.818 +08:00 [INF] Executed action AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.String (AspNetCoreSerilogDemo) in 75.5797ms
+2022-02-19 13:21:20.821 +08:00 [INF] Executed endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.String (AspNetCoreSerilogDemo)'
+2022-02-19 13:21:20.822 +08:00 [INF] HTTP GET /SeriLogDemo ({UserId}) responded 200 in 100.4665ms
+2022-02-19 13:21:20.824 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/SeriLogDemo - - - 200 - text/plain;+charset=utf-8 119.3863ms
+2022-02-19 13:31:57.156 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 13:31:57.173 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 13:31:57.184 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 13:31:57.185 +08:00 [INF] Hosting environment: Development
+2022-02-19 13:31:57.186 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 13:31:57.886 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 13:31:58.105 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 154.7189ms
+2022-02-19 13:31:58.109 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:31:58.117 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 236.9347ms
+2022-02-19 13:31:58.117 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 7.9832ms
+2022-02-19 13:31:58.235 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 13:31:58.305 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 68.6374ms
+2022-02-19 13:31:58.310 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 74.7977ms
+2022-02-19 13:41:01.945 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 13:41:01.955 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 13:41:01.965 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 13:41:01.967 +08:00 [INF] Hosting environment: Development
+2022-02-19 13:41:01.969 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 13:41:02.478 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 13:41:02.633 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 114.8854ms
+2022-02-19 13:41:02.636 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:41:02.644 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 168.5414ms
+2022-02-19 13:41:02.644 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 7.0186ms
+2022-02-19 13:41:02.745 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 13:41:02.809 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 61.3399ms
+2022-02-19 13:41:02.812 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 66.9104ms
+2022-02-19 13:41:22.890 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/Hello - -
+2022-02-19 13:41:22.898 +08:00 [INF] Executing endpoint 'HTTP: GET /Hello'
+2022-02-19 13:41:22.902 +08:00 [INF] Executed endpoint 'HTTP: GET /Hello'
+2022-02-19 13:41:22.903 +08:00 [INF] HTTP GET /Hello ({UserId}) responded 200 in 10.8961ms
+2022-02-19 13:41:22.905 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/Hello - - - 200 - text/plain;+charset=utf-8 15.2808ms
+2022-02-19 13:43:24.442 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 13:43:24.451 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 13:43:24.463 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 13:43:24.464 +08:00 [INF] Hosting environment: Development
+2022-02-19 13:43:24.466 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 13:43:25.053 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 13:43:25.241 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 137.7524ms
+2022-02-19 13:43:25.266 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:43:25.272 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 6.1578ms
+2022-02-19 13:43:25.272 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 222.2593ms
+2022-02-19 13:43:25.383 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 13:43:25.485 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 99.9048ms
+2022-02-19 13:43:25.488 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 104.7921ms
+2022-02-19 13:44:08.859 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/Hello - -
+2022-02-19 13:44:08.875 +08:00 [INF] Executing endpoint 'HTTP: GET /Hello'
+2022-02-19 13:44:08.877 +08:00 [INF] Executed endpoint 'HTTP: GET /Hello'
+2022-02-19 13:44:08.878 +08:00 [INF] HTTP GET /Hello ({UserId}) responded 200 in 7.8938ms
+2022-02-19 13:44:08.879 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/Hello - - - 200 - text/plain;+charset=utf-8 20.4912ms
+2022-02-19 13:44:08.909 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/favicon.ico - -
+2022-02-19 13:44:08.910 +08:00 [INF] HTTP GET /favicon.ico ({UserId}) responded 404 in 0.2725ms
+2022-02-19 13:44:08.912 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/favicon.ico - - - 404 0 - 3.2399ms
+2022-02-19 13:47:13.911 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/request-context - -
+2022-02-19 13:47:13.920 +08:00 [INF] Executing endpoint 'HTTP: GET /request-context'
+2022-02-19 13:47:13.922 +08:00 [INF] Executed endpoint 'HTTP: GET /request-context'
+2022-02-19 13:47:13.923 +08:00 [INF] HTTP GET /request-context (someone) responded 200 in 2.7830ms
+2022-02-19 13:47:13.925 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/request-context - - - 200 0 - 14.0758ms
+2022-02-19 13:49:49.970 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/ - -
+2022-02-19 13:49:49.993 +08:00 [INF] Executing endpoint 'HTTP: GET /'
+2022-02-19 13:49:50.006 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of text/html
+2022-02-19 13:49:50.038 +08:00 [INF] Executed endpoint 'HTTP: GET /'
+2022-02-19 13:49:50.040 +08:00 [INF] HTTP GET / ({UserId}) responded 200 in 47.2225ms
+2022-02-19 13:49:50.041 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:49:50.043 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/ - - - 200 - text/html 73.2537ms
+2022-02-19 13:49:50.044 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 2.3482ms
+2022-02-19 13:49:56.642 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/ping - -
+2022-02-19 13:49:56.644 +08:00 [INF] HTTP GET /ping ({UserId}) responded 404 in 0.0644ms
+2022-02-19 13:49:56.647 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/ping - - - 404 0 - 4.5762ms
+2022-02-19 13:49:57.625 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:49:57.627 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 1.5165ms
+2022-02-19 13:49:58.847 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/request-context - -
+2022-02-19 13:49:58.849 +08:00 [INF] Executing endpoint 'HTTP: GET /request-context'
+2022-02-19 13:49:58.852 +08:00 [INF] Executed endpoint 'HTTP: GET /request-context'
+2022-02-19 13:49:58.853 +08:00 [INF] HTTP GET /request-context (someone) responded 200 in 3.8061ms
+2022-02-19 13:49:58.856 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/request-context - - - 200 0 - 8.9817ms
+2022-02-19 13:49:59.618 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:49:59.619 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 1.6507ms
+2022-02-19 13:54:37.520 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 13:54:37.530 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 13:54:37.542 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 13:54:37.543 +08:00 [INF] Hosting environment: Development
+2022-02-19 13:54:37.544 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 13:54:38.062 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 13:54:38.280 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 159.0580ms
+2022-02-19 13:54:38.283 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 13:54:38.292 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 237.2864ms
+2022-02-19 13:54:38.292 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 7.9077ms
+2022-02-19 13:54:38.436 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 13:54:38.535 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 96.5220ms
+2022-02-19 13:54:38.539 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 102.3814ms
+2022-02-19 13:54:47.016 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/custoemrs/112 - -
+2022-02-19 13:54:47.020 +08:00 [INF] HTTP GET /custoemrs/112 ({UserId}) responded 404 in 1.5606ms
+2022-02-19 13:54:47.022 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/custoemrs/112 - - - 404 0 - 6.3941ms
+2022-02-19 13:54:58.098 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/customers/112 - -
+2022-02-19 13:54:58.101 +08:00 [INF] HTTP GET /customers/112 ({UserId}) responded 404 in 0.1341ms
+2022-02-19 13:54:58.106 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/customers/112 - - - 404 0 - 7.7691ms
+2022-02-19 13:55:12.960 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/customers/112 - -
+2022-02-19 13:55:12.962 +08:00 [INF] HTTP GET /customers/112 ({UserId}) responded 404 in 0.0882ms
+2022-02-19 13:55:12.965 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/customers/112 - - - 404 0 - 4.5522ms
+2022-02-19 13:55:34.607 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/logdemo/customers/112 - -
+2022-02-19 13:55:34.609 +08:00 [INF] HTTP GET /logdemo/customers/112 ({UserId}) responded 404 in 0.0596ms
+2022-02-19 13:55:34.611 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/logdemo/customers/112 - - - 404 0 - 4.2442ms
+2022-02-19 13:55:42.933 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - -
+2022-02-19 13:55:42.938 +08:00 [INF] Executing endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 13:55:42.957 +08:00 [INF] Route matched with {action = "CreateCusomer", controller = "SeriLogDemo"}. Executing controller action with signature System.String CreateCusomer(Int32) on controller AspNetCoreSerilogDemo.Controllers.SeriLogDemoController (AspNetCoreSerilogDemo).
+2022-02-19 13:55:43.057 +08:00 [INF] Executing action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) - Validation state: "Valid"
+2022-02-19 13:55:43.059 +08:00 [INF] Creating customer 112
+2022-02-19 13:55:43.064 +08:00 [INF] Executed action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.9947ms.
+2022-02-19 13:55:43.071 +08:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2022-02-19 13:55:43.078 +08:00 [INF] Executed action AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) in 113.6785ms
+2022-02-19 13:55:43.080 +08:00 [INF] Executed endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 13:55:43.082 +08:00 [INF] HTTP GET /serilogdemo/customers/112 ({UserId}) responded 200 in 147.0431ms
+2022-02-19 13:55:43.084 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - - - 200 - text/plain;+charset=utf-8 150.7481ms
+2022-02-19 14:05:12.325 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 14:05:12.336 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 14:05:12.348 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 14:05:12.350 +08:00 [INF] Hosting environment: Development
+2022-02-19 14:05:12.351 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 14:05:13.313 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 14:05:13.525 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 143.1594ms
+2022-02-19 14:05:13.529 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 14:05:13.535 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 6.1828ms
+2022-02-19 14:05:13.535 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 229.9552ms
+2022-02-19 14:05:13.697 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 14:05:13.815 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 115.3155ms
+2022-02-19 14:05:13.818 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 121.2026ms
+2022-02-19 14:06:58.852 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 14:06:58.864 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 14:06:58.877 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 14:06:58.878 +08:00 [INF] Hosting environment: Development
+2022-02-19 14:06:58.882 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 14:06:59.488 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 14:06:59.709 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 156.2197ms
+2022-02-19 14:06:59.716 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 14:06:59.724 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 238.0549ms
+2022-02-19 14:06:59.724 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 6.1157ms
+2022-02-19 14:06:59.837 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 14:06:59.949 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 106.7787ms
+2022-02-19 14:06:59.951 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 114.2635ms
+2022-02-19 14:07:21.206 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - -
+2022-02-19 14:07:21.215 +08:00 [INF] Executing endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 14:07:21.234 +08:00 [INF] Route matched with {action = "CreateCusomer", controller = "SeriLogDemo"}. Executing controller action with signature System.String CreateCusomer(Int32) on controller AspNetCoreSerilogDemo.Controllers.SeriLogDemoController (AspNetCoreSerilogDemo).
+2022-02-19 14:07:21.312 +08:00 [INF] Executing action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) - Validation state: "Valid"
+2022-02-19 14:07:21.315 +08:00 [INF] Creating customer 112
+2022-02-19 14:07:21.319 +08:00 [INF] Executed action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.9671ms.
+2022-02-19 14:07:21.327 +08:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2022-02-19 14:07:21.334 +08:00 [INF] Executed action AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) in 94.2739ms
+2022-02-19 14:07:21.336 +08:00 [INF] Executed endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 14:07:21.339 +08:00 [INF] HTTP GET /serilogdemo/customers/112 ({UserId}) responded 200 in 130.4336ms
+2022-02-19 14:07:21.341 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - - - 200 - text/plain;+charset=utf-8 134.9709ms
+2022-02-19 14:08:10.550 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 14:08:10.558 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 14:08:10.568 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 14:08:10.569 +08:00 [INF] Hosting environment: Development
+2022-02-19 14:08:10.570 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 14:08:11.052 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 14:08:11.208 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 109.5779ms
+2022-02-19 14:08:11.212 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 14:08:11.216 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 3.4336ms
+2022-02-19 14:08:11.216 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 166.8488ms
+2022-02-19 14:08:11.326 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 14:08:11.415 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 87.4243ms
+2022-02-19 14:08:11.418 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 92.3387ms
+2022-02-19 14:08:25.705 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - -
+2022-02-19 14:08:25.712 +08:00 [INF] Executing endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 14:08:25.731 +08:00 [INF] Route matched with {action = "CreateCusomer", controller = "SeriLogDemo"}. Executing controller action with signature System.String CreateCusomer(Int32) on controller AspNetCoreSerilogDemo.Controllers.SeriLogDemoController (AspNetCoreSerilogDemo).
+2022-02-19 14:08:25.804 +08:00 [INF] Executing action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) - Validation state: "Valid"
+2022-02-19 14:08:25.807 +08:00 [INF] Creating customer 112
+2022-02-19 14:08:25.811 +08:00 [INF] Executed action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.9811ms.
+2022-02-19 14:08:25.818 +08:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2022-02-19 14:08:25.825 +08:00 [INF] Executed action AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) in 88.7167ms
+2022-02-19 14:08:25.828 +08:00 [INF] Executed endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 14:08:25.829 +08:00 [INF] HTTP GET /serilogdemo/customers/112 ({UserId}) responded 200 in 121.0844ms
+2022-02-19 14:08:25.832 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - - - 200 - text/plain;+charset=utf-8 127.8205ms
+2022-02-19 14:09:46.613 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 14:09:46.625 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 14:09:46.636 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 14:09:46.638 +08:00 [INF] Hosting environment: Development
+2022-02-19 14:09:46.639 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 14:09:46.984 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 14:09:47.215 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 170.5363ms
+2022-02-19 14:09:47.220 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 14:09:47.231 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 248.8740ms
+2022-02-19 14:09:47.231 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 9.8353ms
+2022-02-19 14:09:47.379 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 14:09:47.512 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 130.1572ms
+2022-02-19 14:09:47.515 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 136.5651ms
+2022-02-19 14:10:03.893 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - -
+2022-02-19 14:10:03.901 +08:00 [INF] Executing endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 14:10:03.924 +08:00 [INF] Route matched with {action = "CreateCusomer", controller = "SeriLogDemo"}. Executing controller action with signature System.String CreateCusomer(Int32) on controller AspNetCoreSerilogDemo.Controllers.SeriLogDemoController (AspNetCoreSerilogDemo).
+2022-02-19 14:10:04.019 +08:00 [INF] Executing action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) - Validation state: "Valid"
+2022-02-19 14:10:04.023 +08:00 [INF] Creating customer 112
+2022-02-19 14:10:04.030 +08:00 [INF] Executed action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 2.8185ms.
+2022-02-19 14:10:04.038 +08:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2022-02-19 14:10:04.047 +08:00 [INF] Executed action AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo) in 116.7269ms
+2022-02-19 14:10:04.049 +08:00 [INF] Executed endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.CreateCusomer (AspNetCoreSerilogDemo)'
+2022-02-19 14:10:04.050 +08:00 [INF] HTTP GET /serilogdemo/customers/112 ({UserId}) responded 200 in 154.9261ms
+2022-02-19 14:10:04.052 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/serilogdemo/customers/112 - - - 200 - text/plain;+charset=utf-8 160.2020ms
+2022-02-19 14:15:51.373 +08:00 [INF] Now listening on: https://localhost:7203
+2022-02-19 14:15:51.389 +08:00 [INF] Now listening on: http://localhost:5203
+2022-02-19 14:15:51.401 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-19 14:15:51.403 +08:00 [INF] Hosting environment: Development
+2022-02-19 14:15:51.404 +08:00 [INF] Content root path: C:\Users\admin\source\repos\AspNetCoreSerilogDemo\AspNetCoreSerilogDemo\
+2022-02-19 14:15:52.102 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/index.html - -
+2022-02-19 14:15:52.373 +08:00 [INF] HTTP GET /swagger/index.html ({UserId}) responded 200 in 195.5577ms
+2022-02-19 14:15:52.381 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - -
+2022-02-19 14:15:52.393 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/index.html - - - 200 - text/html;charset=utf-8 294.0917ms
+2022-02-19 14:15:52.393 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/_framework/aspnetcore-browser-refresh.js - - - 200 11954 application/javascript;+charset=utf-8 8.9096ms
+2022-02-19 14:15:52.526 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - -
+2022-02-19 14:15:52.680 +08:00 [INF] HTTP GET /swagger/v1/swagger.json ({UserId}) responded 200 in 149.3817ms
+2022-02-19 14:15:52.683 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 156.7702ms
+2022-02-19 14:16:03.286 +08:00 [INF] Request starting HTTP/2 GET https://localhost:7203/serilogdemo/timing - -
+2022-02-19 14:16:03.295 +08:00 [INF] Executing endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.Timings (AspNetCoreSerilogDemo)'
+2022-02-19 14:16:03.314 +08:00 [INF] Route matched with {action = "Timings", controller = "SeriLogDemo"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Timings() on controller AspNetCoreSerilogDemo.Controllers.SeriLogDemoController (AspNetCoreSerilogDemo).
+2022-02-19 14:16:03.383 +08:00 [INF] Executing action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.Timings (AspNetCoreSerilogDemo) - Validation state: "Valid"
+2022-02-19 14:16:03.902 +08:00 [INF] Some long running operation for 42 completed in 510.7 ms
+2022-02-19 14:16:03.924 +08:00 [INF] Executed action method AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.Timings (AspNetCoreSerilogDemo), returned result Microsoft.AspNetCore.Mvc.OkResult in 526.6162ms.
+2022-02-19 14:16:03.942 +08:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2022-02-19 14:16:03.955 +08:00 [INF] Executed action AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.Timings (AspNetCoreSerilogDemo) in 630.2693ms
+2022-02-19 14:16:03.960 +08:00 [INF] Executed endpoint 'AspNetCoreSerilogDemo.Controllers.SeriLogDemoController.Timings (AspNetCoreSerilogDemo)'
+2022-02-19 14:16:03.962 +08:00 [INF] HTTP GET /serilogdemo/timing ({UserId}) responded 200 in 672.2414ms
+2022-02-19 14:16:03.965 +08:00 [INF] Request finished HTTP/2 GET https://localhost:7203/serilogdemo/timing - - - 200 0 - 679.2808ms

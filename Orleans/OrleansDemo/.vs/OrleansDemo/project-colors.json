@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b084d6b4-b091-420a-851e-7aef1cccc001": {
+      "ProjectGuid": "b084d6b4-b091-420a-851e-7aef1cccc001",
+      "DisplayName": "IDCM.Contract.IGrains",
+      "ColorIndex": 0
+    },
+    "de7198f1-c4db-4d32-a5ec-6311a73b2f58": {
+      "ProjectGuid": "de7198f1-c4db-4d32-a5ec-6311a73b2f58",
+      "DisplayName": "IDCM.Contract.WebApi",
+      "ColorIndex": 1
+    },
+    "d4861bdc-9d7f-49b8-b899-643859d82733": {
+      "ProjectGuid": "d4861bdc-9d7f-49b8-b899-643859d82733",
+      "DisplayName": "IDCM.Contract.Client",
+      "ColorIndex": 2
+    },
+    "01cc633b-a291-45d4-942e-784df71a9e8b": {
+      "ProjectGuid": "01cc633b-a291-45d4-942e-784df71a9e8b",
+      "DisplayName": "IDCM.Contract.IBusiness",
+      "ColorIndex": 3
+    },
+    "78225cad-6b11-42ac-a0f6-8ec4a257934d": {
+      "ProjectGuid": "78225cad-6b11-42ac-a0f6-8ec4a257934d",
+      "DisplayName": "IDCM.Contract.Business",
+      "ColorIndex": 4
+    },
+    "94ebe540-60b4-4400-b79c-52ecc6eda223": {
+      "ProjectGuid": "94ebe540-60b4-4400-b79c-52ecc6eda223",
+      "DisplayName": "IDCM.Contract.BarWebApi",
+      "ColorIndex": 5
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    },
+    "1e8de47d-7108-43ce-8423-4c033bb00c4e": {
+      "ProjectGuid": "1e8de47d-7108-43ce-8423-4c033bb00c4e",
+      "DisplayName": "IDCM.Contract.Core",
+      "ColorIndex": 6
+    },
+    "26d82e66-e2a2-4080-a6bb-8bad968ca248": {
+      "ProjectGuid": "26d82e66-e2a2-4080-a6bb-8bad968ca248",
+      "DisplayName": "IDCM.Contract.Foundation",
+      "ColorIndex": 7
+    },
+    "88a90212-26e0-4346-bd05-606852a2e143": {
+      "ProjectGuid": "88a90212-26e0-4346-bd05-606852a2e143",
+      "DisplayName": "IDCM.Contract.BaseInfo",
+      "ColorIndex": 8
+    }
+  },
+  "NextColorIndex": 9
+}

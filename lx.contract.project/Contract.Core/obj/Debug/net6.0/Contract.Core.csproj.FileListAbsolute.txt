@@ -1,0 +1,15 @@
+D:\GitHub\exercise\lx.contract.project\Contract.Core\bin\Debug\net6.0\Contract.Core.deps.json
+D:\GitHub\exercise\lx.contract.project\Contract.Core\bin\Debug\net6.0\Contract.Core.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Core\bin\Debug\net6.0\Contract.Core.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.Core\bin\Debug\net6.0\Contract.SharedKernel.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Core\bin\Debug\net6.0\Contract.SharedKernel.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.csproj.AssemblyReference.cache
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.AssemblyInfoInputs.cache
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.AssemblyInfo.cs
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.csproj.CoreCompileInputs.cache
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.csproj.CopyComplete
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\refint\Contract.Core.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\Contract.Core.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.Core\obj\Debug\net6.0\ref\Contract.Core.dll

@@ -1,0 +1,713 @@
+2021-09-27 14:12:05.1537 Info Message Template Auto Format enabled
+2021-09-27 14:12:05.1758 Info Loading assembly: Exceptionless.NLog
+2021-09-27 14:12:05.1848 Debug ScanAssembly('Exceptionless.NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747')
+2021-09-27 14:12:05.2179 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-09-27 14:12:05.2263 Debug Setting 'NLog.Targets.FileTarget.name' to 'File'
+2021-09-27 14:12:05.2263 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${basedir}/logs/${shortdate}.log'
+2021-09-27 14:12:05.2263 Debug Setting 'NLog.Targets.FileTarget.layout' to ' ${longdate}|${event-properties:item=EventId_Id:whenEmpty=0}|${uppercase:${level}}|${logger}|${message} ${exception:format=tostring}|url: ${aspnet-request-url}|action: ${aspnet-mvc-action}| ${newline}'
+2021-09-27 14:12:05.2263 Debug Setting 'NLog.LayoutRenderers.EventPropertiesLayoutRenderer.item' to 'EventId_Id'
+2021-09-27 14:12:05.2263 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.Inner' to '${level}'
+2021-09-27 14:12:05.2495 Debug Setting 'NLog.LayoutRenderers.ExceptionLayoutRenderer.format' to 'tostring'
+2021-09-27 14:12:05.2495 Debug Wrapping target 'File' with AsyncTargetWrapper and renaming to 'File_wrapped
+2021-09-27 14:12:05.2495 Info Adding target AsyncTargetWrapper(Name=File)
+2021-09-27 14:12:05.2545 Debug Registered target File: NLog.Targets.Wrappers.AsyncTargetWrapper
+2021-09-27 14:12:05.2545 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-09-27 14:12:05.2545 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.name' to 'Exceptionless'
+2021-09-27 14:12:05.2545 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.apiKey' to 'YwWg7XV5MJVzjflIz8roagUdrSo8d7jSJ9VzTCou'
+2021-09-27 14:12:05.2545 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.serverUrl' to 'http://159.138.2.198:19999/'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'StackTrace'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${stacktrace}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'Message'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${message}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'LogLevel'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${level}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'CreateDate'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${date}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'MachineName'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${machinename}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'ThreadId'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${threadid}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'CallSite'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${callsite}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'AppdomainVersion'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${assembly-version}'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'Appdomain'
+2021-09-27 14:12:05.2707 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${appdomain}'
+2021-09-27 14:12:05.2873 Debug Wrapping target 'Exceptionless' with AsyncTargetWrapper and renaming to 'Exceptionless_wrapped
+2021-09-27 14:12:05.2873 Info Adding target AsyncTargetWrapper(Name=Exceptionless)
+2021-09-27 14:12:05.2873 Debug Registered target Exceptionless: NLog.Targets.Wrappers.AsyncTargetWrapper
+2021-09-27 14:12:05.3041 Debug --- NLog configuration dump ---
+2021-09-27 14:12:05.3041 Debug Targets:
+2021-09-27 14:12:05.3041 Debug AsyncWrapper Target[File](File Target[File_wrapped])
+2021-09-27 14:12:05.3041 Debug AsyncWrapper Target[Exceptionless](Exceptionless Target[Exceptionless_wrapped])
+2021-09-27 14:12:05.3041 Debug Rules:
+2021-09-27 14:12:05.3041 Debug logNamePattern: (:All) levels: [ Trace Debug Info Warn Error Fatal ] appendTo: [ File ]
+2021-09-27 14:12:05.3041 Debug logNamePattern: (:All) levels: [ Trace Debug Info Warn Error Fatal ] appendTo: [ Exceptionless ]
+2021-09-27 14:12:05.3041 Debug --- End of NLog configuration dump ---
+2021-09-27 14:12:05.3041 Info LogManager.ThrowExceptions = true can crash the application! Use only for unit-testing and last resort troubleshooting.
+2021-09-27 14:12:05.3183 Info Validating config: TargetNames=File, Exceptionless, ConfigItems=71, FilePath=C:\Users\admin\source\repos\NLogProductApi\NLogProductApi\bin\Debug\net5.0\NLog.config
+2021-09-27 14:12:05.3183 Debug Unused target checking is started... Rule Count: 2, Target Count: 2
+2021-09-27 14:12:05.3183 Debug Unused target checking is completed. Total Rule Count: 2, Total Target Count: 2, Unused Target Count: 0
+2021-09-27 14:12:05.3183 Debug Extending ${assembly-version} AssemblyVersionLayoutRenderer with NLog.Web implementation
+2021-09-27 14:12:05.3450 Info Configuration initialized.
+2021-09-27 14:12:05.3450 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-09-27 14:12:05.3493 Debug Targets for Microsoft.Extensions.Hosting.Internal.ApplicationLifetime by level:
+2021-09-27 14:12:05.3768 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.3768 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.3768 Debug Info => File Exceptionless
+2021-09-27 14:12:05.3768 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.3768 Debug Error => File Exceptionless
+2021-09-27 14:12:05.3768 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Targets for Microsoft.Extensions.Hosting.Internal.Host by level:
+2021-09-27 14:12:05.3976 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Info => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Error => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Targets for Microsoft.Hosting.Lifetime by level:
+2021-09-27 14:12:05.3976 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Info => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Error => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets by level:
+2021-09-27 14:12:05.3976 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Info => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Error => File Exceptionless
+2021-09-27 14:12:05.3976 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer by level:
+2021-09-27 14:12:05.4131 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Info => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Error => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware by level:
+2021-09-27 14:12:05.4131 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Info => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Error => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Targets for Microsoft.AspNetCore.Server.Kestrel by level:
+2021-09-27 14:12:05.4131 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Info => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Error => File Exceptionless
+2021-09-27 14:12:05.4131 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.4301 Debug Targets for Microsoft.AspNetCore.Hosting.Diagnostics by level:
+2021-09-27 14:12:05.4301 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.4301 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.4301 Debug Info => File Exceptionless
+2021-09-27 14:12:05.4301 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.4301 Debug Error => File Exceptionless
+2021-09-27 14:12:05.4301 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.5081 Debug Targets for Microsoft.AspNetCore.Mvc.MvcOptions by level:
+2021-09-27 14:12:05.5081 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.5081 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Info => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Error => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Targets for Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter by level:
+2021-09-27 14:12:05.5207 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Info => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Error => File Exceptionless
+2021-09-27 14:12:05.5207 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Targets for Microsoft.AspNetCore.Routing.EndpointMiddleware by level:
+2021-09-27 14:12:05.6070 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Info => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Error => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Targets for Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware by level:
+2021-09-27 14:12:05.6070 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Info => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Error => File Exceptionless
+2021-09-27 14:12:05.6070 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.6148 Debug Targets for Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware by level:
+2021-09-27 14:12:05.6148 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.6148 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.6148 Debug Info => File Exceptionless
+2021-09-27 14:12:05.6148 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.6148 Debug Error => File Exceptionless
+2021-09-27 14:12:05.6148 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.6329 Debug Targets for Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware by level:
+2021-09-27 14:12:05.6329 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.6329 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.6329 Debug Info => File Exceptionless
+2021-09-27 14:12:05.6329 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.6329 Debug Error => File Exceptionless
+2021-09-27 14:12:05.6329 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Targets for Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware by level:
+2021-09-27 14:12:05.6674 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Info => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Error => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Targets for Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware by level:
+2021-09-27 14:12:05.6674 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Info => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Error => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Targets for Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware by level:
+2021-09-27 14:12:05.6674 Debug Trace => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Debug => File Exceptionless
+2021-09-27 14:12:05.6674 Debug Info => File Exceptionless
+2021-09-27 14:12:05.6767 Debug Warn => File Exceptionless
+2021-09-27 14:12:05.6767 Debug Error => File Exceptionless
+2021-09-27 14:12:05.6767 Debug Fatal => File Exceptionless
+2021-09-27 14:12:05.8599 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8599 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8643 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:12:05.8797 Debug FileTarget(Name=File_wrapped): Preparing for new file 'C:\Users\admin\source\repos\NLogProductApi\NLogProductApi\bin\Debug\net5.0\logs\2021-09-27.log'
+2021-09-27 14:12:05.8797 Debug Creating file appender: C:\Users\admin\source\repos\NLogProductApi\NLogProductApi\bin\Debug\net5.0\logs\2021-09-27.log
+2021-09-27 14:12:07.2267 Debug Targets for Microsoft.AspNetCore.Routing.Matching.DfaMatcher by level:
+2021-09-27 14:12:07.2267 Debug Trace => File Exceptionless
+2021-09-27 14:12:07.2267 Debug Debug => File Exceptionless
+2021-09-27 14:12:07.2267 Debug Info => File Exceptionless
+2021-09-27 14:12:07.2267 Debug Warn => File Exceptionless
+2021-09-27 14:12:07.2267 Debug Error => File Exceptionless
+2021-09-27 14:12:07.2267 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Targets for Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory by level:
+2021-09-27 14:12:22.0287 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Info => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Error => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Targets for Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder by level:
+2021-09-27 14:12:22.0287 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Info => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.0287 Debug Error => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker by level:
+2021-09-27 14:12:22.0366 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Info => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Error => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter by level:
+2021-09-27 14:12:22.0366 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Info => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Error => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter by level:
+2021-09-27 14:12:22.0366 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Info => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Error => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Targets for NLogProductApi.Controllers.ProductController by level:
+2021-09-27 14:12:22.0366 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Info => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Error => File Exceptionless
+2021-09-27 14:12:22.0366 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector by level:
+2021-09-27 14:12:22.2113 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Info => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Error => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Fatal => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor by level:
+2021-09-27 14:12:22.2113 Debug Trace => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Debug => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Info => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Warn => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Error => File Exceptionless
+2021-09-27 14:12:22.2113 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.2480 Info Message Template Auto Format enabled
+2021-09-27 14:19:25.2603 Info Loading assembly: Exceptionless.NLog
+2021-09-27 14:19:25.2603 Debug ScanAssembly('Exceptionless.NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747')
+2021-09-27 14:19:25.2955 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-09-27 14:19:25.3134 Debug Setting 'NLog.Targets.FileTarget.name' to 'File'
+2021-09-27 14:19:25.3134 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${basedir}/logs/${shortdate}.log'
+2021-09-27 14:19:25.3176 Debug Setting 'NLog.Targets.FileTarget.layout' to ' ${longdate}|${event-properties:item=EventId_Id:whenEmpty=0}|${uppercase:${level}}|${logger}|${message} ${exception:format=tostring}|url: ${aspnet-request-url}|action: ${aspnet-mvc-action}| ${newline}'
+2021-09-27 14:19:25.3176 Debug Setting 'NLog.LayoutRenderers.EventPropertiesLayoutRenderer.item' to 'EventId_Id'
+2021-09-27 14:19:25.3176 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.Inner' to '${level}'
+2021-09-27 14:19:25.3176 Debug Setting 'NLog.LayoutRenderers.ExceptionLayoutRenderer.format' to 'tostring'
+2021-09-27 14:19:25.3346 Debug Wrapping target 'File' with AsyncTargetWrapper and renaming to 'File_wrapped
+2021-09-27 14:19:25.3346 Info Adding target AsyncTargetWrapper(Name=File)
+2021-09-27 14:19:25.3346 Debug Registered target File: NLog.Targets.Wrappers.AsyncTargetWrapper
+2021-09-27 14:19:25.3536 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.name' to 'Exceptionless'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.apiKey' to 'YwWg7XV5MJVzjflIz8roagUdrSo8d7jSJ9VzTCou'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.serverUrl' to 'http://159.138.2.198:19999/'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'StackTrace'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${stacktrace}'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'Message'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${message}'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'LogLevel'
+2021-09-27 14:19:25.3536 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${level}'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'CreateDate'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${date}'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'MachineName'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${machinename}'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'ThreadId'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${threadid}'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'CallSite'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${callsite}'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'AppdomainVersion'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${assembly-version}'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'Appdomain'
+2021-09-27 14:19:25.3649 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${appdomain}'
+2021-09-27 14:19:25.3804 Debug Wrapping target 'Exceptionless' with AsyncTargetWrapper and renaming to 'Exceptionless_wrapped
+2021-09-27 14:19:25.3804 Info Adding target AsyncTargetWrapper(Name=Exceptionless)
+2021-09-27 14:19:25.3804 Debug Registered target Exceptionless: NLog.Targets.Wrappers.AsyncTargetWrapper
+2021-09-27 14:19:25.4060 Debug --- NLog configuration dump ---
+2021-09-27 14:19:25.4060 Debug Targets:
+2021-09-27 14:19:25.4060 Debug AsyncWrapper Target[File](File Target[File_wrapped])
+2021-09-27 14:19:25.4060 Debug AsyncWrapper Target[Exceptionless](Exceptionless Target[Exceptionless_wrapped])
+2021-09-27 14:19:25.4060 Debug Rules:
+2021-09-27 14:19:25.4132 Debug logNamePattern: (:All) levels: [ Trace Debug Info Warn Error Fatal ] appendTo: [ File ]
+2021-09-27 14:19:25.4132 Debug logNamePattern: (:All) levels: [ Trace Debug Info Warn Error Fatal ] appendTo: [ Exceptionless ]
+2021-09-27 14:19:25.4132 Debug --- End of NLog configuration dump ---
+2021-09-27 14:19:25.4132 Info LogManager.ThrowExceptions = true can crash the application! Use only for unit-testing and last resort troubleshooting.
+2021-09-27 14:19:25.4132 Info Validating config: TargetNames=File, Exceptionless, ConfigItems=71, FilePath=C:\Users\admin\source\repos\NLogProductApi\NLogProductApi\bin\Debug\net5.0\NLog.config
+2021-09-27 14:19:25.4132 Debug Unused target checking is started... Rule Count: 2, Target Count: 2
+2021-09-27 14:19:25.4350 Debug Unused target checking is completed. Total Rule Count: 2, Total Target Count: 2, Unused Target Count: 0
+2021-09-27 14:19:25.4426 Debug Extending ${assembly-version} AssemblyVersionLayoutRenderer with NLog.Web implementation
+2021-09-27 14:19:25.4426 Info Configuration initialized.
+2021-09-27 14:19:25.4426 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-09-27 14:19:25.4609 Debug Targets for Microsoft.Extensions.Hosting.Internal.ApplicationLifetime by level:
+2021-09-27 14:19:25.4609 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.4609 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.4609 Debug Info => File Exceptionless
+2021-09-27 14:19:25.4609 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.4609 Debug Error => File Exceptionless
+2021-09-27 14:19:25.4609 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.4877 Debug Targets for Microsoft.Extensions.Hosting.Internal.Host by level:
+2021-09-27 14:19:25.4877 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.4877 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.4877 Debug Info => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Error => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Targets for Microsoft.Hosting.Lifetime by level:
+2021-09-27 14:19:25.4893 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Info => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Error => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.4893 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets by level:
+2021-09-27 14:19:25.5054 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Info => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Error => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer by level:
+2021-09-27 14:19:25.5054 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Info => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Error => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware by level:
+2021-09-27 14:19:25.5054 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Info => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Error => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Targets for Microsoft.AspNetCore.Server.Kestrel by level:
+2021-09-27 14:19:25.5054 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Info => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Error => File Exceptionless
+2021-09-27 14:19:25.5054 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.5352 Debug Targets for Microsoft.AspNetCore.Hosting.Diagnostics by level:
+2021-09-27 14:19:25.5352 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.5352 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.5362 Debug Info => File Exceptionless
+2021-09-27 14:19:25.5362 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.5362 Debug Error => File Exceptionless
+2021-09-27 14:19:25.5362 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Targets for Microsoft.AspNetCore.Mvc.MvcOptions by level:
+2021-09-27 14:19:25.6383 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Info => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Error => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Targets for Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter by level:
+2021-09-27 14:19:25.6383 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Info => File Exceptionless
+2021-09-27 14:19:25.6383 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.6459 Debug Error => File Exceptionless
+2021-09-27 14:19:25.6459 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.7684 Debug Targets for Microsoft.AspNetCore.Routing.EndpointMiddleware by level:
+2021-09-27 14:19:25.7684 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.7684 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.7684 Debug Info => File Exceptionless
+2021-09-27 14:19:25.7684 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Error => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Targets for Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware by level:
+2021-09-27 14:19:25.7703 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Info => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Error => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Targets for Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware by level:
+2021-09-27 14:19:25.7703 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Info => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Error => File Exceptionless
+2021-09-27 14:19:25.7703 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.7948 Debug Targets for Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware by level:
+2021-09-27 14:19:25.7948 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.7948 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.7948 Debug Info => File Exceptionless
+2021-09-27 14:19:25.7948 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.7948 Debug Error => File Exceptionless
+2021-09-27 14:19:25.7948 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.8306 Debug Targets for Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware by level:
+2021-09-27 14:19:25.8306 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.8306 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.8306 Debug Info => File Exceptionless
+2021-09-27 14:19:25.8306 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.8306 Debug Error => File Exceptionless
+2021-09-27 14:19:25.8306 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Targets for Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware by level:
+2021-09-27 14:19:25.8332 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Info => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Error => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Fatal => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Targets for Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware by level:
+2021-09-27 14:19:25.8332 Debug Trace => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Debug => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Info => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Warn => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Error => File Exceptionless
+2021-09-27 14:19:25.8332 Debug Fatal => File Exceptionless
+2021-09-27 14:19:26.0738 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0738 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.0831 Debug No available HttpContext. Logging outside valid request context?
+2021-09-27 14:19:26.1051 Debug FileTarget(Name=File_wrapped): Preparing for new file 'C:\Users\admin\source\repos\NLogProductApi\NLogProductApi\bin\Debug\net5.0\logs\2021-09-27.log'
+2021-09-27 14:19:26.1051 Debug Creating file appender: C:\Users\admin\source\repos\NLogProductApi\NLogProductApi\bin\Debug\net5.0\logs\2021-09-27.log
+2021-09-27 14:19:27.4467 Debug Targets for Microsoft.AspNetCore.Routing.Matching.DfaMatcher by level:
+2021-09-27 14:19:27.4467 Debug Trace => File Exceptionless
+2021-09-27 14:19:27.4467 Debug Debug => File Exceptionless
+2021-09-27 14:19:27.4467 Debug Info => File Exceptionless
+2021-09-27 14:19:27.4467 Debug Warn => File Exceptionless
+2021-09-27 14:19:27.4467 Debug Error => File Exceptionless
+2021-09-27 14:19:27.4467 Debug Fatal => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Targets for Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory by level:
+2021-09-27 14:19:30.4130 Debug Trace => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Debug => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Info => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Warn => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Error => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Fatal => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Targets for Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder by level:
+2021-09-27 14:19:30.4130 Debug Trace => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Debug => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Info => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Warn => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Error => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Fatal => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker by level:
+2021-09-27 14:19:30.4130 Debug Trace => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Debug => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Info => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Warn => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Error => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Fatal => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter by level:
+2021-09-27 14:19:30.4130 Debug Trace => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Debug => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Info => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Warn => File Exceptionless
+2021-09-27 14:19:30.4130 Debug Error => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Fatal => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter by level:
+2021-09-27 14:19:30.4269 Debug Trace => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Debug => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Info => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Warn => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Error => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Fatal => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Targets for NLogProductApi.Controllers.ProductController by level:
+2021-09-27 14:19:30.4269 Debug Trace => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Debug => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Info => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Warn => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Error => File Exceptionless
+2021-09-27 14:19:30.4269 Debug Fatal => File Exceptionless
+2022-07-27 09:40:07.7656 Info Message Template Auto Format enabled
+2022-07-27 09:40:07.8145 Info Loading assembly: Exceptionless.NLog
+2022-07-27 09:40:07.8223 Debug ScanAssembly('Exceptionless.NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=fc181f0a46f65747')
+2022-07-27 09:40:07.8548 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2022-07-27 09:40:07.8698 Debug Setting 'NLog.Targets.FileTarget.name' to 'File'
+2022-07-27 09:40:07.8698 Debug Setting 'NLog.Targets.FileTarget.fileName' to '${basedir}/logs/${shortdate}.log'
+2022-07-27 09:40:07.8839 Debug Setting 'NLog.Targets.FileTarget.layout' to ' ${longdate}|${event-properties:item=EventId_Id:whenEmpty=0}|${uppercase:${level}}|${logger}|${message} ${exception:format=tostring}|url: ${aspnet-request-url}|action: ${aspnet-mvc-action}| ${newline}'
+2022-07-27 09:40:07.8839 Debug Setting 'NLog.LayoutRenderers.EventPropertiesLayoutRenderer.item' to 'EventId_Id'
+2022-07-27 09:40:07.8839 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.Inner' to '${level}'
+2022-07-27 09:40:07.9169 Debug Setting 'NLog.LayoutRenderers.ExceptionLayoutRenderer.format' to 'tostring'
+2022-07-27 09:40:07.9169 Debug Wrapping target 'File' with AsyncTargetWrapper and renaming to 'File_wrapped
+2022-07-27 09:40:07.9359 Info Adding target AsyncTargetWrapper(Name=File)
+2022-07-27 09:40:07.9359 Debug Registered target File: NLog.Targets.Wrappers.AsyncTargetWrapper
+2022-07-27 09:40:07.9652 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2022-07-27 09:40:07.9652 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.name' to 'Exceptionless'
+2022-07-27 09:40:07.9847 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.apiKey' to 'YwWg7XV5MJVzjflIz8roagUdrSo8d7jSJ9VzTCou'
+2022-07-27 09:40:07.9847 Debug Setting 'Exceptionless.NLog.ExceptionlessTarget.serverUrl' to 'http://159.138.2.198:19999/'
+2022-07-27 09:40:07.9983 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'StackTrace'
+2022-07-27 09:40:07.9983 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${stacktrace}'
+2022-07-27 09:40:08.0107 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'Message'
+2022-07-27 09:40:08.0107 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${message}'
+2022-07-27 09:40:08.0107 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'LogLevel'
+2022-07-27 09:40:08.0239 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${level}'
+2022-07-27 09:40:08.0239 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'CreateDate'
+2022-07-27 09:40:08.0239 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${date}'
+2022-07-27 09:40:08.0472 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'MachineName'
+2022-07-27 09:40:08.0472 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${machinename}'
+2022-07-27 09:40:08.0583 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'ThreadId'
+2022-07-27 09:40:08.0583 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${threadid}'
+2022-07-27 09:40:08.0583 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'CallSite'
+2022-07-27 09:40:08.0731 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${callsite}'
+2022-07-27 09:40:08.0731 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'AppdomainVersion'
+2022-07-27 09:40:08.0731 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${assembly-version}'
+2022-07-27 09:40:08.0885 Debug Setting 'Exceptionless.NLog.ExceptionlessField.name' to 'Appdomain'
+2022-07-27 09:40:08.0885 Debug Setting 'Exceptionless.NLog.ExceptionlessField.layout' to '${appdomain}'
+2022-07-27 09:40:08.0885 Debug Wrapping target 'Exceptionless' with AsyncTargetWrapper and renaming to 'Exceptionless_wrapped
+2022-07-27 09:40:08.1040 Info Adding target AsyncTargetWrapper(Name=Exceptionless)
+2022-07-27 09:40:08.1040 Debug Registered target Exceptionless: NLog.Targets.Wrappers.AsyncTargetWrapper
+2022-07-27 09:40:08.1342 Debug --- NLog configuration dump ---
+2022-07-27 09:40:08.1342 Debug Targets:
+2022-07-27 09:40:08.1342 Debug AsyncWrapper Target[File](File Target[File_wrapped])
+2022-07-27 09:40:08.1527 Debug AsyncWrapper Target[Exceptionless](Exceptionless Target[Exceptionless_wrapped])
+2022-07-27 09:40:08.1527 Debug Rules:
+2022-07-27 09:40:08.1671 Debug logNamePattern: (:All) levels: [ Trace Debug Info Warn Error Fatal ] appendTo: [ File ]
+2022-07-27 09:40:08.1671 Debug logNamePattern: (:All) levels: [ Trace Debug Info Warn Error Fatal ] appendTo: [ Exceptionless ]
+2022-07-27 09:40:08.1671 Debug --- End of NLog configuration dump ---
+2022-07-27 09:40:08.1837 Info LogManager.ThrowExceptions = true can crash the application! Use only for unit-testing and last resort troubleshooting.
+2022-07-27 09:40:08.1837 Info Validating config: TargetNames=File, Exceptionless, ConfigItems=71, FilePath=G:\Users\l\Documents\GitHub\exercise\NLogAndExceptionlessProductApi\NLogProductApi\bin\Debug\net5.0\NLog.config
+2022-07-27 09:40:08.1990 Debug Unused target checking is started... Rule Count: 2, Target Count: 2
+2022-07-27 09:40:08.1990 Debug Unused target checking is completed. Total Rule Count: 2, Total Target Count: 2, Unused Target Count: 0
+2022-07-27 09:40:08.2177 Debug Extending ${assembly-version} AssemblyVersionLayoutRenderer with NLog.Web implementation
+2022-07-27 09:40:08.2332 Info Configuration initialized.
+2022-07-27 09:40:08.2332 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2022-07-27 09:40:08.2687 Debug Targets for Microsoft.Extensions.Hosting.Internal.ApplicationLifetime by level:
+2022-07-27 09:40:08.2687 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.2789 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.2789 Debug Info => File Exceptionless
+2022-07-27 09:40:08.2789 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.2924 Debug Error => File Exceptionless
+2022-07-27 09:40:08.2924 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.2924 Debug Targets for Microsoft.Extensions.Hosting.Internal.Host by level:
+2022-07-27 09:40:08.3069 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.3069 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.3069 Debug Info => File Exceptionless
+2022-07-27 09:40:08.3069 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.3217 Debug Error => File Exceptionless
+2022-07-27 09:40:08.3217 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.3217 Debug Targets for Microsoft.Hosting.Lifetime by level:
+2022-07-27 09:40:08.3390 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.3390 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.3390 Debug Info => File Exceptionless
+2022-07-27 09:40:08.3521 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.3521 Debug Error => File Exceptionless
+2022-07-27 09:40:08.3521 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.3724 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets by level:
+2022-07-27 09:40:08.3724 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.3724 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.3855 Debug Info => File Exceptionless
+2022-07-27 09:40:08.3855 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.3855 Debug Error => File Exceptionless
+2022-07-27 09:40:08.3855 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.4080 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer by level:
+2022-07-27 09:40:08.4080 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.4204 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.4204 Debug Info => File Exceptionless
+2022-07-27 09:40:08.4344 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.4554 Debug Error => File Exceptionless
+2022-07-27 09:40:08.4625 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.4625 Debug Targets for Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware by level:
+2022-07-27 09:40:08.4813 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.4813 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.4956 Debug Info => File Exceptionless
+2022-07-27 09:40:08.4956 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.4956 Debug Error => File Exceptionless
+2022-07-27 09:40:08.5143 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.5143 Debug Targets for Microsoft.AspNetCore.Server.Kestrel by level:
+2022-07-27 09:40:08.5259 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.5259 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.5259 Debug Info => File Exceptionless
+2022-07-27 09:40:08.5420 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.5420 Debug Error => File Exceptionless
+2022-07-27 09:40:08.5420 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.5922 Debug Targets for Microsoft.AspNetCore.Hosting.Diagnostics by level:
+2022-07-27 09:40:08.5922 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.5922 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.6069 Debug Info => File Exceptionless
+2022-07-27 09:40:08.6069 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.6069 Debug Error => File Exceptionless
+2022-07-27 09:40:08.6234 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.7610 Debug Targets for Microsoft.AspNetCore.Mvc.MvcOptions by level:
+2022-07-27 09:40:08.7610 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.7739 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.7739 Debug Info => File Exceptionless
+2022-07-27 09:40:08.7739 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.7739 Debug Error => File Exceptionless
+2022-07-27 09:40:08.7901 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.7901 Debug Targets for Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter by level:
+2022-07-27 09:40:08.7901 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.7901 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.8066 Debug Info => File Exceptionless
+2022-07-27 09:40:08.8066 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.8066 Debug Error => File Exceptionless
+2022-07-27 09:40:08.8066 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.9378 Debug Targets for Microsoft.AspNetCore.Routing.EndpointMiddleware by level:
+2022-07-27 09:40:08.9378 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.9378 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.9471 Debug Info => File Exceptionless
+2022-07-27 09:40:08.9471 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.9471 Debug Error => File Exceptionless
+2022-07-27 09:40:08.9471 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.9668 Debug Targets for Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware by level:
+2022-07-27 09:40:08.9668 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.9668 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.9668 Debug Info => File Exceptionless
+2022-07-27 09:40:08.9801 Debug Warn => File Exceptionless
+2022-07-27 09:40:08.9801 Debug Error => File Exceptionless
+2022-07-27 09:40:08.9801 Debug Fatal => File Exceptionless
+2022-07-27 09:40:08.9801 Debug Targets for Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware by level:
+2022-07-27 09:40:08.9951 Debug Trace => File Exceptionless
+2022-07-27 09:40:08.9951 Debug Debug => File Exceptionless
+2022-07-27 09:40:08.9951 Debug Info => File Exceptionless
+2022-07-27 09:40:08.9951 Debug Warn => File Exceptionless
+2022-07-27 09:40:09.0093 Debug Error => File Exceptionless
+2022-07-27 09:40:09.0093 Debug Fatal => File Exceptionless
+2022-07-27 09:40:09.0525 Debug Targets for Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware by level:
+2022-07-27 09:40:09.0561 Debug Trace => File Exceptionless
+2022-07-27 09:40:09.0561 Debug Debug => File Exceptionless
+2022-07-27 09:40:09.0561 Debug Info => File Exceptionless
+2022-07-27 09:40:09.0561 Debug Warn => File Exceptionless
+2022-07-27 09:40:09.0717 Debug Error => File Exceptionless
+2022-07-27 09:40:09.0717 Debug Fatal => File Exceptionless
+2022-07-27 09:40:09.1240 Debug Targets for Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware by level:
+2022-07-27 09:40:09.1240 Debug Trace => File Exceptionless
+2022-07-27 09:40:09.1240 Debug Debug => File Exceptionless
+2022-07-27 09:40:09.1341 Debug Info => File Exceptionless
+2022-07-27 09:40:09.1341 Debug Warn => File Exceptionless
+2022-07-27 09:40:09.1341 Debug Error => File Exceptionless
+2022-07-27 09:40:09.1341 Debug Fatal => File Exceptionless
+2022-07-27 09:40:09.1341 Debug Targets for Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware by level:
+2022-07-27 09:40:09.1518 Debug Trace => File Exceptionless
+2022-07-27 09:40:09.1518 Debug Debug => File Exceptionless
+2022-07-27 09:40:09.1518 Debug Info => File Exceptionless
+2022-07-27 09:40:09.1518 Debug Warn => File Exceptionless
+2022-07-27 09:40:09.1653 Debug Error => File Exceptionless
+2022-07-27 09:40:09.1653 Debug Fatal => File Exceptionless
+2022-07-27 09:40:09.1653 Debug Targets for Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware by level:
+2022-07-27 09:40:09.1653 Debug Trace => File Exceptionless
+2022-07-27 09:40:09.1653 Debug Debug => File Exceptionless
+2022-07-27 09:40:09.1837 Debug Info => File Exceptionless
+2022-07-27 09:40:09.1837 Debug Warn => File Exceptionless
+2022-07-27 09:40:09.1837 Debug Error => File Exceptionless
+2022-07-27 09:40:09.1837 Debug Fatal => File Exceptionless
+2022-07-27 09:40:09.6997 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.6997 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.6997 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.7141 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.7141 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.7141 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.7327 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.7327 Debug FileTarget(Name=File_wrapped): Preparing for new file 'G:\Users\l\Documents\GitHub\exercise\NLogAndExceptionlessProductApi\NLogProductApi\bin\Debug\net5.0\logs\2022-07-27.log'
+2022-07-27 09:40:09.7327 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.7458 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:09.7458 Debug Creating file appender: G:\Users\l\Documents\GitHub\exercise\NLogAndExceptionlessProductApi\NLogProductApi\bin\Debug\net5.0\logs\2022-07-27.log
+2022-07-27 09:40:09.7458 Debug No available HttpContext. Logging outside valid request context?
+2022-07-27 09:40:14.6515 Debug Targets for Microsoft.AspNetCore.Routing.Matching.DfaMatcher by level:
+2022-07-27 09:40:14.6515 Debug Trace => File Exceptionless
+2022-07-27 09:40:14.6515 Debug Debug => File Exceptionless
+2022-07-27 09:40:14.6515 Debug Info => File Exceptionless
+2022-07-27 09:40:14.6515 Debug Warn => File Exceptionless
+2022-07-27 09:40:14.6684 Debug Error => File Exceptionless
+2022-07-27 09:40:14.6684 Debug Fatal => File Exceptionless
+2022-07-27 09:40:14.6821 Debug Targets for Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory by level:
+2022-07-27 09:40:14.6821 Debug Trace => File Exceptionless
+2022-07-27 09:40:14.6821 Debug Debug => File Exceptionless
+2022-07-27 09:40:14.6821 Debug Info => File Exceptionless
+2022-07-27 09:40:14.6962 Debug Warn => File Exceptionless
+2022-07-27 09:40:14.6962 Debug Error => File Exceptionless
+2022-07-27 09:40:14.6962 Debug Fatal => File Exceptionless
+2022-07-27 09:40:14.6962 Debug Targets for Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder by level:
+2022-07-27 09:40:14.7148 Debug Trace => File Exceptionless
+2022-07-27 09:40:14.7148 Debug Debug => File Exceptionless
+2022-07-27 09:40:14.7148 Debug Info => File Exceptionless
+2022-07-27 09:40:14.7148 Debug Warn => File Exceptionless
+2022-07-27 09:40:14.7299 Debug Error => File Exceptionless
+2022-07-27 09:40:14.7299 Debug Fatal => File Exceptionless
+2022-07-27 09:40:14.7299 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker by level:
+2022-07-27 09:40:14.7299 Debug Trace => File Exceptionless
+2022-07-27 09:40:14.7466 Debug Debug => File Exceptionless
+2022-07-27 09:40:14.7466 Debug Info => File Exceptionless
+2022-07-27 09:40:14.7466 Debug Warn => File Exceptionless
+2022-07-27 09:40:14.7466 Debug Error => File Exceptionless
+2022-07-27 09:40:14.7610 Debug Fatal => File Exceptionless
+2022-07-27 09:40:14.7610 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter by level:
+2022-07-27 09:40:14.7610 Debug Trace => File Exceptionless
+2022-07-27 09:40:14.7610 Debug Debug => File Exceptionless
+2022-07-27 09:40:14.7771 Debug Info => File Exceptionless
+2022-07-27 09:40:14.7771 Debug Warn => File Exceptionless
+2022-07-27 09:40:14.7771 Debug Error => File Exceptionless
+2022-07-27 09:40:14.7771 Debug Fatal => File Exceptionless
+2022-07-27 09:40:14.7911 Debug Targets for Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter by level:
+2022-07-27 09:40:14.7911 Debug Trace => File Exceptionless
+2022-07-27 09:40:14.7911 Debug Debug => File Exceptionless
+2022-07-27 09:40:14.7911 Debug Info => File Exceptionless
+2022-07-27 09:40:14.8068 Debug Warn => File Exceptionless
+2022-07-27 09:40:14.8068 Debug Error => File Exceptionless
+2022-07-27 09:40:14.8068 Debug Fatal => File Exceptionless
+2022-07-27 09:40:14.8260 Debug Targets for NLogProductApi.Controllers.ProductController by level:
+2022-07-27 09:40:14.8260 Debug Trace => File Exceptionless
+2022-07-27 09:40:14.8260 Debug Debug => File Exceptionless
+2022-07-27 09:40:14.8392 Debug Info => File Exceptionless
+2022-07-27 09:40:14.8392 Debug Warn => File Exceptionless
+2022-07-27 09:40:14.8392 Debug Error => File Exceptionless
+2022-07-27 09:40:14.8520 Debug Fatal => File Exceptionless

@@ -1,0 +1,94 @@
+﻿using Crawler.Common;
+using Crawler.Logger;
+using Crawler.Models;
+using Crawler.QuartzNet;
+using Crawler.Service;
+using Crawler.Service.Config;
+using Crawler.Utility.HttpHelper;
+using CrawlerConsole.DiService;
+using CrawlerConsole.TaskManager;
+using CrawlerConsole.TaskManager.Job;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
+using System;
+using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Runtime.Loader;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace CrawlerConsole
+{
+    public class Program
+    {
+        public static bool iSLocalEnvironment = true;        //true代表 是本地环境 北京时间  false 8小时时差
+        static async Task Main(string[] args)
+        {
+            #region 环境判断
+            if (!TryRegisterService())
+            {
+                throw new Exception("实例未初始化");
+            }
+            //环境判断
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                iSLocalEnvironment = true;
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                iSLocalEnvironment = false;
+            }
+            #endregion
+            //日志测试
+            LoggerHelper.Info("start logger");
+            //获取 指令做判断
+
+            //任务测试 0 0 0 * * ? *  每天零点执行一次  0 0/10 * * * ? *每十分钟执行一次   每一分钟执行一次0 0/1 * * * ? *
+           
+            var shortCodeCron = ApplicationConfig.Configuration["ExecutionInterval:ShortCode"];
+            var profilePostCron = ApplicationConfig.Configuration["ExecutionInterval:ProfilePost"];
+            if (bool.Parse(ApplicationConfig.Configuration["ShortCodeJob"]))
+            {
+               await TaskSchedulers.Invoke<DigShortCodeJob>(shortCodeCron, "shortcode", "kol分组", "获取shortcode");
+                
+            }
+
+            if (bool.Parse(ApplicationConfig.Configuration["PostProfileJob"]))
+            {
+                await TaskSchedulers.Invoke<DigInstagramDataJob>(profilePostCron, "profilepost", "kol分组", "profilepost");
+            }
+                
+            #region 环境判断
+            if (!iSLocalEnvironment)
+            {
+                while (true)
+                {
+                    Thread.Sleep(1000 * 60 * 1);
+                    LoggerHelper.Info($"working{CommonHelper.GetSTime()}");
+                }
+            }
+            else
+            {
+                Console.ReadLine();
+            }
+            #endregion
+        }
+
+        private static bool TryRegisterService()
+        {
+            try
+            {
+                CustomApplicationService.RegisterServices(ServiceDiExtension.AddServer);
+                CustomApplicationService.BuildServices();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                ConsoleHelper.ServerWriteError(exception);
+                return false;
+            }
+        }
+    }
+}

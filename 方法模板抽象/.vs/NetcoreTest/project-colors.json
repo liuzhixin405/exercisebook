@@ -1,0 +1,51 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "96fe1051-443d-4a02-b128-32033a55b678": {
+      "ProjectGuid": "96fe1051-443d-4a02-b128-32033a55b678",
+      "DisplayName": "NetcoreTest",
+      "ColorIndex": 0
+    },
+    "9483d5e0-b266-4ef1-a3a7-f94456ca725f": {
+      "ProjectGuid": "9483d5e0-b266-4ef1-a3a7-f94456ca725f",
+      "DisplayName": "第二版",
+      "ColorIndex": 1
+    },
+    "1a0bf512-f687-4c12-b94b-7db1bd9714a2": {
+      "ProjectGuid": "1a0bf512-f687-4c12-b94b-7db1bd9714a2",
+      "DisplayName": "第三版",
+      "ColorIndex": 2
+    },
+    "b983da0a-7d2f-433f-ac6d-2f7edcb205c6": {
+      "ProjectGuid": "b983da0a-7d2f-433f-ac6d-2f7edcb205c6",
+      "DisplayName": "ClassLibrary",
+      "ColorIndex": 3
+    },
+    "9b655540-43de-4478-aa7b-c5890415720e": {
+      "ProjectGuid": "9b655540-43de-4478-aa7b-c5890415720e",
+      "DisplayName": "第四版",
+      "ColorIndex": 4
+    },
+    "367d1554-7b37-479c-9ba6-6c10635f3db3": {
+      "ProjectGuid": "367d1554-7b37-479c-9ba6-6c10635f3db3",
+      "DisplayName": "单例模式",
+      "ColorIndex": 5
+    },
+    "a5e0385b-d42b-44b2-b8db-102e18c42b3f": {
+      "ProjectGuid": "a5e0385b-d42b-44b2-b8db-102e18c42b3f",
+      "DisplayName": "策略模式二",
+      "ColorIndex": 6
+    },
+    "9b9855cf-dbda-4be3-a744-77732c8065d6": {
+      "ProjectGuid": "9b9855cf-dbda-4be3-a744-77732c8065d6",
+      "DisplayName": "策略模式",
+      "ColorIndex": 7
+    },
+    "3d601575-804c-4eab-b17c-e845017f2023": {
+      "ProjectGuid": "3d601575-804c-4eab-b17c-e845017f2023",
+      "DisplayName": "抽象工厂和工厂方法",
+      "ColorIndex": 8
+    }
+  },
+  "NextColorIndex": 9
+}

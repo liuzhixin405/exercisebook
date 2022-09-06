@@ -1,0 +1,12 @@
+D:\我的文档\repos\EventBusDemo\EventBusV2\bin\Debug\net5.0\EventBusV2.deps.json
+D:\我的文档\repos\EventBusDemo\EventBusV2\bin\Debug\net5.0\EventBusV2.dll
+D:\我的文档\repos\EventBusDemo\EventBusV2\bin\Debug\net5.0\ref\EventBusV2.dll
+D:\我的文档\repos\EventBusDemo\EventBusV2\bin\Debug\net5.0\EventBusV2.pdb
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\EventBusV2.csproj.AssemblyReference.cache
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\EventBusV2.GeneratedMSBuildEditorConfig.editorconfig
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\EventBusV2.AssemblyInfoInputs.cache
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\EventBusV2.AssemblyInfo.cs
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\EventBusV2.csproj.CoreCompileInputs.cache
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\EventBusV2.dll
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\ref\EventBusV2.dll
+D:\我的文档\repos\EventBusDemo\EventBusV2\obj\Debug\net5.0\EventBusV2.pdb

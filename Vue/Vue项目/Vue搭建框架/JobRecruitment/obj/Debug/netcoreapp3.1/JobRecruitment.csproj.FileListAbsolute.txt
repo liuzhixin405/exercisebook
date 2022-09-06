@@ -1,0 +1,260 @@
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\appsettings.Development.json
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\appsettings.json
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.exe
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.csprojAssemblyReference.cache
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\staticwebassets\JobRecruitment.StaticWebAssets.Manifest.cache
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\staticwebassets\JobRecruitment.StaticWebAssets.xml
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.AssemblyInfoInputs.cache
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.AssemblyInfo.cs
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.RazorTargetAssemblyInfo.cache
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.csproj.CopyComplete
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.deps.json
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.runtimeconfig.json
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.runtimeconfig.dev.json
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.pdb
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.pdb
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.xml
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.MvcApplicationPartsAssemblyInfo.cs
+H:\PublicProducts\JobRecruitment\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.MvcApplicationPartsAssemblyInfo.cache
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\appsettings.json
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.exe
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.deps.json
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.runtimeconfig.json
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.runtimeconfig.dev.json
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.pdb
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\JobRecruitment.xml
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.csprojAssemblyReference.cache
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.AssemblyInfoInputs.cache
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.AssemblyInfo.cs
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.csproj.CoreCompileInputs.cache
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.MvcApplicationPartsAssemblyInfo.cs
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.MvcApplicationPartsAssemblyInfo.cache
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.RazorTargetAssemblyInfo.cache
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.csproj.CopyComplete
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\staticwebassets\JobRecruitment.StaticWebAssets.Manifest.cache
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\staticwebassets\JobRecruitment.StaticWebAssets.xml
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.dll
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.pdb
+E:\我的资料\netcore 2 班\20200327Architect01Course025Vue搭建框架\JobRecruitment\obj\Debug\netcoreapp3.1\JobRecruitment.genruntimeconfig.cache

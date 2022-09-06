@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.AssemblyInfo.cs
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\bin\Debug\net6.0\PipelineFilter.exe
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\bin\Debug\net6.0\PipelineFilter.deps.json
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\bin\Debug\net6.0\PipelineFilter.runtimeconfig.json
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\bin\Debug\net6.0\PipelineFilter.dll
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\bin\Debug\net6.0\ref\PipelineFilter.dll
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\bin\Debug\net6.0\PipelineFilter.pdb
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.dll
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\ref\PipelineFilter.dll
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.pdb
+C:\Users\admin\Desktop\PipelineFilter\PipelineFilter\obj\Debug\net6.0\PipelineFilter.genruntimeconfig.cache

@@ -1,0 +1,10 @@
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\bin\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.deps.json
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\bin\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\bin\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\obj\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\obj\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\obj\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\obj\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\obj\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\obj\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.Serialization\obj\Debug\netstandard2.1\SlimMessageBus.Host.Serialization.pdb

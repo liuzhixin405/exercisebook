@@ -1,0 +1,15 @@
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\bin\Debug\net6.0\MementoPattern01.exe
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\bin\Debug\net6.0\MementoPattern01.deps.json
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\bin\Debug\net6.0\MementoPattern01.runtimeconfig.json
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\bin\Debug\net6.0\MementoPattern01.dll
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\bin\Debug\net6.0\MementoPattern01.pdb
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.csproj.AssemblyReference.cache
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.GeneratedMSBuildEditorConfig.editorconfig
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.AssemblyInfoInputs.cache
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.AssemblyInfo.cs
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.csproj.CoreCompileInputs.cache
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.dll
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\refint\MementoPattern01.dll
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.pdb
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\MementoPattern01.genruntimeconfig.cache
+G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\MementoPattern01\obj\Debug\net6.0\ref\MementoPattern01.dll

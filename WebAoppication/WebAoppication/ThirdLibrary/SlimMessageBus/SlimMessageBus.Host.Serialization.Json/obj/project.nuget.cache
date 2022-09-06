@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "1cq3wMZVyeCbnRTI3mX0ZRTvkmS2Yp2PvyV3E2VzWIWVrUY1lU9nmI++FXLfvmIsCaAeGBlvWtwvh34/LJEAvw==",
+  "success": true,
+  "projectFilePath": "D:\\IDCM\\contract\\ThirdLibrary\\SlimMessageBus\\SlimMessageBus.Host.Serialization.Json\\SlimMessageBus.Host.Serialization.Json.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\slimmessagebus.host.serialization\\1.1.0\\slimmessagebus.host.serialization.1.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

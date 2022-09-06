@@ -1,0 +1,14 @@
+﻿@using BackStageDemo.Application.User.Dto;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @foreach (UserDto user in ViewBag.Users as List<UserDto>)
+    {
+        <h1>@user.UserNo</h1>
+        <h1>@user.UserName</h1>
+    }
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

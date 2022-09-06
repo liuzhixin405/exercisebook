@@ -1,0 +1,7 @@
+【CSRedisCore】缺点：貌似无明显缺点
+
+【ServiceStack.Redis】缺点：感觉字节数组与字符串的转化不必要
+
+【StackExchange.Redis】缺点：对泛型支持不够
+
+https://www.cnblogs.com/jianghaidong/p/12891078.html

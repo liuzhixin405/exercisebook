@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignService", "SignService\SignService.csproj", "{899411A7-491D-4933-AAF6-D93EF461221E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignService.Util", "SignService.Util\SignService.Util.csproj", "{D736CB48-457E-422E-A701-705F288E2A50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{899411A7-491D-4933-AAF6-D93EF461221E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899411A7-491D-4933-AAF6-D93EF461221E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899411A7-491D-4933-AAF6-D93EF461221E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899411A7-491D-4933-AAF6-D93EF461221E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D736CB48-457E-422E-A701-705F288E2A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D736CB48-457E-422E-A701-705F288E2A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D736CB48-457E-422E-A701-705F288E2A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D736CB48-457E-422E-A701-705F288E2A50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E30E8061-BCD8-42FE-A613-BC59218ED296}
+	EndGlobalSection
+EndGlobal

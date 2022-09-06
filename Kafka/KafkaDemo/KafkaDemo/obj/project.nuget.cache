@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "GIH4Q05R44YavXVf6u+76SJowk69oyT2mhX9GI+vr+jt+Ei5n+jb2ZlLRuKGNgKhrANswk+mWsPocCiPJtA9hg==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub_\\exercise\\Kafka\\KafkaDemo\\KafkaDemo\\KafkaServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\confluent.kafka\\1.8.2\\confluent.kafka.1.8.2.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\librdkafka.redist\\1.8.2\\librdkafka.redist.1.8.2.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512"
+  ],
+  "logs": []
+}

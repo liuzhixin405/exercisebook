@@ -1,0 +1,9 @@
+TIMESTAMP                  	APPDOMAIN                                    	LOGGERNAME                                 	THREADNAME                                	LEVEL    	MESSAGE
+2022-02-26 14:05:42,623    	NOT AVAILABLE                                	SessionStoreProvider                       	4                                         	ERROR    	[Error]: Alachisoft.NCache.Runtime.Exceptions.ConfigurationException : 'client.ncconf' not found or does not contain server information
+   at Alachisoft.NCache.Client.Broker.TryNextServer()
+   at Alachisoft.NCache.Client.Broker.StartServices(String cacheId, String server, Int32 port)
+   at Alachisoft.NCache.Client.RemoteCache..ctor(String cacheId, Cache parent, CacheConnectionOptions cacheConnectionOptions, StatisticsCounter perfStatsCol)
+   at Alachisoft.NCache.Client.CacheManager.GetCacheInternal(String cacheName, CacheConnectionOptions cacheConnectionOptions)
+   at Alachisoft.NCache.Client.CacheManager.GetCache(String cacheName, CacheConnectionOptions cacheConnectionOptions)
+   at Alachisoft.NCache.Web.SessionState.NCacheDistributedCache.CheckAndInitializeCache()
+

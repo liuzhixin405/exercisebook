@@ -1,0 +1,15 @@
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\bin\Debug\net6.0\Next.exe
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\bin\Debug\net6.0\Next.deps.json
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\bin\Debug\net6.0\Next.runtimeconfig.json
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\bin\Debug\net6.0\Next.dll
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\bin\Debug\net6.0\Next.pdb
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.AssemblyInfo.cs
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.dll
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\refint\Next.dll
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.pdb
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\Next.genruntimeconfig.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\Next\obj\Debug\net6.0\ref\Next.dll

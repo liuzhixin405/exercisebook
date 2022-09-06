@@ -1,0 +1,29 @@
+﻿@page "/userspage"
+@using BlazorAppWeb.Components;
+@inherits UserInfoPageBase;
+<div class="row">
+    <div class="col-md-8">
+        <Search OnSearchChanged="SearchChanged" />
+    </div>
+    <br />
+    <div class="col-md-2">
+        <a class="btn btn-primary" href="/createuser">新增用户</a>
+    </div>
+</div>
+<div>
+    <button class="btn btn-primary" @onclick="@SayHello">Say Hello</button>
+    <h2>@Result</h2>
+</div>
+<div class="row">
+    @*<div class="col">
+        <div class="col">*@
+
+    <UserTable UserInfos="UserInfos" Count="UserInfos.Count" OnDeleted="DeleteUser" />
+    @*</div>
+        </div>*@
+</div>
+<div class="row">
+    <div class="col">
+        <Pagination MetaData="MetaData" Spread="2" SelectedPage="SelectedPage" />
+    </div>
+</div>

@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\GitHub_\\exercise\\OrleansDemo\\IDCM.Contract.IGrains\\IDCM.Contract.IGrains.csproj": {}
+  },
+  "projects": {
+    "D:\\GitHub_\\exercise\\OrleansDemo\\IDCM.Contract.IGrains\\IDCM.Contract.IGrains.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitHub_\\exercise\\OrleansDemo\\IDCM.Contract.IGrains\\IDCM.Contract.IGrains.csproj",
+        "projectName": "IDCM.Contract.IGrains",
+        "projectPath": "D:\\GitHub_\\exercise\\OrleansDemo\\IDCM.Contract.IGrains\\IDCM.Contract.IGrains.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub_\\exercise\\OrleansDemo\\IDCM.Contract.IGrains\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Orleans.CodeGenerator.MSBuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "Microsoft.Orleans.Core.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "Microsoft.Orleans.OrleansTelemetryConsumers.AI": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "Microsoft.Orleans.OrleansTelemetryConsumers.Counters": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "Microsoft.Orleans.Runtime.Abstractions": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "OrleansDashboard": {
+              "target": "Package",
+              "version": "[3.5.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MIXnkW07Dra5SjpztpH+3qxbb+KwN0neeBQYlC4QRfU=",
+  "Source": "SeckillPro.Api",
+  "BasePath": "_content/SeckillPro.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

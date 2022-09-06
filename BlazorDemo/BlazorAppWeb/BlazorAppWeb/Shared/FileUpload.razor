@@ -1,0 +1,16 @@
+﻿<h3>FileUpload</h3>
+
+<p>
+    <input type="file" @ref="_input" @onchange="HandleSelected" multiple="multiple" accept=".txt, .zip" />
+</p>
+@if(FileDataUrls.Count > 0)
+            {
+                <div class="card" style="width:30rem;">
+                    <div class="card-body">
+                        @foreach (var item in FileDataUrls)
+                        {
+                            <label>@item</label>
+                        }
+                    </div>
+                </div>
+            }

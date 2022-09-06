@@ -1,0 +1,119 @@
+<HTML>
+<HEAD></HEAD>
+<script charset="utf-8">
+function createXHR(){
+if(typeof XMLHttpRequest != "undefined"){
+return new XMLHttpRequest();
+}else if(typeof ActiveXObject != "undefined"){
+if(typeof arguments.callee.activeXString !="string"){
+var versions = ["MSXML2.XMLHttp.6.0","MSXML2.XMLHttp.3.0","MSXML2.XMLHttp"],i,len;
+for(i=0,len=versions.length;i<len;i++){
+try{
+new ActiveXObject(versions[i]);
+arguments.callee.activeXString=versions[i];
+break;
+}catch(ex){
+
+}
+}
+}
+
+return new ActiveXObject(ar.callee.activeXString);
+}else{
+throw new Error("No XHR object available.");
+}
+}
+function createCORSRequest(method,url){
+var xhr = new XMLHttpRequest();
+if("withCredentials" in xhr){
+xhr.open(method,url,true);
+}else if(typeof XDomainRequest !="undifined"){
+xhr = new XDomainRequest();
+xhr.open(method,url);
+}else
+{
+	xhr=null;
+}
+return xhr;
+}
+
+<!-- function submitData(){ -->
+<!-- var xhr = createXHR(); -->
+<!-- xhr.onreadystatechange=function(){ -->
+<!-- if(xhr.readyState==4){ -->
+<!-- if((xhr.status >= 200 && xhr.status < 300) || xhr.status==304){ -->
+<!-- alert(xhr.responseText); -->
+<!-- }else{ -->
+<!-- alert("Request was unsuccessful: "+xhr.status); -->
+<!-- } -->
+<!-- } -->
+<!-- }; -->
+<!-- xhr.open("open","http://localhost:8088/token",true); -->
+<!-- xhr.setRequestHeader("Content-Type","application/json"); -->
+<!-- xhr.withCredentials = "true"; -->
+<!-- xhr.onerror=function(){ -->
+<!-- alert("请求错误!"); -->
+<!-- } -->
+<!-- var pars = '{"Account":"Administrator","Password":"12345678"}'; -->
+<!-- xhr.send(pars); -->
+<!-- } -->
+//submitData();
+//get请求
+var request = createCORSRequest("post","http://localhost:8088/token");
+if(request){
+var reqpars = JSON.stringify({"Account":"Administrator","Password":"12345678"});
+request.setRequestHeader("Content-Type","application/json");
+//request.withCredentials = "true";
+//request.setRequestHeader('Access-Control-Allow-Origin','*'); 
+//request.setRequestHeader('Origin','file:///C:/Users/lzx/source/repos/htmldemo/test.html'); 
+request.onload=function(){
+alert(request.responseText);
+};
+request.send(reqpars);
+}
+
+
+function PostMethod(){
+  const XHR= new XMLHttpRequest()
+            XHR.open('get',`https://www.instagram.com/p/CDUvvB5ghgL/?__a=1&${i}=${cookies[i]}`)
+            XHR.send()
+            XHR.onreadystatechange = ()=>{
+                if (XHR.readyState==4 && XHR.status==200){
+                    console.log(JSON.parse(XHR.responseText).graphql)
+                }
+            }
+}
+//get请求
+
+<!-- var request = createCORSRequest("get","https://localhost:44351/api/values"); -->
+<!-- if(request){ -->
+
+<!-- //request.withCredentials = "true"; -->
+<!-- //request.setRequestHeader('Access-Control-Allow-Origin','*'); -->
+<!-- //request.setRequestHeader('Origin','localhost:44351'); -->
+<!-- request.onload=function(){ -->
+<!-- alert(request.responseText); -->
+<!-- }; -->
+<!-- request.send(); -->
+<!-- } -->
+//post请求
+<!-- var request = createCORSRequest("post","https://localhost:44351/api/values"); -->
+<!-- if(request){ -->
+
+ <!-- //request.withCredentials = "true";    //客户端设置跨域，前端如果设置反而报错 -->
+<!-- //request.setRequestHeader('Access-Control-Allow-Origin','*'); -->
+<!-- //request.setRequestHeader('Content-Type','application/json'); -->
+<!-- //request.setRequestHeader('Origin','localhost:44351'); -->
+<!-- request.onload=function(){ -->
+<!-- alert(request.responseText); -->
+<!-- }; -->
+<!-- request.send("hello world!"); -->
+<!-- } -->
+</script>
+<BODY>
+
+<div id="i">
+test
+</div>
+</BODY>
+</HTML>

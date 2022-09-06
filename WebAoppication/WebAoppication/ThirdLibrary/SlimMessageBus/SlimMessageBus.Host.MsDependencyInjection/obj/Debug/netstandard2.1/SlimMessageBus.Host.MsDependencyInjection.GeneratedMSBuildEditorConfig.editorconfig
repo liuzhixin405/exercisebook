@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = SlimMessageBus.Host.MsDependencyInjection
+build_property.ProjectDir = C:\Users\admin\source\repos\WebAoppication\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\

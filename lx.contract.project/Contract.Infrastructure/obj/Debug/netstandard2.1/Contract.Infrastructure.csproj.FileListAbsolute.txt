@@ -1,0 +1,13 @@
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\bin\Debug\netstandard2.1\Contract.Infrastructure.deps.json
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\bin\Debug\netstandard2.1\Contract.Infrastructure.dll
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\bin\Debug\netstandard2.1\Contract.Infrastructure.pdb
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.dll
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.pdb
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\bin\Debug\netstandard2.1\Contract.Core.dll
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\bin\Debug\netstandard2.1\Contract.Core.pdb
+C:\Users\Administrator\Desktop\lx.contract.project\Contract.Infrastructure\obj\Debug\netstandard2.1\Contract.Infrastructure.csproj.CopyComplete

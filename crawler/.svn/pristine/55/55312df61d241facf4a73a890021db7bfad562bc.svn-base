@@ -1,0 +1,36 @@
+{
+  "AllowedHosts": "*",
+  "IgUser_1": {
+    "user": "373515719@qq.com",
+    "password": "@#abc1232"
+  },
+  "IgUser_2": {
+    "user": "",
+    "password": ""
+  },
+  "ProfilePostCookie_1_info": {
+    "user": "373515719@qq.com",
+    "password": "@#abc1232"
+  },
+  "ProfilePostCookie_1": "ig_did=B0E3057C-C1C1-48B2-A7C1-EA1317C9938E; ig_nrcb=1; mid=X_gWFgALAAG6YosmKguV0LmJOKDh; shbid=17937; shbts=1610094146.124472; rur=ATN; csrftoken=o150qVDYJ7i6dwmaEMrYmZs57gj8KXEc; ds_user_id=8569703740; sessionid=8569703740%3AFMJkyO73Q7txV0%3A1; urlgen=\"{\\\"103.98.19.240\\\": 136897}:1kxnba:nrI8CmdnnAgcWxsGb3MkXSmsLsI\"",
+  "ProfilePostCookie_2_info": {
+    "password": "",
+    "user": ""
+  },
+  "ProfilePostCookie_2": "",
+  "ReqUrl": {
+    "IgUrl": "https://www.instagram.com",
+    "DBHost": "https://unibone.uat.heywind.cn"
+  },
+  "ExecutionInterval": {
+    "ShortCode": " 0 0/5 * * * ? * ",
+    "ProfilePost": " 0 0/5 * * * ? * "
+  },
+  "TaggedUrls": "https://www.instagram.com/tijneyewear/tagged/,https://www.instagram.com/tijnhomelife/tagged/,https://www.instagram.com/tijnsunwear/tagged/",
+  "IsRepeatedJudgment": false,
+  "UserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 Edg/87.0.664.66",
+  "ShortCodeJob": false,
+  "PostProfileJob": true,
+  "DataBaseUserInfo": "{\"Account\": \"Crawler\",\"Password\": \"12345678\"}",
+  "IsConsolePage": true
+}

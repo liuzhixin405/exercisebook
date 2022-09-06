@@ -1,0 +1,16 @@
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\bin\Debug\net5.0\FactoryMethod.exe
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\bin\Debug\net5.0\FactoryMethod.deps.json
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\bin\Debug\net5.0\FactoryMethod.runtimeconfig.json
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\bin\Debug\net5.0\FactoryMethod.runtimeconfig.dev.json
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\bin\Debug\net5.0\FactoryMethod.dll
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\bin\Debug\net5.0\ref\FactoryMethod.dll
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\bin\Debug\net5.0\FactoryMethod.pdb
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.AssemblyInfo.cs
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.dll
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\ref\FactoryMethod.dll
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.pdb
+D:\GitHub_\exercise\方法模板抽象\FactoryMethod\obj\Debug\net5.0\FactoryMethod.genruntimeconfig.cache

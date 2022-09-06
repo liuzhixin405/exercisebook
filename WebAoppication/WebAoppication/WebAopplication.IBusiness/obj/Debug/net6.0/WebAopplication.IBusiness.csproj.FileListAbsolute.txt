@@ -1,0 +1,11 @@
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\bin\Debug\net6.0\WebAopplication.IBusiness.deps.json
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\bin\Debug\net6.0\WebAopplication.IBusiness.dll
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\bin\Debug\net6.0\ref\WebAopplication.IBusiness.dll
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\bin\Debug\net6.0\WebAopplication.IBusiness.pdb
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\obj\Debug\net6.0\WebAopplication.IBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\obj\Debug\net6.0\WebAopplication.IBusiness.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\obj\Debug\net6.0\WebAopplication.IBusiness.AssemblyInfo.cs
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\obj\Debug\net6.0\WebAopplication.IBusiness.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\obj\Debug\net6.0\WebAopplication.IBusiness.dll
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\obj\Debug\net6.0\ref\WebAopplication.IBusiness.dll
+C:\Users\admin\source\repos\WebAoppication\WebAopplication.IBusiness\obj\Debug\net6.0\WebAopplication.IBusiness.pdb

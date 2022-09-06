@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "g1JmzNg9cJx4YcnfCzuHh05saGiLX4Hep7q82Nh2ENYfAI0+u6Me9mdGelJ+uLaTzc8P1RNqlCNX6zPYpHb30g==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\exercise\\MarvellousWorks\\GenericesLib\\GenericesLib.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

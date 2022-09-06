@@ -1,0 +1,15 @@
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\bin\Debug\net6.0\transfer.exe
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\bin\Debug\net6.0\transfer.deps.json
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\bin\Debug\net6.0\transfer.runtimeconfig.json
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\bin\Debug\net6.0\transfer.dll
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\bin\Debug\net6.0\transfer.pdb
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.csproj.AssemblyReference.cache
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.AssemblyInfoInputs.cache
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.AssemblyInfo.cs
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.csproj.CoreCompileInputs.cache
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.dll
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\refint\transfer.dll
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.pdb
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\transfer.genruntimeconfig.cache
+D:\GitHub\EventSourcing\EventSourcingForTransferDemo\trnasfer\trnasfer\obj\Debug\net6.0\ref\transfer.dll

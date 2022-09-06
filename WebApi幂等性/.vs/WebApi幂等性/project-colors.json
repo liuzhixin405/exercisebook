@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3d687483-f0ef-4ef7-a2cc-b54ebf3d170a": {
+      "ProjectGuid": "3d687483-f0ef-4ef7-a2cc-b54ebf3d170a",
+      "DisplayName": "WebApi幂等性",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    },
+    "2dc07d3d-aa70-4b3f-9e07-438cbecd8d49": {
+      "ProjectGuid": "2dc07d3d-aa70-4b3f-9e07-438cbecd8d49",
+      "DisplayName": "ConsoleApp",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

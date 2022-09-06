@@ -1,0 +1,17 @@
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\ConsoleTest.exe
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\ConsoleTest.deps.json
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\ConsoleTest.runtimeconfig.json
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\ConsoleTest.runtimeconfig.dev.json
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\ConsoleTest.dll
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\ConsoleTest.pdb
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.csprojAssemblyReference.cache
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.AssemblyInfoInputs.cache
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.AssemblyInfo.cs
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.csproj.CoreCompileInputs.cache
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.csproj.CopyComplete
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.dll
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.pdb
+C:\Users\lzx\source\repos\Policy\ConsoleTest\obj\Debug\net5.0\ConsoleTest.genruntimeconfig.cache
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\Castle.Service.dll
+C:\Users\lzx\source\repos\Policy\ConsoleTest\bin\Debug\net5.0\Castle.Service.pdb

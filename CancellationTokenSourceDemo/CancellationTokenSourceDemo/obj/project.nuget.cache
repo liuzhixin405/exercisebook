@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zVMkFbr31cIoI6rdl7eiXsRxkgzAxbzLno5pyEavBPRZSZtBYh7E1/wNuopeTfGro7FIzURqfwcQNUDncnj/Fw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\admin\\source\\repos\\CancellationTokenSourceDemo\\CancellationTokenSourceDemo\\CancellationTokenSourceDemo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,5 @@
+使用说明：
+首先运行Authentication,通过请求工具 比如postman获取token 
+https://localhost:5001/api/Authentication/Login?name=admin&password=123456 (name password 暂时写死到数据库,可以灵活存储在其他介质中)
+
+获得token 后,再运行https://localhost:5004  ，在Authorization中Type设置 Bearer Token  把上面获取到的token 粘贴到有右边的Token里面去，既可。

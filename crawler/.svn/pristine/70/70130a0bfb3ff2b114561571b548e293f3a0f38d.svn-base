@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CrawlerConsole": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

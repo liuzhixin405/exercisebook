@@ -1,0 +1,14 @@
+{
+  "host": {
+    "ClusterId": "A",
+    "ServiceId": "AAPP",
+    "Password": "123",
+    "Host": "*",
+    "Port": 8084,
+    "HostSelf": true,
+    "CounterUpdateIntervalMs": 1000,
+    "GatewayPort": 30004,
+    "SiloPort": 11115,
+    "IpAddress": "127.0.0.1"
+  }
+}

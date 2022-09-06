@@ -1,0 +1,16 @@
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\bin\Debug\net5.0\TimerDemo.exe
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\bin\Debug\net5.0\TimerDemo.deps.json
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\bin\Debug\net5.0\TimerDemo.runtimeconfig.json
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\bin\Debug\net5.0\TimerDemo.runtimeconfig.dev.json
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\bin\Debug\net5.0\TimerDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\bin\Debug\net5.0\ref\TimerDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\bin\Debug\net5.0\TimerDemo.pdb
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.AssemblyInfo.cs
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\ref\TimerDemo.dll
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.pdb
+C:\Users\admin\source\repos\CancellationTokenSourceDemo\TimerDemo\obj\Debug\net5.0\TimerDemo.genruntimeconfig.cache

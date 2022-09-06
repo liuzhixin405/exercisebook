@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\github-exercise\\netcore.demo\\分布式缓存\\TestPerformanceDemo\\TestPerformanceDemo\\TestPerformanceDemo.csproj": {}
+  },
+  "projects": {
+    "D:\\github-exercise\\netcore.demo\\分布式缓存\\TestPerformanceDemo\\TestPerformanceDemo\\TestPerformanceDemo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\github-exercise\\netcore.demo\\分布式缓存\\TestPerformanceDemo\\TestPerformanceDemo\\TestPerformanceDemo.csproj",
+        "projectName": "TestPerformanceDemo",
+        "projectPath": "D:\\github-exercise\\netcore.demo\\分布式缓存\\TestPerformanceDemo\\TestPerformanceDemo\\TestPerformanceDemo.csproj",
+        "packagesPath": "C:\\Users\\lzx\\.nuget\\packages\\",
+        "outputPath": "D:\\github-exercise\\netcore.demo\\分布式缓存\\TestPerformanceDemo\\TestPerformanceDemo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lzx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net50": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net50": {
+          "dependencies": {
+            "Microsoft.Extensions.Caching.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win7-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

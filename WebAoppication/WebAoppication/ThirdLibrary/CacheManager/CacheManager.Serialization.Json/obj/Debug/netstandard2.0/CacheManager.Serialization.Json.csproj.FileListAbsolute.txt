@@ -1,0 +1,16 @@
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\bin\Debug\netstandard2.0\CacheManager.Serialization.Json.deps.json
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\bin\Debug\netstandard2.0\CacheManager.Serialization.Json.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\bin\Debug\netstandard2.0\CacheManager.Serialization.Json.pdb
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\bin\Debug\netstandard2.0\CacheManager.Serialization.Json.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\bin\Debug\netstandard2.0\CacheManager.Core.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\bin\Debug\netstandard2.0\CacheManager.Core.pdb
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\bin\Debug\netstandard2.0\CacheManager.Core.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.csproj.CopyComplete
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.dll
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.xml
+D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Serialization.Json\obj\Debug\netstandard2.0\CacheManager.Serialization.Json.pdb

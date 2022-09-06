@@ -1,0 +1,14 @@
+{
+  "hostCopy": {
+    "ClusterId": "A",
+    "ServiceId": "AAPP",
+    "Password": "123",
+    "Host": "*",
+    "Port": 8086,
+    "HostSelf": true,
+    "CounterUpdateIntervalMs": 1000,
+    "GatewayPort": 30006,
+    "SiloPort": 11117,
+    "IpAddress": "127.0.0.1"
+  }
+}

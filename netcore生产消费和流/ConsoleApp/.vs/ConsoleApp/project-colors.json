@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b8227ef4-4b9a-4e48-9604-187de8868fe7": {
+      "ProjectGuid": "b8227ef4-4b9a-4e48-9604-187de8868fe7",
+      "DisplayName": "ConsoleApp",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    },
+    "4f163015-be1f-4947-8cc8-292a610f6794": {
+      "ProjectGuid": "4f163015-be1f-4947-8cc8-292a610f6794",
+      "DisplayName": "Netcore版的CallContext",
+      "ColorIndex": 1
+    },
+    "2acf6e2e-2191-4dff-8b72-dcc250448742": {
+      "ProjectGuid": "2acf6e2e-2191-4dff-8b72-dcc250448742",
+      "DisplayName": "TestProject",
+      "ColorIndex": 2
+    },
+    "15d23094-e339-4fd5-93eb-8a79a27f74be": {
+      "ProjectGuid": "15d23094-e339-4fd5-93eb-8a79a27f74be",
+      "DisplayName": "TestCallContext",
+      "ColorIndex": 3
+    },
+    "250ff767-53e1-4196-ab3f-21f83e19cc51": {
+      "ProjectGuid": "250ff767-53e1-4196-ab3f-21f83e19cc51",
+      "DisplayName": "TestProject1",
+      "ColorIndex": 4
+    },
+    "0ff8c3ad-b955-4884-928b-9744733cb499": {
+      "ProjectGuid": "0ff8c3ad-b955-4884-928b-9744733cb499",
+      "DisplayName": "CallContextTest",
+      "ColorIndex": 5
+    },
+    "a5d4e34a-77bc-4c49-bdcc-a047f393dc6b": {
+      "ProjectGuid": "a5d4e34a-77bc-4c49-bdcc-a047f393dc6b",
+      "DisplayName": "Test",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}

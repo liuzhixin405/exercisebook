@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.MultiClient", "src\Orleans.MultiClient\Orleans.MultiClient.csproj", "{04493B45-81E5-49F8-9CD5-914D52864704}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{92788A18-295E-4D97-9716-7F6EA6AC8BE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{A9738E2A-0CAD-4ABA-A368-4ABDB56A6E0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.Host", "example\Orleans.Host\Orleans.Host.csproj", "{27E47CD2-6AD7-442D-B94E-B33B196C48A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.Grain", "example\Orleans.Grain\Orleans.Grain.csproj", "{B540D7B0-3565-4F18-AA2B-290367EC571A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CB5FF92-9B8A-4F55-934F-32A87680731D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.WebApi", "Orleans.WebApi\Orleans.WebApi.csproj", "{AEC411D7-11C1-4D03-97F7-975664B50BFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orleans.Common", "Orleans.Common\Orleans.Common.csproj", "{A6BCD075-E77D-4BA3-97E9-170C4EE0D2C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04493B45-81E5-49F8-9CD5-914D52864704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04493B45-81E5-49F8-9CD5-914D52864704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04493B45-81E5-49F8-9CD5-914D52864704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04493B45-81E5-49F8-9CD5-914D52864704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27E47CD2-6AD7-442D-B94E-B33B196C48A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27E47CD2-6AD7-442D-B94E-B33B196C48A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27E47CD2-6AD7-442D-B94E-B33B196C48A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27E47CD2-6AD7-442D-B94E-B33B196C48A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B540D7B0-3565-4F18-AA2B-290367EC571A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B540D7B0-3565-4F18-AA2B-290367EC571A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B540D7B0-3565-4F18-AA2B-290367EC571A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B540D7B0-3565-4F18-AA2B-290367EC571A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC411D7-11C1-4D03-97F7-975664B50BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC411D7-11C1-4D03-97F7-975664B50BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC411D7-11C1-4D03-97F7-975664B50BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC411D7-11C1-4D03-97F7-975664B50BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6BCD075-E77D-4BA3-97E9-170C4EE0D2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6BCD075-E77D-4BA3-97E9-170C4EE0D2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6BCD075-E77D-4BA3-97E9-170C4EE0D2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6BCD075-E77D-4BA3-97E9-170C4EE0D2C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04493B45-81E5-49F8-9CD5-914D52864704} = {92788A18-295E-4D97-9716-7F6EA6AC8BE4}
+		{27E47CD2-6AD7-442D-B94E-B33B196C48A1} = {A9738E2A-0CAD-4ABA-A368-4ABDB56A6E0C}
+		{B540D7B0-3565-4F18-AA2B-290367EC571A} = {A9738E2A-0CAD-4ABA-A368-4ABDB56A6E0C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5C5EA71-8A8F-4295-ABA5-C990415CE4E1}
+	EndGlobalSection
+EndGlobal

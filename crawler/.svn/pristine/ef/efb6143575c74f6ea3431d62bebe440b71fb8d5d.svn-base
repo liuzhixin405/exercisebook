@@ -1,0 +1,74 @@
+﻿using Crawler.Models;
+using Crawler.Service.Config;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace CrawlerConsole
+{
+    public static class Config
+    {
+       
+        public static bool iSLocalEnvironment = true;        //true代表 是本地环境 北京时间  false 8小时时差
+      
+        public static readonly string jsonPars = "{\"Password\":\"12345678\",\"Email\":\"164910441@qq.com\"}";
+        
+        private static CookieInfoOptions _cookieInfoOptions;
+
+        public static readonly string ProfilePostCookie = ApplicationConfig.Configuration["ProfilePostCookie"];
+        public static readonly string ShortCodeCookie = ApplicationConfig.Configuration["ShortCodeCookie"];
+        
+
+        /// <summary>
+        /// 解析cookie返回CookieInfoOptions对象
+        /// </summary>
+        /// <param name="strs"></param>
+        /// <returns></returns>
+        public static Dictionary<string, string> ParsingCookie(string strs)
+        {
+            Dictionary<string, string> keyValues = new Dictionary<string, string>();
+            var json = string.Empty;
+            var collection = strs.Split(";");
+            foreach (var str in collection)
+            {
+                var arr = str.Split("=");
+                arr[0] = arr[0].Trim();
+                if (!string.IsNullOrWhiteSpace(arr[1]))
+                {
+                    keyValues.Add(arr[0], arr[1]);
+                }
+            }
+            return keyValues;
+        }
+
+        /// <summary>
+        /// 每次每个参数赋值繁琐 不用
+        /// </summary>
+        public static CookieInfoOptions CookieInfoOptions => _cookieInfoOptions ?? (_cookieInfoOptions = new CookieInfoOptions
+        {
+            ig_did = ApplicationConfig.Configuration["CookieInfoOptions:ig_did"],
+            mid = ApplicationConfig.Configuration["CookieInfoOptions:mid"],
+            rur = ApplicationConfig.Configuration["CookieInfoOptions:rur"],
+            csrftoken = ApplicationConfig.Configuration["CookieInfoOptions:csrftoken"],
+            ds_user_id = ApplicationConfig.Configuration["CookieInfoOptions:ds_user_id"],
+            urlgen = ApplicationConfig.Configuration["CookieInfoOptions:urlgen"],
+            fbm_124024574287414 = ApplicationConfig.Configuration["CookieInfoOptions:fbm_124024574287414"],
+            sessionid = ApplicationConfig.Configuration["CookieInfoOptions:sessionid"]
+
+        });
+
+        private static RabbitMQOption _rabbitMQOptions;
+
+        public static RabbitMQOption RabbitMQOptions => _rabbitMQOptions ?? (_rabbitMQOptions = new RabbitMQOption
+        {
+            Exchange = ApplicationConfig.Configuration["RabbitMQ:Exchange"],
+            Host = ApplicationConfig.Configuration["RabbitMQ:Host"],
+            Port = int.Parse(ApplicationConfig.Configuration["RabbitMQ:Port"]),
+            UserName = ApplicationConfig.Configuration["RabbitMQ:UserName"],
+            PassWord = ApplicationConfig.Configuration["RabbitMQ:PassWord"],
+            RoutingKey = ApplicationConfig.Configuration["RabbitMQ:RoutingKey"]
+        });
+    }
+
+}

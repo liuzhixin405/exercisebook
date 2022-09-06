@@ -1,0 +1,2 @@
+dotnet publish /usr/svn/Crawler/CrawlerConsole/CrawlerConsole.csproj -o /usr/apps/crawler
+systemctl restart crawler.service

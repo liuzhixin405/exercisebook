@@ -1,0 +1,15 @@
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\bin\Debug\net6.0\AMNext.exe
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\bin\Debug\net6.0\AMNext.deps.json
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\bin\Debug\net6.0\AMNext.runtimeconfig.json
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\bin\Debug\net6.0\AMNext.dll
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\bin\Debug\net6.0\AMNext.pdb
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.AssemblyInfo.cs
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.dll
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\refint\AMNext.dll
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.pdb
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\AMNext.genruntimeconfig.cache
+D:\GitHub_\exercise\EventSourcing\AutoMapperDemo\AMNext\obj\Debug\net6.0\ref\AMNext.dll

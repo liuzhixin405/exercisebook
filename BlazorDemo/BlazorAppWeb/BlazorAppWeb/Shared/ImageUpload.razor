@@ -1,0 +1,23 @@
+﻿<h3>Upload PNG images</h3>
+
+<p>
+    <InputFile OnChange="@OnInputFileChange" multiple />
+</p>
+
+@if (imageDataUrls.Count > 0)
+{
+    <h4>Images</h4>
+
+    <div class="card" style="width:30rem;">
+        <div class="card-body">
+            @foreach (var imageDataUrl in imageDataUrls)
+            {
+                <img class="rounded m-1" src="@imageDataUrl" />
+            }
+        </div>
+    </div>
+}
+
+@code {
+
+}

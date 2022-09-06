@@ -1,0 +1,17 @@
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.csproj.AssemblyReference.cache
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.AssemblyInfoInputs.cache
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.AssemblyInfo.cs
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.csproj.CoreCompileInputs.cache
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\bin\Debug\net6.0\Contract.Infrastructure.deps.json
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\bin\Debug\net6.0\Contract.Infrastructure.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\bin\Debug\net6.0\Contract.Infrastructure.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\bin\Debug\net6.0\Contract.Core.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\bin\Debug\net6.0\Contract.SharedKernel.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\bin\Debug\net6.0\Contract.Core.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\bin\Debug\net6.0\Contract.SharedKernel.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.csproj.CopyComplete
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\refint\Contract.Infrastructure.dll
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\Contract.Infrastructure.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.Infrastructure\obj\Debug\net6.0\ref\Contract.Infrastructure.dll

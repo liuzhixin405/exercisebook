@@ -1,0 +1,4 @@
+°²×° Microsoft.EntityFrameworkCore.Tools
+Add-Migration
+Name: i1
+update-database

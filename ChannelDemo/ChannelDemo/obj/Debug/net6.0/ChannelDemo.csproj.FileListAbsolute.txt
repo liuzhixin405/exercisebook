@@ -1,0 +1,15 @@
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\bin\Debug\net6.0\ChannelDemo.exe
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\bin\Debug\net6.0\ChannelDemo.deps.json
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\bin\Debug\net6.0\ChannelDemo.runtimeconfig.json
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\bin\Debug\net6.0\ChannelDemo.dll
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\bin\Debug\net6.0\ChannelDemo.pdb
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.AssemblyInfo.cs
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.dll
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\refint\ChannelDemo.dll
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.pdb
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ChannelDemo.genruntimeconfig.cache
+D:\GitHub_\exercise\EventSourcing\ChannelDemo\ChannelDemo\obj\Debug\net6.0\ref\ChannelDemo.dll

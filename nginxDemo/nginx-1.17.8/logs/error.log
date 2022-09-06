@@ -1,0 +1,27 @@
+2020/09/06 11:44:05 [emerg] 15496#6316: bind() to 0.0.0.0:90 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2020/09/06 11:45:58 [emerg] 2204#13700: bind() to 0.0.0.0:89 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2020/09/06 11:51:23 [emerg] 1640#2892: bind() to 0.0.0.0:89 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2020/09/06 11:51:23 [alert] 1676#5620: worker process 1640 exited with code 1
+2020/09/06 11:51:23 [alert] 1676#5620: could not respawn worker
+2020/09/06 12:01:40 [error] 6756#10588: *55 upstream prematurely closed connection while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://[::1]:89/", host: "localhost:88"
+2020/09/06 12:01:40 [error] 6756#10588: *55 upstream prematurely closed connection while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:89/", host: "localhost:88"
+2020/09/06 12:01:40 [error] 6756#10588: *55 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://testinginx007/favicon.ico", host: "localhost:88", referrer: "http://localhost:88/"
+2020/09/06 12:02:04 [error] 6756#10588: *55 upstream prematurely closed connection while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /home/index HTTP/1.1", upstream: "http://127.0.0.1:89/home/index", host: "localhost:88"
+2020/09/06 12:02:04 [error] 6756#10588: *55 upstream prematurely closed connection while reading response header from upstream, client: 127.0.0.1, server: localhost, request: "GET /home/index HTTP/1.1", upstream: "http://[::1]:89/home/index", host: "localhost:88"
+2020/09/06 12:02:04 [error] 6756#10588: *55 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://testinginx007/favicon.ico", host: "localhost:88", referrer: "http://localhost:88/home/index"
+2020/09/06 12:04:01 [error] 6756#10588: *75 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:89/", host: "localhost:88"
+2020/09/06 12:04:02 [error] 6756#10588: *75 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://[::1]:89/", host: "localhost:88"
+2020/09/06 12:04:02 [error] 6756#10588: *75 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://testinginx007/favicon.ico", host: "localhost:88", referrer: "http://localhost:88/"
+2020/09/06 12:04:09 [error] 6756#10588: *75 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://testinginx007/", host: "localhost:88"
+2020/09/06 12:04:09 [error] 6756#10588: *75 no live upstreams while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://testinginx007/favicon.ico", host: "localhost:88", referrer: "http://localhost:88/"
+2020/09/06 12:13:33 [emerg] 8092#17996: unexpected "}" in D:\nginx-1.17.8/conf/nginx.conf:37
+2020/09/06 12:13:33 [alert] 17876#3024: worker process 8092 exited with code 1
+2020/09/06 12:13:33 [alert] 17876#3024: could not respawn worker
+2020/09/06 12:13:56 [emerg] 4004#5248: unexpected "}" in D:\nginx-1.17.8/conf/nginx.conf:37
+2020/09/06 12:17:50 [emerg] 17864#2068: unexpected "}" in D:\nginx-1.17.8/conf/nginx.conf:37
+2020/09/06 12:18:38 [emerg] 1604#16080: unexpected "}" in D:\nginx-1.17.8/conf/nginx.conf:37
+2020/09/06 12:22:37 [error] 15392#16228: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:90/", host: "localhost:88"
+2020/09/06 12:22:46 [error] 15392#16228: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /js/site.js HTTP/1.1", upstream: "http://[::1]:90/js/site.js", host: "localhost:88", referrer: "http://localhost:88/"
+2020/09/06 12:24:03 [emerg] 20332#13992: unknown directive "//服务端口一" in D:\nginx-1.17.8/conf/nginx.conf:37
+2020/09/06 12:24:03 [alert] 19580#17260: worker process 20332 exited with code 1
+2020/09/06 12:24:03 [alert] 19580#17260: could not respawn worker

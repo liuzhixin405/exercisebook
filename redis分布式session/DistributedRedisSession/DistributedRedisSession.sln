@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistributedRedisSession", "DistributedRedisSession\DistributedRedisSession.csproj", "{C0CFCD0B-4889-4F5A-B622-ADC8B9545156}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0CFCD0B-4889-4F5A-B622-ADC8B9545156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0CFCD0B-4889-4F5A-B622-ADC8B9545156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0CFCD0B-4889-4F5A-B622-ADC8B9545156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0CFCD0B-4889-4F5A-B622-ADC8B9545156}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8056BE3E-D9A2-4D19-A98C-352970499081}
+	EndGlobalSection
+EndGlobal

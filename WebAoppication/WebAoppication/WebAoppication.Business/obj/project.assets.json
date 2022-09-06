@@ -1,0 +1,110 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "WebAoppication.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/WebAoppication.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebAoppication.Core.dll": {}
+        }
+      },
+      "WebAoppication.IBusiness/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/WebAoppication.IBusiness.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebAoppication.IBusiness.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WebAoppication.Core/1.0.0": {
+      "type": "project",
+      "path": "../WebAoppication.Core/WebAoppication.Core.csproj",
+      "msbuildProject": "../WebAoppication.Core/WebAoppication.Core.csproj"
+    },
+    "WebAoppication.IBusiness/1.0.0": {
+      "type": "project",
+      "path": "../WebAopplication.IBusiness/WebAoppication.IBusiness.csproj",
+      "msbuildProject": "../WebAopplication.IBusiness/WebAoppication.IBusiness.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "WebAoppication.Core >= 1.0.0",
+      "WebAoppication.IBusiness >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\admin\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\WebAoppication\\WebAoppication.Business\\WebAoppication.Business.csproj",
+      "projectName": "WebAoppication.Business",
+      "projectPath": "C:\\Users\\admin\\source\\repos\\WebAoppication\\WebAoppication.Business\\WebAoppication.Business.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\admin\\source\\repos\\WebAoppication\\WebAoppication.Business\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/cachemanager/api/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\admin\\source\\repos\\WebAoppication\\WebAoppication.Core\\WebAoppication.Core.csproj": {
+              "projectPath": "C:\\Users\\admin\\source\\repos\\WebAoppication\\WebAoppication.Core\\WebAoppication.Core.csproj"
+            },
+            "C:\\Users\\admin\\source\\repos\\WebAoppication\\WebAopplication.IBusiness\\WebAoppication.IBusiness.csproj": {
+              "projectPath": "C:\\Users\\admin\\source\\repos\\WebAoppication\\WebAopplication.IBusiness\\WebAoppication.IBusiness.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

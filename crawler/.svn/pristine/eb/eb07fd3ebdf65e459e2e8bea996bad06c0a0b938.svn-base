@@ -1,0 +1,328 @@
+﻿using Crawler.Common;
+using Crawler.Logger;
+using Crawler.Models;
+using Crawler.Selenium.Helper;
+using Crawler.Service;
+using Crawler.Service.Config;
+using CrawlerConsole.TaskManager.Job;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+using Quartz;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace CrawlerConsole.TaskManager
+{
+    /// <summary>
+    /// shortcode抓取
+    /// </summary>
+    [PersistJobDataAfterExecution]
+    [DisallowConcurrentExecution]
+    public class DigShortCodeJob : IJob
+    {
+        private static BaseJob baseJob = CustomApplicationService.GetService<BaseJob>();
+        private static SeleniumHelper seleniumHelper = baseJob.seleniumHelper;
+        private static RemoteWebDriver driver;
+        private static readonly string[] urls = ApplicationConfig.Configuration["TaggedUrls"]?.ToString()?.Split(',');
+        private static readonly bool IsRepeatedJudgment = bool.Parse(ApplicationConfig.Configuration["IsRepeatedJudgment"]?.ToString());
+        private static readonly string InstagramUrl = ApplicationConfig.Configuration["ReqUrl:IgUrl"]?.ToString();
+
+        private bool isReturn = false;
+        private int existCount = 20;
+        public Task Execute(IJobExecutionContext context)
+        {
+            Console.WriteLine("shortcode job start");
+            if (driver == null)
+            {
+                var rtn = seleniumHelper.Login(Config.ParsingCookie(Config.ShortCodeCookie), ApplicationConfig.Configuration["ReqUrl:IgUrl"]?.ToString(), Config.iSLocalEnvironment);
+                if (!string.IsNullOrWhiteSpace(rtn.Item2))
+                {
+                    Console.WriteLine(rtn.Item2);
+                    return Task.CompletedTask;
+                }
+                else
+                {
+                    driver = rtn.Item1;
+                }
+            }
+
+            CommonHelper.ConsoleAndLogger($"{nameof(DigShortCodeJob)}=>获取 ShortCode 开始...{CommonHelper.GetSTime(Config.iSLocalEnvironment)}", CommonHelper.LoggerType.Info);
+
+            foreach (string url in urls)
+            {
+                Console.WriteLine($"{url} => DigShortCodeJob for {url} starting");
+                isReturn = false;
+                driver.Url = url;
+                PageScrolling(driver);
+            }
+
+            //抓取profile post
+            DigInstagramDataJob().GetAwaiter().GetResult();
+
+            CommonHelper.ConsoleAndLogger($"{nameof(DigShortCodeJob)}=>获取 ShortCode 完成...{CommonHelper.GetSTime(Config.iSLocalEnvironment)}", CommonHelper.LoggerType.Info);
+            return Task.CompletedTask;
+        }
+
+        private void PageScrolling(RemoteWebDriver driver)
+        {
+            long lastPageHeight = 0;    //上一次滚动的页面高度
+            bool isGoto = true;         //是否循环获取数据
+            bool isFirst = true;        //是否第一次加载
+            int scrollCount = 0;
+
+            while (isGoto)
+            {
+                seleniumHelper.ScrollMouse(driver, 1284 * scrollCount, 3000);
+
+                bool isParse = long.TryParse(seleniumHelper.GetScrollHeight(driver)?.ToString(), out long currentPageHeight);
+                if (!isParse)
+                {
+                    Console.WriteLine("获取数据长度为空");
+                    return;
+                }
+                    Thread.Sleep(5000);
+                //当本次滚动过后高度仍与上一次页面高度一致时，再重试滚动3次，还是一样就跳出循环（说明页面已到底）
+                if (currentPageHeight == lastPageHeight)
+                    isGoto = RetryScroll(driver, lastPageHeight, isGoto, scrollCount);
+
+                scrollCount++;
+                lastPageHeight = currentPageHeight;
+
+                DigShortCode(driver, isFirst); //获取shortcode
+
+                if (isFirst)
+                    isFirst = false;
+
+                if (isReturn) break;
+            }
+        }
+
+        private bool RetryScroll(RemoteWebDriver driver, long lastPageHeight, bool isGoto, int scrollCount)
+        {
+            long newPageHeight = 0;
+            for (int i = 0; i != 3; ++i)
+            {
+                try
+                {
+                    seleniumHelper.ScrollMouse(driver, 1284 * (scrollCount + i), 3000);
+
+                    long.TryParse(seleniumHelper.GetScrollHeight(driver)?.ToString(), out newPageHeight);
+
+                    if (newPageHeight != lastPageHeight)
+                        break;
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(this.GetType() + "GetList", ex.Message);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    //Quit(driver);
+                    throw;
+                }
+
+                Thread.Sleep(10000);
+            }
+
+            //重复3次之后 页面高度仍旧一样 停止循环
+            if (newPageHeight == lastPageHeight)
+                isGoto = false;
+            return isGoto;
+        }
+
+        /// <summary>
+        /// 获取队列
+        /// </summary>
+        /// <param name="cls"></param>
+        private void DigShortCode(RemoteWebDriver driver, bool isFirst)
+        {
+            // xpath = //*[@id="react-root"]/section/main/div/div[3]/article/div[1]/div   
+            IEnumerable<IWebElement> webElements = driver.FindElementsByClassName("_bz0w");          //获取最新数据
+
+            int pushCount = 0;
+            foreach (var item in webElements.TakeLast(isFirst ? webElements.Count() : 15))
+            {
+                pushCount++;
+                Thread.Sleep(500);
+                var href = string.Empty;
+                try
+                {
+                    var div_a = item.FindElement(By.TagName("div a"));
+                    if (div_a != null)
+                    {
+                        href = div_a.GetAttribute("href");
+                    }
+                    if (!string.IsNullOrEmpty(href))
+                    {
+                        var shortCode = href.Split("/")[4];
+
+                        ResponseMessage response = PushTarpa(shortCode);
+
+                        Console.WriteLine($"{pushCount}. [{shortCode}] Push Tarpa, Result：{(response?.code == 20000 ? "Success" : response.message)}");
+
+                        if (IsRepeatedJudgment)
+                        {
+                            if (response.code == 40000 && response.message.Equals("InstagramPost is exist"))
+                                existCount--;
+                            else
+                                existCount = 20;
+
+
+                            if (existCount == 0)
+                            {
+                                Console.WriteLine("获取数据完毕");
+                                existCount = 20;
+                                isReturn = true;
+                                return;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string message = $"EnqueueShortCode{ ex.Message}";
+                    LoggerHelper.Error(message);
+                    ConsoleHelper.WriteLine(nameof(DigShortCodeJob), message, string.Empty, ConsoleColor.Red);              
+                }
+            }
+        }
+
+        /// <summary>
+        /// 推送Tarpa
+        /// </summary>
+        /// <param name="shortCode"></param>
+        /// <returns></returns>
+        private static ResponseMessage PushTarpa(string shortCode)
+        {
+            //准备写入数据库       shortcode 截取 
+            Dictionary<string, string> dicPars = new Dictionary<string, string>
+                                {
+                                    {"ShortCode", shortCode}
+                                };
+            Dictionary<string, string> headers = new Dictionary<string, string>
+                                 {
+                                      {"Authorization",$"Bearer {baseJob.tokenString}" },
+                                     {"content-type","application/json" }
+                                 };
+            var postResult = baseJob.restClientHelper.PostRequestAsync(baseJob.restClient, ApplicationConfig.Configuration["ReqUrl:CommandHost"]?.ToString(), ApplicationConfig.Configuration["ReqUrl:CreateInstagramPostUrl"]?.Replace(ApplicationConfig.Configuration["ReqUrl:CommandHost"]?.ToString(),""), headers, new Dictionary<string, string>(), $"[{JsonConvert.SerializeObject(dicPars)}]").Result;
+            try
+            {
+                var response = JsonConvert.DeserializeObject<ResponseMessage>(postResult);
+                return response;
+            }
+            catch
+            {
+                return null;
+            }
+           
+        }
+
+        /// <summary>
+        /// 退出
+        /// </summary>
+        private void Quit(RemoteWebDriver driver)
+        {
+            if (null != driver)
+            {
+                driver.Quit();
+            }
+        }
+
+
+        public async  Task DigInstagramDataJob()
+        {
+            bool isGo = true;
+            int index = 1;
+            while (isGo)
+            {
+                List<JData> listTasks = await GetCommandQueueList();
+                if (listTasks.Count == 0)
+                {
+                    isGo = false;
+                    Console.WriteLine("指令队列无数据");
+                }
+
+                foreach (var data in listTasks)
+                {
+                    if (data.action != "insprofile" && data.action != "inspost")
+                        continue;
+
+                    string shortcode = JObject.Parse(data.parameters?.ToString()).GetValue("ShortCode")?.ToString();
+
+                    var result = string.Empty;
+                    //获取post列表
+
+                    Dictionary<string, string> ingHeaders = new Dictionary<string, string>
+                                 {
+                                     { "user-agent",ApplicationConfig.Configuration["UserAgent"]?.ToString()},
+                                     {"cookie",Config.ShortCodeCookie }
+                                 };
+                    Thread.Sleep(5000);
+                    result = await baseJob.restClientHelper.GetRequestAsync(baseJob.restClient, ApplicationConfig.Configuration["ReqUrl:IgUrl"]?.ToString(), data.targetUrl.Replace(ApplicationConfig.Configuration["ReqUrl:IgUrl"]?.ToString(), ""), ingHeaders);
+
+                    if (!string.IsNullOrEmpty(result) && !result.Contains("e!r!r!o!r") && !result.StartsWith("<!DOCTYPE html>"))
+                    {
+                        //准备写入数据库
+                        Dictionary<string, string> dicPars = new Dictionary<string, string>
+                                {
+                                    {"Shortcode",shortcode }
+                                    ,{"OringinalJson",result }
+                                    ,{"IsCrawlerRequest","true" }
+                                };
+                        Dictionary<string, string> headers = new Dictionary<string, string>
+                                 {
+                                     {"Authorization",$"Bearer {baseJob.tokenString}" },
+                                     {"content-type","application/json" }
+                                 };
+                        try
+                        {
+                            Thread.Sleep(100);
+
+                            var postResult = await baseJob.restClientHelper.PostRequestAsync(baseJob.restClient, ApplicationConfig.Configuration["ReqUrl:CommandHost"]?.ToString(), data.postBackUrl, headers, dicPars);
+                            var response = JsonConvert.DeserializeObject<ResponseMessage>(postResult);
+                            CommonHelper.ConsoleAndLogger($"{nameof(DigInstagramDataJob)}任务{index}完成, => {data.id} Push Tarpa, Result： {(response.code == 20000 ? "Success" : response.message)}", CommonHelper.LoggerType.Info);
+                        }
+                        catch (Exception ex)
+                        {
+
+                            var message = $"{nameof(DigInstagramDataJob)} -> {data.id} Error: {ex.Message}";
+                            CommonHelper.ConsoleAndLogger(message, CommonHelper.LoggerType.Error);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"第{index}post请求未完成,错误: ins返回错误!");
+                    }
+                    index++;
+                }
+            }
+        }
+
+        private async Task<List<JData>> GetCommandQueueList()
+        {
+            IDictionary<string, string> comHeaders = new Dictionary<string, string>
+                {
+                   {"Authorization","Bearer "+baseJob.tokenString },
+                   {"content-type","application/json" }
+                };
+            IDictionary<string, string> pars = new Dictionary<string, string>
+                {
+                    { "IsCrawlerRequest","true"},
+                    {"pageIndex","1" },
+                   {"pageSize","100" }
+                };
+
+            string commandQueueString = await baseJob.restClientHelper.PostRequestAsync(baseJob.restClient, ApplicationConfig.Configuration["ReqUrl:CommandHost"]?.ToString(), "/Tarpa/CommandQueues/GetCommandQueueList", comHeaders, pars);
+            if (!string.IsNullOrWhiteSpace(commandQueueString))
+            {
+                ResponseMessage responseMessage = JsonConvert.DeserializeObject<ResponseMessage>(commandQueueString);
+                return JsonConvert.DeserializeObject<List<JData>>(JsonConvert.SerializeObject(responseMessage.data));
+            }
+            return new List<JData>();
+        }
+    }
+}

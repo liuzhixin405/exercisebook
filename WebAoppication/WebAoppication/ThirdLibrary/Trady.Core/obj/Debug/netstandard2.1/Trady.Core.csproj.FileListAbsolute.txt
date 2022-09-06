@@ -1,0 +1,10 @@
+D:\IDCM\contract\ThirdLibrary\Trady.Core\bin\Debug\netstandard2.1\Trady.Core.deps.json
+D:\IDCM\contract\ThirdLibrary\Trady.Core\bin\Debug\netstandard2.1\Trady.Core.dll
+D:\IDCM\contract\ThirdLibrary\Trady.Core\bin\Debug\netstandard2.1\Trady.Core.pdb
+D:\IDCM\contract\ThirdLibrary\Trady.Core\obj\Debug\netstandard2.1\Trady.Core.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\Trady.Core\obj\Debug\netstandard2.1\Trady.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\Trady.Core\obj\Debug\netstandard2.1\Trady.Core.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\Trady.Core\obj\Debug\netstandard2.1\Trady.Core.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\Trady.Core\obj\Debug\netstandard2.1\Trady.Core.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\Trady.Core\obj\Debug\netstandard2.1\Trady.Core.dll
+D:\IDCM\contract\ThirdLibrary\Trady.Core\obj\Debug\netstandard2.1\Trady.Core.pdb

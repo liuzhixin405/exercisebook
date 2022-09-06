@@ -1,0 +1,391 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Microsoft.Orleans.CodeGenerator.MSBuild/3.5.1": {
+        "type": "package",
+        "build": {
+          "build/Microsoft.Orleans.CodeGenerator.MSBuild.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.Orleans.CodeGenerator.MSBuild.targets": {}
+        }
+      },
+      "Microsoft.Orleans.Core.Abstractions/3.5.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/Orleans.Core.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Orleans.Core.Abstractions.dll": {}
+        }
+      },
+      "System.Collections.Immutable/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Collections.Immutable.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Collections.Immutable.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Memory/4.5.3": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Threading.Tasks.Extensions/4.5.4": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.Orleans.CodeGenerator.MSBuild/3.5.1": {
+      "sha512": "mMqYCuLrY9C/zExq8kqse2CJicbQD0ERBW/TBmPhIfhwjLL50syZ3hf4C7dO/q/6BX5hWFwtHiUaODNxtj1j0A==",
+      "type": "package",
+      "path": "microsoft.orleans.codegenerator.msbuild/3.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Microsoft.Orleans.CodeGenerator.MSBuild.targets",
+        "buildMultiTargeting/Microsoft.Orleans.CodeGenerator.MSBuild.targets",
+        "logo_128.png",
+        "microsoft.orleans.codegenerator.msbuild.3.5.1.nupkg.sha512",
+        "microsoft.orleans.codegenerator.msbuild.nuspec",
+        "tasks/netcoreapp3.1/Humanizer.dll",
+        "tasks/netcoreapp3.1/Microsoft.Bcl.AsyncInterfaces.dll",
+        "tasks/netcoreapp3.1/Microsoft.Build.Framework.dll",
+        "tasks/netcoreapp3.1/Microsoft.Build.Tasks.Core.dll",
+        "tasks/netcoreapp3.1/Microsoft.Build.Utilities.Core.dll",
+        "tasks/netcoreapp3.1/Microsoft.Build.dll",
+        "tasks/netcoreapp3.1/Microsoft.CodeAnalysis.CSharp.Workspaces.dll",
+        "tasks/netcoreapp3.1/Microsoft.CodeAnalysis.CSharp.dll",
+        "tasks/netcoreapp3.1/Microsoft.CodeAnalysis.Workspaces.dll",
+        "tasks/netcoreapp3.1/Microsoft.CodeAnalysis.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Configuration.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.DependencyModel.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Logging.Configuration.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Logging.Console.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Logging.Debug.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Logging.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Options.dll",
+        "tasks/netcoreapp3.1/Microsoft.Extensions.Primitives.dll",
+        "tasks/netcoreapp3.1/Newtonsoft.Json.dll",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.Tasks.dll",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.Tasks.pdb",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.Tasks.xml",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.deps.json",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.dll",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.dll.config",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.pdb",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.runtimeconfig.json",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.MSBuild.xml",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.dll",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.pdb",
+        "tasks/netcoreapp3.1/Orleans.CodeGenerator.xml",
+        "tasks/netcoreapp3.1/System.CodeDom.dll",
+        "tasks/netcoreapp3.1/System.Collections.Immutable.dll",
+        "tasks/netcoreapp3.1/System.Composition.AttributedModel.dll",
+        "tasks/netcoreapp3.1/System.Composition.Convention.dll",
+        "tasks/netcoreapp3.1/System.Composition.Hosting.dll",
+        "tasks/netcoreapp3.1/System.Composition.Runtime.dll",
+        "tasks/netcoreapp3.1/System.Composition.TypedParts.dll",
+        "tasks/netcoreapp3.1/System.IO.Pipelines.dll",
+        "tasks/netcoreapp3.1/System.Reflection.Metadata.dll",
+        "tasks/netcoreapp3.1/System.Resources.Extensions.dll",
+        "tasks/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "tasks/netcoreapp3.1/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/cs/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/cs/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/de/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/de/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/de/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/es/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/es/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/es/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/fr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/fr/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/it/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/it/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/it/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/ja/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/ja/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/ko/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/ko/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/pl/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/pl/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/pt-BR/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/ru/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/ru/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/tr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/tr/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "tasks/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.resources.dll"
+      ]
+    },
+    "Microsoft.Orleans.Core.Abstractions/3.5.1": {
+      "sha512": "fAJXrpjPwPoKt3Mo4Wvne4DNn0uj9He9UYfeikUsUeLKIer2ab1afcDmoJP+IHbV6vRZUeP4lE6onA6p0r0Y7w==",
+      "type": "package",
+      "path": "microsoft.orleans.core.abstractions/3.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Orleans.Core.Abstractions.dll",
+        "lib/netstandard2.0/Orleans.Core.Abstractions.pdb",
+        "lib/netstandard2.0/Orleans.Core.Abstractions.xml",
+        "logo_128.png",
+        "microsoft.orleans.core.abstractions.3.5.1.nupkg.sha512",
+        "microsoft.orleans.core.abstractions.nuspec"
+      ]
+    },
+    "System.Collections.Immutable/6.0.0": {
+      "sha512": "l4zZJ1WU2hqpQQHXz1rvC3etVZN+2DLmQMO79FhOTZHMn8tDRr+WU287sbomD0BETlmKDn0ygUgVy9k5xkkJdA==",
+      "type": "package",
+      "path": "system.collections.immutable/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Collections.Immutable.dll",
+        "lib/net461/System.Collections.Immutable.xml",
+        "lib/net6.0/System.Collections.Immutable.dll",
+        "lib/net6.0/System.Collections.Immutable.xml",
+        "lib/netstandard2.0/System.Collections.Immutable.dll",
+        "lib/netstandard2.0/System.Collections.Immutable.xml",
+        "system.collections.immutable.6.0.0.nupkg.sha512",
+        "system.collections.immutable.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Memory/4.5.3": {
+      "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
+      "type": "package",
+      "path": "system.memory/4.5.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.3.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "sha512": "/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "sha512": "zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "type": "package",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Threading.Tasks.Extensions.dll",
+        "lib/net461/System.Threading.Tasks.Extensions.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netcoreapp2.1/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Microsoft.Orleans.CodeGenerator.MSBuild >= 3.5.1",
+      "Microsoft.Orleans.Core.Abstractions >= 3.5.1",
+      "System.Collections.Immutable >= 6.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\l\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\Orleans\\OrleansWebApiSample\\Sample.Grains.Interfaces\\Sample.Grains.Interfaces.csproj",
+      "projectName": "Sample.Grains.Interfaces",
+      "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\Orleans\\OrleansWebApiSample\\Sample.Grains.Interfaces\\Sample.Grains.Interfaces.csproj",
+      "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
+      "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\Orleans\\OrleansWebApiSample\\Sample.Grains.Interfaces\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "Microsoft.Orleans.CodeGenerator.MSBuild": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.5.1, )"
+          },
+          "Microsoft.Orleans.Core.Abstractions": {
+            "target": "Package",
+            "version": "[3.5.1, )"
+          },
+          "System.Collections.Immutable": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

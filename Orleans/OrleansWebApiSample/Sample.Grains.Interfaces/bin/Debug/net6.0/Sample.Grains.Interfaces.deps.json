@@ -1,0 +1,91 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Sample.Grains.Interfaces/1.0.0": {
+        "dependencies": {
+          "Microsoft.Orleans.CodeGenerator.MSBuild": "3.5.1",
+          "Microsoft.Orleans.Core.Abstractions": "3.5.1",
+          "System.Collections.Immutable": "6.0.0"
+        },
+        "runtime": {
+          "Sample.Grains.Interfaces.dll": {}
+        }
+      },
+      "Microsoft.Orleans.CodeGenerator.MSBuild/3.5.1": {},
+      "Microsoft.Orleans.Core.Abstractions/3.5.1": {
+        "dependencies": {
+          "System.Memory": "4.5.3",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Orleans.Core.Abstractions.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "System.Collections.Immutable/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "System.Memory/4.5.3": {},
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Threading.Tasks.Extensions/4.5.4": {}
+    }
+  },
+  "libraries": {
+    "Sample.Grains.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Orleans.CodeGenerator.MSBuild/3.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mMqYCuLrY9C/zExq8kqse2CJicbQD0ERBW/TBmPhIfhwjLL50syZ3hf4C7dO/q/6BX5hWFwtHiUaODNxtj1j0A==",
+      "path": "microsoft.orleans.codegenerator.msbuild/3.5.1",
+      "hashPath": "microsoft.orleans.codegenerator.msbuild.3.5.1.nupkg.sha512"
+    },
+    "Microsoft.Orleans.Core.Abstractions/3.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fAJXrpjPwPoKt3Mo4Wvne4DNn0uj9He9UYfeikUsUeLKIer2ab1afcDmoJP+IHbV6vRZUeP4lE6onA6p0r0Y7w==",
+      "path": "microsoft.orleans.core.abstractions/3.5.1",
+      "hashPath": "microsoft.orleans.core.abstractions.3.5.1.nupkg.sha512"
+    },
+    "System.Collections.Immutable/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-l4zZJ1WU2hqpQQHXz1rvC3etVZN+2DLmQMO79FhOTZHMn8tDRr+WU287sbomD0BETlmKDn0ygUgVy9k5xkkJdA==",
+      "path": "system.collections.immutable/6.0.0",
+      "hashPath": "system.collections.immutable.6.0.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
+      "path": "system.memory/4.5.3",
+      "hashPath": "system.memory.4.5.3.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Threading.Tasks.Extensions/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
+      "path": "system.threading.tasks.extensions/4.5.4",
+      "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    }
+  }
+}

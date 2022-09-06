@@ -1,0 +1,4 @@
+rm -r /usr/apps/crawler/
+dotnet publish /usr/svn/Crawler/CrawlerConsole/CrawlerConsole.csproj -o /usr/apps/crawler
+cd /etc/systemd/system
+systemctl restart crawler.service

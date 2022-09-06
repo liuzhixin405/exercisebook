@@ -1,0 +1,38 @@
+﻿@page "/users"
+<h3>UserInfoList</h3>
+<div class="col-md-2">
+    <a class="btn btn-primary" href="/createuser">新增用户</a>
+</div>
+<table class="table table-hover table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>部门</th>
+            <th>姓名</th>
+            <th>出生日期</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var em in UserInfos)
+        {
+            <tr>
+                <td>@em.UserID</td>
+                <td>@em.DeptId</td>
+                <td>@em.UserName</td>
+                <td>@em.BirthDate</td>
+                <td>@em.Gender</td>
+                <td>
+                    <a href="@($"userdetail/{em.UserID}")" class="btn btn-primary btn-sm">
+                        详情
+                    </a>
+                    |
+                    <a href="@($"userdetail/{em.DeptId}/{em.UserID}")" class="btn btn-primary btn-sm">
+                        编辑
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

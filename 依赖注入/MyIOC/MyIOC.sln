@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lzx.IOCDI.Framework", "Lzx.IOCDI.Framework\Lzx.IOCDI.Framework.csproj", "{BEF06963-272A-484E-9481-0537A0E7B210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{83B70603-0BC4-4876-B5BC-447AF5F983D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEF06963-272A-484E-9481-0537A0E7B210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF06963-272A-484E-9481-0537A0E7B210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF06963-272A-484E-9481-0537A0E7B210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF06963-272A-484E-9481-0537A0E7B210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B70603-0BC4-4876-B5BC-447AF5F983D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B70603-0BC4-4876-B5BC-447AF5F983D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B70603-0BC4-4876-B5BC-447AF5F983D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B70603-0BC4-4876-B5BC-447AF5F983D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C81A6CE3-E4AB-43DE-B254-D886DA097135}
+	EndGlobalSection
+EndGlobal

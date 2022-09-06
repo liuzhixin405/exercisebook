@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "fgZHb8Fh3TuuJSv0kklOO3e/7G97J+ITOPlRIYoCWd/HWF91+UdlfaJ2MwfTTC1Pk/JUoi6Cb+/0kdsgB5MqFQ==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\exercise\\MarvellousWorks\\DecoratorPattern2\\DecoratorPattern2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

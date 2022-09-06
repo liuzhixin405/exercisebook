@@ -1,0 +1,49 @@
+{
+
+  "AllowedHosts": "*",
+  "ShortCodeCookie": "ig_did=9F32A09E-CBF2-4CA4-A11E-302423FA3AFB; mid=X9Qu3wALAAFrYHIix8WTY0g4QTdC; ig_nrcb=1; fbm_124024574287414=base_domain=.instagram.com; csrftoken=Z2Vo62j3KBfJaHiuBezZ3xdyRwqfKmvj; ds_user_id=44441290583; sessionid=44441290583%3AwURc0WCeNrv7W0%3A16; shbid=17937; shbts=1607741174.5348678; rur=ATN; fbsr_124024574287414=4xltKE558MqHBFK2RuFxY_jT3RjNGAc0XGpVlx2RUpc.eyJ1c2VyX2lkIjoiMTAwMDA4NDczNTQyMzk4IiwiY29kZSI6IkFRQll0VjNrSUlOUGxBand2VHZxTzAxQWFIVURseHdacTJFRmJ5OFN0dW5yblFITjViR0w1d1M3M09Xa3MwbG1iZHpSVEItdjBpTkJEeGp5MmFtLVhtc2l4ZENteW5nUWxnRnFUU29CdGNUa0VsVXdZQUxmNEFmRm9ueF83RU5idTNVRElnQThuUWdTd01PY0tKTXU5M0hzVG9zSUJoTjdKQkdyMG15RDRxTlRMalBzZmk5UmFOMW53SlBSejdsRjdsQ3JtaUV5ZzBSbzl5di1TLU5CWkRWZXc3cjFwX3RmbWd3eEphTWI2WTUtY2UwY3NTVmtIZWEzX3lQc0VLR3ZkbzRQS2JYN0F5Y1lJcVhRNmRsYVI1LTFZS3VlaVU2U1lfcnlpZXlmN2U5UGRCUVBNQ3BGaF9ZZWF5QTVaQ01jSlZnIiwib2F1dGhfdG9rZW4iOiJFQUFCd3pMaXhuallCQVBGaHdWaEREcDdUQldtYXFXR0FKcnM0WkJKWkNNR1V6UllOVFpDbkVaQ3FCTUFqOTNjbFpBenFUdDZISmltWkNJQ09zaUhxcEZsbXFZbWN0am0xWkNGa0lSb3h3YjZsSTdWSUhCamR2ZkwzNkZPUVpBc09DVmJlYmZaQjF4WFpCVHJGckRGUFpCQWZrYW9aQ3lhTkFhUjlsYUZrS21JZmNPWkMwVWpuTmpQOFNnbmVFIiwiYWxnb3JpdGhtIjoiSE1BQy1TSEEyNTYiLCJpc3N1ZWRfYXQiOjE2MDc3NDExODl9; urlgen=\"{\\\"45.78.34.12\\\": 25820}:1knuvX:OIMEUUkyK-1C_C5S-9sZdnJ1Uq8\"",
+    "ProfilePostCookie": "ig_did=CC802DA8-EEF6-48EA-9385-DCD7A3F073ED; mid=X7IstAALAAHlh00Km1xihqcr5Vus; ig_nrcb=1; fbm_124024574287414=base_domain=.instagram.com; csrftoken=KdRsFUkppQJv4SpREhyJjiyMEsLItVy0; ds_user_id=44441290583; shbid=17937; shbts=1607665037.4132202; rur=ATN; sessionid=44441290583%3AAZFNs0ZP1IrqP3%3A27; fbsr_124024574287414=hgkJiMq1nSdPMqJwcKtU_0scqBIEZBVjcOnvGHJbtMg.eyJ1c2VyX2lkIjoiMTAwMDA4NDczNTQyMzk4IiwiY29kZSI6IkFRQVB2RGplTllva3Z2MW9ndWZTMnA5Q2p1dFc1ZlJ1Z1pSNFFOSjNLM0xwS0U2QXViUWlKRTVOTDBGSXZDRmZ3cGVBVkwzbnZubnVxYUo1dzlNVTVNc3NJNy1PYWozeXJhdzZ3cWZ3WUFlNGlZRzFYdDFiSXVkdUtoM3Q5T1ROM0doSEJleXZPU1h2Wk1wNEIzSmttOThpYUtubUVxb1h4dlE0c0VKNmZ5LVFQM3MxM25qenhWYjVCRXJudlVhRjE3T3NxUnFUN0dmRGo0T3VrVDRIUlJPOU9yaGdLTUFlbXc4aXkyeG5ESzA5bURTTXFnWF9XWWdlV05Gcm01cTVJeVE5Y1JIZ1VFTWQ5ZzRRQUM3S1NjS0ZmWVBUbUVhTDRZSkhnaDJYWi1DWmVBdmUtcFVmN2hHaGQ5MEJjRUJKWnJFIiwib2F1dGhfdG9rZW4iOiJFQUFCd3pMaXhuallCQU5QWERhN2VhRU8zY3NEVUVqZGREZ2s3U08yRERIUlZpNlhQdlRVRXExSmg1NlQzTlBHZHhBQTJhaWlraG5yYlJpSUxVanlPY2NNN2ljZkJFckRpTlhpZnhYSmFyeGM2WkJJT3JidHZHZFVIMFJ0clpBdlNLQ01xU1I5SFBZNmZYanEzdGt5MjMzN0M2N3Y2MWc5dkN6Y0x1eHBMbkg2bUJtdzRiSSIsImFsZ29yaXRobSI6IkhNQUMtU0hBMjU2IiwiaXNzdWVkX2F0IjoxNjA3NjY5MTczfQ; urlgen=\"{\\\"45.78.34.12\\\": 25820}:1kncCf:REaaHtFPKT2cXOLgybH6cTm6ZUk\"",
+    "CookieInfoOptions": {
+      "ig_did": "6F144A7F-EB4B-41F0-B279-43DE19675D7B",
+      "mid": "X2AthwALAAFHoSzbiOeUMVdJnAMH",
+      "rur": "ASH",
+      "csrftoken": "bfDnaD7cEv5pwRlvVV7lGPxjEtFlQ5iV",
+      "ds_user_id": "43783375853",
+      "urlgen": "\"{\\\"45.78.34.12\\\": 25820}:1kTGLl:Ht38mD2_LnYmSZukiDVUTHC6dwE\"",
+      "fbm_124024574287414": "base_domain=.instagram.com",
+      "sessionid": "43783375853%3A1njAES72WGbNKe%3A26"
+    },
+    "Logging": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft": "Warning",
+        "Microsoft.Hosting.Lifetime": "Information"
+      }
+    },
+    "ReqUrl": {
+      //"CreateInstagramPostUrl": "https://unibone.uat.heywind.cn/Tarpa/InstagramPosts/CreateInstagramPost",
+      //"UpdateInstagramPostUrl": "https://unibone.uat.heywind.cn/Tarpa/InstagramPosts/UpdateInstagramPost",
+      //"UpdateInstagramUserUrl": "https://unibone.uat.heywind.cn/Tarpa/Kols/UpdateInstagramUser",
+      //"UniboneTokenUrl": "https://unibone.uat.heywind.cn/token",
+      //"CommandQueueUrl": "https://unibone.uat.heywind.cn/Tarpa/CommandQueues/GetCommandQueue",
+      //"CommandQueueListUrl": "https://unibone.uat.heywind.cn/Tarpa/CommandQueues/GetCommandQueueList",
+      //"IgUrl": "https://www.instagram.com",
+      //"CommandHost": "https://unibone.uat.heywind.cn",
+      //"TestHost": "https://unibone.dev.heywind.cn/"
+      "CreateInstagramPostUrl": "https://unibone.dev.heywind.cn/Tarpa/InstagramPosts/CreateInstagramPost",
+      "UpdateInstagramPostUrl": "https://unibone.dev.heywind.cn/Tarpa/InstagramPosts/UpdateInstagramPost",
+      "UpdateInstagramUserUrl": "https://unibone.dev.heywind.cn/Tarpa/Kols/UpdateInstagramUser",
+      "UniboneTokenUrl": "https://unibone.dev.heywind.cn/token",
+      "CommandQueueUrl": "https://unibone.dev.heywind.cn/Tarpa/CommandQueues/GetCommandQueue",
+      "CommandQueueListUrl": "https://unibone.dev.heywind.cn/Tarpa/CommandQueues/GetCommandQueueList",
+      "IgUrl": "https://www.instagram.com",
+      "CommandHost": "https://unibone.dev.heywind.cn/"
+    },
+    "ExecutionInterval": {
+      "EveryDayZero": " 0 0 0 * * ? *  ",
+      "EveryTenMin": " 0 0/10 * * * ? * ",
+      "EveryOneMin": " 0 0/1 * * * ? * "
+    },
+    "TaggedUrls": "https://www.instagram.com/tijneyewear/tagged/,https://www.instagram.com/tijnhomelife/tagged/,https://www.instagram.com/tijnsunwear/tagged/",
+    "IsRepeatedJudgment": false
+  }

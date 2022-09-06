@@ -1,0 +1,10 @@
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\bin\Debug\netstandard2.1\SlimMessageBus.deps.json
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\bin\Debug\netstandard2.1\SlimMessageBus.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\bin\Debug\netstandard2.1\SlimMessageBus.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\obj\Debug\netstandard2.1\SlimMessageBus.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\obj\Debug\netstandard2.1\SlimMessageBus.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\obj\Debug\netstandard2.1\SlimMessageBus.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\obj\Debug\netstandard2.1\SlimMessageBus.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\obj\Debug\netstandard2.1\SlimMessageBus.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\obj\Debug\netstandard2.1\SlimMessageBus.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus\obj\Debug\netstandard2.1\SlimMessageBus.pdb

@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!--<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />-->
+  <PropertyGroup />
+  <PropertyGroup>
+    <Description>Core module of Trady, a handy library for computing technical indicators, based on .NET Standard 2.0</Description>
+    <Copyright>Copyright (c) 2016-2017 Karl Wan</Copyright>
+    <AssemblyTitle>Trady.Core</AssemblyTitle>
+    <VersionPrefix>3.2.9</VersionPrefix>
+    <Authors>Karl Wan</Authors>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Trady.Core</AssemblyName>
+    <PackageId>Trady.Core</PackageId>
+    <PackageTags>Trady;Technical;Analysis;Finance;Stock</PackageTags>
+    <PackageReleaseNotes>
+    Please refer to https://github.com/lppkarl/Trady/
+    </PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/lppkarl/Trady</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/lppkarl/Trady/blob/master/LICENSE</PackageLicenseUrl>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <Version>3.2.9</Version>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--<Compile Include="**\*.cs" />-->
+    <EmbeddedResource Include="**\*.resx" />
+  </ItemGroup>
+  <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+  </ItemGroup>
+</Project>

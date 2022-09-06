@@ -1,0 +1,53 @@
+<HTML>
+<HEAD></HEAD>
+<script charset="utf-8">
+var crawler = {};
+var token;
+crawler.createCORSRequest=function (method,url){
+var xhr = new XMLHttpRequest();
+if("withCredentials" in xhr){
+xhr.open(method,url,true);
+}else if(typeof XDomainRequest !="undifined"){
+xhr = new XDomainRequest();
+xhr.open(method,url);
+}else
+{
+	xhr=null;
+}
+return xhr;
+}
+<!--获取token-->
+crawler.getToken=function(){
+//post请求
+var request = crawler.createCORSRequest("post","http://localhost:8088/token");
+if(request){
+var reqpars = JSON.stringify({"Account":"Administrator","Password":"12345678"});
+request.setRequestHeader("Content-Type","application/json");
+request.onload=function(){
+token =  JSON.parse(request.responseText).data.token
+console.log(token)
+};
+request.send(reqpars);
+}
+}
+<!--获取ins的post profile-->
+crawler.getInsPost = function(){
+  const XHR= new XMLHttpRequest()
+            XHR.open('get','https://www.instagram.com/p/CDUvvB5ghgL/?__a=1&${i}=${cookies[i]}')
+            XHR.send()
+            XHR.onreadystatechange = ()=>{
+                if (XHR.readyState==4 && XHR.status==200){
+                    console.log(JSON.parse(XHR.responseText).graphql)
+                }
+            }
+}
+
+crawler.getInsPost();
+
+</script>
+<BODY>
+<div id="i">
+test
+</div>
+</BODY>
+</HTML>

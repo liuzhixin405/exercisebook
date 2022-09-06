@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "mTbBU6EXGdKA6crQNZxKyaFmyGGnWsIEbTKnaHbhfcFckhF0AyH3D5TxPTuyJfC0doxI32VxCj6vOxw+i48JkA==",
+  "success": true,
+  "projectFilePath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\Task异常处理\\ConsoleApp5\\ConsoleApp5.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\l\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\l\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

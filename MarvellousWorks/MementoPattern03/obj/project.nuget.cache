@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ko1gvtzkgiafWmcK6z7sMk6q3CfiYyv4ZkKDoteTYe4+MSXr1dBrcbXPmzs4t80L7ENpFKn3uA7zR600f0FvoA==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\exercise\\MarvellousWorks\\MementoPattern03\\MementoPattern03.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

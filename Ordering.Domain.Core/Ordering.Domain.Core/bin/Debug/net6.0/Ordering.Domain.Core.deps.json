@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Ordering.Domain.Core/1.0.0": {
+        "runtime": {
+          "Ordering.Domain.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Ordering.Domain.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

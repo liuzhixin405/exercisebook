@@ -1,0 +1,12 @@
+C:\Users\admin\source\repos\服务注册类\服务注册类\bin\Debug\net5.0\服务注册类.deps.json
+C:\Users\admin\source\repos\服务注册类\服务注册类\bin\Debug\net5.0\服务注册类.dll
+C:\Users\admin\source\repos\服务注册类\服务注册类\bin\Debug\net5.0\ref\服务注册类.dll
+C:\Users\admin\source\repos\服务注册类\服务注册类\bin\Debug\net5.0\服务注册类.pdb
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\服务注册类.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\服务注册类.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\服务注册类.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\服务注册类.AssemblyInfo.cs
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\服务注册类.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\服务注册类.dll
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\ref\服务注册类.dll
+C:\Users\admin\source\repos\服务注册类\服务注册类\obj\Debug\net5.0\服务注册类.pdb

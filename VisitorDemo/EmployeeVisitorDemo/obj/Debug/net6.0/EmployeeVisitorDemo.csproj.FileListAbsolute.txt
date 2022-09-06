@@ -1,0 +1,15 @@
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\bin\Debug\net6.0\EmployeeVisitorDemo.exe
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\bin\Debug\net6.0\EmployeeVisitorDemo.deps.json
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\bin\Debug\net6.0\EmployeeVisitorDemo.runtimeconfig.json
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\bin\Debug\net6.0\EmployeeVisitorDemo.dll
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\bin\Debug\net6.0\EmployeeVisitorDemo.pdb
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.AssemblyInfo.cs
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.dll
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\refint\EmployeeVisitorDemo.dll
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.pdb
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\EmployeeVisitorDemo.genruntimeconfig.cache
+D:\GitHub_\exercise\VisitorDemo\EmployeeVisitorDemo\obj\Debug\net6.0\ref\EmployeeVisitorDemo.dll

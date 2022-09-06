@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "def0357c-2aff-4911-b35a-e6aa57b663a5": {
+      "ProjectGuid": "def0357c-2aff-4911-b35a-e6aa57b663a5",
+      "DisplayName": "k_Consumer",
+      "ColorIndex": 0
+    },
+    "50a7e90c-3786-427f-8ed4-57e64cf1eaec": {
+      "ProjectGuid": "50a7e90c-3786-427f-8ed4-57e64cf1eaec",
+      "DisplayName": "k_Producer",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

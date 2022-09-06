@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b5d8eaf1-2325-420e-a32e-4b408b1d8768": {
+      "ProjectGuid": "b5d8eaf1-2325-420e-a32e-4b408b1d8768",
+      "DisplayName": "服务注册类",
+      "ColorIndex": 0
+    },
+    "a46f315f-743f-482a-b7af-910018c2fa78": {
+      "ProjectGuid": "a46f315f-743f-482a-b7af-910018c2fa78",
+      "DisplayName": "Test",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

@@ -1,0 +1,12 @@
+D:\我的文档\repos\EventBusDemo\EventBusV3\bin\Debug\net5.0\EventBusV3.deps.json
+D:\我的文档\repos\EventBusDemo\EventBusV3\bin\Debug\net5.0\EventBusV3.dll
+D:\我的文档\repos\EventBusDemo\EventBusV3\bin\Debug\net5.0\ref\EventBusV3.dll
+D:\我的文档\repos\EventBusDemo\EventBusV3\bin\Debug\net5.0\EventBusV3.pdb
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\EventBusV3.csproj.AssemblyReference.cache
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\EventBusV3.GeneratedMSBuildEditorConfig.editorconfig
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\EventBusV3.AssemblyInfoInputs.cache
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\EventBusV3.AssemblyInfo.cs
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\EventBusV3.csproj.CoreCompileInputs.cache
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\EventBusV3.dll
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\ref\EventBusV3.dll
+D:\我的文档\repos\EventBusDemo\EventBusV3\obj\Debug\net5.0\EventBusV3.pdb

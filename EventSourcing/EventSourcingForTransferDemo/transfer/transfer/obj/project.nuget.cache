@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "tQxYIlbP0s2Utp1tZ8ybStoe0nke41/1XY/lgThEy+Q5wBV1RBs6Er7D6gKB4xx7gk8TAPtTIet48NbGYJcRow==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\EventSourcing\\EventSourcingForTransferDemo\\trnasfer\\trnasfer\\transfer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

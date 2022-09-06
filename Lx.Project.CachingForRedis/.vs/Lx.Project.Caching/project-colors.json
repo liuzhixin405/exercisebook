@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "881a6bf7-80bf-4703-a8b9-58d1f48ae3cd": {
+      "ProjectGuid": "881a6bf7-80bf-4703-a8b9-58d1f48ae3cd",
+      "DisplayName": "Lx.Project.Unicache",
+      "ColorIndex": 0
+    },
+    "b85e335c-3c45-4157-8a96-2afa395bc4f1": {
+      "ProjectGuid": "b85e335c-3c45-4157-8a96-2afa395bc4f1",
+      "DisplayName": "Lx.TestProject.Caching",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ConsoleBackGround": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:4253;http://localhost:4254"
+    }
+  }
+}

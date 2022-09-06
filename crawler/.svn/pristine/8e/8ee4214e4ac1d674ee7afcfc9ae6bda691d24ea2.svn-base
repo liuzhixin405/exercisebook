@@ -1,0 +1,134 @@
+﻿using Crawler.Common;
+using Crawler.Models;
+using Crawler.Service;
+using Crawler.Service.Config;
+using CrawlerConsole.TaskManager.Job;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Quartz;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace CrawlerConsole.TaskManager
+{
+    [PersistJobDataAfterExecution]
+    [DisallowConcurrentExecution]
+    class DigInstagramDataJob : IJob
+    {
+     
+        private static BaseJob baseJob = CustomApplicationService.GetService<BaseJob>();
+       
+        private static readonly string[] urls = ApplicationConfig.Configuration["TaggedUrls"]?.ToString()?.Split(',');
+        private static readonly bool IsRepeatedJudgment = bool.Parse(ApplicationConfig.Configuration["IsRepeatedJudgment"]?.ToString());
+        private static readonly string InstagramUrl = ApplicationConfig.Configuration["ReqUrl:IgUrl"]?.ToString();
+
+        private bool isReturn = false;
+        private int existCount = 20;
+        public Task Execute(IJobExecutionContext context)
+        {
+
+            Console.WriteLine("post profile job start");
+            //抓取profile post
+            Crawling().Wait();
+
+            CommonHelper.ConsoleAndLogger($"{nameof(DigShortCodeJob)}=>获取 ShortCode 完成...{CommonHelper.GetSTime(Config.iSLocalEnvironment)}", CommonHelper.LoggerType.Info);
+            return Task.CompletedTask;
+        }
+
+
+        public async Task Crawling()
+        {
+            bool isGo = true;
+            int index = 1;
+            while (isGo)
+            {
+                List<JData> listTasks = await GetCommandQueueList();
+                if (listTasks.Count == 0)
+                {
+                    isGo = false;
+                    Console.WriteLine("指令队列无数据");
+                }
+
+                foreach (var data in listTasks)
+                {
+                    if (data.action != "insprofile" && data.action != "inspost")
+                        continue;
+
+                    string shortcode = JObject.Parse(data.parameters?.ToString()).GetValue("ShortCode")?.ToString();
+
+                    var result = string.Empty;
+                    //获取post列表
+
+                    Dictionary<string, string> ingHeaders = new Dictionary<string, string>
+                                 {
+                                     { "user-agent",ApplicationConfig.Configuration["UserAgent"]?.ToString()},
+                                     {"cookie",Config.ProfilePostCookie }
+                                 };
+                    Thread.Sleep(5000);
+                    result = await baseJob.restClientHelper.GetRequestAsync(baseJob.restClient, ApplicationConfig.Configuration["ReqUrl:IgUrl"]?.ToString(), data.targetUrl.Replace(ApplicationConfig.Configuration["ReqUrl:IgUrl"]?.ToString(), ""), ingHeaders);
+
+                    if (!string.IsNullOrEmpty(result) && !result.Contains("e!r!r!o!r") && !result.StartsWith("<!DOCTYPE html>"))
+                    {
+                        //准备写入数据库
+                        Dictionary<string, string> dicPars = new Dictionary<string, string>
+                                {
+                                    {"Shortcode",shortcode }
+                                    ,{"OringinalJson",result }
+                                    ,{"IsCrawlerRequest","true" }
+                                };
+                        Dictionary<string, string> headers = new Dictionary<string, string>
+                                 {
+                                     {"Authorization",$"Bearer {baseJob.tokenString}" },
+                                     {"content-type","application/json" }
+                                 };
+                        try
+                        {
+                            Thread.Sleep(100);
+
+                            var postResult = await baseJob.restClientHelper.PostRequestAsync(baseJob.restClient, ApplicationConfig.Configuration["ReqUrl:CommandHost"]?.ToString(), data.postBackUrl, headers, dicPars);
+                            var response = JsonConvert.DeserializeObject<ResponseMessage>(postResult);
+                            CommonHelper.ConsoleAndLogger($"{nameof(DigInstagramDataJob)}任务{index}完成, => {data.id} Push Tarpa, Result： {(response.code == 20000 ? "Success" : response.message)}", CommonHelper.LoggerType.Info);
+                        }
+                        catch (Exception ex)
+                        {
+
+                            var message = $"{nameof(DigInstagramDataJob)} -> {data.id} Error: {ex.Message}";
+                            CommonHelper.ConsoleAndLogger(message, CommonHelper.LoggerType.Error);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"第{index}post请求未完成,错误: ins返回错误!");
+                    }
+                    index++;
+                }
+            }
+        }
+
+        private async Task<List<JData>> GetCommandQueueList()
+        {
+            IDictionary<string, string> comHeaders = new Dictionary<string, string>
+                {
+                   {"Authorization","Bearer "+baseJob.tokenString },
+                   {"content-type","application/json" }
+                };
+            IDictionary<string, string> pars = new Dictionary<string, string>
+                {
+                    { "IsCrawlerRequest","true"},
+                    {"pageIndex","1" },
+                   {"pageSize","100" }
+                };
+
+            string commandQueueString = await baseJob.restClientHelper.PostRequestAsync(baseJob.restClient, ApplicationConfig.Configuration["ReqUrl:CommandHost"]?.ToString(), "/Tarpa/CommandQueues/GetCommandQueueList", comHeaders, pars);
+            if (!string.IsNullOrWhiteSpace(commandQueueString))
+            {
+                ResponseMessage responseMessage = JsonConvert.DeserializeObject<ResponseMessage>(commandQueueString);
+                return JsonConvert.DeserializeObject<List<JData>>(JsonConvert.SerializeObject(responseMessage.data));
+            }
+            return new List<JData>();
+        }
+    }
+}

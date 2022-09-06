@@ -1,0 +1,9 @@
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\bin\Debug\netcoreapp3.1\Castle.Test.deps.json
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\bin\Debug\netcoreapp3.1\Castle.Test.dll
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\bin\Debug\netcoreapp3.1\Castle.Test.pdb
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\obj\Debug\netcoreapp3.1\Castle.Test.csprojAssemblyReference.cache
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\obj\Debug\netcoreapp3.1\Castle.Test.AssemblyInfoInputs.cache
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\obj\Debug\netcoreapp3.1\Castle.Test.AssemblyInfo.cs
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\obj\Debug\netcoreapp3.1\Castle.Test.csproj.CoreCompileInputs.cache
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\obj\Debug\netcoreapp3.1\Castle.Test.dll
+C:\Users\lzx\source\repos\Policy\ClassLibrary1\obj\Debug\netcoreapp3.1\Castle.Test.pdb

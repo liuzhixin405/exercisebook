@@ -1,0 +1,45 @@
+﻿@page "/userdetail/{Userid:int}"
+<h3>Userdetail</h3>
+
+
+
+<h1>Details for @UserInfo.UserName</h1>
+<h1>单向绑定:</h1>
+<div>
+    <h2>@UserInfo.UserName</h2>
+    <h2>@UserInfo.BirthDate</h2>
+    <h2>@UserInfo.Gender</h2>
+</div>
+
+<div>
+    <h3>@UserInfo.UserName</h3>
+    <h3>@UserInfo.BirthDate</h3>
+    <h3>@UserInfo.Gender</h3>
+</div>
+
+<hr />
+
+<h1>双向绑定</h1>
+
+<div>
+    <h3>Employee Name:</h3>
+    <input @bind="@UserInfo.UserName" />
+    <h3>Employee BirthDate:</h3>
+    <input @bind="@UserInfo.BirthDate" />
+    <h3>Employee Gender:</h3>
+    <input @bind="@UserInfo.Gender" />
+</div>
+
+<h2>不同的触发event:</h2>
+<div>
+    <h3>Employee Name:</h3>
+    <input @bind="@UserInfo.UserName" @bind:event="oninput" />
+    <h3>Employee BirthDate:</h3>
+    <input @bind="@UserInfo.BirthDate" @bind:event="oninput" />
+    <h3>Employee Gender:</h3>
+    <input @bind="@UserInfo.Gender" @bind:event="oninput" />
+</div>
+
+<div>
+    <button @onclick="Button_Click">Click</button>
+</div>

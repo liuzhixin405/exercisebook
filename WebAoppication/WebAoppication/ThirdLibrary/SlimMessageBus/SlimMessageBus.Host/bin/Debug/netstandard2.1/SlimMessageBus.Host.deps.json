@@ -1,0 +1,78 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "SlimMessageBus.Host/1.14.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
+          "SlimMessageBus": "1.4.0",
+          "SlimMessageBus.Host.DependencyResolver": "1.3.0",
+          "SlimMessageBus.Host.Serialization": "1.1.0"
+        },
+        "runtime": {
+          "SlimMessageBus.Host.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "SlimMessageBus/1.4.0": {
+        "runtime": {
+          "SlimMessageBus.dll": {}
+        }
+      },
+      "SlimMessageBus.Host.DependencyResolver/1.3.0": {
+        "dependencies": {
+          "SlimMessageBus": "1.4.0"
+        },
+        "runtime": {
+          "SlimMessageBus.Host.DependencyResolver.dll": {}
+        }
+      },
+      "SlimMessageBus.Host.Serialization/1.1.0": {
+        "runtime": {
+          "SlimMessageBus.Host.Serialization.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SlimMessageBus.Host/1.14.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.Logging.Abstractions/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NxP6ahFcBnnSfwNBi2KH2Oz8Xl5Sm2krjId/jRR3I7teFphwiUoUeZPwTNA21EX+5PtjqmyAvKaOeBXcJjcH/w==",
+      "path": "microsoft.extensions.logging.abstractions/5.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512"
+    },
+    "SlimMessageBus/1.4.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SlimMessageBus.Host.DependencyResolver/1.3.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SlimMessageBus.Host.Serialization/1.1.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

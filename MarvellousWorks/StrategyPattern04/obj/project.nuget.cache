@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "yeeBaN2mPjf4PVKMdCaewqLauc9hYc62tEhUlzmSkItnJXNfBv+0kGA6/YuBMTQ4KpHP4RPU87yfs5jOBfDpGA==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\exercise\\MarvellousWorks\\StrategyPattern04\\StrategyPattern04.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}

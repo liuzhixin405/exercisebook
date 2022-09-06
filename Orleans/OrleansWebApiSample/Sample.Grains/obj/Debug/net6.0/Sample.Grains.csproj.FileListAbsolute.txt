@@ -1,0 +1,17 @@
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\bin\Debug\net6.0\Sample.Grains.deps.json
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\bin\Debug\net6.0\Sample.Grains.dll
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\bin\Debug\net6.0\ref\Sample.Grains.dll
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\bin\Debug\net6.0\Sample.Grains.pdb
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\bin\Debug\net6.0\Sample.Grains.Interfaces.dll
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\bin\Debug\net6.0\Sample.Grains.Interfaces.pdb
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.orleans.g.args.txt
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.orleans.g.cs
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.AssemblyInfo.cs
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.csproj.CopyComplete
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.dll
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\ref\Sample.Grains.dll
+D:\GitHub_\exercise\Orleans\OrleanWebApi\OrleansWebApiSample\Sample.Grains\obj\Debug\net6.0\Sample.Grains.pdb

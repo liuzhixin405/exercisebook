@@ -1,0 +1,16 @@
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\bin\Debug\netcoreapp3.1\模拟双色球.exe
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\bin\Debug\netcoreapp3.1\模拟双色球.deps.json
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\bin\Debug\netcoreapp3.1\模拟双色球.runtimeconfig.json
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\bin\Debug\netcoreapp3.1\模拟双色球.runtimeconfig.dev.json
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\bin\Debug\netcoreapp3.1\模拟双色球.dll
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\bin\Debug\netcoreapp3.1\模拟双色球.pdb
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.csprojAssemblyReference.cache
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.Form1.resources
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.csproj.GenerateResource.cache
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.AssemblyInfoInputs.cache
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.AssemblyInfo.cs
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.csproj.CoreCompileInputs.cache
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.dll
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.pdb
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.genruntimeconfig.cache
+C:\Users\lzx\source\repos\模拟双色球\模拟双色球\obj\Debug\netcoreapp3.1\模拟双色球.Form2.resources

@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = CacheManager.StackExchange.Redis
+build_property.ProjectDir = D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.StackExchange.Redis\

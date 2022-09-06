@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31606.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CancellationTokenSourceDemo", "CancellationTokenSourceDemo\CancellationTokenSourceDemo.csproj", "{09B6B578-CC70-43E2-8D46-81584DFB6A7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerDemo", "TimerDemo\TimerDemo.csproj", "{32E0ED83-B43E-4FEF-A860-F747FFA3B4AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09B6B578-CC70-43E2-8D46-81584DFB6A7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B6B578-CC70-43E2-8D46-81584DFB6A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B6B578-CC70-43E2-8D46-81584DFB6A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B6B578-CC70-43E2-8D46-81584DFB6A7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E0ED83-B43E-4FEF-A860-F747FFA3B4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E0ED83-B43E-4FEF-A860-F747FFA3B4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E0ED83-B43E-4FEF-A860-F747FFA3B4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E0ED83-B43E-4FEF-A860-F747FFA3B4AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9284A00F-87FB-41A0-A785-2531F71BB2C0}
+	EndGlobalSection
+EndGlobal

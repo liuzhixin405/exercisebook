@@ -1,0 +1,15 @@
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\bin\Debug\net5.0\BackStageDemo.EntityFrameworkCore.deps.json
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\bin\Debug\net5.0\BackStageDemo.EntityFrameworkCore.dll
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\bin\Debug\net5.0\ref\BackStageDemo.EntityFrameworkCore.dll
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\bin\Debug\net5.0\BackStageDemo.EntityFrameworkCore.pdb
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\bin\Debug\net5.0\BackStageDemo.Domain.dll
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\bin\Debug\net5.0\BackStageDemo.Domain.pdb
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.csprojAssemblyReference.cache
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.AssemblyInfoInputs.cache
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.AssemblyInfo.cs
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.csproj.CoreCompileInputs.cache
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.csproj.CopyComplete
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.dll
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\ref\BackStageDemo.EntityFrameworkCore.dll
+C:\Users\lzx\source\repos\BackStage\BackStageDemo.EntityFrameworkCore\obj\Debug\net5.0\BackStageDemo.EntityFrameworkCore.pdb

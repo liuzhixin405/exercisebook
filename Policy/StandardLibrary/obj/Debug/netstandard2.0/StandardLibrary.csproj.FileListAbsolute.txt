@@ -1,0 +1,9 @@
+C:\Users\lzx\source\repos\Policy\StandardLibrary\bin\Debug\netstandard2.0\StandardLibrary.deps.json
+C:\Users\lzx\source\repos\Policy\StandardLibrary\bin\Debug\netstandard2.0\StandardLibrary.dll
+C:\Users\lzx\source\repos\Policy\StandardLibrary\bin\Debug\netstandard2.0\StandardLibrary.pdb
+C:\Users\lzx\source\repos\Policy\StandardLibrary\obj\Debug\netstandard2.0\StandardLibrary.AssemblyInfoInputs.cache
+C:\Users\lzx\source\repos\Policy\StandardLibrary\obj\Debug\netstandard2.0\StandardLibrary.AssemblyInfo.cs
+C:\Users\lzx\source\repos\Policy\StandardLibrary\obj\Debug\netstandard2.0\StandardLibrary.csproj.CoreCompileInputs.cache
+C:\Users\lzx\source\repos\Policy\StandardLibrary\obj\Debug\netstandard2.0\StandardLibrary.dll
+C:\Users\lzx\source\repos\Policy\StandardLibrary\obj\Debug\netstandard2.0\StandardLibrary.pdb
+C:\Users\lzx\source\repos\Policy\StandardLibrary\obj\Debug\netstandard2.0\StandardLibrary.csprojAssemblyReference.cache

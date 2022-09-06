@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "抽象工厂和工厂方法/1.0.0": {
+        "runtime": {
+          "抽象工厂和工厂方法.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "抽象工厂和工厂方法/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

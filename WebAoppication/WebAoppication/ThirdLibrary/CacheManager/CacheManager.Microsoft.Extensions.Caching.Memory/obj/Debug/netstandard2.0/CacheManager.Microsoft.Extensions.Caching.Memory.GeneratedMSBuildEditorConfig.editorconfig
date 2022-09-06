@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = CacheManager.Microsoft.Extensions.Caching.Memory
+build_property.ProjectDir = D:\IDCM\contract\ThirdLibrary\CacheManager\CacheManager.Microsoft.Extensions.Caching.Memory\

@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "E9hNUO8Jc6r/1UpSwlCS6wfXNnvwyc8YFJZiXXG68QEhZIdAWyS6T9fiOr9ISJU1IpVMlxrvW3HarNwN/RyZKg==",
+  "success": true,
+  "projectFilePath": "D:\\IDCM\\contract\\ThirdLibrary\\SlimMessageBus\\SlimMessageBus.Host.Kafka\\SlimMessageBus.Host.Kafka.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\confluent.kafka\\1.7.0\\confluent.kafka.1.7.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\librdkafka.redist\\1.7.0\\librdkafka.redist.1.7.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.0\\system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\slimmessagebus\\1.4.0\\slimmessagebus.1.4.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\slimmessagebus.host.dependencyresolver\\1.3.0\\slimmessagebus.host.dependencyresolver.1.3.0.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\slimmessagebus.host.serialization\\1.1.0\\slimmessagebus.host.serialization.1.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

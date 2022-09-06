@@ -1,0 +1,82 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ConsoleApp/1.0.0": {
+        "dependencies": {
+          "NServiceKit.Redis": "1.0.20"
+        },
+        "runtime": {
+          "ConsoleApp.dll": {}
+        }
+      },
+      "NServiceKit.Common/1.0.31": {
+        "dependencies": {
+          "NServiceKit.Text": "1.0.10"
+        },
+        "runtime": {
+          "lib/net35/NServiceKit.Common.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/net35/NServiceKit.Interfaces.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "NServiceKit.Redis/1.0.20": {
+        "dependencies": {
+          "NServiceKit.Common": "1.0.31",
+          "NServiceKit.Text": "1.0.10"
+        },
+        "runtime": {
+          "lib/net35/NServiceKit.Redis.dll": {
+            "assemblyVersion": "1.0.20.0",
+            "fileVersion": "1.0.20.0"
+          }
+        }
+      },
+      "NServiceKit.Text/1.0.10": {
+        "runtime": {
+          "lib/net35/NServiceKit.Text.dll": {
+            "assemblyVersion": "1.0.10.0",
+            "fileVersion": "1.0.10.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NServiceKit.Common/1.0.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N/Ym0S3OYP0J1cVqu8ghldHE02/GSqlzeB2uBoSASuckAvjF3j2AG/+SMq9GdHxSJd5RkGoujc47E/C7BpGfqw==",
+      "path": "nservicekit.common/1.0.31",
+      "hashPath": "nservicekit.common.1.0.31.nupkg.sha512"
+    },
+    "NServiceKit.Redis/1.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BYl0aoZcL3Fil4BIjoiKVz9kJVak1lh1HM5bmQj15HSGoXFgsSXvtaBbwvhUfmELwCQ4BvRRqHSfut3zjENxkw==",
+      "path": "nservicekit.redis/1.0.20",
+      "hashPath": "nservicekit.redis.1.0.20.nupkg.sha512"
+    },
+    "NServiceKit.Text/1.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ySxZIjt/6yywQSTJ+AiRvbfT6sVNLHEmY2mxITl40ZBt94/73wRh93wun/i33B1UMNbg4O7Buhbg+5qlg+5oQg==",
+      "path": "nservicekit.text/1.0.10",
+      "hashPath": "nservicekit.text.1.0.10.nupkg.sha512"
+    }
+  }
+}

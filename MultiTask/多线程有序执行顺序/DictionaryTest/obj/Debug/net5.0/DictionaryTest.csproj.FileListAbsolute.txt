@@ -1,0 +1,16 @@
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\bin\Debug\net5.0\DictionaryTest.exe
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\bin\Debug\net5.0\DictionaryTest.deps.json
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\bin\Debug\net5.0\DictionaryTest.runtimeconfig.json
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\bin\Debug\net5.0\DictionaryTest.runtimeconfig.dev.json
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\bin\Debug\net5.0\DictionaryTest.dll
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\bin\Debug\net5.0\ref\DictionaryTest.dll
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\bin\Debug\net5.0\DictionaryTest.pdb
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.AssemblyInfo.cs
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.dll
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\ref\DictionaryTest.dll
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.pdb
+C:\Users\admin\source\repos\DictionaryTest\DictionaryTest\obj\Debug\net5.0\DictionaryTest.genruntimeconfig.cache

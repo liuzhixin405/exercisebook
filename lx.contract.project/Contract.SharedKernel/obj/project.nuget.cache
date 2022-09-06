@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "7dNd0DYF7lHMldX/g2JV8YpC7A7920T4UE1lbttbTRUKzVjuCQ+IOVmyHcRpDce7Z5jedzx5QVP4SY53sbTChg==",
+  "success": true,
+  "projectFilePath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\l\\.nuget\\packages\\ardalis.specification\\6.1.0\\ardalis.specification.6.1.0.nupkg.sha512",
+    "C:\\Users\\l\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\l\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\l\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

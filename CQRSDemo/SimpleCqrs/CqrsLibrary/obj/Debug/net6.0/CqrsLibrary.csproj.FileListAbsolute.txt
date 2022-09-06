@@ -1,0 +1,12 @@
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\CqrsLibrary.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\CqrsLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\CqrsLibrary.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\CqrsLibrary.AssemblyInfo.cs
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\CqrsLibrary.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\bin\Debug\net6.0\CqrsLibrary.deps.json
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\bin\Debug\net6.0\CqrsLibrary.dll
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\bin\Debug\net6.0\CqrsLibrary.pdb
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\CqrsLibrary.dll
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\refint\CqrsLibrary.dll
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\CqrsLibrary.pdb
+C:\Users\admin\Desktop\SimpleCqrs\CqrsLibrary\obj\Debug\net6.0\ref\CqrsLibrary.dll

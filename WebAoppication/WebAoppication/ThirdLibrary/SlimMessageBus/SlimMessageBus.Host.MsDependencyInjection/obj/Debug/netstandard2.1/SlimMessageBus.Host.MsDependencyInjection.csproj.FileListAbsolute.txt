@@ -1,0 +1,15 @@
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\bin\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.deps.json
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\bin\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\bin\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\bin\Debug\netstandard2.1\SlimMessageBus.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\bin\Debug\netstandard2.1\SlimMessageBus.Host.DependencyResolver.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\bin\Debug\netstandard2.1\SlimMessageBus.Host.DependencyResolver.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\bin\Debug\netstandard2.1\SlimMessageBus.pdb
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.csproj.AssemblyReference.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.GeneratedMSBuildEditorConfig.editorconfig
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.AssemblyInfoInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.AssemblyInfo.cs
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.csproj.CoreCompileInputs.cache
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.csproj.CopyComplete
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.dll
+D:\IDCM\contract\ThirdLibrary\SlimMessageBus\SlimMessageBus.Host.MsDependencyInjection\obj\Debug\netstandard2.1\SlimMessageBus.Host.MsDependencyInjection.pdb

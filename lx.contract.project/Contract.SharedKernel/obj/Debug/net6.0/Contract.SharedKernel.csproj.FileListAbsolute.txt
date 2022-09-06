@@ -1,0 +1,12 @@
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\bin\Debug\net6.0\Contract.SharedKernel.deps.json
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\bin\Debug\net6.0\Contract.SharedKernel.dll
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\bin\Debug\net6.0\Contract.SharedKernel.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\Contract.SharedKernel.csproj.AssemblyReference.cache
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\Contract.SharedKernel.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\Contract.SharedKernel.AssemblyInfoInputs.cache
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\Contract.SharedKernel.AssemblyInfo.cs
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\Contract.SharedKernel.csproj.CoreCompileInputs.cache
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\Contract.SharedKernel.dll
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\refint\Contract.SharedKernel.dll
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\Contract.SharedKernel.pdb
+D:\GitHub\exercise\lx.contract.project\Contract.SharedKernel\obj\Debug\net6.0\ref\Contract.SharedKernel.dll

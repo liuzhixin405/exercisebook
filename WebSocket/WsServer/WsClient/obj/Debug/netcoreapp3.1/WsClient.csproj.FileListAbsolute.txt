@@ -1,0 +1,14 @@
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\bin\Debug\netcoreapp3.1\WsClient.exe
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\bin\Debug\netcoreapp3.1\WsClient.deps.json
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\bin\Debug\netcoreapp3.1\WsClient.runtimeconfig.json
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\bin\Debug\netcoreapp3.1\WsClient.runtimeconfig.dev.json
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\bin\Debug\netcoreapp3.1\WsClient.dll
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\bin\Debug\netcoreapp3.1\WsClient.pdb
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.csproj.AssemblyReference.cache
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.AssemblyInfoInputs.cache
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.AssemblyInfo.cs
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.csproj.CoreCompileInputs.cache
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.dll
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.pdb
+D:\GitHub_\exercise\WebSocket\WsServer\WsClient\obj\Debug\netcoreapp3.1\WsClient.genruntimeconfig.cache

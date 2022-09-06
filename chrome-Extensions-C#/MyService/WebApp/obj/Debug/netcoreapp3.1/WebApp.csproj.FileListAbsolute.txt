@@ -1,0 +1,13 @@
+C:\Users\lzx\source\repos\MyService\WebApp\bin\Debug\netcoreapp3.1\WebApp.exe
+C:\Users\lzx\source\repos\MyService\WebApp\bin\Debug\netcoreapp3.1\WebApp.deps.json
+C:\Users\lzx\source\repos\MyService\WebApp\bin\Debug\netcoreapp3.1\WebApp.runtimeconfig.json
+C:\Users\lzx\source\repos\MyService\WebApp\bin\Debug\netcoreapp3.1\WebApp.runtimeconfig.dev.json
+C:\Users\lzx\source\repos\MyService\WebApp\bin\Debug\netcoreapp3.1\WebApp.dll
+C:\Users\lzx\source\repos\MyService\WebApp\bin\Debug\netcoreapp3.1\WebApp.pdb
+C:\Users\lzx\source\repos\MyService\WebApp\obj\Debug\netcoreapp3.1\WebApp.csprojAssemblyReference.cache
+C:\Users\lzx\source\repos\MyService\WebApp\obj\Debug\netcoreapp3.1\WebApp.AssemblyInfoInputs.cache
+C:\Users\lzx\source\repos\MyService\WebApp\obj\Debug\netcoreapp3.1\WebApp.AssemblyInfo.cs
+C:\Users\lzx\source\repos\MyService\WebApp\obj\Debug\netcoreapp3.1\WebApp.csproj.CoreCompileInputs.cache
+C:\Users\lzx\source\repos\MyService\WebApp\obj\Debug\netcoreapp3.1\WebApp.dll
+C:\Users\lzx\source\repos\MyService\WebApp\obj\Debug\netcoreapp3.1\WebApp.pdb
+C:\Users\lzx\source\repos\MyService\WebApp\obj\Debug\netcoreapp3.1\WebApp.genruntimeconfig.cache

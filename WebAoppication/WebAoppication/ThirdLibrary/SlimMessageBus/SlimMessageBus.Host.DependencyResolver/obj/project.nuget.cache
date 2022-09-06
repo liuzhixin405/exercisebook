@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "o6/oG3j320aITiRb+/1E8GZI6Jn3CFsjkfa6RtdHDkzmxngd6YAo2YjM+MbBT3ZuA0+lUQa3W3xLCDyVpjrE8Q==",
+  "success": true,
+  "projectFilePath": "D:\\IDCM\\contract\\ThirdLibrary\\SlimMessageBus\\SlimMessageBus.Host.DependencyResolver\\SlimMessageBus.Host.DependencyResolver.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\slimmessagebus\\1.4.0\\slimmessagebus.1.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
