@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <template id="my-app">
+        <h2>{{message}}</h2>
+        <h3>{{info}}</h3>
+        <button @click="changeValue">改变msg</button>
+        <button @click="changeInfo">改变info</button>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const App={
+            template:'#my-app',
+            data() {
+                return{
+                    message:"hello world!",
+                    info:{name:"testlll",age:18}
+                }
+            },
+            watch : {
+                    message(newValue,oldValue){
+                        console.log(newValue,oldValue);
+                    },
+                    // info(newInfo,oldInfo){
+                    //     console.log(newInfo,oldInfo)
+                    // }
+                    // info:{
+                    //     handler:function(newInfo,oldInfo){
+                    //         console.log(newInfo,oldInfo)
+                    //     },
+                    //     deep:true
+                    // }  //1种
+                    "info.age":function(newAge,oldAge){
+                        console.log("new",newAge,"old",oldAge) //2种
+                    }
+                },
+                methods:{
+                    changeValue(){
+                        this.message = "world hello"
+                    },
+                    changeInfo(){
+                        this.info.age=20
+                    }
+                },
+                created(){
+                    this.$watch("info",function(newInfo,oldInfo){
+                        console.log(newInfo,oldInfo)
+                    },{
+                        deep:true,
+                        immediate:true
+                    })
+                }
+        }
+        const app=Vue.createApp(App);
+        app.mount("#app")
+    </script>
+</body>
+</html>

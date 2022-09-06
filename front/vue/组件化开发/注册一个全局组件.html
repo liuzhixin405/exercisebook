@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <template id="my-app">
+        <h2>{{message}}</h2>
+        <component-a></component-a>
+
+        <component-b></component-b>
+        <component-b></component-b>
+    </template>
+
+    <template id="component-b">
+        <h2>{{name}}</h2>
+        <p>{{content}}</p>
+        <input type="text" v-model="message" />
+        <h2>{{message}}</h2>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const App={
+            template:'#my-app',
+            data() {
+                return{
+                    message:"hello world!"
+                }
+            }
+        }
+        const app=Vue.createApp(App);
+        app.component('component-a',{
+                template:"<h2>我是子组件</h2>"
+        })
+        app.component('component-b',{
+            template:"#component-b",
+            data(){
+                return {
+                    name:"标题",
+                    content:"我是内容展示部分",
+                    message:"子helloworld"
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>

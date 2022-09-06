@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <template id="my-app">
+        <h2>{{message}}</h2>
+        <input type="text" v-model="message">
+        <input type="text" :value="message" @input="inputChange">
+
+        <label for="intro">
+            自我介绍
+            <textarea name="intro" id="intro" clos="10" rows="5" v-model="intro"></textarea>
+        </label>
+        <h2>{{intro}}</h2>
+
+        <label for="agree">
+            <input id="agree" type="checkbox" v-model="isAgree" >同意协议</checkbox>
+        </label>
+        <h2>isAgree:{{isAgree}}</h2>
+        <span>爱好:</span>
+        <label for="baskball">
+            <input id="baskball" type="checkbox" v-model="hobbies" value="baskball">篮球</checkbox>   
+        </label>
+        <label for="football">
+        <input id="football" type="checkbox" v-model="hobbies" value="football">足球</checkbox>
+    </label>    
+        <label for="volleyball">
+        <input id="volleyball" type="checkbox" v-model="hobbies" value="volleyball">排球</checkbox>
+    </label>
+    <button @click="emptyhobbies">清空爱好</button>
+        <h2>hobbies:{{hobbies}}</h2>
+
+        <label for="male">
+            <input type="radio" id="male" v-model="gender" value="1">男</input>
+        </label>
+        <label for="female">
+            <input type="radio" id="female" v-model="gender" value="0">女</input>
+        </label>
+        <h2> gender:{{gender}}</h2>
+        <span>水果:</span>
+        <select v-model="fruit" multiple size="3">
+        <option value="apple">苹果</option>
+        <option value="orange">橘子</option>
+        <option value="banana">香蕉</option>
+        </select>
+        <h2>fruit:{{fruit}}</h2>
+
+
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const App={
+            template:'#my-app',
+            data() {
+                return{
+                    message:"hello world!",
+                    intro:"你好啊",
+                    isAgree:true,
+                    hobbies:[],
+                    gender:"",
+                    fruit:""
+                }
+            },
+            methods:{
+                inputChange(event){
+                    this.message = event.target.value;
+                },
+                emptyhobbies(){
+                    this.hobbies = []
+                }
+            }
+        }
+        const app=Vue.createApp(App);
+        app.mount("#app")
+    </script>
+</body>
+</html>
