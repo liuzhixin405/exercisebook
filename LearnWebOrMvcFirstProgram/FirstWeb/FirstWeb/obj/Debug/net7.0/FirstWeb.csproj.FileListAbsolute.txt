@@ -1,0 +1,15 @@
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\bin\Debug\net7.0\FirstWeb.exe
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\bin\Debug\net7.0\FirstWeb.deps.json
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\bin\Debug\net7.0\FirstWeb.runtimeconfig.json
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\bin\Debug\net7.0\FirstWeb.dll
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\bin\Debug\net7.0\FirstWeb.pdb
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.csproj.AssemblyReference.cache
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.GeneratedMSBuildEditorConfig.editorconfig
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.AssemblyInfoInputs.cache
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.AssemblyInfo.cs
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.csproj.CoreCompileInputs.cache
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.dll
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\refint\FirstWeb.dll
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.pdb
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\FirstWeb.genruntimeconfig.cache
+G:\Users\GitHub\exercisebook\LearnWebOrMvcFirstProgram\FirstWeb\FirstWeb\obj\Debug\net7.0\ref\FirstWeb.dll
