@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\bin\Debug\netstandard2.0\MakeConst.deps.json
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\bin\Debug\netstandard2.0\MakeConst.dll
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\bin\Debug\netstandard2.0\MakeConst.pdb
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.Resources.resources
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.dll
+C:\Users\Administrator\Desktop\MakeConst\MakeConst\MakeConst\obj\Debug\netstandard2.0\MakeConst.pdb
