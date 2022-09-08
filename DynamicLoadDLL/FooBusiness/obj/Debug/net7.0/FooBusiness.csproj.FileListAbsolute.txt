@@ -1,0 +1,12 @@
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\bin\Debug\net7.0\FooBusiness.deps.json
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\bin\Debug\net7.0\FooBusiness.dll
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\bin\Debug\net7.0\FooBusiness.pdb
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\FooBusiness.csproj.AssemblyReference.cache
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\FooBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\FooBusiness.AssemblyInfoInputs.cache
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\FooBusiness.AssemblyInfo.cs
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\FooBusiness.csproj.CoreCompileInputs.cache
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\FooBusiness.dll
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\refint\FooBusiness.dll
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\FooBusiness.pdb
+C:\Users\l\source\repos\DynamicLoadDLL\FooBusiness\obj\Debug\net7.0\ref\FooBusiness.dll
