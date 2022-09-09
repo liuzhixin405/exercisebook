@@ -10,20 +10,16 @@ namespace FirstWeb
         static void Main(string[] args)
         {
             //提供一个简单的、可通过编程方式控制的 HTTP 协议侦听器。此类不能被继承。
-            httpobj = new HttpListener();
-            //定义url及端口号，通常设置为配置文件
+             httpobj = new HttpListener();
             httpobj.Prefixes.Add("http://+:8080/");
-            //启动监听器
             httpobj.Start();
-            //异步监听客户端请求，当客户端的网络请求到来时会自动执行Result委托
-            //该委托没有返回值，有一个IAsyncResult接口的参数，可通过该参数获取context对象
             httpobj.BeginGetContext(Result, null);
-            Console.WriteLine($"Server init over，waiting client request,datetime：{DateTime.Now.ToString()}\r\n");
             Console.ReadKey();
+            //curl http://localhost:8080 -H "Accept:application/json" -H  "Content-Type:application/json" -X POST -d "{\"id\":\"4\"}"
         }
 
 
-        private static void Result(IAsyncResult ar)
+            private static void Result(IAsyncResult ar)
         {
             //当接收到请求后程序流会走到这里
 
@@ -31,7 +27,7 @@ namespace FirstWeb
             httpobj.BeginGetContext(Result, null);
             var guid = Guid.NewGuid().ToString();
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"get new request:{guid},时间：{DateTime.Now.ToString()}");
+            Console.WriteLine($"接到新的请求:{guid},时间：{DateTime.Now.ToString()}");
             //获得context对象
             var context = httpobj.EndGetContext(ar);
             var request = context.Request;
@@ -40,18 +36,20 @@ namespace FirstWeb
             //context.Response.AppendHeader("Access-Control-Allow-Origin", "*");//后台跨域请求，通常设置为配置文件
             //context.Response.AppendHeader("Access-Control-Allow-Headers", "ID,PW");//后台跨域参数设置，通常设置为配置文件
             //context.Response.AppendHeader("Access-Control-Allow-Method", "post");//后台跨域请求设置，通常设置为配置文件
-            context.Response.ContentType = "text/plain;charset=UTF-8";//告诉客户端返回的ContentType类型为纯文本格式，编码为UTF-8
-            context.Response.AddHeader("Content-type", "text/plain");//添加响应头信息
+            //context.Response.ContentType = "text/plain;charset=UTF-8";//告诉客户端返回的ContentType类型为纯文本格式，编码为UTF-8
+            context.Response.ContentType = "application/json";
+            //context.Response.AddHeader("Content-type", "text/plain");//添加响应头信息
+            context.Response.AddHeader("Content-type", "application/json");//添加响应头信息
             context.Response.ContentEncoding = Encoding.UTF8;
             string returnObj = null;//定义返回客户端的信息
-            if (request.HttpMethod == "POST" && request.InputStream != null)
+            if ((request.HttpMethod == "GET" || request.HttpMethod == "POST") && request.InputStream != null)
             {
                 //处理客户端发送的请求并返回处理信息
                 returnObj = HandleRequest(request, response);
             }
             else
             {
-                returnObj = $"is not post request or transfer data is null";
+                returnObj = $"不是post或get请求或者传过来的数据为空";
             }
             var returnByteArr = Encoding.UTF8.GetBytes(returnObj);//设置客户端返回信息的编码
             try
@@ -68,7 +66,7 @@ namespace FirstWeb
                 Console.WriteLine($"网络蹦了：{ex.ToString()}");
             }
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"request handle over：{guid},datetime：{DateTime.Now.ToString()}\r\n");
+            Console.WriteLine($"请求处理完成：{guid},时间：{DateTime.Now.ToString()}\r\n");
         }
 
         private static string HandleRequest(HttpListenerRequest request, HttpListenerResponse response)
@@ -103,7 +101,7 @@ namespace FirstWeb
             response.StatusCode = 200;// 获取或设置返回给客户端的 HTTP 状态代码。
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"接收数据完成:{data.Trim()},时间：{DateTime.Now.ToString()}");
-            return $"接收数据完成";
+            return $"接收数据完成 ,data={System.Text.Json.JsonSerializer.Serialize(data.Trim())}";
         }
     }
 }
