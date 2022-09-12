@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\bin\Debug\net6.0\HttpListenerSimple.exe
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\bin\Debug\net6.0\HttpListenerSimple.deps.json
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\bin\Debug\net6.0\HttpListenerSimple.runtimeconfig.json
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\bin\Debug\net6.0\HttpListenerSimple.dll
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\bin\Debug\net6.0\HttpListenerSimple.pdb
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.dll
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\refint\HttpListenerSimple.dll
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.pdb
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\HttpListenerSimple.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\HttpListenerSimple\HttpListenerSimple\obj\Debug\net6.0\ref\HttpListenerSimple.dll

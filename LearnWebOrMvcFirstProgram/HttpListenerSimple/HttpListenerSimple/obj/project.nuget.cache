@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "67qLxWh8hOk4neiSKJ71LZSUbZW65p0R6vijUGZYUmU6ka+ovRbyb8wTJMzgX2sv1kggZRQpxxaJTZChIZouIQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\HttpListenerSimple\\HttpListenerSimple\\HttpListenerSimple.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}
