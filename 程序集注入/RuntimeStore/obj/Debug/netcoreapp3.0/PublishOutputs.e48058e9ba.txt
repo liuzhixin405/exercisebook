@@ -1,0 +1,6 @@
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\RuntimeStore\obj\pub\store.manifest.exe
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\RuntimeStore\obj\pub\store.manifest.dll
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\RuntimeStore\obj\pub\store.manifest.deps.json
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\RuntimeStore\obj\pub\store.manifest.runtimeconfig.json
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\RuntimeStore\obj\pub\store.manifest.pdb
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\RuntimeStore\obj\pub\StartupDiagnostics.dll

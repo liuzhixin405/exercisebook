@@ -1,0 +1,12 @@
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\bin\Debug\netcoreapp3.0\StartupDiagnostics.deps.json
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\bin\Debug\netcoreapp3.0\StartupDiagnostics.dll
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\bin\Debug\netcoreapp3.0\StartupDiagnostics.pdb
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\bin\Debug\netcoreapp3.0\StartupDiagnostics.xml
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.csproj.AssemblyReference.cache
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.GeneratedMSBuildEditorConfig.editorconfig
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.AssemblyInfoInputs.cache
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.AssemblyInfo.cs
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.csproj.CoreCompileInputs.cache
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.dll
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.xml
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\StartupDiagnostics\obj\Debug\netcoreapp3.0\StartupDiagnostics.pdb

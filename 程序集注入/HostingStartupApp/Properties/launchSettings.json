@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "HostingStartupApp": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        //"ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "HostingStartupPackage",
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "HostingStartupLibrary"
+      },
+      "applicationUrl": "https://localhost:52149;http://localhost:52150"
+    }
+  }
+}

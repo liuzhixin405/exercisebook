@@ -1,0 +1,10 @@
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\bin\Debug\netstandard2.0\HostingStartupPackage.deps.json
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\bin\Debug\netstandard2.0\HostingStartupPackage.dll
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\bin\Debug\netstandard2.0\HostingStartupPackage.pdb
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\obj\Debug\netstandard2.0\HostingStartupPackage.csproj.AssemblyReference.cache
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\obj\Debug\netstandard2.0\HostingStartupPackage.GeneratedMSBuildEditorConfig.editorconfig
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\obj\Debug\netstandard2.0\HostingStartupPackage.AssemblyInfoInputs.cache
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\obj\Debug\netstandard2.0\HostingStartupPackage.AssemblyInfo.cs
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\obj\Debug\netstandard2.0\HostingStartupPackage.csproj.CoreCompileInputs.cache
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\obj\Debug\netstandard2.0\HostingStartupPackage.dll
+G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\obj\Debug\netstandard2.0\HostingStartupPackage.pdb

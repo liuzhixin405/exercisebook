@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "E6XqpkO/snyip4h5QNKT4SpFM4XFk0dUQtPGkzKjzgutsl+u380wDvtB12PM74yq16wf6SVkZyvJLUF0F9q6bg==",
+  "success": true,
+  "projectFilePath": "G:\\下载\\AspNetCore.Docs-main\\AspNetCore.Docs-main\\aspnetcore\\fundamentals\\host\\platform-specific-configuration\\samples\\3.x\\StartupDiagnostics\\StartupDiagnostics.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
