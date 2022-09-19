@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\bin\Debug\net6.0\ObservableDemo.exe
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\bin\Debug\net6.0\ObservableDemo.deps.json
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\bin\Debug\net6.0\ObservableDemo.runtimeconfig.json
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\bin\Debug\net6.0\ObservableDemo.dll
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\bin\Debug\net6.0\ObservableDemo.pdb
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.dll
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\refint\ObservableDemo.dll
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.pdb
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ObservableDemo.genruntimeconfig.cache
+C:\Users\Administrator\Desktop\ObservableDemo\ObservableDemo\obj\Debug\net6.0\ref\ObservableDemo.dll
