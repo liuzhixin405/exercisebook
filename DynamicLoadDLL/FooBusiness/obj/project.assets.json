@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\FooBusiness\\FooBusiness.csproj",
+      "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\FooBusiness\\FooBusiness.csproj",
       "projectName": "FooBusiness",
-      "projectPath": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\FooBusiness\\FooBusiness.csproj",
+      "projectPath": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\FooBusiness\\FooBusiness.csproj",
       "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\FooBusiness\\obj\\",
+      "outputPath": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\FooBusiness\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",

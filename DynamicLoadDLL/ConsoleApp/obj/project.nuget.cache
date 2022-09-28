@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HalCPada/SawuODi2daOB2ZMzLrAp8F2nnMiQ24k6tqRzQ3msyIEFmkm1yktBhS3725gKLfbBV65icuEuuc86A==",
+  "dgSpecHash": "Dq51cr3RER8+G+bB0KcS82VMBFBbiENhYWQcqW8RqY9pLGLmd2gDd9QN5LuPUptnGFJAvJ1L66r48HVzSosbrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\ConsoleApp\\ConsoleApp.csproj",
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\ConsoleApp\\ConsoleApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Tc7j2HjMpNbm/uuMNeqrCVhb2jr5GDPJU9Vs0UWi0IuaVRdWCZ2OpznHqgoIvLvq6iyjChU0DcdXUS+TArNAYg==",
+  "dgSpecHash": "zRKebhUfZFkH9WTtiVBWhrPUN4o9TQ55MNlMr3CZ/Y7tKihAyEhtO2aajQA1kdnXE7HV0m7Mg5yp+FIPKqn0Vg==",
   "success": true,
-  "projectFilePath": "D:\\GitHub_\\exercise\\发布订阅And出版预定AndEventBus\\PubSubDemo\\PubSubDemo\\PubSubDemo.csproj",
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\发布订阅And出版预定_EventBus_Observer\\PubSubDemo\\PubSubDemo\\PubSubDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

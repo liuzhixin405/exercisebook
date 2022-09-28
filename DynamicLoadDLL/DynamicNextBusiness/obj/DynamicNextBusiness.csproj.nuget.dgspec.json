@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj": {}
   },
   "projects": {
-    "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj",
         "projectName": "DynamicNextBusiness",
-        "projectPath": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\DynamicNextBusiness\\DynamicNextBusiness.csproj",
         "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\DynamicNextBusiness\\obj\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\DynamicNextBusiness\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",

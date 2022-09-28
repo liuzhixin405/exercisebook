@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\ConsoleApp\\ConsoleApp.csproj",
+      "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\ConsoleApp\\ConsoleApp.csproj",
       "projectName": "ConsoleApp",
-      "projectPath": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\ConsoleApp\\ConsoleApp.csproj",
+      "projectPath": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\ConsoleApp\\ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\l\\source\\repos\\DynamicLoadDLL\\ConsoleApp\\obj\\",
+      "outputPath": "G:\\Users\\GitHub\\exercisebook\\DynamicLoadDLL\\ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
