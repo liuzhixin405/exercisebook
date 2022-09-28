@@ -1,0 +1,37 @@
+﻿@model SeckillPro.Com.Model.CrmModel.MoShopping
+@{
+    ViewData["Title"] = "抢购 - " + @Model.Name;
+}
+<div class="row">
+    <form id="form1" method="post" action="/home/qiang">
+        <div class="form-group">
+            <label for="Url">图片：</label>
+            <img src="@Model.Url" title=" @Model.Name" style="height: 200px; width: 200px; display: block;" />
+        </div>
+        <div class="form-group">
+            <label for="Name">名称：@Model.Name</label>
+        </div>
+        <div class="form-group">
+            <label for="Price">价格：@Model.Price 元</label>
+        </div>
+        <div class="form-group">
+            <label for="MaxNum">库存：@Model.MaxNum</label>
+        </div>
+        <div class="form-group">
+            <label for="MaxGouNum">数量：</label>
+            <select class="form-control" name="Num">
+                @for (int i = 1; i <= Model.MaxGouNum; i++)
+            {
+                    <option value="@i">@i</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Des">描述：@Model.Des</label>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="ShopId" value="@Model.Id" />
+            <button type="submit" class="btn btn-default">开 抢</button>
+        </div>
+    </form>
+</div>

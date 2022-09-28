@@ -1,0 +1,37 @@
+﻿@using SeckillPro.Com.Model
+@model SeckillPro.Com.Model.ApiModel.MoOrderDetailRp
+@{
+    ViewData["Title"] = "抢购 - " + @Model.MoShopping.Name;
+}
+<div class="row">
+    <form >
+        <div class="form-group">
+            <label for="Name">订单号：@Model.OrderId</label>
+        </div>
+        <div class="form-group">
+            <label for="Name">名称：@Model.MoShopping.Name</label>
+        </div>
+        <div class="form-group">
+            <label for="Price">价格：@Model.MoShopping.Price 元</label>
+        </div>
+        <div class="form-group">
+            <label for="MaxGouNum">数量：@Model.Num</label>
+        </div>
+        <div class="form-group">
+            <label for="Des">描述：@Model.MoShopping.Des</label>
+        </div>
+        <div class="form-group">
+            <label for="Url">图片：</label>
+            <img src="@Model.MoShopping.Url" title="@Model.MoShopping.Name" style="height: 200px; width: 200px; display: block;" />
+        </div>
+        <div class="form-group">
+            <label style="color:red">订单状态：@Enum.GetName(typeof(EnumHelper.EmOrderStatus), Model.OrderStatus) </label>
+        </div>
+        <div class="form-group">
+            <a href="/home/orderlist" class="btn btn-default">订单列表</a>
+        </div>
+    </form>
+</div>
+<script>
+
+</script>

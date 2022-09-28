@@ -1,0 +1,33 @@
+﻿@using SeckillPro.Com.Model.CrmModel
+@model List<MoShopping>
+
+@{
+    ViewData["Title"] = "产品列表";
+    var moUser = ViewData["MoUser"] as MoUserInfo;
+}
+<div class="row">
+    @if (moUser != null)
+    {
+        <h4>
+
+            作者很赖，直接使用访问者外网的ip模拟生成一个登陆成功的Token（注：相同ip的Token一样）<br/>
+            你的账号是：@moUser.NickName
+        </h4>
+        <hr />
+    }
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3" title="@item.Name">
+            <div class="thumbnail">
+                <img src="@item.Url" title="@item.Name" style="height: 200px; width: 100%; display: block;" />
+                <div class="caption">
+                    <h4>@item.Name</h4>
+                    <p>@item.Des</p>
+                    <p>
+                        <a href="/home/qiang/@item.Id" class="btn btn-default">￥@item.Price 秒杀</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

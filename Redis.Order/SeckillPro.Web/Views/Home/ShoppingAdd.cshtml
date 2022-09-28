@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "添加商品";
+}
+<div class="row">
+    <form method="post" action="/home/ShoppingAdd">
+        <div class="form-group">
+            <label for="Name">名称</label>
+            <input type="text" class="form-control" name="Name" id="Name" placeholder="商品名称" maxlength="200" required="required">
+        </div>
+        <div class="form-group">
+            <label for="Price">价格(元)</label>
+            <input type="text" class="form-control" name="Price" id="Price" placeholder="金额格式如：9.9" maxlength="8" value="999.9" required="required">
+        </div>
+        <div class="form-group">
+            <label for="MaxNum">库存</label>
+            <input type="text" class="form-control" name="MaxNum" id="MaxNum" placeholder="库存为数字整数如：99" maxlength="8" value="100" required="required">
+        </div>
+        <div class="form-group">
+            <label for="MaxGouNum">购买最大量</label>
+            <input type="text" class="form-control" name="MaxGouNum" id="MaxGouNum" placeholder="每个账号购买最大数量：1" maxlength="4" value="1" required="required">
+        </div>
+        <div class="form-group">
+            <label for="Des">描述</label>
+            <textarea rows="5" name="Des" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Url">图片地址</label>
+            <input type="text" class="form-control" name="Url" id="Url" placeholder="格式如：http://www.xxx.com/xxx.jpg" maxlength="200">
+        </div>
+        <button type="submit" class="btn btn-default">保 存</button>
+    </form>
+</div>

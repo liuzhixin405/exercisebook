@@ -1,0 +1,29 @@
+﻿@model List<SeckillPro.Com.Model.CrmModel.MoShopping>
+
+@{
+    ViewData["Title"] = "商品管理列表";
+}
+<div class="row text-center">
+    <table class="table table-bordered">
+        <thead >
+            <tr >
+                <th class="text-center">编号</th>
+                <th class="text-center">名称</th>
+                <th class="text-center">单价</th>
+                <th class="text-center">库存</th>
+                <th class="text-center">账号最大购买量</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.MaxNum</td>
+                <td>@item.MaxGouNum</td>
+            </tr>
+        }
+    </table>
+    <a href="/home/ShoppingAdd" class="btn btn-default">添 加</a>
+</div>
