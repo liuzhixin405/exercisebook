@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7eBjbAzfJZxvl6DtkMHqdmdWcO2vePkeSQR4Ceg77tFXUhbomqvJXk1JD+sfPZeLeIMIOy1zAnxUrxJVkqScBg==",
+  "dgSpecHash": "aAp4RaSeUue6xlW4YoBwPAgcnQLIzdmgUFh0lTpuqn5T6yjS8qD8ek1pGcmKglbzNbTyyEDNb/C3iKwdAKkgNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
-  ],
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\DynamicProgramming\\rosylnDemo\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
