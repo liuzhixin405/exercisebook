@@ -16,7 +16,7 @@ namespace LiveScore_ES.Config
             IDocumentStore store = new DocumentStore()
             {
                 // Define the cluster node URLs (required)
-                Urls = new[] { "http://your_RavenDB_cluster_node", 
+                Urls = new[] { "http://127.0.0.1:8080/", 
                            /*some additional nodes of this cluster*/ },
 
                 // Set conventions as necessary (optional)
@@ -27,10 +27,10 @@ namespace LiveScore_ES.Config
             },
 
                 // Define a default database (optional)
-                Database = "your_database_name",
+                Database = "liverscoreDB",
 
                 // Define a client certificate (optional)
-                Certificate = new X509Certificate2("C:\\path_to_your_pfx_file\\cert.pfx"),
+                //Certificate = new X509Certificate2("C:\\path_to_your_pfx_file\\cert.pfx"),
 
                 // Initialize the Document Store
             }.Initialize();
