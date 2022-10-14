@@ -34,9 +34,9 @@ namespace LiveScore_ES.Services.Home
                 Bus.Send(domainEvent);
             }
             //if (eventName == "Undo")
-            //    repo.UndoLastAction(matchId);
+            //    _eventRepository.UndoLastAction(matchId);
             //else
-            //    repo.RecordEvent(matchId, eventName);
+            //    _eventRepository.RecordEvent(matchId, eventName);
             //repo.Commit();
 
             // Update snapshot for live scoring

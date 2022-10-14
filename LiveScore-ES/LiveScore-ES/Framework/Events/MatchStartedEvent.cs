@@ -5,6 +5,7 @@
         public MatchStartedEvent(string id)
         {
             MatchId = id;
+            SagaId = id;
         }
 
         public string MatchId { get; private set; }

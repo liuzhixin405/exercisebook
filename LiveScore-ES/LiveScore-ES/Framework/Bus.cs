@@ -1,13 +1,15 @@
-﻿namespace LiveScore_ES.Framework
+﻿using LiveScore_ES.Framework.Commands;
+
+namespace LiveScore_ES.Framework
 {
     public class Bus
     {
         private static readonly Dictionary<Type, Type> SagaStarters = new Dictionary<Type, Type>();
         private static readonly Dictionary<string, object> SagaInstances = new Dictionary<string, object>();
 
-        public static void RegistorSaga<TStartMessatge, TSaga>()
+        public static void RegistorSaga<TStartMessage, TSaga>()
         {
-            SagaStarters.Add(typeof(TStartMessatge), typeof(TSaga));
+            SagaStarters.Add(typeof(TStartMessage), typeof(TSaga));
         }
         public static void Send<T>(T message) where T : Message
         {
@@ -41,14 +43,18 @@
                 return;
             if (SagaInstances.ContainsKey(message.SagaId))
             {
-                var saga = (ICanhandleMessage<T>)SagaInstances[message.SagaId];
-                saga.Handle(message);
+                if(message is EndMatchCommand)
+                {
+                    var saga = (ICanhandleMessage<T>)SagaInstances[message.SagaId];
+                    saga.Handle(message);
 
-                // Saves saga back or remove if completed
-                //if (saga.IsComplete())
-                //    SagaInstances.Remove(message.Id);
-                //else
-                //    SagaInstances[message.Id] = saga;
+                    // Saves saga back or remove if completed
+                    //if (saga.IsComplete())
+                    //    SagaInstances.Remove(message.Id);
+                    //else
+                    //    SagaInstances[message.Id] = saga;
+                }
+
             }
         }
     }

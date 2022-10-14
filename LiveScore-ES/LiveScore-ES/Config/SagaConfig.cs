@@ -8,7 +8,7 @@ namespace LiveScore_ES.Config
     {
         public static void Initialize()
         {
-            Bus.RegistorSaga<MatchStartedEvent, MatchSaga>();
+            Bus.RegistorSaga<MatchStartedEvent, MatchSaga>();     
         }
     }
 }

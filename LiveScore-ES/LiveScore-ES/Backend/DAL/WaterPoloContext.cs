@@ -10,5 +10,10 @@ namespace LiveScore_ES.Backend.DAL
 
         }
         public DbSet<LiveMatch> Matches { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
