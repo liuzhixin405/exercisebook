@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +14,18 @@ namespace EFCoreDBRelation.DataLayer.Model
         [Key]
         public int BlogId { get; set; }
         public string Url { get; set; }
+        [Column(TypeName = "decimal(5, 2)")]
+        public decimal Rating { get; set; }
         public List<Post> Posts { get; set; }
     }
     public class Post
     {
         [Key]
         public int PostId { get; set; }
+        [Column(TypeName = "varchar(200)")]
+        [Required]
         public string Title { get; set; }
+        [MaxLength(500)]
         public string Content { get; set; }
 
         public Blog Blog { get; set; }
