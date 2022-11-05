@@ -1,9 +1,9 @@
-﻿using EFCoreDB.DataLayer.Model;
+﻿using EFCoreDBRelation.DataLayer.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using System.Security.Cryptography.X509Certificates;
 
-namespace EFCoreDB.DataLayer
+namespace EFCoreDBRelation.DataLayer
 {
     public class BlogContext_01 : DbContext
     {
@@ -13,10 +13,5 @@ namespace EFCoreDB.DataLayer
         }
 
         public DbSet<Blog> Blogs { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<AuditEntry>();
-            //modelBuilder.HasDefaultSchema("blogging");
-        }
     }
 }
