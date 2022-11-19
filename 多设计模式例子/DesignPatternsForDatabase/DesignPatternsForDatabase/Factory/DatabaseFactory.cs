@@ -4,9 +4,7 @@ namespace DesignPatternsForDatabase.Factory
 {
     public static class DatabaseFactory
     {
-        private static DbProviderFactory registry =new DbProviderFactory();
-
-        public static DbProviderFactory Registry { get => registry; set => registry = value; }
+        private static DbProviderRegistry registry =new DbProviderRegistry();
 
         public static Database Create(String name)
         {
@@ -22,7 +20,7 @@ namespace DesignPatternsForDatabase.Factory
             //    default:
             //        throw new ArgumentException("类型未知");
             //}
-            Type type = Type.GetType(Registry.GetDbType(providerName)); //加配置后的
+            Type type = Type.GetType(registry.GetDbType(providerName)); //加配置后的
             return (Database)Activator.CreateInstance(type);
         }
     }

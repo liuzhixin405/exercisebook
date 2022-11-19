@@ -19,8 +19,8 @@ namespace DesignPatternsForDatabase.Provider
             IConfiguration configuration = GlobalConfigure.GlobalServiceProvider.CreateAsyncScope().ServiceProvider.GetRequiredService<IConfiguration>();
             var providerName = configuration.GetSection("ConnectionStrings").GetSection("LocalSQL").GetSection("ProviderName").ToString();
             connectionString = configuration.GetSection("ConnectionStrings").GetSection("LocalSQL").GetSection("ConnectionString").ToString();
-            //factory =DbProviderFactories.GetFactory(providerName);
-            factory = DatabaseFactory.Registry;
+            factory =DbProviderFactories.GetFactory(providerName);
+            
             this.name = name;
         }
         /// <summary>
