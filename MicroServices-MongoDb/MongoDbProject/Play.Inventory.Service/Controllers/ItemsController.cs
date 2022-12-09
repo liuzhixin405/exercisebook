@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Play.Inventory.Service.Clients;
 
 namespace Play.Inventory.Service.Controllers
 {
@@ -15,6 +16,7 @@ namespace Play.Inventory.Service.Controllers
     {
         private readonly IRepository<InventoryItem> inventoryItemsRepository;
         private readonly IRepository<CatalogItem> catalogItemsRepository;
+        private readonly CatalogClient _catalogclient; //drop
         public ItemsController(IRepository<InventoryItem> inventoryItemsRepository, IRepository<CatalogItem> catalogItemsRepository)
         {
             this.inventoryItemsRepository = inventoryItemsRepository;
