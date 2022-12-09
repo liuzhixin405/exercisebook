@@ -8,3 +8,5 @@ typedef struct SqlList
 void InitList(SeqList *L){
     L->length=0;
 }
+
+冒泡算法

@@ -1,0 +1,11 @@
+@page
+@model RazorDemo.Pages.Customers.CreateModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<p> Enter a customer name:</p>
+<form method="post">
+Name：
+<input asp-for="Customer!.Name" />
+<input type="submit">
+
+</form>
