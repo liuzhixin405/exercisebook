@@ -1,0 +1,56 @@
+﻿@page "/customer/Edit/{Id:int}"
+@using BlazorApp.Shared
+@using System.Net.Http.Headers;
+@using System.Text;
+@inject HttpClient Http
+@inject NavigationManager Navigate
+<h3>Edit</h3>
+
+<h1>Edit</h1>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @*<form method="post">*@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@customer!.Id" />
+            <div class="form-group">
+                <label asp-for="@customer!.Name" class="control-label"></label>
+                <input asp-for="@customer!.Name" class="form-control" />
+                <span asp-validation-for="@customer!.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" @onclick="update_Click">提交</button>
+            </div>
+       @* </form>*@
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+
+
+@code {
+    [Parameter]
+    public int Id{ get; set; }
+    
+    private Customer? customer;
+    protected override async Task OnInitializedAsync()
+    {
+        Http.BaseAddress = new Uri("https://localhost:7047");
+        customer = await Http.GetFromJsonAsync<Customer>($"api/customer/GetById/{Id}");
+    } 
+
+    private async Task update_Click()
+    {
+        //Http.BaseAddress = new Uri("https://localhost:7047");
+
+        using var res = await Http.PostAsJsonAsync($"api/customer/Update",customer);
+        var upResult = await res.Content.ReadAsStringAsync();
+
+        Navigate.NavigateTo("/customer/index");
+    }
+}

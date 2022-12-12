@@ -1,0 +1,59 @@
+﻿@page "/customer/index"
+@using BlazorApp.Shared
+@inject HttpClient Http
+
+<PageTitle>customer list</PageTitle>
+
+<h1>customer list</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (customers == null)
+{
+        <p><em>Loading...</em></p>
+}
+else
+{
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in customers)
+                {
+                    <tr>
+                        <td>@customer.Id</td>
+                        <td>@customer.Name</td>
+                        <td>
+                            <!-- <snippet_Edit> -->
+                           @* <a asp-page="/customer/Edit" asp-route-id="@customer.Id">Edit</a> |*@
+                           <a href="@($"/customer/Edit/{customer.Id}")" target="_blank">Edit</a> |
+                            <!-- </snippet_Edit> -->
+                            <!-- <snippet_Delete> -->
+                            <button type="submit" asp-page-handler="delete" asp-route-id="@customer.Id">delete</button>
+                            <!-- </snippet_Delete> -->
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-page="Create">Create New</a>
+        <a href="./customer/Create" target="_blank">Create New</a>
+    </form>
+      
+}
+
+@code {
+    private Customer[]? customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Http.BaseAddress = new Uri("https://localhost:7047");
+        customers = await Http.GetFromJsonAsync<Customer[]>("api/customer/getall");
+    }
+}
