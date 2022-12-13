@@ -28,7 +28,7 @@ namespace BlazorApp
             }
             app.UseCors(options =>
             {
-                options.AllowAnyMethod().AllowAnyMethod().AllowCredentials().WithOrigins(new[] { "https://localhost:7294"});
+                options.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins(new[] { "https://localhost:7294"});
             });
             app.UseHttpsRedirection();
 

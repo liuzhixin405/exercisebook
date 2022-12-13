@@ -16,8 +16,8 @@ namespace WebApi.Controllers
         public CustomerController(CustomerDbContext dbContextdbContext)
         {
             _context = dbContextdbContext;
-            _context.Customer.Add(new Customer { Name = "123" });
-            _context.SaveChanges();
+            //_context.Customer.Add(new Customer { Name = "123" });
+            //_context.SaveChanges();
         }
         // GET: api/<CustomerController>
         [HttpGet]
@@ -47,7 +47,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<Tuple<bool,string>> Update([FromBody]Customer value)
         {
-            var entity = await _context.Customer.FindAsync(value.Id);
+            var entity = await _context.Customer.FindAsync(value.Id); //判断modestats
             if(entity==null) return new Tuple<bool, string>(false, $"用户{value.Id}不存在");
             entity.Name = value.Name;
              _context.Update(entity);

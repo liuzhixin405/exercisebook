@@ -13,7 +13,8 @@ namespace BlazorApp.Client
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7293")});
-            builder.Services.AddScoped(sp => new HttpClient());
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7047") });
+            //builder.Services.AddScoped(sp => new HttpClient());
             await builder.Build().RunAsync();
         }
     }

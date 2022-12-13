@@ -10,47 +10,68 @@
 
 <h4>Customer</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        @*<form method="post">*@
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="@customer!.Id" />
-            <div class="form-group">
-                <label asp-for="@customer!.Name" class="control-label"></label>
-                <input asp-for="@customer!.Name" class="form-control" />
-                <span asp-validation-for="@customer!.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" @onclick="update_Click">提交</button>
-            </div>
-       @* </form>*@
-    </div>
-</div>
+
+@if (customer == null)
+{
+
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    @if (!Saved)
+    {
+
+        <section class="employee-edit">
+            <h1 class="page-title">Details for @customer.Name</h1>
+            <EditForm Model="@customer" OnValidSubmit="@HandleValidSubmit"  OnInvalidSubmit="@HandleInvalidSubmit">
+                <div class="form-group row">
+                    <label for="Name" class="col-sm-3">Name: </label>
+                    <InputText id="Name" class="form-control col-sm-8" @bind-Value="@customer.Name" placeholder="Enter  name"></InputText>
+                </div>
+                <button type="submit" class="btn btn-primary edit-btn" @onclick="update_Click">Save employee</button>
+              
+            </EditForm>
+        </section>
+    }
+    else
+    {
+        <div class="alert @StatusClass">@Message</div>
+    }
+}
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/customer/Index">Back to Customer List</a>
 </div>
 
 
 
 @code {
+    protected string Message = string.Empty;  
+    protected string StatusClass = string.Empty;  
+    protected bool Saved;
     [Parameter]
     public int Id{ get; set; }
-    
-    private Customer? customer;
+    [Parameter]
+    public Customer? customer{ get; set; }
     protected override async Task OnInitializedAsync()
     {
-        Http.BaseAddress = new Uri("https://localhost:7047");
+        Saved = false;
         customer = await Http.GetFromJsonAsync<Customer>($"api/customer/GetById/{Id}");
     } 
 
+    private async Task HandleValidSubmit()
+    {
+        await Task.CompletedTask;
+
+    }
+    private async Task HandleInvalidSubmit() { await Task.CompletedTask;  }
     private async Task update_Click()
     {
-        //Http.BaseAddress = new Uri("https://localhost:7047");
-
         using var res = await Http.PostAsJsonAsync($"api/customer/Update",customer);
-        var upResult = await res.Content.ReadAsStringAsync();
-
+        Message = await res.Content.ReadAsStringAsync();
+        Saved = true;
         Navigate.NavigateTo("/customer/index");
     }
 }
