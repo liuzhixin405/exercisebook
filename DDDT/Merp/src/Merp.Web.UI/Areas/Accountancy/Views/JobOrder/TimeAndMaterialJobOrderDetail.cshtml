@@ -1,0 +1,72 @@
+﻿@model Merp.Web.UI.Areas.Accountancy.Models.JobOrder.TimeAndMaterialJobOrderDetailViewModel
+
+@{
+    ViewBag.Title = "TimeAndMaterialJobOrderDetail";
+}
+
+<h2>@Html.DisplayFor(model => model.JobOrderName)</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.JobOrderNumber)</h4>
+    <h5>@Html.DisplayFor(model => model.CustomerName)</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobOrderNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobOrderNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+        <dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfExpiration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfExpiration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (!Model.IsCompleted)
+    {
+        @Html.ActionLink("Complete", "MarkTimeAndMaterialJobOrderAsCompleted", new { id = Model.JobOrderId }) <text> |</text>
+        @Html.ActionLink("Extend", "ExtendTimeAndMaterial", new { id = Model.JobOrderId })<text> |</text>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
