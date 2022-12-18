@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project.Domain.Customers.Rules
 {
-    internal class CustomerEmailMustBeUniqueRule : IBusinessRule
+    public class CustomerEmailMustBeUniqueRule : IBusinessRule
     {
         private readonly ICustomerUniquenessChecker _customerUniquenessChecker;
         private readonly string _email;

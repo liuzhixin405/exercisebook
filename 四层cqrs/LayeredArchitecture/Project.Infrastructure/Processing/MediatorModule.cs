@@ -27,7 +27,7 @@ namespace Project.Infrastructure.Processing
             var mediatrOpenTypes = new[] {
             typeof(IRequestHandler<,>),
             typeof(INotificationHandler<>),
-            typeof(IValidator)
+            typeof(IValidator<>)
             };
             foreach (var mediatrOpenType in mediatrOpenTypes)
             {
