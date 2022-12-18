@@ -23,7 +23,7 @@ namespace Project.Domain.Payments
             this._orderId = orderId;
             this._status = PaymentStatus.ToPay;
             this._emailNotificationIsSent = false;
-            this.AddDomainEvent(new PaymentCreateEvent(this.Id, this._orderId));
+            this.AddDomainEvent(new PaymentCreatedEvent(this.Id, this._orderId));
         }
         public void MarkEmailNotificationIsSent()
         {

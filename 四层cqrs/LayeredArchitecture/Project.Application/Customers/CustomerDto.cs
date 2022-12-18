@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Infrastructure.Processing
+namespace Project.Application.Customers
 {
-    public interface ICommandDispatcher
+    public class CustomerDto
     {
-        Task DispatchCommandAsync(Guid id);
+        public Guid Id { get; set; }
     }
 }

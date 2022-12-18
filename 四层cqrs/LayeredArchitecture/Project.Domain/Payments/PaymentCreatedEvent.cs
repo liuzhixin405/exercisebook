@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Project.Domain.Payments
 {
-    public class PaymentCreateEvent:DomainEventBase
+    public class PaymentCreatedEvent:DomainEventBase
     {
-        public PaymentCreateEvent(PaymentId paymentId,OrderId orderId)
+        public PaymentCreatedEvent(PaymentId paymentId,OrderId orderId)
         {
             this.PaymentId = paymentId;
             this.OrderId = orderId;

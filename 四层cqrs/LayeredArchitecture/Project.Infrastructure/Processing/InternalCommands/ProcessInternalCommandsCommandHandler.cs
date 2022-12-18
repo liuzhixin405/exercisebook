@@ -50,5 +50,5 @@ namespace Project.Infrastructure.Processing.InternalCommands
             public string Data { get; set; }
         }
     }
-    }
+    
 }

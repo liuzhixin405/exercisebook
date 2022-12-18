@@ -9,6 +9,6 @@ namespace Project.Application.Configuration
     public interface IExecutionContextAccessor
     {
         Guid CorrelationId { get; }
-        bool IsAvaiable { get; }    
+        bool IsAvailable { get; }    
     }
 }

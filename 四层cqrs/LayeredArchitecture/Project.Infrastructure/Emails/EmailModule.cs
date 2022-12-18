@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Project.Infrastructure.Emails
 {
-    public class EmailModlue:Module
+    public class EmailModule:Module
     {
         private readonly IEmailSender sender;
         private readonly EmailsSettings emailsSettings;
-        public EmailModlue(IEmailSender sender, EmailsSettings emailsSettings)
+        public EmailModule(IEmailSender sender, EmailsSettings emailsSettings)
         {
             this.sender = sender;
             this.emailsSettings = emailsSettings;
         }
-        internal EmailModlue(EmailsSettings emailsSettings)
+        internal EmailModule(EmailsSettings emailsSettings)
         {
             this.emailsSettings = emailsSettings;
         }

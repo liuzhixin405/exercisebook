@@ -16,7 +16,7 @@ namespace Project.Infrastructure.Domain.Payments
         {
             _ = context??throw new ArgumentNullException(nameof(context));
         }
-        public async Task AddAssync(Payment payment)
+        public async Task AddAsync(Payment payment)
         {
             await _.Payments.AddAsync(payment);
         }

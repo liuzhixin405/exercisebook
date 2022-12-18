@@ -11,12 +11,12 @@ namespace Project.Domain.Customers.Orders.Events
     public class OrderPlacedEvent:DomainEventBase
     {
         public OrderId OrderId { get; }
-        public CustomerId CustoemrId { get; }
+        public CustomerId CustomerId { get; }
         public MoneyValue Value { get; }
         public OrderPlacedEvent(OrderId orderId,CustomerId customerId,MoneyValue moneyValue)
         {
             this.OrderId = orderId;
-            this.CustoemrId= customerId;
+            this.CustomerId = customerId;
             this.Value= moneyValue; 
         }
     }
