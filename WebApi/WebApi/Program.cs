@@ -19,7 +19,7 @@ namespace WebApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddTransient<IRepository<Order>,OrderRepository>();
+            builder.Services.AddTransient<IRepository<Order,int>,OrderRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -5,10 +5,10 @@ using WebApi.Models;
 
 namespace WebApi.Repository
 {
-    public abstract class RepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T,TKey> :IRepository<T, TKey> where T : class,IEntity<TKey>
     {
-        private readonly OrderDbContext _;
-        public RepositoryBase(OrderDbContext context)
+        private readonly DbContext _;
+        public RepositoryBase(DbContext context)
         {
             _=context;
         }
@@ -27,7 +27,7 @@ namespace WebApi.Repository
            
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(TKey id)
         {
             var entity = await _.Set<T>().FindAsync(id);
             if (entity != null)
@@ -42,7 +42,7 @@ namespace WebApi.Repository
             return await _.Set<T>().AsNoTracking<T>().ToListAsync();
         }
 
-        public async ValueTask<T> GetById(int id)
+        public async ValueTask<T> GetById(TKey id)
         {
             return await _.Set<T>().FindAsync(id);
         }

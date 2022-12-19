@@ -16,8 +16,8 @@ namespace WebApi.Controllers
     public class OrdersController : ControllerBase
     {
       
-        private readonly IRepository<Order> _repository;
-        public OrdersController(IRepository<Order> repository)
+        private readonly IRepository<Order,int> _repository;
+        public OrdersController(IRepository<Order,int> repository)
         {
             _repository = repository;
         }

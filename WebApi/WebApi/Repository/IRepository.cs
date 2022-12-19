@@ -1,14 +1,15 @@
 ﻿using System.Linq.Expressions;
+using WebApi.Models;
 
 namespace WebApi.Repository
 {
-    public interface IRepository<T>
+    public interface IRepository<TEntity,TKey> where TEntity:IEntity<TKey>
     {
-        Task<IEnumerable<T>> GetAll();
-        ValueTask<T> GetById(int id);
-        Task Add(T entity);
-        Task Update(T entity);
-        Task Delete(int id);
-        Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate);
+        Task<IEnumerable<TEntity>> GetAll();
+        ValueTask<TEntity> GetById(TKey id);
+        Task Add(TEntity entity);
+        Task Update(TEntity entity);
+        Task Delete(TKey id);
+        Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
     }
 }
