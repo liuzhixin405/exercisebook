@@ -7,6 +7,10 @@
         public ShipmentState ShipmentState { get; set; }
         public string Name { get; set; }
         //public DateTime DateTime { get; set; }=DateTime.Now;
+        public Order(string name)
+        {
+            this.Name= name;
+        }
     }
 
     
