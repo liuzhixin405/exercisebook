@@ -28,9 +28,9 @@ using Autofac.Extras.CommonServiceLocator;
 
 namespace Project.Infrastructure
 {
-    public class ApplicationStartup
+    public static class ApplicationStartup
     {
-        public static IServiceProvider Initialize(
+        public static IServiceCollection Initialize(this
             IServiceCollection services,
             string connectionString,
             ICacheStore cacheStore,
@@ -58,7 +58,7 @@ namespace Project.Infrastructure
             return serviceProvider;
         }
 
-        private static IServiceProvider CreateAutofacServiceProvider(
+        private static IServiceCollection CreateAutofacServiceProvider(
             IServiceCollection services,
             string connectionString,
             IEmailSender emailSender,
@@ -95,8 +95,7 @@ namespace Project.Infrastructure
             var serviceProvider = new AutofacServiceProvider(buildContainer);
 
             CompositionRoot.SetContainer(buildContainer);
-
-            return serviceProvider;
+            return services;
         }
 
         private static void StartQuartz(

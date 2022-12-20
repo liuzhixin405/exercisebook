@@ -28,13 +28,12 @@ namespace Project.API
             // Add services to the container.
             _logger.Information("Logger configured");
 
-           
-            builder.Services.AddControllers();
             AddCustomeService(builder.Services);
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddControllers();
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            
+           
             var app = builder.Build();
             app.UseMiddleware<CorrelationMiddleware>();
             // Configure the HTTP request pipeline.
@@ -66,7 +65,7 @@ namespace Project.API
                 .WriteTo.RollingFile(new CompactJsonFormatter(), "logs/logs")
                 .CreateLogger();
         }
-        public static IServiceProvider AddCustomeService(IServiceCollection services)
+        public static IServiceCollection AddCustomeService(IServiceCollection services)
         {
             services.AddMemoryCache();
             services.AddSwaggerDocumentation();
@@ -84,14 +83,23 @@ namespace Project.API
             var cachingConfiguration = children.ToDictionary(child => child.Key, child => TimeSpan.Parse(child.Value));
             var emailsSettings = _configuration.GetSection("EmailsSettings").Get<EmailsSettings>();
             var memoryCache = serviceProvider.GetService<IMemoryCache>();
-            return ApplicationStartup.Initialize(
-                services,
-                _configuration[OrdersConnectionString],
-                new MemoryCacheStore(memoryCache, cachingConfiguration),
-                null,
-                emailsSettings,
-                _logger,
-                executionContextAccessor);
+            return services.Initialize(
+                    _configuration[OrdersConnectionString],
+                    new MemoryCacheStore(memoryCache, cachingConfiguration),
+                    null,
+                    emailsSettings,
+                    _logger,
+                    executionContextAccessor
+                );
+            //return ApplicationStartup.Initialize(
+            //    services,
+            //    _configuration[OrdersConnectionString],
+            //    new MemoryCacheStore(memoryCache, cachingConfiguration),
+            //    null,
+            //    emailsSettings,
+            //    _logger,
+            //    executionContextAccessor);
         }
     }
+   
 }

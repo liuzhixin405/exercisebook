@@ -24,6 +24,7 @@ namespace Project.Infrastructure.Processing
                 ));
 
             builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
+            
             var mediatrOpenTypes = new[] {
             typeof(IRequestHandler<,>),
             typeof(INotificationHandler<>),
