@@ -1,4 +1,5 @@
-﻿using cat.Models;
+﻿using cat.Globals.Exceptions;
+using cat.Models;
 using cat.Repositories;
 using MediatR;
 
@@ -13,9 +14,11 @@ namespace cat.Commands.Contracts.Creates
         }
         public async Task<Unit> Handle(CreateCommand request, CancellationToken cancellationToken)
         {
-            var contracts = Contract.CreateNew(request.dto.name);
-            await repository.Add(contracts);
-            return Unit.Value;
+                var contracts = Contract.CreateNew(request.dto.name);
+                await repository.Add(contracts);
+                return Unit.Value;
+           
+         
         }
 
 

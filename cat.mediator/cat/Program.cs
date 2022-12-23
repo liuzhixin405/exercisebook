@@ -1,6 +1,7 @@
 
 using cat.Data;
 using cat.DbProvider;
+using cat.Globals.Exceptions;
 using cat.Repositories;
 using MediatR;
 
@@ -14,8 +15,8 @@ namespace cat
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddControllers(options=>options.Filters.Add<GlobalExceptionFilter>());
+            
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddTransient<IContextProvider, ContextProvider>();

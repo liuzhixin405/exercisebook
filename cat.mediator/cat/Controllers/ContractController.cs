@@ -1,7 +1,10 @@
+using Azure.Core;
 using cat.Commands.Contracts;
 using cat.Commands.Contracts.Creates;
 using cat.Commands.Contracts.Queries;
+using cat.Commands.Contracts.Updates;
 using cat.DbProvider;
+using cat.Globals.Exceptions;
 using cat.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +13,7 @@ using System.Linq.Expressions;
 namespace cat.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class ContractController : ControllerBase
     {
        
@@ -33,7 +36,17 @@ namespace cat.Controllers
         [HttpPost]
         public ValueTask Add(CreateDTo dto)
         {
+            if (dto.name.Equals("string"))
+                throw new CatException("²ÎÊý´íÎó");
             _mediator.Send(new CreateCommand { dto = dto });
+            return new();
+
+        }
+
+        [HttpPost]
+        public ValueTask Update(UpdateDto dto)
+        {
+            _mediator.Send(new UpdateCommnd { dto = dto });
             return new();
 
         }
