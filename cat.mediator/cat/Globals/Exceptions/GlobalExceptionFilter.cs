@@ -32,9 +32,9 @@ namespace cat.Globals.Exceptions
                 {
 
                     Success = false,
-                    ErrorCode = -1,
+                    ErrorCode = -2,
                     Message = ex.Message
-                }),505);
+                }),200);
             }
             return Task.CompletedTask;
         }

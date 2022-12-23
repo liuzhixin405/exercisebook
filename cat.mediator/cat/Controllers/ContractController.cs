@@ -6,6 +6,7 @@ using cat.Commands.Contracts.Updates;
 using cat.DbProvider;
 using cat.Globals.Exceptions;
 using cat.Models;
+using cat.RedisLocks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
@@ -38,6 +39,11 @@ namespace cat.Controllers
         {
             if (dto.name.Equals("string"))
                 throw new CatException("参数错误");
+
+            if (CheckRepeatHelper.CheckRepeat($"Create_Order_{dto.name}", "store", 1))
+            {
+                throw new CatException("请求太频繁,请稍后再试");
+            }
             _mediator.Send(new CreateCommand { dto = dto });
             return new();
 
