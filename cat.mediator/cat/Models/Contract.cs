@@ -1,4 +1,7 @@
-﻿namespace cat.Models
+﻿using cat.Events;
+using System.Runtime.CompilerServices;
+
+namespace cat.Models
 {
     public class Contract
     {
@@ -6,13 +9,15 @@
         public string Name { get; set; }
         public DateTime CreateTime { get; set; }
 
+        
         public static Contract CreateNew(string name)
         {
-            return new Contract { Name = name ,CreateTime = DateTime.Now};
+            return new Contract(name);
         }
-        private Contract()
+        private Contract(string name)
         {
-
+            Name = name;
+            CreateTime = DateTime.Now;
         }
     }
 }

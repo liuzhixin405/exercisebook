@@ -4,6 +4,7 @@ using cat.Commands.Contracts.Creates;
 using cat.Commands.Contracts.Queries;
 using cat.Commands.Contracts.Updates;
 using cat.DbProvider;
+using cat.Events;
 using cat.Globals.Exceptions;
 using cat.Models;
 using cat.RedisLocks;

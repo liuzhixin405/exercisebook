@@ -1,6 +1,7 @@
 
 using cat.Data;
 using cat.DbProvider;
+using cat.Events;
 using cat.Globals.Exceptions;
 using cat.Repositories;
 using MediatR;
@@ -19,9 +20,13 @@ namespace cat
             
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+          
             builder.Services.AddTransient<IContextProvider, ContextProvider>();
             builder.Services.AddTransient<IRepository, Repository>();
             builder.Services.AddMediatR(typeof(IRepository));
+            builder.Services.AddTransient(typeof(INotificationHandler<ContractCreatedEvent>),typeof(ContractCreatedEventHandler));
+           
+            
             InitData.InitializationDb();
             var app = builder.Build();
 

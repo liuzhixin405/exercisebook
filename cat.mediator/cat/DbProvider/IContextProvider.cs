@@ -1,4 +1,4 @@
-﻿using cat.Data;
+﻿ using cat.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace cat.DbProvider
