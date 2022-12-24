@@ -24,9 +24,7 @@ namespace cat
             builder.Services.AddTransient<IContextProvider, ContextProvider>();
             builder.Services.AddTransient<IRepository, Repository>();
             builder.Services.AddMediatR(typeof(IRepository));
-            builder.Services.AddTransient(typeof(INotificationHandler<ContractCreatedEvent>),typeof(ContractCreatedEventHandler));
-           
-            
+          
             InitData.InitializationDb();
             var app = builder.Build();
 

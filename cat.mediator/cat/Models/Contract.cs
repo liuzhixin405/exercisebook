@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace cat.Models
 {
-    public class Contract
+    public class Contract:Entity
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -18,6 +18,7 @@ namespace cat.Models
         {
             Name = name;
             CreateTime = DateTime.Now;
+            AddDomainEvent(new ContractCreatedEvent(name));
         }
     }
 }

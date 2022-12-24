@@ -19,7 +19,6 @@ namespace cat.Commands.Contracts.Creates
         {
                 var contract = Contract.CreateNew(request.dto.name);
                 await repository.Add(contract);
-                await mediator.Publish(new ContractCreatedEvent(contract.Name));
                 return Unit.Value;
            
          

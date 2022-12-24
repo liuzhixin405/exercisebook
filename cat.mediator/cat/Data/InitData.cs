@@ -11,7 +11,7 @@ namespace cat.Data
 
         public static void InitializationDb()
         {
-
+          
             using (var context = new ContextProvider().Get())
             {
                 context.Database.EnsureDeleted();

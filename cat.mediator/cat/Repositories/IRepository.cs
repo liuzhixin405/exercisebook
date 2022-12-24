@@ -1,6 +1,7 @@
 ﻿using cat.Data;
 using cat.DbProvider;
 using cat.Models;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -19,9 +20,11 @@ namespace cat.Repositories
     public class Repository : IRepository
     {
         private readonly ApplicationDbContext _context;
-        public Repository(IContextProvider provider)
+       
+        public Repository(IContextProvider provider,IMediator mediator)
         {
-            _context = provider.Get();
+           
+            _context = provider.Get(mediator);
         }
         public async ValueTask Add(Contract contract)
         {
