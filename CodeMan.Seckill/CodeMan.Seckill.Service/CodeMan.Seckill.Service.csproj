@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeMan.Seckill.Base.RabbitMq\CodeMan.Seckill.Base.RabbitMq.csproj" />
+    <ProjectReference Include="..\CodeMan.Seckill.Base.Redis\CodeMan.Seckill.Base.Redis.csproj" />
+    <ProjectReference Include="..\CodeMan.Seckill.Entities\CodeMan.Seckill.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
