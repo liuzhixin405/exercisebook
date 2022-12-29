@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cat.Seckill.Base.RabbitMq\Cat.Seckill.Base.RabbitMq.csproj" />
+    <ProjectReference Include="..\Cat.Seckill.Base.Redis\Cat.Seckill.Base.Redis.csproj" />
+    <ProjectReference Include="..\Cat.Seckill.Entities\Cat.Seckill.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
