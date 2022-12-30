@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dUYdMturYNXSw2j4xJviEDCgNBNP1jIVfa4bAO/eT/Fr3P3eUQ0bI4gyOyHfxN7vqIwSZlXHOfW6huUckGSn3A==",
+  "dgSpecHash": "G12xL46mR6nIeKkGhFCXuGZj9qu3dsnv26Q3bG/AIB5SI5zV03sM7IM9v33sR/VWxf5VD+/fOEwT07QEFoD2BQ==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
-  ],
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

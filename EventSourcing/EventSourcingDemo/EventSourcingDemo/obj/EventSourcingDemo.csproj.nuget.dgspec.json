@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj",
         "projectName": "EventSourcingDemo",
-        "projectPath": "D:\\GitHub\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\EventSourcingDemo.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\EventSourcing\\EventSourcingDemo\\EventSourcingDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net6.0": {
@@ -50,30 +51,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.6, 6.0.6]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.6, 6.0.6]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.6, 6.0.6]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.6, 6.0.6]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
