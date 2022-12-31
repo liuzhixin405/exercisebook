@@ -1,16 +1,15 @@
 
+using Cat.Seckill.Base.EFCore;
 using Cat.Seckill.Base.EFCore.Repository;
 using Cat.Seckill.Base.EFCore.Service;
-using Cat.Seckill.Base.EFCore;
+using Cat.Seckill.Base.RabbitMq;
 using Cat.Seckill.Base.RabbitMq.Config;
+using Cat.Seckill.Base.Redis;
 using Cat.Seckill.Entities.BaseRepository;
 using Cat.Seckill.Entities.Models;
-using Microsoft.EntityFrameworkCore.Storage;
-using Cat.Seckill.Base.Redis;
 using Microsoft.EntityFrameworkCore;
-using Cat.Seckill.Base.RabbitMq;
 
-namespace Cat.Seckill.Consumer.Order
+namespace Cat.Seckill.Consumer.Pay
 {
     public class Program
     {
@@ -39,8 +38,7 @@ namespace Cat.Seckill.Consumer.Order
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ISeckillService, SeckillService>();
             builder.Services.AddScoped<IOrderService, OrderService>();
-            builder.Services.AddScoped<IPayService, PayService>();
-            builder.Services.AddSingleton<IHostedService, ProcessOrder>();
+            builder.Services.AddSingleton<IHostedService, ProcessPay>();
             builder.Services.AddSingleton<IRabbitProducer, RabbitProducer>();
             var app = builder.Build();
 
