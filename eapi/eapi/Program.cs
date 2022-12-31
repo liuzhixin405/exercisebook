@@ -11,7 +11,7 @@ namespace eapi
 {
     public class Program
     {
-        private static readonly string connectionString = "Data Source=ios;Initial Catalog=productdb;Persist Security Info=False;User ID=sa;Password=1230;MultipleActiveResultSets=true;TrustServerCertificate=true";
+        private static readonly string connectionString = "Data Source=PC-202205262203;Initial Catalog=productdb;Persist Security Info=False;User ID=sa;Password=1230;MultipleActiveResultSets=true;TrustServerCertificate=true";
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

@@ -22,7 +22,7 @@ namespace eapi.Service
             {
                 throw new Exception("订单号错误");
             }
-            if(order.Status!= OrderStatus.Shipment)
+            if (order.Status != OrderStatus.Shipment)
             {
                 throw new Exception("处置错误");
             }
@@ -33,7 +33,7 @@ namespace eapi.Service
 
         public async Task Create(string sku, int count)
         {
-       
+
             using (var client = new ConnectionHelper().Conn())
             {
                 bool isLocked = client.Add<string>("DataLock:" + sku, sku, TimeSpan.FromMicroseconds(500));
@@ -50,10 +50,12 @@ namespace eapi.Service
                         {
                             product.Count -= count;
                         }
-                         await repositoryWrapper.Trans(async () => {
+                        await repositoryWrapper.Trans(async () =>
+                        {
                             await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
+                            //throw new Exception("2"); //测试用
                             await repositoryWrapper.ProductRepository.Update(product);
-                         });
+                        });
                     }
                     catch
                     {
@@ -85,7 +87,7 @@ namespace eapi.Service
 
             order.Status = OrderStatus.Rejected;
             order.RejectedTime = DateTime.Now;
-           
+
             var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(order.Sku))).SingleOrDefault();
             if (product == null)
             {
@@ -98,17 +100,17 @@ namespace eapi.Service
                 await repositoryWrapper.OrderRepository.Update(order);
                 await repositoryWrapper.ProductRepository.Update(product);
             });
-           
+
         }
 
         public async Task Shipment(int orderId)
         {
-            var order =await repositoryWrapper.OrderRepository.GetById(orderId);
-            if(order == null)
+            var order = await repositoryWrapper.OrderRepository.GetById(orderId);
+            if (order == null)
             {
                 throw new Exception("订单号错误");
             }
-            if(order.Status != OrderStatus.Created)
+            if (order.Status != OrderStatus.Created)
             {
                 throw new Exception("处置错误");
             }
