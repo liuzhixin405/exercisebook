@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queue", "WebApi\Queue.csproj", "{8A67FCC0-DEDE-4D81-9707-BBBACB954D56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NormalQueue", "WebApi\NormalQueue.csproj", "{8A67FCC0-DEDE-4D81-9707-BBBACB954D56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeadLetters", "DeadLetters", "{F0AFE593-A3E8-435B-BAD4-C5CC955E3835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeadQueue", "App\DeadQueue.csproj", "{A8DB2D7D-347A-44FA-B989-5C617EEB8823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeadLetterQueue", "App\DeadLetterQueue.csproj", "{A8DB2D7D-347A-44FA-B989-5C617EEB8823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
