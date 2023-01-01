@@ -22,8 +22,6 @@ namespace App
                     IModel channel = connection.CreateModel();
                     {
                         var queueName = "rbTest2023010";
-                        //channel.ExchangeDeclare("exchange.dlx", ExchangeType.Direct, true);
-                        //channel.QueueDeclare("queue.dlx", true, false, false, null);
                         channel.ExchangeDeclare("exchange.normal", ExchangeType.Fanout, true);
                         channel.QueueDeclare(queueName, true, false, false, new Dictionary<string, object>
                         {
@@ -44,12 +42,12 @@ namespace App
                             string str = Encoding.UTF8.GetString(bytes);
                             Console.WriteLine($"{DateTime.Now}来自死信队列获取的消息: {str.ToString()}");
                             //回复确认
-                            if (str.Contains("跳过"))
+                            if (str.Contains("跳过")) //假设超时不处理，留给后面deadconsumerservice处理
                             {
                                 Console.WriteLine($"{DateTime.Now}来自死信队列获取的消息: {str.ToString()},该消息被拒绝");
                                 channel.BasicNack(ea.DeliveryTag, false,false);
                             }
-                            else
+                            else  //正常消息处理
                             {
                                 Console.WriteLine($"{DateTime.Now}来自死信队列获取的消息: {str.ToString()}，该消息被接受");
                                 channel.BasicAck(ea.DeliveryTag, false);

@@ -20,7 +20,7 @@ namespace App
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddHostedService<ConsumerService>();
-            builder.Services.AddHostedService<DeadConsumer>();
+            builder.Services.AddHostedService<DeadConsumerSeervice>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -43,12 +43,14 @@ namespace App
                         channel.ExchangeDeclare("exchange.dlx", ExchangeType.Direct, true);
                         channel.QueueDeclare("queue.dlx", true, false, false, null);
                         channel.ExchangeDeclare("exchange.normal", ExchangeType.Fanout, true);
-                        channel.QueueDeclare(queueName, true, false, false, new Dictionary<string, object>
+                        channel.QueueDeclare(queueName, true, false, false,
+                            new Dictionary<string, object>
                         {
                             { "x-message-ttl" ,10000},
                             {"x-dead-letter-exchange","exchange.dlx" },
                             {"x-dead-letter-routing-key","routingkey" }
-                        });
+                        }
+                            );
                        
                         channel.QueueBind(queueName, "exchange.normal", "");
                         {
