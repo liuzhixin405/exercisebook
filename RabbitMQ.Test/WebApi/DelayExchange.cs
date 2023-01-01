@@ -44,6 +44,7 @@ namespace WebApi
 
                     var properties = channel.CreateBasicProperties();
                     properties.Persistent = true;
+                    //properties.Expiration = "5000";发布消息,延时5s
                     //发布消息
                     channel.BasicPublish(exchange: exchange,
                                          routingKey: queueName,
