@@ -10,7 +10,7 @@ namespace Cat.Seckill.Consumer.Pay
     {
         internal bool Started = false;
         private readonly RabbitConnection _connection;
-       
+        //private readonly IPayService _payService;
         private readonly IServiceScopeFactory factory;
         public ProcessPay(RabbitConnection connection,IServiceScopeFactory factory)
         {

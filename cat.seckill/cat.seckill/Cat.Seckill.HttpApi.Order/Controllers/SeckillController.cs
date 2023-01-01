@@ -50,6 +50,12 @@ namespace Cat.Seckill.HttpApi.Order.Controllers
         {
            return await userService.CreateUser(name, pass, email, phone);
         }
+        /// <summary>
+        /// 秒杀商品要提前放到redis里面去
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="goodsId"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Seckill(int userId,int goodsId)
         {

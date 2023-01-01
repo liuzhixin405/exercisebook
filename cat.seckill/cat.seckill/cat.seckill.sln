@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cat.Seckill.Service", "Cat.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cat.Seckill.Consumer.Order", "Cat.Seckill.Consumer.Order\Cat.Seckill.Consumer.Order.csproj", "{598EEB44-6C3E-43F3-BFB0-EA01B3F9CF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cat.Seckill.Consumer.Pay", "Cat.Seckill.Consumer.Pay\Cat.Seckill.Consumer.Pay.csproj", "{5C264E6E-8226-4D6F-ACD2-7E88658D9357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cat.Seckill.Consumer.Pay", "Cat.Seckill.Consumer.Pay\Cat.Seckill.Consumer.Pay.csproj", "{5C264E6E-8226-4D6F-ACD2-7E88658D9357}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeMan.Seckill.Consumer.Pay.Timeout", "CodeMan.Seckill.Consumer.Pay.Timeout\CodeMan.Seckill.Consumer.Pay.Timeout.csproj", "{40E1FBC6-3851-43E2-93E6-EB92E51FD5C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeMan.Seckill.Consumer.Pay.Timeout", "CodeMan.Seckill.Consumer.Pay.Timeout\CodeMan.Seckill.Consumer.Pay.Timeout.csproj", "{40E1FBC6-3851-43E2-93E6-EB92E51FD5C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cat.Seckill.Consumer.Email", "Cat.Seckill.Consumer.Email\Cat.Seckill.Consumer.Email.csproj", "{79EBE171-3D0B-46B9-B2F3-FA37D21BB75B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{40E1FBC6-3851-43E2-93E6-EB92E51FD5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40E1FBC6-3851-43E2-93E6-EB92E51FD5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40E1FBC6-3851-43E2-93E6-EB92E51FD5C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79EBE171-3D0B-46B9-B2F3-FA37D21BB75B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79EBE171-3D0B-46B9-B2F3-FA37D21BB75B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79EBE171-3D0B-46B9-B2F3-FA37D21BB75B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79EBE171-3D0B-46B9-B2F3-FA37D21BB75B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{598EEB44-6C3E-43F3-BFB0-EA01B3F9CF18} = {39B6EDB5-F70A-4366-ACF4-894C17D94075}
 		{5C264E6E-8226-4D6F-ACD2-7E88658D9357} = {39B6EDB5-F70A-4366-ACF4-894C17D94075}
 		{40E1FBC6-3851-43E2-93E6-EB92E51FD5C6} = {39B6EDB5-F70A-4366-ACF4-894C17D94075}
+		{79EBE171-3D0B-46B9-B2F3-FA37D21BB75B} = {39B6EDB5-F70A-4366-ACF4-894C17D94075}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96FAE403-C594-4E66-8A1F-1C0A42F96AD3}
