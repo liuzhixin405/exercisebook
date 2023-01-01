@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\sample.netcore6\\sample.nettcore6\\sample.nettcore6\\sample.nettcore6.csproj": {}
+    "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\sample.nettcore6.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\sample.netcore6\\sample.nettcore6\\sample.nettcore6\\sample.nettcore6.csproj": {
+    "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\sample.nettcore6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\sample.netcore6\\sample.nettcore6\\sample.nettcore6\\sample.nettcore6.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\sample.nettcore6.csproj",
         "projectName": "sample.nettcore6",
-        "projectPath": "D:\\GitHub\\sample.netcore6\\sample.nettcore6\\sample.nettcore6\\sample.nettcore6.csproj",
+        "projectPath": "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\sample.nettcore6.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\sample.netcore6\\sample.nettcore6\\sample.nettcore6\\obj\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
