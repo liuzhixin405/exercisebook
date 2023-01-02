@@ -8,61 +8,69 @@ using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Models;
 using WebApi.Repository;
+using WebApi.Service;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class OrdersController : ControllerBase
     {
       
-        private readonly IRepository<Order,int> _repository;
-        public OrdersController(IRepository<Order,int> repository)
+        private readonly IOrderService _orderService;
+        private readonly IProductService _productService;
+        public OrdersController(IOrderService orderService, IProductService productService)
         {
-            _repository = repository;
+            _productService = productService;
+            _orderService = orderService;
         }
 
-        // GET: api/Orders
-        [HttpGet]
-        public async Task<IEnumerable<Order>> GetOrders()
-        {
-            var orders = await _repository.GetAll();
-         
-            return orders;
-        }
+        //// GET: api/Orders
+        //[HttpGet]
+        //public async Task<IEnumerable<Order>> GetOrders()
+        //{
+        //    var orders = await _repository.GetAll();
 
-        // GET: api/Orders/5
-        [HttpGet("{id}")]
-        public async ValueTask<Order> GetOrder(int id)
-        {
-           
-         return await _repository.GetById(id);
-        }
+        //    return orders;
+        //}
 
-        [HttpPut]
-        public async Task PutOrder(Order order)
-        {
-            await _repository.Update(order);
-        }
+        //// GET: api/Orders/5
+        //[HttpGet("{id}")]
+        //public async ValueTask<Order> GetOrder(int id)
+        //{
+
+        // return await _repository.GetById(id);
+        //}
+
+        //[HttpPut]
+        //public async Task PutOrder(Order order)
+        //{
+        //    await _repository.Update(order);
+        //}
 
         // POST: api/Orders
         [HttpPost]
-        public async Task PostOrder(Order order)
+        public async Task PostOrder(string sku,int count)
         {
-            await _repository.Add(order);
+            await _orderService.CreateOrder(sku,count);
         }
 
-        // DELETE: api/Orders/5
-        [HttpDelete("{id}")]
-        public async Task DeleteOrder(int id)
+        [HttpPost]
+        public async Task PostProduct(string sku, int count)
         {
-            await _repository.Delete(id);
-         
+            await _productService.Create(sku, count);
         }
+        //// DELETE: api/Orders/5
+        //[HttpDelete("{id}")]
+        //public async Task DeleteOrder(int id)
+        //{
+        //    await _repository.Delete(id);
 
-        private async Task<bool> OrderExists(int id)
-        {
-            return await _repository.GetById(id) != null; 
-        }
+        //}
+
+        //private async Task<bool> OrderExists(int id)
+        //{
+        //    return await _repository.GetById(id) != null; 
+        //}
     }
 }

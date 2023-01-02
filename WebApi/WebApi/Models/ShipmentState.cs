@@ -2,8 +2,9 @@
 {
     public enum ShipmentState
     {
+        Created,
         Shipped,
-        Wait,
+        Rejected,
         Completed
     }
 }

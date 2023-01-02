@@ -5,7 +5,7 @@ namespace WebApi.Repository
 {
     public class OrderRepository : RepositoryBase<Order,int>
     {
-        public OrderRepository(OrderDbContext orderDbContext):base(orderDbContext)
+        public OrderRepository(DbFactory factory):base(factory)
         {
 
         }

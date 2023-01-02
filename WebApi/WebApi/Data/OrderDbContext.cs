@@ -11,6 +11,6 @@ namespace WebApi.Data
         }
 
         public DbSet<Order> Orders =>Set<Order>();
-      
+        public DbSet<Product> Products => Set<Product>();
     }
 }

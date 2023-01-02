@@ -11,5 +11,6 @@ namespace WebApi.Repository
         Task Update(TEntity entity);
         Task Delete(TKey id);
         Task<IReadOnlyList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<TEntity> FindByCondition(Expression<Func<TEntity, bool>> predicate);
     }
 }
