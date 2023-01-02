@@ -18,10 +18,7 @@ namespace WebApi
             {
                 using(var channel = connection.CreateModel())
                 {
-                    channel.ExchangeDeclare(dlxExchange, ExchangeType.Direct, true, false); //创建sixin交换机
-                    channel.QueueDeclare(dlxQueueName, true, false, false); // 创建sixin队列
-                    channel.QueueBind(dlxQueueName, dlxExchange, dlxQueueName); //绑定sixin队列sixin交换机
-
+                   
                     channel.ExchangeDeclare(exchange, ExchangeType.Direct, true, false); //创建交换机
                     channel.QueueDeclare(queueName, true, false, false,new Dictionary<string, object>
                     {

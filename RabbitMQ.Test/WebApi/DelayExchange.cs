@@ -23,12 +23,12 @@ namespace WebApi
             {
                 using (var channel = connection.CreateModel())
                 {
-                    //创建死信交换机
-                    channel.ExchangeDeclare(dlxexChange, type: ExchangeType.Direct, durable: true, autoDelete: false);
-                    //创建死信队列
-                    channel.QueueDeclare(dlxQueueName, durable: true, exclusive: false, autoDelete: false);
-                    //死信队列绑定死信交换机
-                    channel.QueueBind(dlxQueueName, dlxexChange, routingKey: dlxQueueName);
+                    ////创建死信交换机
+                    //channel.ExchangeDeclare(dlxexChange, type: ExchangeType.Direct, durable: true, autoDelete: false);
+                    ////创建死信队列
+                    //channel.QueueDeclare(dlxQueueName, durable: true, exclusive: false, autoDelete: false);
+                    ////死信队列绑定死信交换机
+                    //channel.QueueBind(dlxQueueName, dlxexChange, routingKey: dlxQueueName);
 
                     // 创建消息交换机
                     channel.ExchangeDeclare(exchange, type: ExchangeType.Direct, durable: true, autoDelete: false);
