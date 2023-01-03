@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App
 {
-    public class DeadConsumerSeervice:BackgroundService
+    public class DeadConsumerService:BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {

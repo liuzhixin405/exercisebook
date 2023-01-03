@@ -41,20 +41,27 @@ namespace eapi.Service
                 {
                     try
                     {
-                        var product = repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku)).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
-                        if (product == null || product.Count < count)
+                        var getProductFromCache = client.Get<Product>($"product_{sku}");
+                        if(getProductFromCache == null)
+                        {
+                            var product = repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku)).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
+                            getProductFromCache = product;
+                            client.Set<Product>($"product_{sku}", getProductFromCache);
+                        }
+                        if (getProductFromCache == null || getProductFromCache.Count < count)
                         {
                             throw new Exception("库存不足");
                         }
                         else
                         {
-                            product.Count -= count;
+                            getProductFromCache.Count -= count;
                         }
                         await repositoryWrapper.Trans(async () =>
                         {
                             await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                             //throw new Exception("2"); //测试用
-                            await repositoryWrapper.ProductRepository.Update(product);
+                            await repositoryWrapper.ProductRepository.Update(getProductFromCache);
+                             client.Set<Product>($"product_{sku}", getProductFromCache);
                         });
                     }
                     catch
