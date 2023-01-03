@@ -26,7 +26,7 @@ namespace AkkaClient
                                                         }");
             using (var system = ActorSystem.Create("MyClient", config))
             {
-                var greeting = system.ActorSelection("akka.tcp://MyServer@localhost:51179/user/Greeting");
+                var greeting = system.ActorSelection("akka.tcp://MyServer@localhost:12345/user/Greeting");
                 while (true)
                 {
                     var input = Console.ReadLine();

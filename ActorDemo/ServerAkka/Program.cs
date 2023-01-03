@@ -19,7 +19,7 @@ namespace ServerAkka
                                                                     transport-class = ""Akka.Remote.Transport.Helios.HeliosTcpTransport, Akka.Remote""
                                                                     applied-adapters = []
                                                                     transport-protocol = tcp
-                                                                    port = 51179
+                                                                    port = 12345
                                                                     hostname = localhost
                                                                 }
                                                             }
@@ -30,8 +30,6 @@ namespace ServerAkka
 
                 Console.ReadLine();
             }
-
-            Console.WriteLine("Hello World!");
         }
     }
 

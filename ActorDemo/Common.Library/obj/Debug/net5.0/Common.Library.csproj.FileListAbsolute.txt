@@ -9,3 +9,15 @@ C:\Users\l\source\repos\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library
 C:\Users\l\source\repos\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.dll
 C:\Users\l\source\repos\ActorDemo\Common.Library\obj\Debug\net5.0\ref\Common.Library.dll
 C:\Users\l\source\repos\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.pdb
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\bin\Debug\net5.0\Common.Library.deps.json
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\bin\Debug\net5.0\Common.Library.dll
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\bin\Debug\net5.0\Common.Library.pdb
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.csproj.AssemblyReference.cache
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.GeneratedMSBuildEditorConfig.editorconfig
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.AssemblyInfoInputs.cache
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.AssemblyInfo.cs
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.csproj.CoreCompileInputs.cache
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.dll
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\refint\Common.Library.dll
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\Common.Library.pdb
+G:\Users\GitHub\exercisebook\ActorDemo\Common.Library\obj\Debug\net5.0\ref\Common.Library.dll
