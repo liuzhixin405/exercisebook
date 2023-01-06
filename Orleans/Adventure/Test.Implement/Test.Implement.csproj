@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdventureGrainInterfaces\AdventureGrainInterfaces.csproj" />
+    <ProjectReference Include="..\Test.Interfaces\Test.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
