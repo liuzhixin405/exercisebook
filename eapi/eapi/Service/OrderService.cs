@@ -35,7 +35,7 @@ namespace eapi.Service
         {
             try
             {
-                var product =(await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                 if (product == null || product.Count < count)
                 {
@@ -62,37 +62,34 @@ namespace eapi.Service
         }
 
         #region
-        public async Task Create_Old(string sku, int count)
+        public async Task CreateTestLock(string sku, int count)
         {
 
+            var reKey = $"DataLock:{sku}_";
             using (var client = new ConnectionHelper().Conn())
             {
-                bool isLocked = client.Add<string>("DataLock:" + sku, sku, TimeSpan.FromMicroseconds(500));
+                bool isLocked = client.Add<string>(reKey, sku, TimeSpan.FromSeconds(2));
                 if (isLocked)
                 {
                     try
                     {
-                        var getProductFromCache = client.Get<Product>($"product_{sku}");
-                        if (getProductFromCache == null)
-                        {
-                            var product = repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku)).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
-                            getProductFromCache = product;
-                            client.Set<Product>($"product_{sku}", getProductFromCache);
-                        }
-                        if (getProductFromCache == null || getProductFromCache.Count < count)
+                        var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+
+                        if (product == null || product.Count < count)
                         {
                             throw new Exception("库存不足");
                         }
                         else
                         {
-                            getProductFromCache.Count -= count;
+                            //getProductFromCache.Count -= count;
+                            product.Count -= count;
                         }
                         await repositoryWrapper.Trans(async () =>
                         {
                             await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
-                            //throw new Exception("2"); //测试用
-                            await repositoryWrapper.ProductRepository.Update(getProductFromCache);
-                            client.Set<Product>($"product_{sku}", getProductFromCache);
+                            //throw new Exception("2"); //测试用                          
+                            await repositoryWrapper.ProductRepository.Update(product);
+
                         });
                     }
                     catch
@@ -101,7 +98,7 @@ namespace eapi.Service
                     }
                     finally
                     {
-                        client.Remove("DataLock:" + sku);
+                        client.Remove(reKey);
                     }
                 }
                 else

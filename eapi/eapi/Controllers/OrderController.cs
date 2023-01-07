@@ -22,6 +22,12 @@ namespace eapi.Controllers
         {
            await channel.Writer.WriteAsync(new CreateOrderDto(sku,count));   //高并发高效解决方案  并发测试工具postjson_windows
         }
+
+        [HttpPost]
+        public async Task CreateTestLock(string sku, int count)
+        {
+            await orderService.CreateTestLock(sku, count); //效率不高
+        }
         [HttpGet]
         public async Task ChangeOrderStatus(int orderId, OrderStatus status)
         {
