@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub_\\exercise\\ChannelDemo\\ChannelDemo\\ChannelDemo.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\ChannelDemo\\ChannelDemo.csproj": {}
   },
   "projects": {
-    "D:\\GitHub_\\exercise\\ChannelDemo\\ChannelDemo\\ChannelDemo.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\ChannelDemo\\ChannelDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub_\\exercise\\ChannelDemo\\ChannelDemo\\ChannelDemo.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\ChannelDemo\\ChannelDemo.csproj",
         "projectName": "ChannelDemo",
-        "projectPath": "D:\\GitHub_\\exercise\\ChannelDemo\\ChannelDemo\\ChannelDemo.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub_\\exercise\\ChannelDemo\\ChannelDemo\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\ChannelDemo\\ChannelDemo.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\ChannelDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net6.0": {
@@ -45,7 +46,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -54,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
