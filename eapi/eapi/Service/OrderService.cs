@@ -68,7 +68,7 @@ namespace eapi.Service
             var reKey = $"DataLock:{sku}_";
             using (var client = new ConnectionHelper().Conn())
             {
-                bool isLocked = client.Add<string>(reKey, sku, TimeSpan.FromSeconds(2));
+                bool isLocked = client.Add<string>(reKey, sku, TimeSpan.FromSeconds(100));//时间太小无效
                 if (isLocked)
                 {
                     try
