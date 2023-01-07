@@ -3,6 +3,7 @@ using eapi.RedisHelper;
 using eapi.Repositories;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Threading;
 
 namespace eapi.Service
@@ -30,38 +31,80 @@ namespace eapi.Service
             order.ShipMentTime = DateTime.Now;
             await repositoryWrapper.OrderRepository.Update(order);
         }
-
+       
         public async Task Create(string sku, int count)
         {
+            SpinLock sl = new SpinLock();
+            bool gotLock = false;
+            #region MyRegion
+            //using (var client = new ConnectionHelper().Conn())
+            //{
+            //    bool isLocked = client.Add<string>("DataLock:" + sku, sku, TimeSpan.FromMicroseconds(500));
+            //    if (isLocked)
+            //    {
+            //        try
+            //        {
+            //            var getProductFromCache = client.Get<Product>($"product_{sku}");
+            //            if(getProductFromCache == null)
+            //            {
+            //                var product = repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku)).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
+            //                getProductFromCache = product;
+            //                client.Set<Product>($"product_{sku}", getProductFromCache);
+            //            }
+            //            if (getProductFromCache == null || getProductFromCache.Count < count)
+            //            {
+            //                throw new Exception("库存不足");
+            //            }
+            //            else
+            //            {
+            //                getProductFromCache.Count -= count;
+            //            }
+            //            await repositoryWrapper.Trans(async () =>
+            //            {
+            //                await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
+            //                //throw new Exception("2"); //测试用
+            //                await repositoryWrapper.ProductRepository.Update(getProductFromCache);
+            //                 client.Set<Product>($"product_{sku}", getProductFromCache);
+            //            });
+            //        }
+            //        catch
+            //        {
+            //            throw;
+            //        }
+            //        finally
+            //        {
+            //            client.Remove("DataLock:" + sku);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"失败: 没有拿到锁");
+            //    }
+            //}
 
-            using (var client = new ConnectionHelper().Conn())
-            {
-                bool isLocked = client.Add<string>("DataLock:" + sku, sku, TimeSpan.FromMicroseconds(500));
-                if (isLocked)
-                {
-                    try
+            #endregion
+
+
+            try
                     {
-                        var getProductFromCache = client.Get<Product>($"product_{sku}");
-                        if(getProductFromCache == null)
-                        {
-                            var product = repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku)).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
-                            getProductFromCache = product;
-                            client.Set<Product>($"product_{sku}", getProductFromCache);
-                        }
-                        if (getProductFromCache == null || getProductFromCache.Count < count)
+                sl.Enter(ref gotLock);
+                    var product = repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku)).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
+                           
+                        
+                        if (product == null || product.Count < count)
                         {
                             throw new Exception("库存不足");
                         }
                         else
                         {
-                            getProductFromCache.Count -= count;
+                            product.Count -= count;
                         }
                         await repositoryWrapper.Trans(async () =>
                         {
                             await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                             //throw new Exception("2"); //测试用
-                            await repositoryWrapper.ProductRepository.Update(getProductFromCache);
-                             client.Set<Product>($"product_{sku}", getProductFromCache);
+                            await repositoryWrapper.ProductRepository.Update(product);
+                           
                         });
                     }
                     catch
@@ -70,14 +113,11 @@ namespace eapi.Service
                     }
                     finally
                     {
-                        client.Remove("DataLock:" + sku);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine($"失败: 没有拿到锁");
-                }
+                if (gotLock)
+                    sl.Exit();
             }
+  
+            
         }
 
         public async Task Rejected(int orderId)
