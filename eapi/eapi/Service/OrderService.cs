@@ -1,6 +1,8 @@
-﻿using eapi.Models;
+﻿using Colder.DistributedLock.Abstractions;
+using eapi.Models;
 using eapi.RedisHelper;
 using eapi.Repositories;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Diagnostics;
 using System.Threading;
@@ -10,9 +12,11 @@ namespace eapi.Service
     public class OrderService : IOrderService
     {
         private readonly IRepositoryWrapper repositoryWrapper;
-        public OrderService(IRepositoryWrapper repositoryWrapper)
+        private readonly IDistributedLock _distributedLock;
+        public OrderService(IRepositoryWrapper repositoryWrapper, IDistributedLock distributedLock)
         {
             this.repositoryWrapper = repositoryWrapper;
+            _distributedLock = distributedLock;
         }
 
         public async Task Completed(int orderId)
@@ -108,6 +112,36 @@ namespace eapi.Service
             }
         }
         #endregion
+        public async Task CreateDistLock(string sku,int count) 
+        {
+            try
+            {
+                using var _ = await this._distributedLock.Lock(sku);
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+
+                if (product == null || product.Count < count)
+                {
+                    throw new Exception("库存不足");
+                }
+                else
+                {
+                    product.Count -= count;
+                }
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
+                    //throw new Exception("2"); //测试用
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+            }
+        }
         public async Task Rejected(int orderId)
         {
             var order = await repositoryWrapper.OrderRepository.GetById(orderId);

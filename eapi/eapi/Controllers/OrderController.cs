@@ -14,7 +14,7 @@ namespace eapi.Controllers
         private readonly IOrderService orderService;
         public OrderController(IOrderService orderService)
         {
-            this.orderService = orderService;
+            this.orderService = orderService;//500请求 并发50 . 100库存
         }
 
         [HttpPost]
@@ -26,7 +26,13 @@ namespace eapi.Controllers
         [HttpPost]
         public async Task CreateTestLock(string sku, int count)
         {
-            await orderService.CreateTestLock(sku, count); //效率不高
+            await orderService.CreateTestLock(sku, count); //执行时间快,库存少量扣减
+        }
+
+        [HttpPost]
+        public async Task CreateDistLock(string sku, int count)
+        {
+            await orderService.CreateDistLock(sku, count); //库存扣完，时间长
         }
         [HttpGet]
         public async Task ChangeOrderStatus(int orderId, OrderStatus status)

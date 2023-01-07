@@ -9,5 +9,6 @@ namespace eapi.Service
         Task Rejected(int orderId);
         Task Completed(int orderId);
         Task CreateTestLock(string sku, int count);
+        Task CreateDistLock(string sku, int count);
     }
 }

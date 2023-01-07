@@ -1,10 +1,12 @@
 
+using Colder.DistributedLock.Hosting;
 using eapi.Data;
 using eapi.Models.Dtos;
 using eapi.Repositories;
 using eapi.Service;
 using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 using System.Threading.Channels;
@@ -22,6 +24,7 @@ namespace eapi
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Host.ConfigureDistributedLockDefaults();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(connectionString));
             builder.Services.AddEndpointsApiExplorer();
