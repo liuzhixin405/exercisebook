@@ -820,7 +820,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\l\\.nuget\\packages\\": {}
+    "C:\\Users\\86130\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -828,11 +828,11 @@
       "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\HowToUseChannels\\HowToUseChannels.csproj",
       "projectName": "HowToUseChannels",
       "projectPath": "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\HowToUseChannels\\HowToUseChannels.csproj",
-      "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
       "outputPath": "G:\\Users\\GitHub\\exercisebook\\ChannelDemo\\WebChannel\\HowToUseChannels\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -841,7 +841,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
-        "https://nexus.klickl.com/repository/klickl/": {}
+        "https://nexus.klickl.com/repository/klickl": {}
       },
       "frameworks": {
         "net6.0": {
@@ -891,7 +891,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

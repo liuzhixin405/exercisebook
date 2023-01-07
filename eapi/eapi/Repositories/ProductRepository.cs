@@ -1,5 +1,6 @@
 ﻿using eapi.Data;
 using eapi.Models;
+using Microsoft.Identity.Client;
 
 namespace eapi.Repositories
 {
@@ -7,6 +8,7 @@ namespace eapi.Repositories
     {
         public ProductRepository(ProductDbContext dbContext) : base(dbContext)
         {
+            
         }
     }
 }

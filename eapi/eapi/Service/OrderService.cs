@@ -31,7 +31,38 @@ namespace eapi.Service
             await repositoryWrapper.OrderRepository.Update(order);
         }
 
-        public async Task Create(string sku, int count)
+        public async Task Create(string sku, int count) //channel版本
+        {
+            try
+            {
+                var product =(await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+
+                if (product == null || product.Count < count)
+                {
+                    throw new Exception("库存不足");
+                }
+                else
+                {
+                    product.Count -= count;
+                }
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
+                    //throw new Exception("2"); //测试用
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+            }
+        }
+
+        #region
+        public async Task Create_Old(string sku, int count)
         {
 
             using (var client = new ConnectionHelper().Conn())
@@ -42,7 +73,7 @@ namespace eapi.Service
                     try
                     {
                         var getProductFromCache = client.Get<Product>($"product_{sku}");
-                        if(getProductFromCache == null)
+                        if (getProductFromCache == null)
                         {
                             var product = repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku)).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
                             getProductFromCache = product;
@@ -61,7 +92,7 @@ namespace eapi.Service
                             await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                             //throw new Exception("2"); //测试用
                             await repositoryWrapper.ProductRepository.Update(getProductFromCache);
-                             client.Set<Product>($"product_{sku}", getProductFromCache);
+                            client.Set<Product>($"product_{sku}", getProductFromCache);
                         });
                     }
                     catch
@@ -79,7 +110,7 @@ namespace eapi.Service
                 }
             }
         }
-
+        #endregion
         public async Task Rejected(int orderId)
         {
             var order = await repositoryWrapper.OrderRepository.GetById(orderId);

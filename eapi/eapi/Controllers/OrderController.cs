@@ -1,7 +1,9 @@
 ﻿using eapi.Models;
+using eapi.Models.Dtos;
 using eapi.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Channels;
 
 namespace eapi.Controllers
 {
@@ -16,9 +18,9 @@ namespace eapi.Controllers
         }
 
         [HttpPost]
-        public async Task Create(string sku, int count)
+        public async Task Create([FromServices]Channel<CreateOrderDto> channel,string sku, int count)
         {
-            await orderService.Create(sku, count);
+           await channel.Writer.WriteAsync(new CreateOrderDto(sku,count));   //高并发高效解决方案  并发测试工具postjson_windows
         }
         [HttpGet]
         public async Task ChangeOrderStatus(int orderId, OrderStatus status)
