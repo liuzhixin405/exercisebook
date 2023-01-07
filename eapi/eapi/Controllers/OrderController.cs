@@ -40,6 +40,23 @@ namespace eapi.Controllers
         {
             await orderService.CreateNetLock(sku, count); //库存扣完，时间长 50s
         }
+
+        static System.Threading.SpinLock semaphore = new SpinLock();
+        [HttpPost]
+        public async Task CreateLock(string sku, int count)
+        {
+            bool lockTaken = false;
+            try
+            {
+                semaphore.Enter(ref lockTaken);
+                await orderService.CreateLock(sku, count);
+            }
+            finally
+            {
+                if (lockTaken)
+                    semaphore.Exit();
+            }
+        }
         [HttpGet]
         public async Task ChangeOrderStatus(int orderId, OrderStatus status)
         {

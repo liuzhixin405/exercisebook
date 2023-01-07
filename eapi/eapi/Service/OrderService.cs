@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RedLockNet.SERedis;
 using RedLockNet.SERedis.Configuration;
 using StackExchange.Redis;
+using System;
 using System.Diagnostics;
 using System.Threading;
 using Order = eapi.Models.Order;
@@ -199,6 +200,40 @@ namespace eapi.Service
             finally
             {
                 redlockFactory.Dispose();
+            }
+        }
+
+      
+         
+        public async Task CreateLock(string sku, int count) 
+        {
+           
+            try
+            {
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+
+                if (product == null || product.Count < count)
+                {
+                    _logger.LogInformation("库存不足,稍后重试");
+                    return;
+                }
+                else
+                {
+                    product.Count -= count;
+                }
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
+                    //throw new Exception("2"); //测试用
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
             }
         }
         public async Task Rejected(int orderId)
