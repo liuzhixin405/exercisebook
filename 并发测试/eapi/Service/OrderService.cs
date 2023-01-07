@@ -236,6 +236,34 @@ namespace eapi.Service
             {
             }
         }
+
+        static readonly object local_lock = new object();
+        public void CreateLocalLock(string sku, int count) //本地锁版本
+        {
+
+                lock (local_lock)
+                {
+                    var product = (repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
+
+                    if (product == null || product.Count < count)
+                    {
+                        _logger.LogInformation("库存不足,稍后重试");
+                        return;
+                    }
+                    else
+                    {
+                        product.Count -= count;
+                    }
+                     repositoryWrapper.Trans(() =>
+                    {
+                         repositoryWrapper.OrderRepository.Create(Order.Create(sku, count)).ConfigureAwait(false).GetAwaiter().GetResult();
+                        //throw new Exception("2"); //测试用
+                         repositoryWrapper.ProductRepository.Update(product).ConfigureAwait(false).GetAwaiter().GetResult();
+                        return Task.CompletedTask;
+                    }).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+        
+        }
         public async Task Rejected(int orderId)
         {
             var order = await repositoryWrapper.OrderRepository.GetById(orderId);
@@ -280,6 +308,38 @@ namespace eapi.Service
             order.Status = OrderStatus.Shipment;
             order.ShipMentTime = DateTime.Now;
             await repositoryWrapper.OrderRepository.Update(order);
+        }
+
+        public async Task CreateNoLock(string sku, int count)
+        {
+            try
+            {
+               
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+
+                if (product == null || product.Count < count)
+                {
+                    _logger.LogInformation("库存不足,稍后重试");
+                    return;
+                }
+                else
+                {
+                    product.Count -= count;
+                }
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
+                    //throw new Exception("2"); //测试用
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+            }
         }
     }
 }

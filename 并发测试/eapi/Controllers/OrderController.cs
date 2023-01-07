@@ -57,6 +57,18 @@ namespace eapi.Controllers
                     semaphore.Exit();
             }
         }
+
+        [HttpPost]
+        public  void CreateLocalLock(string sku, int count)
+        {
+             orderService.CreateLocalLock(sku, count); //
+        }
+
+        [HttpPost]
+        public async Task CreateNoLock(string sku, int count)
+        {
+           await orderService.CreateNoLock(sku, count); //乱的
+        }
         [HttpGet]
         public async Task ChangeOrderStatus(int orderId, OrderStatus status)
         {

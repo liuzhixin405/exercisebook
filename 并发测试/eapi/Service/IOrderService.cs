@@ -12,5 +12,7 @@ namespace eapi.Service
         Task CreateDistLock(string sku, int count);
         Task CreateNetLock(string sku, int count);
         Task CreateLock(string sku, int count);
+        void CreateLocalLock(string sku, int count);
+        Task CreateNoLock(string sku, int count);
     }
 }
