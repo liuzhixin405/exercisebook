@@ -20,19 +20,25 @@ namespace eapi.Controllers
         [HttpPost]
         public async Task Create([FromServices]Channel<CreateOrderDto> channel,string sku, int count)
         {
-           await channel.Writer.WriteAsync(new CreateOrderDto(sku,count));   //高并发高效解决方案  并发测试工具postjson_windows
+           await channel.Writer.WriteAsync(new CreateOrderDto(sku,count));   //高并发高效解决方案  并发测试工具postjson_windows 10s
         }
 
         [HttpPost]
         public async Task CreateTestLock(string sku, int count)
         {
-            await orderService.CreateTestLock(sku, count); //执行时间快,库存少量扣减
+            await orderService.CreateTestLock(sku, count); //执行时间快,库存少量扣减 10s
         }
 
         [HttpPost]
         public async Task CreateDistLock(string sku, int count)
         {
-            await orderService.CreateDistLock(sku, count); //库存扣完，时间长
+            await orderService.CreateDistLock(sku, count); //库存扣完，时间长 50s
+        }
+
+        [HttpPost]
+        public async Task CreateNetLock(string sku, int count)
+        {
+            await orderService.CreateNetLock(sku, count); //库存扣完，时间长 50s
         }
         [HttpGet]
         public async Task ChangeOrderStatus(int orderId, OrderStatus status)

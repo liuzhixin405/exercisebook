@@ -4,8 +4,12 @@ using eapi.RedisHelper;
 using eapi.Repositories;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using RedLockNet.SERedis;
+using RedLockNet.SERedis.Configuration;
+using StackExchange.Redis;
 using System.Diagnostics;
 using System.Threading;
+using Order = eapi.Models.Order;
 
 namespace eapi.Service
 {
@@ -13,10 +17,12 @@ namespace eapi.Service
     {
         private readonly IRepositoryWrapper repositoryWrapper;
         private readonly IDistributedLock _distributedLock;
-        public OrderService(IRepositoryWrapper repositoryWrapper, IDistributedLock distributedLock)
+        private readonly ILogger<OrderService> _logger;
+        public OrderService(IRepositoryWrapper repositoryWrapper, IDistributedLock distributedLock, ILogger<OrderService> logger)
         {
             this.repositoryWrapper = repositoryWrapper;
             _distributedLock = distributedLock;
+            _logger = logger;
         }
 
         public async Task Completed(int orderId)
@@ -43,7 +49,8 @@ namespace eapi.Service
 
                 if (product == null || product.Count < count)
                 {
-                    throw new Exception("库存不足");
+                    _logger.LogInformation("库存不足,稍后重试");
+                    return;
                 }
                 else
                 {
@@ -66,7 +73,7 @@ namespace eapi.Service
         }
 
         #region
-        public async Task CreateTestLock(string sku, int count)
+        public async Task CreateTestLock(string sku, int count)  //自定义版本
         {
 
             var reKey = $"DataLock:{sku}_";
@@ -81,7 +88,8 @@ namespace eapi.Service
 
                         if (product == null || product.Count < count)
                         {
-                            throw new Exception("库存不足");
+                            _logger.LogInformation("库存不足,稍后重试");
+                            return;
                         }
                         else
                         {
@@ -112,7 +120,7 @@ namespace eapi.Service
             }
         }
         #endregion
-        public async Task CreateDistLock(string sku,int count) 
+        public async Task CreateDistLock(string sku, int count) //分布式锁版本
         {
             try
             {
@@ -121,7 +129,8 @@ namespace eapi.Service
 
                 if (product == null || product.Count < count)
                 {
-                    throw new Exception("库存不足");
+                    _logger.LogInformation("库存不足,稍后重试");
+                    return; 
                 }
                 else
                 {
@@ -140,6 +149,56 @@ namespace eapi.Service
             }
             finally
             {
+            }
+        }
+
+
+        static readonly string resource = "CreateNetLock_Lock_";
+        static readonly TimeSpan expiry = TimeSpan.FromSeconds(30);
+        static readonly TimeSpan wait = TimeSpan.FromSeconds(10);
+        static readonly TimeSpan retry = TimeSpan.FromSeconds(1);
+        public async Task CreateNetLock(string sku, int count)      //分布式锁版本二
+        {
+            var redlockFactory = RedLockFactory.Create(new List<RedLockMultiplexer>
+                                                                                    {
+                                                                                        ConnectionMultiplexer.Connect("localhost:6379"),
+                                                                                    });
+            try
+            {
+                // blocks until acquired or 'wait' timeout
+                await using (var redLock = await redlockFactory.CreateLockAsync(resource, expiry, wait, retry)) // there are also non async Create() methods
+                {
+                    // make sure we got the lock
+                    if (redLock.IsAcquired)
+                    {
+                        // do stuff
+                        var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+
+                        if (product == null || product.Count < count)
+                        {
+                            _logger.LogInformation("库存不足,稍后重试");
+                            return;
+                        }
+                        else
+                        {
+                            product.Count -= count;
+                        }
+                        await repositoryWrapper.Trans(async () =>
+                        {
+                            await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
+                            //throw new Exception("2"); //测试用
+                            await repositoryWrapper.ProductRepository.Update(product);
+                        });
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                redlockFactory.Dispose();
             }
         }
         public async Task Rejected(int orderId)

@@ -10,5 +10,6 @@ namespace eapi.Service
         Task Completed(int orderId);
         Task CreateTestLock(string sku, int count);
         Task CreateDistLock(string sku, int count);
+        Task CreateNetLock(string sku, int count);
     }
 }
