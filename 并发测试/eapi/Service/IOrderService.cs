@@ -14,5 +14,6 @@ namespace eapi.Service
         Task CreateLock(string sku, int count);
         void CreateLocalLock(string sku, int count);
         Task CreateNoLock(string sku, int count);
+        Task CreateBlockingLock(string sku, int count);
     }
 }

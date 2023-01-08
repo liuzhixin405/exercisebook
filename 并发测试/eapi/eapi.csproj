@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Colder.DistributedLock.Hosting" Version="1.2.60" />
+    <PackageReference Include="Colder.DistributedLock.InMemory" Version="1.2.60" />
     <PackageReference Include="Colder.DistributedLock.Redis" Version="1.2.60" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />

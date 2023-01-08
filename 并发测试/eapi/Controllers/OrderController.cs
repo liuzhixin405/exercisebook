@@ -24,26 +24,30 @@ namespace eapi.Controllers
         }
 
         [HttpPost]
-        public async Task CreateTestLock(string sku, int count)
+        public async Task CreateTestLock(string sku, int count)//非阻塞锁
         {
             await orderService.CreateTestLock(sku, count); //执行时间快,库存少量扣减 10s
         }
-
         [HttpPost]
-        public async Task CreateDistLock(string sku, int count)
+        public async Task CreateBlockingLock(string sku, int count)//阻塞锁
+        {
+            await orderService.CreateBlockingLock(sku, count); //卖不完,时间长 50s
+        }
+        [HttpPost]
+        public async Task CreateDistLock(string sku, int count) //colder组件 分布式锁
         {
             await orderService.CreateDistLock(sku, count); //库存扣完，时间长 50s
         }
 
         [HttpPost]
-        public async Task CreateNetLock(string sku, int count)
+        public async Task CreateNetLock(string sku, int count)   //netlock.net锁 
         {
             await orderService.CreateNetLock(sku, count); //库存扣完，时间长 50s
         }
 
-        static System.Threading.SpinLock semaphore = new SpinLock();
+        static System.Threading.SpinLock semaphore = new SpinLock(false);
         [HttpPost]
-        public async Task CreateLock(string sku, int count)
+        public async Task CreateLock(string sku, int count)   //卖不完
         {
             bool lockTaken = false;
             try
@@ -59,7 +63,7 @@ namespace eapi.Controllers
         }
 
         [HttpPost]
-        public  void CreateLocalLock(string sku, int count)
+        public  void CreateLocalLock(string sku, int count)  //能卖完
         {
              orderService.CreateLocalLock(sku, count); //
         }
