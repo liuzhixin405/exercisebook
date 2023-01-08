@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\CallContext\\CallContextTest.csproj": {}
+    "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\CallContext\\CallContextTest.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\CallContext\\CallContextTest.csproj": {
+    "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\CallContext\\CallContextTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\CallContext\\CallContextTest.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\CallContext\\CallContextTest.csproj",
         "projectName": "CallContextTest",
-        "projectPath": "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\CallContext\\CallContextTest.csproj",
+        "projectPath": "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\CallContext\\CallContextTest.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\CallContext\\obj\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\CallContext\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,12 +50,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

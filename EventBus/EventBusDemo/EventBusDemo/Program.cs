@@ -7,7 +7,7 @@ namespace EventBusDemo
     {
         static void Main(string[] args)
         {
-            var fishingRod = new FishingRod(); //鱼竿
+            var fishingRod = new FishingRod (); //鱼竿
             var jeff = new FishingMan("姜太公");
             jeff.FishingRod = fishingRod; //鱼竿分配
             //注册观察者

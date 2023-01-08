@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "oDR6nMSvgL8Ns7uS7cXF3wbDZsUWFNiLKiSrhOwb9/8yQCfUoAjzr2UN1aFzBRDEeJbhRu1k3wbsV9qwAzBgTg==",
+  "dgSpecHash": "Wm04JAw9t2FmjYG11+Uv758mREXovu04YlO2UF5IhlpWvvkDrDwiWfDKB1tosEYyzans+04Qc0af8i9JZxnm8A==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\ConsoleApp\\ConsoleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
   "logs": []
 }

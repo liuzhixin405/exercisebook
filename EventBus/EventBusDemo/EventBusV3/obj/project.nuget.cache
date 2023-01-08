@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "83EtYSLI0qA4tDYwz4Oxsa5wJb0j49BXJ3LXA60UEx5dRdW/PBsBGIEdVcF6SeXEtoHCCjGSc25lpIyQZnw2wQ==",
+  "dgSpecHash": "UWGKIsET3MKpOYSTwWCZScrVUsk7m/q0NTL97hIpQT+TF0y7GZo5lQXWmQS8Krb00VIKZr2Xzp2U9RO8ZLcYwg==",
   "success": true,
-  "projectFilePath": "D:\\GitHub_\\exercise\\EventBusDemo\\EventBusV3\\EventBusV3.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\EventBus\\EventBusDemo\\EventBusV3\\EventBusV3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "egK9E36e/0As+EC6bHjAiZsRVPG2CtJ/woHOVxRbiy2/eGfr1MCwO8tDrmovAgzGpy/whAMnUgO1/TvfKfoVIQ==",
+  "dgSpecHash": "iWCyMTMFYK1+G9yof05TKpToNaya8TF1aEzxYJX69w3rfFcSViioa8i2wHFPUvKgq2WyqzOUuEk7WFQaaiyI+Q==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\Test\\Test.csproj",
+  "projectFilePath": "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\Test\\Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",
@@ -95,7 +95,10 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\xunit.core\\2.4.1\\xunit.core.2.4.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\xunit.extensibility.core\\2.4.1\\xunit.extensibility.core.2.4.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\xunit.extensibility.execution\\2.4.1\\xunit.extensibility.execution.2.4.1.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.3\\xunit.runner.visualstudio.2.4.3.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.3\\xunit.runner.visualstudio.2.4.3.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

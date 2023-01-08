@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "KWCFPy4voDPrWj79vg0fuA7NQHMOUx60bBYtulxmD/CRNM9yjfdcbS/wa00HdOjv10dWCHTVPHhIfgtuKB/2cQ==",
+  "dgSpecHash": "gTceQnrucsBzhPAAY/VBxC+w5n2CE5o08QRZj/VyLvm0AGZd7JjFrxN0rXv5CE5tCfTED/T0z8at1Yu32FB0lw==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercisebook\\netcore生产消费和流\\ConsoleApp\\CallContext\\CallContextTest.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\ChannelDemo\\ConsoleApp\\CallContext\\CallContextTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
