@@ -14,7 +14,7 @@ namespace PubSubConsole
         {
             SendMessage sendMessage = new SendMessage() { Message = message };
             sendMessage.EventStore = this;
-            EventBus.Default.Trigger<SendMessage>(sendMessage);
+            EventBus.Default.Trigger(sendMessage);
             return Task.CompletedTask;
         }
     }
