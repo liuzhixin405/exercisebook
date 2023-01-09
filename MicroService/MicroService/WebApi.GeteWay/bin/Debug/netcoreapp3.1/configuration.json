@@ -1,160 +1,160 @@
-////*****************************µ¥µØÖ·********************************
-//ocelot1.6°æ±¾Ò»ÏÂÊÇReRoutes £¬·´Ö®ÊÇRoutes
+////*****************************ï¿½ï¿½ï¿½ï¿½Ö·********************************
+//ocelot1.6ï¿½æ±¾Ò»ï¿½ï¿½ï¿½ï¿½ReRoutes ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Routes
 //{
 //  "Routes": [
 //    {
-//      "DownstreamPathTemplate": "/api/{url}", //·þÎñµØÖ·--url±äÁ¿
+//      "DownstreamPathTemplate": "/api/{url}", //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "DownstreamScheme": "http",
 //      "DownstreamHostAndPorts": [
 //        {
 //          "Host": "localhost",
-//          "Port": 5008 //·þÎñ¶Ë¿Ú
-//        } //¿ÉÒÔ¶à¸ö£¬×ÔÐÐ¸ºÔØ¾ùºâ
+//          "Port": 5008 //ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
+//        } //ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 //      ],
-//      "UpstreamPathTemplate": "/gateway/{url}", //Íø¹ØµØÖ·--url±äÁ¿   //³åÍ»µÄ»¹¿ÉÒÔ¼ÓÈ¨ÖØPriority
+//      "UpstreamPathTemplate": "/gateway/{url}", //ï¿½ï¿½ï¿½Øµï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½   //ï¿½ï¿½Í»ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½È¨ï¿½ï¿½Priority
 //      "UpstreamHttpMethod": [ "Get", "Post" ]
 //    }
 //  ]
 //}
 
-//*****************************¶àµØÖ·¶àÊµÀý********************************
+//*****************************ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Êµï¿½ï¿½********************************
 //{
 //  "Routes": [
 //    {
-//      "DownstreamPathTemplate": "/api/{url}", //·þÎñµØÖ·--url±äÁ¿
+//      "DownstreamPathTemplate": "/api/{url}", //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "DownstreamScheme": "http",
 //      "DownstreamHostAndPorts": [
 //        {
 //          "Host": "localhost",
-//          "Port": 5007 //·þÎñ¶Ë¿Ú
-//        } //¿ÉÒÔ¶à¸ö£¬×ÔÐÐ¸ºÔØ¾ùºâ
+//          "Port": 5007 //ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
+//        } //ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 //      ],
-//      "UpstreamPathTemplate": "/T5007/{url}", //Íø¹ØµØÖ·--url±äÁ¿   //³åÍ»µÄ»¹¿ÉÒÔ¼ÓÈ¨ÖØPriority
+//      "UpstreamPathTemplate": "/T5007/{url}", //ï¿½ï¿½ï¿½Øµï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½   //ï¿½ï¿½Í»ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½È¨ï¿½ï¿½Priority
 //      "UpstreamHttpMethod": [ "Get", "Post" ]
 //    },
 //    {
-//      "DownstreamPathTemplate": "/api/{url}", //·þÎñµØÖ·--url±äÁ¿
+//      "DownstreamPathTemplate": "/api/{url}", //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "DownstreamScheme": "http",
 //      "DownstreamHostAndPorts": [
 //        {
 //          "Host": "localhost",
-//          "Port": 5008 //·þÎñ¶Ë¿Ú
+//          "Port": 5008 //ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
 //        }
 //      ],
-//      "UpstreamPathTemplate": "/T5008/{url}", //Íø¹ØµØÖ·--url±äÁ¿
+//      "UpstreamPathTemplate": "/T5008/{url}", //ï¿½ï¿½ï¿½Øµï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "UpstreamHttpMethod": [ "Get", "Post" ]
 //    },
 //        {
-//      "DownstreamPathTemplate": "/api/{url}", //·þÎñµØÖ·--url±äÁ¿
+//      "DownstreamPathTemplate": "/api/{url}", //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "DownstreamScheme": "http",
 //      "DownstreamHostAndPorts": [
 //        {
 //          "Host": "localhost",
-//          "Port": 5009 //·þÎñ¶Ë¿Ú
+//          "Port": 5009 //ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
 //        }
 //      ],
-//      "UpstreamPathTemplate": "/T5009/{url}", //Íø¹ØµØÖ·--url±äÁ¿
+//      "UpstreamPathTemplate": "/T5009/{url}", //ï¿½ï¿½ï¿½Øµï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "UpstreamHttpMethod": [ "Get", "Post" ]
 //    }
 //  ]
 //}
 
-////*****************************µ¥µØÖ·¶àÊµÀý¸ºÔØ¾ùºâ********************************
+////*****************************ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½********************************
 //{
 //  "Routes": [
 //    {
-//      "DownstreamPathTemplate": "/api/{url}", //·þÎñµØÖ·--url±äÁ¿
+//      "DownstreamPathTemplate": "/api/{url}", //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "DownstreamScheme": "http",
 //      "DownstreamHostAndPorts": [
 //        {
 //          "Host": "localhost",
-//          "Port": 5007 //·þÎñ¶Ë¿Ú
-//        } //¿ÉÒÔ¶à¸ö£¬×ÔÐÐ¸ºÔØ¾ùºâ
+//          "Port": 5007 //ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
+//        } //ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 //        ,
 //        {
 //          "Host": "localhost",
-//          "Port": 5008 //·þÎñ¶Ë¿Ú
+//          "Port": 5008 //ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
 //        },
 //        {
 //          "Host": "localhost",
-//          "Port": 5009 //·þÎñ¶Ë¿Ú
+//          "Port": 5009 //ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
 //        }
 //      ],
-//      "UpstreamPathTemplate": "/T500/{url}", //Íø¹ØµØÖ·--url±äÁ¿   //³åÍ»µÄ»¹¿ÉÒÔ¼ÓÈ¨ÖØPriority
+//      "UpstreamPathTemplate": "/T500/{url}", //ï¿½ï¿½ï¿½Øµï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½   //ï¿½ï¿½Í»ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½È¨ï¿½ï¿½Priority
 //      "UpstreamHttpMethod": [ "Get", "Post" ],
 //      "LoadBalancerOptions": {
-//        "Type": "RoundRobin" //ÂÖÑ¯      LeastConnection-×îÉÙÁ¬½ÓÊýµÄ·þÎñÆ÷   NoLoadBalance²»¸ºÔØ¾ùºâ
+//        "Type": "RoundRobin" //ï¿½ï¿½Ñ¯      LeastConnection-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½   NoLoadBalanceï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 //      }
 //    }
 //  ]
 //}
 
 
-////*****************************µ¥µØÖ·¶àÊµÀý¸ºÔØ¾ùºâ+Consul********************************
+////*****************************ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½+Consul********************************
 //{
 //  "Routes": [
 //    {
-//      "DownstreamPathTemplate": "/api/{url}", //·þÎñµØÖ·--url±äÁ¿
+//      "DownstreamPathTemplate": "/api/{url}", //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "DownstreamScheme": "http",
-//      "UpstreamPathTemplate": "/Gateway/{url}", //Íø¹ØµØÖ·--url±äÁ¿
+//      "UpstreamPathTemplate": "/Gateway/{url}", //ï¿½ï¿½ï¿½Øµï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
 //      "UpstreamHttpMethod": [ "Get", "Post" ],
-//      "ServiceName": "test007_consul", //consul·þÎñÃû³Æ
+//      "ServiceName": "test007_consul", //consulï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //      "LoadBalancerOptions": {
-//        "Type": "RoundRobin" //ÂÖÑ¯      LeastConnection-×îÉÙÁ¬½ÓÊýµÄ·þÎñÆ÷   NoLoadBalance²»¸ºÔØ¾ùºâ
+//        "Type": "RoundRobin" //ï¿½ï¿½Ñ¯      LeastConnection-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½   NoLoadBalanceï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 //      },
 //      "UseServiceDiscovery": true
 //    }
 //  ],
 //  "GlobalConfiguration": {
-//    "BaseUrl": "http://127.0.0.1:5000", //Íø¹Ø¶ÔÍâµØÖ·   ÕâÃ´Ä¬ÈÏ²»ÄÜ·ÃÎÊ£¬²»ÊÇ·ÃÎÊ¿ª·Å¶Ë¿Ú
+//    "BaseUrl": "http://127.0.0.1:5000", //ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½Ö·   ï¿½ï¿½Ã´Ä¬ï¿½Ï²ï¿½ï¿½Ü·ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ê¿ï¿½ï¿½Å¶Ë¿ï¿½
 //    "ServiceDiscoveryProvider": {
 //      "Host": "localhost",
 //      "Port": 8500,
-//      "Type": "Consul" //ÓÉConsulÌá¹©·þÎñ·¢ÏÖ
+//      "Type": "Consul" //ï¿½ï¿½Consulï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //    }
 //  }
 //}
 
-//*****************************µ¥µØÖ·¶àÊµÀý¸ºÔØ¾ùºâ+Consul+Polly********************************
+//*****************************ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½+Consul+Polly********************************
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/{url}", //·þÎñµØÖ·--url±äÁ¿
+      "DownstreamPathTemplate": "/api/{url}", //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/consul/{url}", //Íø¹ØµØÖ·--url±äÁ¿
+      "UpstreamPathTemplate": "/consul/{url}", //ï¿½ï¿½ï¿½Øµï¿½Ö·--urlï¿½ï¿½ï¿½ï¿½
       "UpstreamHttpMethod": [ "Get", "Post" ],
-      "ServiceName": "test007_consul", //consul·þÎñÃû³Æ
+      "ServiceName": "test007_consul", //consulï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       "LoadBalancerOptions": {
-        "Type": "RoundRobin" //ÂÖÑ¯      LeastConnection-×îÉÙÁ¬½ÓÊýµÄ·þÎñÆ÷   NoLoadBalance²»¸ºÔØ¾ùºâ
+        "Type": "RoundRobin" //ï¿½ï¿½Ñ¯      LeastConnection-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½   NoLoadBalanceï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
       },
       "UseServiceDiscovery": true,
       "QoSOptions": {
-        "ExceptionsAllowedBeforeBreaking": 3,    //ÔÊÐí¶àÉÙ¸öÒì³£ÇëÇó
-        "DurationOfBreak": 5000,   // ÈÛ¶ÏµÄÊ±¼ä£¬µ¥Î»Îªms
-        //"TimeoutValue": 2000      //Èç¹ûÏÂÓÎÇëÇóµÄ´¦ÀíÊ±¼ä³¬¹ý¶àÉÙÔò×ÔÈç½«ÇëÇóÉèÖÃÎª³¬Ê± Ä¬ÈÏ90Ãë  ²»×¢ÊÍÇëÇó·µ»Ø404
+        "ExceptionsAllowedBeforeBreaking": 3,    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
+        "DurationOfBreak": 5000,   // ï¿½Û¶Ïµï¿½Ê±ï¿½ä£¬ï¿½ï¿½Î»Îªms
+        //"TimeoutValue": 2000      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Ê±ï¿½ä³¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç½«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ê± Ä¬ï¿½ï¿½90ï¿½ï¿½  ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ó·µ»ï¿½404
       }, 
       "RateLimitOptions": {
-        "ClientWhitelist": [], //°×Ãûµ¥
+        "ClientWhitelist": [], //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         "EnableRateLimiting": true,
         "Period": "5m", //1s, 5m, 1h, 1d  jeffzhang
-        "PeriodTimespan": 5, //¶àÉÙÃëÖ®ºó¿Í»§¶Ë¿ÉÒÔÖØÊÔ
-        "Limit": 5 //Í³¼ÆÊ±¼ä¶ÎÄÚÔÊÐíµÄ×î´óÇëÇóÊýÁ¿
+        "PeriodTimespan": 5, //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Í»ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        "Limit": 5 //Í³ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       },
       "FileCacheOptions": {
         "TtlSeconds": 10
-      } //"»º´æ10m"
+      } //"ï¿½ï¿½ï¿½ï¿½10m"
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://127.0.0.1:5000", //Íø¹Ø¶ÔÍâµØÖ·  ¸ÃÉèÖÃÃ»É¶ÓÃ
+    "BaseUrl": "http://127.0.0.1:5000", //ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½Ö·  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»É¶ï¿½ï¿½
     "ServiceDiscoveryProvider": {
       "Host": "localhost",
       "Port": 8500,
-      "Type": "Consul" //ÓÉConsulÌá¹©·þÎñ·¢ÏÖ
+      "Type": "Consul" //ï¿½ï¿½Consulï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     },
     "RateLimitOptions": {
-      "QuotaExceededMessage": "Too many requests, maybe later? 11", // µ±ÇëÇó¹ýÔØ±»½Ø¶ÏÊ±·µ»ØµÄÏûÏ¢
-      "HttpStatusCode": 4444 // µ±ÇëÇó¹ýÔØ±»½Ø¶ÏÊ±·µ»ØµÄhttp status
+      "QuotaExceededMessage": "Too many requests, maybe later? 11", // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½Ø¶ï¿½Ê±ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
+      "HttpStatusCode": 4444 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½Ø¶ï¿½Ê±ï¿½ï¿½ï¿½Øµï¿½http status
     }
   }
 }

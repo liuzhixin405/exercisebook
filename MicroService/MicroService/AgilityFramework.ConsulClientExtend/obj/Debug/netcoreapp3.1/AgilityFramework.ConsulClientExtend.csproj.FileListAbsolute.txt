@@ -7,3 +7,13 @@ C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\D
 C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.pdb
 C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.csproj.CoreCompileInputs.cache
 C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.csprojAssemblyReference.cache
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\bin\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.deps.json
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\bin\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.dll
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\bin\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.pdb
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.csproj.AssemblyReference.cache
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.GeneratedMSBuildEditorConfig.editorconfig
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.AssemblyInfoInputs.cache
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.AssemblyInfo.cs
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.csproj.CoreCompileInputs.cache
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.dll
+G:\Users\GitHub\exercisebook\MicroService\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.pdb
