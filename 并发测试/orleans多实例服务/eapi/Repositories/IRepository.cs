@@ -1,5 +1,6 @@
 ﻿using eapi.Data;
 using Microsoft.EntityFrameworkCore;
+using ServiceStack;
 using System.Linq.Expressions;
 
 namespace eapi.Repositories
@@ -9,52 +10,54 @@ namespace eapi.Repositories
         Task Create(T entity);
         Task Delete(T entity);
         Task<IQueryable<T>> FindAll();
-        Task<IQueryable<T>> FindByCondition(Expression<Func<T, bool>> expression);
+        Task<IReadOnlyList<T>> FindByCondition(Expression<Func<T, bool>> expression);
         Task<T> GetById(int id);
         Task Update(T entity);
     }
     public abstract class ReposioryBase<T> : IRepository<T> where T : class
     {
-        private readonly ProductDbContext dbContext;
-        public ReposioryBase(ProductDbContext dbContext)
+        private  DbSet<T> _dbSet;
+        private readonly DbFactory _dbFactory;
+        protected DbSet<T> DbSet => _dbSet ?? (_dbSet = _dbFactory.DbContext.Set<T>());
+        public ReposioryBase(DbFactory dbFactory)
         {
-            this.dbContext = dbContext;
+            this._dbFactory = dbFactory;
         }
         public async Task Create(T entity)
         {
-            await dbContext.Set<T>().AddAsync(entity);
-            await dbContext.SaveChangesAsync();
+            await DbSet.AddAsync(entity);
+            //await dbContext.SaveChangesAsync();
         }
 
         public async Task Delete(T entity)
         {
-            dbContext.Set<T>().Remove(entity);
-            await dbContext.SaveChangesAsync();
+            DbSet.Remove(entity);
+            //await dbContext.SaveChangesAsync();
         }
 
         public async Task<IQueryable<T>> FindAll()
         {
             await Task.CompletedTask;
-            return dbContext.Set<T>().AsNoTracking();
+            return DbSet.AsNoTracking();
         }
 
-        public async Task<IQueryable<T>> FindByCondition(Expression<Func<T, bool>> expression)
+        public async Task<IReadOnlyList<T>> FindByCondition(Expression<Func<T, bool>> expression)
         {
-            await Task.CompletedTask;
-            return dbContext.Set<T>().AsNoTracking().Where(expression);
+            return await DbSet.Where(expression).ToListAsync();
         }
 
         public async Task<T> GetById(int id)
         {
-            return await dbContext.Set<T>().FindAsync(id);
+            return await DbSet.FindAsync(id);
         }
 
-        public async Task Update(T entity)
+        public Task Update(T entity)
         {
             try
             {
-                dbContext.Entry<T>(entity).State = EntityState.Modified;
-                await dbContext.SaveChangesAsync();
+                DbSet.Update(entity);
+                return Task.CompletedTask;
+                //await dbContext.SaveChangesAsync();
             }
             catch
             {

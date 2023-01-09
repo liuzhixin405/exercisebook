@@ -1,4 +1,4 @@
-﻿using eapi.interfaces.Models;
+﻿using eapi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace eapi.Data

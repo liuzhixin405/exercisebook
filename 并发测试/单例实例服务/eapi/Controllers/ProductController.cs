@@ -1,5 +1,5 @@
 ﻿using eapi.Data;
-using eapi.interfaces.Models;
+using eapi.Models;
 using eapi.Repositories;
 using eapi.Service;
 using Microsoft.AspNetCore.Http;

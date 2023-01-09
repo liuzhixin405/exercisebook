@@ -1,7 +1,5 @@
 ﻿using Colder.DistributedLock.Abstractions;
-using eapi.Data;
-using eapi.interfaces;
-using eapi.interfaces.Models;
+using eapi.Models;
 using eapi.RedisHelper;
 using eapi.Repositories;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -12,29 +10,25 @@ using StackExchange.Redis;
 using System;
 using System.Diagnostics;
 using System.Threading;
-using Order = eapi.interfaces.Models.Order;
+using Order = eapi.Models.Order;
 
 namespace eapi.Service
 {
-    public class OrderService : Orleans.Grain,IOrderGrains
+    public class OrderService : IOrderService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepositoryWrapper repositoryWrapper;
         private readonly IDistributedLock _distributedLock;
         private readonly ILogger<OrderService> _logger;
-        private readonly IRepository<Order> _orderRepository;
-        private readonly IRepository<Product> _productRepository;
-        public OrderService(IUnitOfWork unitOfWork, IDistributedLock distributedLock, ILogger<OrderService> logger, IRepository<Order> orderRepository, IRepository<Product> productRepository)
+        public OrderService(IRepositoryWrapper repositoryWrapper, IDistributedLock distributedLock, ILogger<OrderService> logger)
         {
-            this._unitOfWork = unitOfWork;
+            this.repositoryWrapper = repositoryWrapper;
             _distributedLock = distributedLock;
             _logger = logger;
-            _orderRepository = orderRepository;
-            _productRepository = productRepository;
         }
 
         public async Task Completed(int orderId)
         {
-            var order = await _orderRepository.GetById(orderId);
+            var order = await repositoryWrapper.OrderRepository.GetById(orderId);
             if (order == null)
             {
                 throw new Exception("订单号错误");
@@ -45,15 +39,14 @@ namespace eapi.Service
             }
             order.Status = OrderStatus.Completed;
             order.ShipMentTime = DateTime.Now;
-            await _orderRepository.Update(order);
-            await _unitOfWork.CommitAsync();
+            await repositoryWrapper.OrderRepository.Update(order);
         }
 
         public async Task Create(string sku, int count) //channel版本
         {
             try
             {
-                var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                 if (product == null || product.Count < count)
                 {
@@ -64,11 +57,12 @@ namespace eapi.Service
                 {
                     product.Count -= count;
                 }
-               
-                    await _orderRepository.Create(Order.Create(sku, count));
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                     //throw new Exception("2"); //测试用
-                    await _productRepository.Update(product);
-                     await _unitOfWork.CommitAsync();
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
             }
             catch
             {
@@ -91,7 +85,7 @@ namespace eapi.Service
                 {
                     try
                     {
-                        var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                        var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                         if (product == null || product.Count < count)
                         {
@@ -103,13 +97,13 @@ namespace eapi.Service
                             //getProductFromCache.Count -= count;
                             product.Count -= count;
                         }
-                        //await repositoryWrapper.Trans(async () =>
-                        //{
-                            await _orderRepository.Create(Order.Create(sku, count));
+                        await repositoryWrapper.Trans(async () =>
+                        {
+                            await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                             //throw new Exception("2"); //测试用                          
-                            await _productRepository.Update(product);
-                        await _unitOfWork.CommitAsync();
-                        //});
+                            await repositoryWrapper.ProductRepository.Update(product);
+
+                        });
                     }
                     catch
                     {
@@ -134,7 +128,7 @@ namespace eapi.Service
             try
             {
                 using var _ = await this._distributedLock.Lock(sku);
-                var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                 if (product == null || product.Count < count)
                 {
@@ -145,11 +139,12 @@ namespace eapi.Service
                 {
                     product.Count -= count;
                 }
-               
-                    await _orderRepository.Create(Order.Create(sku, count));
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                     //throw new Exception("2"); //测试用
-                    await _productRepository.Update(product);
-                   await _unitOfWork.CommitAsync();
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
             }
             catch
             {
@@ -180,7 +175,7 @@ namespace eapi.Service
                     if (redLock.IsAcquired)
                     {
                         // do stuff
-                        var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                        var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                         if (product == null || product.Count < count)
                         {
@@ -191,11 +186,12 @@ namespace eapi.Service
                         {
                             product.Count -= count;
                         }
-                      
-                            await _orderRepository.Create(Order.Create(sku, count));
+                        await repositoryWrapper.Trans(async () =>
+                        {
+                            await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                             //throw new Exception("2"); //测试用
-                            await _productRepository.Update(product);
-                        await _unitOfWork.CommitAsync();
+                            await repositoryWrapper.ProductRepository.Update(product);
+                        });
                     }
                 }
             }
@@ -216,7 +212,7 @@ namespace eapi.Service
 
             try
             {
-                var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                 if (product == null || product.Count < count)
                 {
@@ -227,13 +223,12 @@ namespace eapi.Service
                 {
                     product.Count -= count;
                 }
-               // await repositoryWrapper.Trans(async () =>
-               // {
-                    await _orderRepository.Create(Order.Create(sku, count));
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                     //throw new Exception("2"); //测试用
-                    await _productRepository.Update(product);
-                    await _unitOfWork.CommitAsync();
-                //});
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
             }
             catch
             {
@@ -250,7 +245,7 @@ namespace eapi.Service
 
             lock (local_lock)
             {
-                var product = (_productRepository.FindByCondition(x => x.Sku.Equals(sku))).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
+                var product = (repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).ConfigureAwait(false).GetAwaiter().GetResult().SingleOrDefault();
 
                 if (product == null || product.Count < count)
                 {
@@ -261,20 +256,19 @@ namespace eapi.Service
                 {
                     product.Count -= count;
                 }
-                //repositoryWrapper.Trans(() =>
-               //{
-                   _orderRepository.Create(Order.Create(sku, count)).ConfigureAwait(false).GetAwaiter().GetResult();
+                repositoryWrapper.Trans(() =>
+               {
+                   repositoryWrapper.OrderRepository.Create(Order.Create(sku, count)).ConfigureAwait(false).GetAwaiter().GetResult();
                    //throw new Exception("2"); //测试用
-                   _productRepository.Update(product).ConfigureAwait(false).GetAwaiter().GetResult();
-                 
-                    _unitOfWork.CommitAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-               //}).ConfigureAwait(false).GetAwaiter().GetResult();
+                   repositoryWrapper.ProductRepository.Update(product).ConfigureAwait(false).GetAwaiter().GetResult();
+                   return Task.CompletedTask;
+               }).ConfigureAwait(false).GetAwaiter().GetResult();
             }
 
         }
         public async Task Rejected(int orderId)
         {
-            var order = await _orderRepository.GetById(orderId);
+            var order = await repositoryWrapper.OrderRepository.GetById(orderId);
             if (order == null)
             {
                 throw new Exception("订单号错误");
@@ -287,25 +281,24 @@ namespace eapi.Service
             order.Status = OrderStatus.Rejected;
             order.RejectedTime = DateTime.Now;
 
-            var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(order.Sku))).SingleOrDefault();
+            var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(order.Sku))).SingleOrDefault();
             if (product == null)
             {
                 throw new Exception("product号错误");
             }
             product.Count += order.Count;
 
-            //await repositoryWrapper.Trans(async () =>
-            //{
-                await _orderRepository.Update(order);
-                await _productRepository.Update(product);
-            await _unitOfWork.CommitAsync();
-           // });
+            await repositoryWrapper.Trans(async () =>
+            {
+                await repositoryWrapper.OrderRepository.Update(order);
+                await repositoryWrapper.ProductRepository.Update(product);
+            });
 
         }
 
         public async Task Shipment(int orderId)
         {
-            var order = await _orderRepository.GetById(orderId);
+            var order = await repositoryWrapper.OrderRepository.GetById(orderId);
             if (order == null)
             {
                 throw new Exception("订单号错误");
@@ -316,14 +309,14 @@ namespace eapi.Service
             }
             order.Status = OrderStatus.Shipment;
             order.ShipMentTime = DateTime.Now;
-            await _orderRepository.Update(order);
+            await repositoryWrapper.OrderRepository.Update(order);
         }
 
         public async Task CreateNoLock(string sku, int count)
         {
             try
             {
-                var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                 if (product == null || product.Count < count)
                 {
@@ -334,12 +327,12 @@ namespace eapi.Service
                 {
                     product.Count -= count;
                 }
-               
-                    await _orderRepository.Create(Order.Create(sku, count));
+                await repositoryWrapper.Trans(async () =>
+                {
+                    await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                     //throw new Exception("2"); //测试用
-                    await _productRepository.Update(product);
-                    await _unitOfWork.CommitAsync();
-                
+                    await repositoryWrapper.ProductRepository.Update(product);
+                });
             }
             catch
             {
@@ -359,7 +352,7 @@ namespace eapi.Service
                 {
                     try
                     {
-                        var product = (await _productRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
+                        var product = (await repositoryWrapper.ProductRepository.FindByCondition(x => x.Sku.Equals(sku))).SingleOrDefault();
 
                         if (product == null || product.Count < count)
                         {
@@ -371,12 +364,13 @@ namespace eapi.Service
                             //getProductFromCache.Count -= count;
                             product.Count -= count;
                         }
-                        
-                            await _orderRepository.Create(Order.Create(sku, count));
+                        await repositoryWrapper.Trans(async () =>
+                        {
+                            await repositoryWrapper.OrderRepository.Create(Order.Create(sku, count));
                             //throw new Exception("2"); //测试用                          
-                            await _productRepository.Update(product);
-                        await _unitOfWork.CommitAsync();
-                        
+                            await repositoryWrapper.ProductRepository.Update(product);
+
+                        });
                     }
                     catch
                     {

@@ -1,11 +1,11 @@
 ﻿using eapi.Data;
-using eapi.interfaces.Models;
+using eapi.Models;
 
 namespace eapi.Repositories
 {
     public class OrderRepository : ReposioryBase<Order>
     {
-        public OrderRepository(DbFactory dbContext) : base(dbContext)
+        public OrderRepository(ProductDbContext dbContext) : base(dbContext)
         {
         }
     }

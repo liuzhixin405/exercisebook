@@ -1,5 +1,4 @@
-﻿
-using eapi.interfaces.Models;
+﻿using eapi.Models;
 
 namespace eapi.Service
 {
