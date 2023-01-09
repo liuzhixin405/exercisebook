@@ -1,14 +1,16 @@
 ﻿using eapi.Data;
-using eapi.Models;
+using eapi.interfaces.Models;
 
 namespace eapi.Repositories
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {
         private readonly ProductDbContext _;
-        public RepositoryWrapper(ProductDbContext context)
+        private readonly ILogger<RepositoryWrapper> _logger;
+        public RepositoryWrapper(ProductDbContext context, ILogger<RepositoryWrapper> logger)
         {
             _ = context;
+            _logger = logger;
         }
         //public ProductDbContext context => _;
         public async Task Trans(Func<Task> func)
@@ -22,6 +24,7 @@ namespace eapi.Repositories
             catch (Exception ex)
             {
                 trans.Rollback();
+                _logger.LogError(ex.Message);
             }
             finally
             {

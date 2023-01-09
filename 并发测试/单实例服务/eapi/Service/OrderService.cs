@@ -1,5 +1,6 @@
 ﻿using Colder.DistributedLock.Abstractions;
-using eapi.Models;
+using eapi.interfaces;
+using eapi.interfaces.Models;
 using eapi.RedisHelper;
 using eapi.Repositories;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -10,11 +11,11 @@ using StackExchange.Redis;
 using System;
 using System.Diagnostics;
 using System.Threading;
-using Order = eapi.Models.Order;
+using Order = eapi.interfaces.Models.Order;
 
 namespace eapi.Service
 {
-    public class OrderService : IOrderService
+    public class OrderService : Orleans.Grain,IOrderGrains
     {
         private readonly IRepositoryWrapper repositoryWrapper;
         private readonly IDistributedLock _distributedLock;

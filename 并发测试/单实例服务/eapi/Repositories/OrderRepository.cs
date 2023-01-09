@@ -1,5 +1,5 @@
 ﻿using eapi.Data;
-using eapi.Models;
+using eapi.interfaces.Models;
 
 namespace eapi.Repositories
 {
