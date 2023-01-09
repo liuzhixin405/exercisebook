@@ -72,3 +72,10 @@ EventBus/EventBusDemo/.vs/EventBusDemo/v17/.suo
 EventBus/EventBusDemo/.vs/EventBusDemo/v17/.suo
 *.v2
 EventBus/EventBusDemo/.vs/EventBusDemo/v17/.suo
+*.pdb
+*.2
+WebApi/.vs/WebApi/v17/.suo
+*.2
+*.pdb
+*.pdb
+*.cs

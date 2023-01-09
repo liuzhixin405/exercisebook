@@ -18,9 +18,7 @@ namespace Sample.Client
             builder.Services.AddSwaggerGen();
             builder.Host.UseOrleansClient(c => {
             
-                c.UseLocalhostClustering(30002);
-                c.UseLocalhostClustering(30001);  //多服务注册只有最后一个生效,需要的话得多服务单独实现
-
+                c.UseLocalhostClustering(new int[] {30001,30002} ); //只有一个生效，而且每次请求各一次才会成功                                                          
             });
            
             var app = builder.Build();

@@ -11,7 +11,7 @@ namespace AdventureGrainInterfaces
         Task<string>  GetMessage();
     }
 
-    public interface IFakeMessageNext: IGrainWithIntegerKey
+    public interface IFakeMessageNext: IGrainWithGuidKey
     {
         Task<string> GetMessage();
     }

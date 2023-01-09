@@ -21,7 +21,7 @@ namespace Sample.Client.Controllers
         [HttpGet(Name = "test2")]
         public async Task<string> GetNext()
         {
-            return await _clusterClient.GetGrain<IFakeMessageNext>(Random.Shared.Next()).GetMessage();
+            return await _clusterClient.GetGrain<IFakeMessageNext>(Guid.NewGuid()).GetMessage();
         }
     }
 }
