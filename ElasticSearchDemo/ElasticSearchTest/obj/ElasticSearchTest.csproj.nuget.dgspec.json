@@ -1,32 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
         "projectName": "ElasticSearchTest",
-        "projectPath": "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -37,20 +38,20 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Elasticsearch.Net": {
               "target": "Package",
-              "version": "[7.13.0, )"
+              "version": "[7.17.5, )"
             },
             "NEST": {
               "target": "Package",
-              "version": "[7.13.0, )"
+              "version": "[7.17.5, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.6.3, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -64,24 +65,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.17, 5.0.17]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -90,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

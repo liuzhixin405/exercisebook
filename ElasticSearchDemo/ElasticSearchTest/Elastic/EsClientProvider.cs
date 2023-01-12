@@ -31,9 +31,10 @@ namespace ElasticSearchTest.Elastic
             {
                 throw new ArgumentNullException("urls");
             }
-            var uris = urls.Select(p => new Uri(p)).ToArray();
-            var connectionPool = new SniffingConnectionPool(uris);
-            var connectionSetting = new ConnectionSettings(connectionPool);
+            //var uris = urls.Select(p => new Uri(p)).ToArray();
+            //var connectionPool = new SniffingConnectionPool(uris);
+            //var connectionSetting = new ConnectionSettings(connectionPool); //单机状态使用集群导致链接docker 的ip导致链接失败报错(次es虚拟机下doker单机部署的)
+            var connectionSetting = new ConnectionSettings(new Uri(urls[0]));
             if (!string.IsNullOrWhiteSpace(defaultIndex))
             {
                 connectionSetting.DefaultIndex(defaultIndex);

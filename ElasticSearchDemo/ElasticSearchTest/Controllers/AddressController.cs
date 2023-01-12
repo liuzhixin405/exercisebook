@@ -20,13 +20,13 @@ namespace ElasticSearchTest.Controllers
         }
 
         [HttpPost("添加地址")]
-        public void AddAddress(List<Address> addressList)
+        public bool AddAddress(List<Address> addressList)
         {
             if (addressList == null || addressList.Count < 1)
             {
-                return;
+                return false;
             }
-            _addressContext.InsertMany(addressList);
+           return _addressContext.InsertMany(addressList);
         }
         /// <summary>
         /// 删除地址
