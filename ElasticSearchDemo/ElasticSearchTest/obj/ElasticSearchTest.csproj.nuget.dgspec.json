@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {}
+    "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {}
   },
   "projects": {
-    "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {
+    "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
         "projectName": "ElasticSearchTest",
-        "projectPath": "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
-        "packagesPath": "C:\\Users\\lzx\\.nuget\\packages\\",
-        "outputPath": "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\obj\\",
+        "projectPath": "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lzx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -60,14 +59,27 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.5, 5.0.5]"
+              "version": "[5.0.17, 5.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -78,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.5.21302.13\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
