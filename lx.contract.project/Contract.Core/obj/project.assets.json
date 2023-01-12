@@ -222,19 +222,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\l\\.nuget\\packages\\": {}
+    "C:\\Users\\86130\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
+      "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
       "projectName": "Contract.Core",
-      "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
-      "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-      "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\obj\\",
+      "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
+      "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+      "outputPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -242,14 +242,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nexus.klickl.com/repository/klickl": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj": {
-              "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj"
+            "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj": {
+              "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj"
             }
           }
         }
@@ -279,7 +280,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

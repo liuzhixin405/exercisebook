@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Web\\Contract.Web.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Web\\Contract.Web.csproj": {}
   },
   "projects": {
-    "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
         "projectName": "Contract.Core",
-        "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
-        "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +22,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj": {
-                "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj"
               }
             }
           }
@@ -59,21 +60,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj",
         "projectName": "Contract.Infrastructure",
-        "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Infrastructure\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,14 +82,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj": {
-                "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj"
               }
             }
           }
@@ -140,21 +142,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj",
         "projectName": "Contract.SharedKernel",
-        "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj",
-        "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.SharedKernel\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -162,7 +164,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net6.0": {
@@ -209,21 +212,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Web\\Contract.Web.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Web\\Contract.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Web\\Contract.Web.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Web\\Contract.Web.csproj",
         "projectName": "Contract.Web",
-        "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Web\\Contract.Web.csproj",
-        "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Web\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Web\\Contract.Web.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -231,17 +234,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj": {
-                "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Core\\Contract.Core.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Core\\Contract.Core.csproj"
               },
-              "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj": {
-                "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.Infrastructure\\Contract.Infrastructure.csproj"
               }
             }
           }
@@ -296,7 +300,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

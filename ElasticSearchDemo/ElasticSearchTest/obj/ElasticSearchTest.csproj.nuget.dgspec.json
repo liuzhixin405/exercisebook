@@ -1,33 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {}
   },
   "projects": {
-    "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
         "projectName": "ElasticSearchTest",
-        "projectPath": "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
-        "packagesPath": "C:\\Users\\lzx\\.nuget\\packages\\",
-        "outputPath": "D:\\github-exercise\\netcore.demo\\ElasticSearchDemo\\ElasticSearchTest\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\ElasticSearchTest.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\ElasticSearchDemo\\ElasticSearchTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lzx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json": {}
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -38,20 +38,20 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Elasticsearch.Net": {
               "target": "Package",
-              "version": "[7.13.0, )"
+              "version": "[7.17.5, )"
             },
             "NEST": {
               "target": "Package",
-              "version": "[7.13.0, )"
+              "version": "[7.17.5, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.6.3, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -60,16 +60,11 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.5, 5.0.5]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -78,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.5.21302.13\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
