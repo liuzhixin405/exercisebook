@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 using WebApi.Data;
 using WebApi.Models;
 using WebApi.Repository;
@@ -19,20 +20,22 @@ namespace WebApi.Controllers
       
         private readonly IOrderService _orderService;
         private readonly IProductService _productService;
+      
         public OrdersController(IOrderService orderService, IProductService productService)
         {
             _productService = productService;
-            _orderService = orderService;
+            _orderService = orderService;  
         }
 
-        //// GET: api/Orders
-        //[HttpGet]
-        //public async Task<IEnumerable<Order>> GetOrders()
-        //{
-        //    var orders = await _repository.GetAll();
-
-        //    return orders;
-        //}
+        // GET: api/Orders
+        [HttpGet]
+        public async Task<IEnumerable<Order>> GetOrders()
+        {
+            Logger log = NLog.LogManager.GetCurrentClassLogger();
+            log.Debug("测试日志内容");
+            //var orders = await _repository.GetAll();
+            return null;
+        }
 
         //// GET: api/Orders/5
         //[HttpGet("{id}")]

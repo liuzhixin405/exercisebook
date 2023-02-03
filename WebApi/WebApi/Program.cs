@@ -1,5 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using NLog;
+using NLog.Extensions.Logging;
 using System;
 using WebApi.Data;
 using WebApi.Models;
@@ -28,6 +31,9 @@ namespace WebApi
             builder.Services.AddScoped<IRepository<Product, int>, ProductRepository>();
             builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddScoped<IProductService, ProductService>();
+
+            builder.Logging.AddNLog("Nlog.config");
+           
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -40,7 +46,7 @@ namespace WebApi
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            
 
             app.MapControllers();
 
