@@ -347,3 +347,15 @@ git checkout V1.0
 
 git merge V1.0
 git push V1.0
+
+
+windows 在cmd后的命令提示符窗口，通过ssh连接服务器后，使用rz命令上传文件，出现receive.**B0100000023be50，并且卡死没反应，没有文件选择的弹出框出现
+
+方法一：
+原因：使用rz需要连接远程服务器的客户端支持，例如XShell
+
+解决方法：改用XShell连接linux服务器后，rz命令即可正常使用
+
+方法二：
+cmd后的命令提示符窗口，通过sftp root@ip地址
+输入密码连接，连接成功后，使用put 命令上传文件
