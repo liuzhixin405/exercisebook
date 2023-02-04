@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "08nVtg83zl17b0t3dWnG7arN8zfrkXsf3Ftr89J2acc=",
+  "Source": "CodeMan.Seckill.Consumer.Pay.Timeout",
+  "BasePath": "_content/CodeMan.Seckill.Consumer.Pay.Timeout",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

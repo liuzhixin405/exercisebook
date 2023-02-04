@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jtE21UkQc56IYr/DDBGFVUXCadKoMdjvZs+WY0VN/D8=",
+  "Source": "Cat.Seckill.HttpApi.Order",
+  "BasePath": "_content/Cat.Seckill.HttpApi.Order",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

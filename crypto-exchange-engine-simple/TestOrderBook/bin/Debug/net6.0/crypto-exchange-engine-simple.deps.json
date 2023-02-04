@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "crypto-exchange-engine-simple/1.0.0": {
+        "runtime": {
+          "crypto-exchange-engine-simple.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "crypto-exchange-engine-simple/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

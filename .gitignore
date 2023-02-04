@@ -3,7 +3,7 @@
 
 .classpath
 .project
-.settings
+
 ##filter databfile、sln file##
 *.mdb
 *.ldb
@@ -40,15 +40,15 @@ Thumbs.db
 *.v2
 *.v2
 *.1
-*.editorconfig
+
 *.dll
 *.BuildWithSkipAnalyzers
 *.cache
 *.cache
 *.txt
 *.props
-*.json
-*.json
+
+
 *.lock
 *.v2
 *.vsidx
@@ -56,13 +56,13 @@ Thumbs.db
 *.v2
 *.v2
 *.1
-*.json
+
 *.cache
-*.editorconfig
+
 *.cache
 *.exe
 *.cache
-*.json
+
 *.cache
 *.v2
 *.v2
