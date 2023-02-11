@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "dLBlzgVQw0lIU9HUt5J6zXBR6aY8ovH9J4jHGYU7ikS8zDikb38du7TBm61nckltimx08SQvVGNNjlshK6LJYA==",
+  "dgSpecHash": "TT0AInmc5kQtKmx8F5YYrqZxl/BqhQsLU0antdpFqFct17o+FoE3V//QMYGNRB8pgqvBlsqf65nMufS7ieukOw==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercise\\方法模板抽象\\ClassLibrary\\ClassLibrary.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\方法模板抽象\\ClassLibrary\\ClassLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

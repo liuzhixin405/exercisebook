@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zXQuvbrJjsbkwhHJhuvuCb1PToxcI3qaOxuRpHTsQxdDZxeWyqRx4MLMwgaeUHfDAPwvA27QZqAdyoYaOPSqdg==",
+  "dgSpecHash": "3H+T2f63OEdPFOgBiGbC0yjrL8f6ssoVMc01x7HigpytE6kTUvPR2OqCnHaI0RZ60HJSbMjK7yKkOkYOdh5qbA==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercise\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "5EYt3kxYXeIZ7fQA3qOs5g3VCWGyRFOGZETnHjT1dEOjfMg9ZMQ9ec+VEk+oU6zEGpGUaIIIXYWJKJaRGIxc3Q==",
+  "dgSpecHash": "UaJ/oT6KrLVvCBHdKIrSWTzYTEFyAA+TERzHhTOHK/IsUywcwh50xTwT+kGZCDtyyowcp0gvZkvEyiff7qWSKA==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercise\\方法模板抽象\\NetcoreTest\\NetcoreTest.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\方法模板抽象\\NetcoreTest\\NetcoreTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
   "logs": []
 }

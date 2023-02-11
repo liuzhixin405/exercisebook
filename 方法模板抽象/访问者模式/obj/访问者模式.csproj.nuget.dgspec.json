@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\exercise\\方法模板抽象\\访问者模式\\访问者模式.csproj": {}
+    "D:\\GitHub\\exercisebook\\方法模板抽象\\访问者模式\\访问者模式.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\exercise\\方法模板抽象\\访问者模式\\访问者模式.csproj": {
+    "D:\\GitHub\\exercisebook\\方法模板抽象\\访问者模式\\访问者模式.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercise\\方法模板抽象\\访问者模式\\访问者模式.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\方法模板抽象\\访问者模式\\访问者模式.csproj",
         "projectName": "访问者模式",
-        "projectPath": "D:\\GitHub\\exercise\\方法模板抽象\\访问者模式\\访问者模式.csproj",
+        "projectPath": "D:\\GitHub\\exercisebook\\方法模板抽象\\访问者模式\\访问者模式.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercise\\方法模板抽象\\访问者模式\\obj\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\方法模板抽象\\访问者模式\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,12 +50,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.17, 5.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

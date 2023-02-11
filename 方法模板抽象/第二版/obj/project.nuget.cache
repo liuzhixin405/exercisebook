@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "NvDlWUd72CAyA0nTmvd4F+/1Kb5+DWt3KxrhQ/KEZXlPzB4AWQvCT8fm7inFekVsWmFyfMSrTexHCt/WIetjUA==",
+  "dgSpecHash": "qeCDIXsnv7Hsx7Eir9u8SWa5HLPfBN+eI+Td2fWOJ+PNikKU8MmKnJ1+2H2BRbloZTvjQBNH2fSwRnHxzSCM7g==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercise\\方法模板抽象\\第二版\\第二版.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\方法模板抽象\\第二版\\第二版.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
   "logs": []
 }

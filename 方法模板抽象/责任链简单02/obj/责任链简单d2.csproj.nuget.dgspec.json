@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\exercise\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj": {}
+    "D:\\GitHub\\exercisebook\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\exercise\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj": {
+    "D:\\GitHub\\exercisebook\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercise\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj",
         "projectName": "责任链简单d2",
-        "projectPath": "D:\\GitHub\\exercise\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj",
+        "projectPath": "D:\\GitHub\\exercisebook\\方法模板抽象\\责任链简单02\\责任链简单d2.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercise\\方法模板抽象\\责任链简单02\\obj\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\方法模板抽象\\责任链简单02\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,30 +50,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.6, 6.0.6]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.6, 6.0.6]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.6, 6.0.6]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.6, 6.0.6]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
