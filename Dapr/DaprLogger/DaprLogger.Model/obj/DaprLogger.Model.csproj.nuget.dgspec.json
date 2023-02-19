@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj": {}
+    "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj": {
+    "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj",
-        "projectName": "AspNetCoreAOP",
-        "projectPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj",
+        "projectName": "DaprLogger.Model",
+        "projectPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\obj\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,24 +39,6 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "dependencies": {
-            "AspectCore.Extensions.DependencyInjection": {
-              "target": "Package",
-              "version": "[2.3.0, )"
-            },
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[7.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[7.0.2, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.4.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -69,9 +51,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

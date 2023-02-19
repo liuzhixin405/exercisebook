@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaprLogger", "DaprLogger\DaprLogger.csproj", "{B07E7D80-0995-4BFD-9A5C-C7E3AF9F1089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerClient", "LoggerClient\LoggerClient.csproj", "{85524F3B-D51B-4B3E-906C-0FAF0846221C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaprLoggerClient", "DaprLoggerClient\DaprLoggerClient.csproj", "{C23F835B-BB57-45B8-A411-8D6F2DF53534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaprLogger.Model", "DaprLogger.Model\DaprLogger.Model.csproj", "{C89953B2-0F46-4F39-82AD-973177EAB7C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B07E7D80-0995-4BFD-9A5C-C7E3AF9F1089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B07E7D80-0995-4BFD-9A5C-C7E3AF9F1089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B07E7D80-0995-4BFD-9A5C-C7E3AF9F1089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B07E7D80-0995-4BFD-9A5C-C7E3AF9F1089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85524F3B-D51B-4B3E-906C-0FAF0846221C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85524F3B-D51B-4B3E-906C-0FAF0846221C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85524F3B-D51B-4B3E-906C-0FAF0846221C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85524F3B-D51B-4B3E-906C-0FAF0846221C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23F835B-BB57-45B8-A411-8D6F2DF53534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23F835B-BB57-45B8-A411-8D6F2DF53534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23F835B-BB57-45B8-A411-8D6F2DF53534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23F835B-BB57-45B8-A411-8D6F2DF53534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C89953B2-0F46-4F39-82AD-973177EAB7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C89953B2-0F46-4F39-82AD-973177EAB7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C89953B2-0F46-4F39-82AD-973177EAB7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C89953B2-0F46-4F39-82AD-973177EAB7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A43AE13B-E0A6-43F7-9D75-1B562A11F126}
+	EndGlobalSection
+EndGlobal

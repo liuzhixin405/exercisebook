@@ -1,6 +1,7 @@
+using DaprLogger.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspNetCoreAOP.Controllers
+namespace DaprLoggerClient.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -19,13 +20,13 @@ namespace AspNetCoreAOP.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<LogData> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 5).Select(index => new LogData
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                Id=DateTime.Now.AddDays(index).ToString("yyyy-mm-dd"),
+                Level = index,
+                Message = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
         }

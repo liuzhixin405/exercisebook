@@ -1,4 +1,4 @@
-namespace AspNetCoreAOP
+namespace DaprLoggerClient
 {
     public class WeatherForecast
     {

@@ -1084,11 +1084,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj",
+      "projectUniqueName": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj",
       "projectName": "AspNetCoreAOP",
-      "projectPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj",
+      "projectPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\AspNetCoreAOP\\obj\\",
+      "outputPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\AspNetCoreAOP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
