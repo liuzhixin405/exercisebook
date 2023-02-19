@@ -22,13 +22,15 @@ namespace DaprLoggerClient.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<LogData> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new LogData
+            var result = Enumerable.Range(1, 5).Select(index => new LogData
             {
                 Id=DateTime.Now.AddDays(index).ToString("yyyy-mm-dd"),
                 Level = index,
                 Message = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+            _logger.LogInformation(System.Text.Json.JsonSerializer.Serialize(result.FirstOrDefault()));
+            return result;
         }
     }
 }
