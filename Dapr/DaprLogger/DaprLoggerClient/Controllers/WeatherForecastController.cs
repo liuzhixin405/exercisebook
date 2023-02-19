@@ -29,7 +29,7 @@ namespace DaprLoggerClient.Controllers
                 Message = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
-            _logger.LogInformation(System.Text.Json.JsonSerializer.Serialize(result.FirstOrDefault()));
+            _logger.LogInformation(System.Text.Json.JsonSerializer.Serialize(result.FirstOrDefault())); //DLogger·¢²¼²Ù×÷
             return result;
         }
     }

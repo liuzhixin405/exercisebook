@@ -16,7 +16,7 @@ namespace LoggerClient
             var daprClient = new DaprClientBuilder().Build();
 
             daprClient.PublishEventAsync("pubsub", "logging", data);
-            Console.ReadLine();
+            Console.ReadLine(); //直接发布日志的方式
         }
     }
 }
