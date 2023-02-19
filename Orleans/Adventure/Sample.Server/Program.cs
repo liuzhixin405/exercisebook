@@ -13,7 +13,9 @@ namespace Sample.Server
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Host.UseOrleans(b=>b.UseLocalhostClustering(11112,30001));
+            var siloPort =int.Parse( builder.Configuration["OrleansOptions:SiloPort"]);
+            var gatewayPort = int.Parse(builder.Configuration["OrleansOptions:GatewayPort"]);
+            builder.Host.UseOrleans(b => b.UseLocalhostClustering(siloPort, gatewayPort));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

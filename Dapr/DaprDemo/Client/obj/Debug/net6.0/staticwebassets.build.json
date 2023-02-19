@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dbENI2QU4LspmYTD7Qc76BLXQqiAHQj10TK2T3LX1H0=",
+  "Source": "Client",
+  "BasePath": "_content/Client",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

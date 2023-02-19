@@ -12,61 +12,61 @@ namespace Chat.Controllers
     {
         [HttpPost]
         [Route("getanswer")]
-        public IActionResult GetResult([FromBody] string prompt)
+        public async Task<string> GetResult([FromBody] string prompt)
         {
             //your OpenAI API key
-            string apiKey = "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";
+            string apiKey = "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";
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
             CompletionRequest completion = new CompletionRequest();
             completion.Prompt = prompt;
             completion.Model = OpenAI_API.Models.Model.DavinciText;
             completion.MaxTokens = 4000;
-            var result = openai.Completions.CreateCompletionAsync(completion);
+            var result =await openai.Completions.CreateCompletionAsync(completion);
             if (result != null)
             {
-                foreach (var item in result.Result.Completions)
+                foreach (var item in result.Completions)
                 {
                     answer = item.Text;
                 }
-                return Ok(answer);
+                return (answer);
             }
             else
             {
-                return BadRequest("Not found");
+                return ("Not found");
             }
         }
 
         [HttpGet]
         [Route("")]
-        public IActionResult Get( string q)
+        public async Task<string> Get( string q)
         {
             if (string.IsNullOrEmpty(q))
             {
-                return Ok("你还没问问题呢。比如这样问:" +
+                return ("你还没问问题呢。比如这样问:" +
                     "http://www.eiza.net/chat?q=今天天气如何?" +
                     "");
             }
             //your OpenAI API key
-            string apiKey = "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";
+            string apiKey = "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";
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
             CompletionRequest completion = new CompletionRequest();
             completion.Prompt = q;
             completion.Model = OpenAI_API.Models.Model.DavinciText;
             completion.MaxTokens = 4000;
-            var result = openai.Completions.CreateCompletionAsync(completion);
+            var result =await openai.Completions.CreateCompletionAsync(completion);
             if (result != null)
             {
-                foreach (var item in result.Result.Completions)
+                foreach (var item in result.Completions)
                 {
                     answer = item.Text;
                 }
-                return Ok(answer);
+                return (answer);
             }
             else
             {
-                return BadRequest("Not found");
+                return ("Not found");
             }
         }
     }
