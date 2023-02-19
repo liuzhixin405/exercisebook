@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj",
+      "projectUniqueName": "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj",
       "projectName": "DaprLogger.Model",
-      "projectPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj",
+      "projectPath": "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\obj\\",
+      "outputPath": "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\DaprLogger.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",

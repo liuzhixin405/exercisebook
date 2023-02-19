@@ -391,11 +391,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\LoggerClient\\LoggerClient.csproj",
+      "projectUniqueName": "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\LoggerClient\\LoggerClient.csproj",
       "projectName": "LoggerClient",
-      "projectPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\LoggerClient\\LoggerClient.csproj",
+      "projectPath": "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\LoggerClient\\LoggerClient.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\LoggerClient\\obj\\",
+      "outputPath": "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\LoggerClient\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -412,8 +412,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj": {
-              "projectPath": "D:\\GitHub\\exercisebook\\AspNetCoreAOP\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj"
+            "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj": {
+              "projectPath": "D:\\GitHub\\exercisebook\\Dapr\\DaprLogger\\DaprLogger.Model\\DaprLogger.Model.csproj"
             }
           }
         }
