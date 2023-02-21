@@ -21,7 +21,7 @@ namespace DaprLoggerClient
                 {
                     LoggerTopic = "logging",
                     PubSubComponent = "pubsub"
-                }));
+                }));//通过_logger写的日志都会通过Dlogger.Log方法重写发布出去
                 
             });
             var app = builder.Build();

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "FyGdTmXKeECNZHh9LXQGTjya5qqad91c7U0oYDHn3qE=",
+  "Source": "DaprLoggerClient",
+  "BasePath": "_content/DaprLoggerClient",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
