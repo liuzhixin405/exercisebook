@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp8\\ConsoleApp8.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp7\\ConsoleApp7.csproj": {}
   },
   "projects": {
-    "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp8\\ConsoleApp8.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp7\\ConsoleApp7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp8\\ConsoleApp8.csproj",
-        "projectName": "ConsoleApp8",
-        "projectPath": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp8\\ConsoleApp8.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp7\\ConsoleApp7.csproj",
+        "projectName": "ConsoleApp6",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp7\\ConsoleApp7.csproj",
         "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
-        "outputPath": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp8\\obj\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp6\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,12 +40,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.Extensions.Logging.Abstractions": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
