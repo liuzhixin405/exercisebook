@@ -1859,6 +1859,56 @@
           }
         }
       },
+      "NLog/5.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NLog.Extensions.Logging/5.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "NLog": "5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/NLog.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/NLog.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NLog.Web.AspNetCore/5.2.1": {
+        "type": "package",
+        "dependencies": {
+          "NLog.Extensions.Logging": "5.2.1"
+        },
+        "compile": {
+          "lib/net6.0/NLog.Web.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/NLog.Web.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "NuGet.Common/6.3.1": {
         "type": "package",
         "dependencies": {
@@ -6792,6 +6842,77 @@
         "packageIcon.png"
       ]
     },
+    "NLog/5.1.1": {
+      "sha512": "YBfUDzipCaucs+8ieCDp8XECumiWsQbZwSUVLlt9i7FGV03nOPqoVzLtmlhbTxq4TN92BBsLacqPAE/ZyDDJ1g==",
+      "type": "package",
+      "path": "nlog/5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/net46/NLog.dll",
+        "lib/net46/NLog.xml",
+        "lib/netstandard1.3/NLog.dll",
+        "lib/netstandard1.3/NLog.xml",
+        "lib/netstandard1.5/NLog.dll",
+        "lib/netstandard1.5/NLog.xml",
+        "lib/netstandard2.0/NLog.dll",
+        "lib/netstandard2.0/NLog.xml",
+        "nlog.5.1.1.nupkg.sha512",
+        "nlog.nuspec"
+      ]
+    },
+    "NLog.Extensions.Logging/5.2.1": {
+      "sha512": "b16cdOklZ3gfeuiyewsAmR2It/55Ar+plwsyo7CjgfwZtH1c5B2ZyYIGt1Ho+fPMOKEHkPU/trXZqAg9Oipiiw==",
+      "type": "package",
+      "path": "nlog.extensions.logging/5.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net461/NLog.Extensions.Logging.dll",
+        "lib/net461/NLog.Extensions.Logging.xml",
+        "lib/net6.0/NLog.Extensions.Logging.dll",
+        "lib/net6.0/NLog.Extensions.Logging.xml",
+        "lib/netstandard1.3/NLog.Extensions.Logging.dll",
+        "lib/netstandard1.3/NLog.Extensions.Logging.xml",
+        "lib/netstandard1.5/NLog.Extensions.Logging.dll",
+        "lib/netstandard1.5/NLog.Extensions.Logging.xml",
+        "lib/netstandard2.0/NLog.Extensions.Logging.dll",
+        "lib/netstandard2.0/NLog.Extensions.Logging.xml",
+        "lib/netstandard2.1/NLog.Extensions.Logging.dll",
+        "lib/netstandard2.1/NLog.Extensions.Logging.xml",
+        "nlog.extensions.logging.5.2.1.nupkg.sha512",
+        "nlog.extensions.logging.nuspec"
+      ]
+    },
+    "NLog.Web.AspNetCore/5.2.1": {
+      "sha512": "yusksFxJxIoXJbU/aH9IJHmNKNNk2a9hYLSzd02kr7EX3Oc2+IRpp50VUEwZpq0tWEdlqYOUCLlzLMtHDHkxSA==",
+      "type": "package",
+      "path": "nlog.web.aspnetcore/5.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "README.md",
+        "lib/net461/NLog.Web.AspNetCore.dll",
+        "lib/net461/NLog.Web.AspNetCore.xml",
+        "lib/net5.0/NLog.Web.AspNetCore.dll",
+        "lib/net5.0/NLog.Web.AspNetCore.xml",
+        "lib/net6.0/NLog.Web.AspNetCore.dll",
+        "lib/net6.0/NLog.Web.AspNetCore.xml",
+        "lib/netcoreapp3.1/NLog.Web.AspNetCore.dll",
+        "lib/netcoreapp3.1/NLog.Web.AspNetCore.xml",
+        "lib/netstandard2.0/NLog.Web.AspNetCore.dll",
+        "lib/netstandard2.0/NLog.Web.AspNetCore.xml",
+        "nlog.web.aspnetcore.5.2.1.nupkg.sha512",
+        "nlog.web.aspnetcore.nuspec"
+      ]
+    },
     "NuGet.Common/6.3.1": {
       "sha512": "/WgxNyc9dXl+ZrQJDf5BXaqtMbl0CcDC5GEQITecbHZBQHApTMuxeTMMEqa0Y+PD1CIxTtbRY4jmotKS5dsLuA==",
       "type": "package",
@@ -11492,23 +11613,25 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.1",
+      "NLog.Extensions.Logging >= 5.2.1",
+      "NLog.Web.AspNetCore >= 5.2.1",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "C:\\Users\\86130\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\exercisebook\\WebApi\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\WebApi\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "D:\\GitHub\\exercisebook\\WebApi\\WebApi\\WebApi.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\exercisebook\\WebApi\\WebApi\\obj\\",
+      "projectPath": "G:\\Users\\GitHub\\exercisebook\\WebApi\\WebApi\\WebApi.csproj",
+      "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+      "outputPath": "G:\\Users\\GitHub\\exercisebook\\WebApi\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11516,7 +11639,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nexus.klickl.com/repository/klickl": {}
       },
       "frameworks": {
         "net7.0": {
@@ -11564,6 +11688,14 @@
             "target": "Package",
             "version": "[7.0.1, )"
           },
+          "NLog.Extensions.Logging": {
+            "target": "Package",
+            "version": "[5.2.1, )"
+          },
+          "NLog.Web.AspNetCore": {
+            "target": "Package",
+            "version": "[5.2.1, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.4.0, )"
@@ -11588,7 +11720,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

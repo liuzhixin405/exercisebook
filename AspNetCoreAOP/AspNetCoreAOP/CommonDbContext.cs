@@ -9,4 +9,12 @@ namespace AspNetCoreAOP
 
         }
     }
+
+    public class NextDbContext : DbContext
+    {
+        public NextDbContext(DbContextOptions<CommonDbContext> options) : base(options)
+        {
+
+        }
+    }
 }
