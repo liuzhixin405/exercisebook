@@ -70,6 +70,14 @@
               "target": "Package",
               "version": "[7.0.1, )"
             },
+            "NLog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
