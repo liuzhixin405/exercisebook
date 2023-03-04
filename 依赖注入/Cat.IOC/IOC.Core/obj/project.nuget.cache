@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "pTdLnbtayFVJD0SX/e5ATAHgcUWDuC643X5M4DVz5jrc8khn3xRd0qAOexVqE1rTvZ+grWQpWQiphA93LyUbXw==",
+  "dgSpecHash": "8JDSWHXgPfZjRkkNRoQqUZJ/aBn7Fxxn4cRxJCSDG/2HxjypQgX3pmgsB5AxmmeNGsYks5IqteiLnQwtmbtO/A==",
   "success": true,
-  "projectFilePath": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

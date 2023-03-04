@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj": {}
+    "D:\\GitHub\\exercisebook\\demo\\MyIOC\\MyIOC\\MyIOC.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj": {
+    "D:\\GitHub\\exercisebook\\demo\\MyIOC\\MyIOC\\MyIOC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
-        "projectName": "IOC.Core",
-        "projectPath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\demo\\MyIOC\\MyIOC\\MyIOC.csproj",
+        "projectName": "MyIOC",
+        "projectPath": "D:\\GitHub\\exercisebook\\demo\\MyIOC\\MyIOC\\MyIOC.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\obj\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\demo\\MyIOC\\MyIOC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -37,8 +37,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "imports": [
             "net461",
             "net462",
@@ -50,20 +50,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

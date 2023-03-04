@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj": {}
+    "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj": {}
   },
   "projects": {
-    "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj": {
+    "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj",
         "projectName": "IOC.CoreTest",
-        "projectPath": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj",
-        "packagesPath": "C:\\Users\\lzx\\.nuget\\packages\\",
-        "outputPath": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.CoreTest\\obj\\",
+        "projectPath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.CoreTest\\IOC.CoreTest.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.CoreTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lzx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,15 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.Core\\IOC.Core.csproj": {
-                "projectPath": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.Core\\IOC.Core.csproj"
+              "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj": {
+                "projectPath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj"
               }
             }
           }
@@ -68,30 +67,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.Core\\IOC.Core.csproj": {
+    "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
+        "projectUniqueName": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
         "projectName": "IOC.Core",
-        "projectPath": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
-        "packagesPath": "C:\\Users\\lzx\\.nuget\\packages\\",
-        "outputPath": "D:\\github-exercise\\netcore.demo\\Cat.IOC\\IOC.Core\\obj\\",
+        "projectPath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\IOC.Core.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\exercisebook\\依赖注入\\Cat.IOC\\IOC.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lzx\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,8 +113,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -123,16 +136,31 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
