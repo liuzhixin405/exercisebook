@@ -31,9 +31,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "策略模式二", "策略�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "责任链简单d2", "责任链简单02\责任链简单d2.csproj", "{94E88473-B1F3-4587-8E95-2B2EE6491680}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式一", "状态模式一\状态模式一.csproj", "{93750246-20FE-45DA-BCC8-1323C8483717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式一", "状态模式一\状态模式一.csproj", "{93750246-20FE-45DA-BCC8-1323C8483717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式二", "状态模式二\状态模式二.csproj", "{A189C816-5032-41EA-BEC9-C2A03B00A7F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式二", "状态模式二\状态模式二.csproj", "{A189C816-5032-41EA-BEC9-C2A03B00A7F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式三", "状态模式三\状态模式三.csproj", "{8482334B-2DBC-42CB-8737-DCD30E020D93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式四", "状态模式四\状态模式四.csproj", "{8D371EC9-6C15-4F40-912A-1CC4B6D2BE57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式五", "状态模式五\状态模式五.csproj", "{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +111,18 @@ Global
 		{A189C816-5032-41EA-BEC9-C2A03B00A7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A189C816-5032-41EA-BEC9-C2A03B00A7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A189C816-5032-41EA-BEC9-C2A03B00A7F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8482334B-2DBC-42CB-8737-DCD30E020D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8482334B-2DBC-42CB-8737-DCD30E020D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8482334B-2DBC-42CB-8737-DCD30E020D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8482334B-2DBC-42CB-8737-DCD30E020D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D371EC9-6C15-4F40-912A-1CC4B6D2BE57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D371EC9-6C15-4F40-912A-1CC4B6D2BE57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D371EC9-6C15-4F40-912A-1CC4B6D2BE57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D371EC9-6C15-4F40-912A-1CC4B6D2BE57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
