@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		运行命令.txt = 运行命令.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comman", "Comman\Comman.csproj", "{32797A75-E8A4-42FE-8839-7C0FA205C891}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{DE8E7FF9-AC2C-4789-9AC5-F19CF01DF9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE8E7FF9-AC2C-4789-9AC5-F19CF01DF9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE8E7FF9-AC2C-4789-9AC5-F19CF01DF9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32797A75-E8A4-42FE-8839-7C0FA205C891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32797A75-E8A4-42FE-8839-7C0FA205C891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32797A75-E8A4-42FE-8839-7C0FA205C891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32797A75-E8A4-42FE-8839-7C0FA205C891}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

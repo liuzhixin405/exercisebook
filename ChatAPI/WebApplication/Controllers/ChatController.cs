@@ -48,7 +48,7 @@ namespace Chat.Controllers
                     "");
             }
             //your OpenAI API key
-            string apiKey = "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";
+            string apiKey = "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";
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
             CompletionRequest completion = new CompletionRequest();

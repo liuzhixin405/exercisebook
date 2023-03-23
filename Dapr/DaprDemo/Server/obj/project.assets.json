@@ -2,10 +2,47 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Dapr.AspNetCore/1.9.0": {
+      "Dapr.Actors/1.10.0": {
         "type": "package",
         "dependencies": {
-          "Dapr.Client": "1.9.0",
+          "Dapr.Client": "1.10.0",
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Dapr.Actors.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Dapr.Actors.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Dapr.Actors.AspNetCore/1.10.0": {
+        "type": "package",
+        "dependencies": {
+          "Dapr.Actors": "1.10.0",
+          "System.IO.Pipelines": "4.7.2"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Dapr.Actors.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Dapr.Actors.AspNetCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Dapr.AspNetCore/1.10.0": {
+        "type": "package",
+        "dependencies": {
+          "Dapr.Client": "1.10.0",
           "System.IO.Pipelines": "4.7.2"
         },
         "compile": {
@@ -22,7 +59,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Dapr.Client/1.9.0": {
+      "Dapr.Client/1.10.0": {
         "type": "package",
         "dependencies": {
           "Google.Api.CommonProtos": "2.2.0",
@@ -134,7 +171,7 @@
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/3.0.3": {
+      "Microsoft.Extensions.Logging.Abstractions/3.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -270,32 +307,73 @@
             "related": ".xml"
           }
         }
+      },
+      "Comman/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Dapr.Actors": "1.10.0"
+        },
+        "compile": {
+          "bin/placeholder/Comman.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Comman.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Dapr.AspNetCore/1.9.0": {
-      "sha512": "utoBPyJJ/aVL3GQqvHZoz1HRw9yP9noeFOBV/yfJAJfWJiFZnPeypT55V0UlBJZKkeQ2PEgb1hLxJJk03Ou4UQ==",
+    "Dapr.Actors/1.10.0": {
+      "sha512": "y8QVWuvOV1Ktef0UTksUOJ4ntx3AzRuPcXGxsXK2MPpI5Fvw/BwSfh1ZhOAjVjf6WhBZzQ97Gw+Ek7dgXp38kg==",
       "type": "package",
-      "path": "dapr.aspnetcore/1.9.0",
+      "path": "dapr.actors/1.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "dapr.aspnetcore.1.9.0.nupkg.sha512",
+        "dapr.actors.1.10.0.nupkg.sha512",
+        "dapr.actors.nuspec",
+        "images/logo-transparent.png",
+        "lib/netcoreapp3.1/Dapr.Actors.dll",
+        "lib/netcoreapp3.1/Dapr.Actors.xml"
+      ]
+    },
+    "Dapr.Actors.AspNetCore/1.10.0": {
+      "sha512": "ujkMtoTg+Ub69EihEHZJHltKa2S5nU9vsJfY7dsUEowOpeBJhdqQxRp0p+4kn5K1cGVcZ0D40IwUTSZWToketQ==",
+      "type": "package",
+      "path": "dapr.actors.aspnetcore/1.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapr.actors.aspnetcore.1.10.0.nupkg.sha512",
+        "dapr.actors.aspnetcore.nuspec",
+        "images/logo-transparent.png",
+        "lib/netcoreapp3.1/Dapr.Actors.AspNetCore.dll",
+        "lib/netcoreapp3.1/Dapr.Actors.AspNetCore.xml"
+      ]
+    },
+    "Dapr.AspNetCore/1.10.0": {
+      "sha512": "uVViOuShrGZvlmbzeOql8YytSyCBQK6pzDe+Xu/d84FGG1O9pWaxvNABGSaT0voIIGVFfGJBNslqmaObsMu0gg==",
+      "type": "package",
+      "path": "dapr.aspnetcore/1.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapr.aspnetcore.1.10.0.nupkg.sha512",
         "dapr.aspnetcore.nuspec",
         "images/logo-transparent.png",
         "lib/netcoreapp3.1/Dapr.AspNetCore.dll",
         "lib/netcoreapp3.1/Dapr.AspNetCore.xml"
       ]
     },
-    "Dapr.Client/1.9.0": {
-      "sha512": "a/tHunAH/Q8omFMtjXdKnfzrtl7AIpKk0f0Hp3tAxgTD0W5lxhMApADuRiDfm9Je2riXE2P0hJK980m40dhCmQ==",
+    "Dapr.Client/1.10.0": {
+      "sha512": "tVX83aEzJYSHIcgKX6D5wtkFxBRAff4881SqM0xEEgPMWut8c37BpaF2Rlt9oTIeAvKTB5/yK5FyijNghvveHA==",
       "type": "package",
-      "path": "dapr.client/1.9.0",
+      "path": "dapr.client/1.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "dapr.client.1.9.0.nupkg.sha512",
+        "dapr.client.1.10.0.nupkg.sha512",
         "dapr.client.nuspec",
         "images/logo-transparent.png",
         "lib/netcoreapp3.1/Dapr.Client.dll",
@@ -442,18 +520,18 @@
         "tools/netcoreapp2.1/GetDocument.Insider.runtimeconfig.json"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/3.0.3": {
-      "sha512": "m2Jyi/MEn043WMI1I6J1ALuCThktZ93rd7eqzYeLmMcA0bdZC+TBVl0LuEbEWM01dWeeBjOoagjNwQTzOi2r6A==",
+    "Microsoft.Extensions.Logging.Abstractions/3.1.0": {
+      "sha512": "jjo4YXRx6MIpv6DiRxJjSpl+sPP0+5VW0clMEdLyIAz44PPwrDTFrd5PZckIxIXl1kKZ2KK6IL2nkt0+ug2MQg==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/3.0.3",
+      "path": "microsoft.extensions.logging.abstractions/3.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Icon.png",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
-        "microsoft.extensions.logging.abstractions.nuspec"
+        "microsoft.extensions.logging.abstractions.3.1.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.nuspec",
+        "packageIcon.png"
       ]
     },
     "Microsoft.OpenApi/1.2.3": {
@@ -649,11 +727,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Comman/1.0.0": {
+      "type": "project",
+      "path": "../Comman/Comman.csproj",
+      "msbuildProject": "../Comman/Comman.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Dapr.AspNetCore >= 1.9.0",
+      "Comman >= 1.0.0",
+      "Dapr.Actors.AspNetCore >= 1.10.0",
+      "Dapr.AspNetCore >= 1.10.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -663,11 +748,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\86130\\Desktop\\Service\\DaprDemo\\Server\\Server.csproj",
+      "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\Dapr\\DaprDemo\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\86130\\Desktop\\Service\\DaprDemo\\Server\\Server.csproj",
+      "projectPath": "G:\\Users\\GitHub\\exercisebook\\Dapr\\DaprDemo\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\86130\\Desktop\\Service\\DaprDemo\\Server\\obj\\",
+      "outputPath": "G:\\Users\\GitHub\\exercisebook\\Dapr\\DaprDemo\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -684,7 +769,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "G:\\Users\\GitHub\\exercisebook\\Dapr\\DaprDemo\\Comman\\Comman.csproj": {
+              "projectPath": "G:\\Users\\GitHub\\exercisebook\\Dapr\\DaprDemo\\Comman\\Comman.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -697,9 +786,13 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Dapr.Actors.AspNetCore": {
+            "target": "Package",
+            "version": "[1.10.0, )"
+          },
           "Dapr.AspNetCore": {
             "target": "Package",
-            "version": "[1.9.0, )"
+            "version": "[1.10.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
@@ -725,7 +818,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

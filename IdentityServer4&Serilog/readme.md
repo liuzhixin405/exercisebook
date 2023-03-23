@@ -4,6 +4,11 @@ dotnet创建项目步骤，is4admin为例
 3、 dotnet new  is4aspid -n Identity4Demo         安装is4aspid取名Identity4Demo
 4、 dotnet new --list 查看已安装模板 
 
+最新模板is6aspid,改数据库存信息
 
+代码实例只有一个授权中心，
+其他都都授权中心和服务搭配使用。
+client是关联授权中心和服务
 
-代码实例两 一个是客户端获取id4服务token再调用api，一个是访问mvc直接跳转到id4服务登录后再跳转回来（即授权），使用内存数据库，没有用到sqlserver。
+mvc直接调用home/index会跳转到授权登录中心account/login，登陆后自动跳转到home/index,
+退出登录account/logout

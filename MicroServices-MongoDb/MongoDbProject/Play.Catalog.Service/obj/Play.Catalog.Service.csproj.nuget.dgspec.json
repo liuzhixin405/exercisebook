@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj",
         "projectName": "Play.Catalog.Contracts",
-        "projectPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net7.0": {
@@ -55,21 +56,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj",
         "projectName": "Play.Catalog.Service",
-        "projectPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\Play.Catalog.Service.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,17 +78,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj": {
-                "projectPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Catalog.Contracts\\Play.Catalog.Contracts.csproj"
               },
-              "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj": {
-                "projectPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj"
               }
             }
           }
@@ -130,21 +132,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj",
         "projectName": "Play.Common",
-        "projectPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\Play.Common.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\MicroServices-MongoDb\\MongoDbProject\\Play.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -152,7 +154,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "net7.0": {
@@ -215,7 +218,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.6.22352.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Users\\l\\Documents\\GitHub\\exercise\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj": {}
   },
   "projects": {
-    "G:\\Users\\l\\Documents\\GitHub\\exercise\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Users\\l\\Documents\\GitHub\\exercise\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj",
         "projectName": "CustomAuthorizationFilter",
-        "projectPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj",
-        "packagesPath": "C:\\Users\\l\\.nuget\\packages\\",
-        "outputPath": "G:\\Users\\l\\Documents\\GitHub\\exercise\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\CustomAuthorizationFilter.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\CustomAuthorizationFilter\\CustomAuthorizationFilter\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\l\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nexus.klickl.com/repository/klickl": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -55,28 +56,11 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.21, 3.1.21]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -85,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
