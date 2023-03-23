@@ -19,9 +19,10 @@ namespace AspNetCoreAOP
             builder.Services.ConfigureDynamicProxy(o =>{ 
             //添加aop的配置
             //该项目用attribute所以无需配置
-            //自定义实现aop请翻看以前的例子,或者查看这个引用包源码
-            
+           
             });
+            //自定义实现aop请翻看以前的例子,或者查看这个引用包源码
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
