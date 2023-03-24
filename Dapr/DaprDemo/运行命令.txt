@@ -1,0 +1,4 @@
+dapr run --app-id getwf --dapr-http-port 3511 --app-port 5096 dotnet Server.dll
+
+dapr run --app-id clientservice --dapr-http-port 5882 --app-port 5097 dotnet Client.dll
+//--app-port和dotnet服务端口需保持一致

@@ -1,0 +1,4 @@
+dotnet Sample.Server.dll   --urls="http://*:5007" --ip="127.0.0.1" --port="5007" --OrleansOptions:GatewayPort="30001"  --OrleansOptions:SiloPort="1112"
+dotnet Sample.Server.dll   --urls="http://*:5008" --ip="127.0.0.1" --port="5008" --OrleansOptions:GatewayPort="30002"  --OrleansOptions:SiloPort="1113"
+dotnet Sample.Client.dll   --urls="http://*:5009" --ip="127.0.0.1" --port="5009" 
+dotnet Sample.Client.dll   --urls="http://*:5010" --ip="127.0.0.1" --port="5010" 

@@ -1,0 +1,1 @@
+2023-01-14 16:52:32.0167 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'allfile' not found for logging rule: *.
