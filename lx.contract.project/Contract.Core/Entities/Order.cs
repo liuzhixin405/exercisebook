@@ -44,5 +44,11 @@ namespace Contract.Core.Entities
         public MarginMode MarginMode { set; get; }
         public OrderStatus OrderStatus { get; set; }
 
+        public List<OrderItem> Items { get; set; } 
+    }
+
+    public class OrderItem
+    {
+
     }
 }

@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "pf0kV2dBO4CNsX/4mevcOvlivZiwNA+iOm2LJ/pn+KTEFt1fx5mmVBjhadudZ8BffCvlta3yT7QZbU6boNPYUA==",
+  "dgSpecHash": "fyik7YWhZzLbGaBQ7+BJOYnUPs9arX0QL+JRnx5ZPfzsJgmmnDKawx7dFgbKuoy+hw9wCA46R4jfnyYee0uWHg==",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj",
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\lx.contract.project\\Contract.SharedKernel\\Contract.SharedKernel.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\ardalis.specification\\6.1.0\\ardalis.specification.6.1.0.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+    "C:\\Users\\86130\\.nuget\\packages\\ardalis.specification\\6.1.0\\ardalis.specification.6.1.0.nupkg.sha512",
+    "C:\\Users\\86130\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\86130\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\86130\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

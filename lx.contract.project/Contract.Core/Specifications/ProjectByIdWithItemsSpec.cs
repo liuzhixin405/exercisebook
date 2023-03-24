@@ -14,7 +14,7 @@ namespace Contract.Core.Specifications
         {
             Query
        .Where(order => order.Id == orderId)
-       .Include(order => order.items);
+       .Include(order => order.Items);
         }
     }
 }
