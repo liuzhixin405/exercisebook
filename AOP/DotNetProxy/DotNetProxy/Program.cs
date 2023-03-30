@@ -13,7 +13,8 @@ namespace DotNetProxy
             #endregion
             var poxy = ProxyGenerator.Create<TagetInterface, SampleProxy>();
             poxy.Write("here is 2 invoke by proxy");
-
+			var poxyImp = (TagetInterface) ProxyGenerator.Create(typeof(TagetInterface) , new SampleProxy());
+            poxyImp.Write("here is 2 invoke by proxy");
             Console.Read();
         }
     }
@@ -44,8 +45,9 @@ namespace DotNetProxy
 
         public static object Create(Type targetType, IInterceptor interceptor)
         {
-            object proxy = GetProxy(targetType);
-            MethodInfo method = typeof(ProxyGenerator).GetMethod(nameof(CreateInstance), BindingFlags.NonPublic | BindingFlags.Instance, Type.DefaultBinder, new[] { typeof(Type), typeof(object[]) }, null);
+             object proxy = GetProxy(targetType);
+            MethodInfo method = typeof(ProxyGenerator).GetMethod(nameof(CreateInstance), BindingFlags.NonPublic | BindingFlags.Instance, Type.DefaultBinder, new[] { typeof(IInterceptor) }, null);
+            method.Invoke(proxy, new object[] { interceptor });
             return proxy;
         }
         public static TTarget Create<TTarget, TInterceptor>(params object[] paremters) where TInterceptor : IInterceptor

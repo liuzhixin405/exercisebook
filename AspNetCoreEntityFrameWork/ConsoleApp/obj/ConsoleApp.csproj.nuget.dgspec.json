@@ -1,41 +1,40 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj": {}
+    "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj",
         "projectName": "Project.IOC.Business",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Business\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
               },
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj"
               },
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj"
               }
             }
           }
@@ -69,68 +68,54 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj",
         "projectName": "ConsoleApp",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\ConsoleApp\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\ConsoleApp\\ConsoleApp.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\ConsoleApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Business\\Project.IOC.Business.csproj"
               },
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
               },
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj"
               },
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj"
               }
             }
           }
@@ -160,55 +145,37 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.8, 5.0.8]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj",
         "projectName": "EF.Core",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -258,62 +225,48 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj",
         "projectName": "Project.IOC.IBusiness",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\IBusiness\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\Project.IOC.IBusiness.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\IBusiness\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
               },
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj"
               }
             }
           }
@@ -333,59 +286,45 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
+    "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj",
+        "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\Models\\obj\\",
+        "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
+        "outputPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
-                "projectPath": "C:\\Users\\admin\\source\\repos\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
+              "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj": {
+                "projectPath": "G:\\Users\\GitHub\\exercisebook\\AspNetCoreEntityFrameWork\\EF.Core\\EF.Core.csproj"
               }
             }
           }
@@ -405,30 +344,17 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
