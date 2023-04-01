@@ -15,12 +15,13 @@ namespace Chat.Controllers
         public async Task<string> GetResult([FromBody] string prompt)
         {
             //your OpenAI API key
-            string apiKey = "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";
+            string apiKey = "xxxx";
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
             CompletionRequest completion = new CompletionRequest();
             completion.Prompt = prompt;
             completion.Model = OpenAI_API.Models.Model.DavinciText;
+
             completion.MaxTokens = 4000;
             var result =await openai.Completions.CreateCompletionAsync(completion);
             if (result != null)
@@ -48,7 +49,7 @@ namespace Chat.Controllers
                     "");
             }
             //your OpenAI API key
-            string apiKey = "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";
+            string apiKey = "xxxxxxxxxxxxxxxxx";
             string answer = string.Empty;
             var openai = new OpenAIAPI(apiKey);
             CompletionRequest completion = new CompletionRequest();

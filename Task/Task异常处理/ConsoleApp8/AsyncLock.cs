@@ -50,7 +50,7 @@ namespace ConsoleApp8
                 {
                     tmp.semaphore.Release();
                 }
-                catch (Exception){ }
+                catch (Exception){ }           
             }
         }
     }
