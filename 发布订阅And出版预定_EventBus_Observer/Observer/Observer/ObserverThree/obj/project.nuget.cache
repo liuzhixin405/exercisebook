@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bvb8MN95bz79tOZksAqtgLC3hwlFsIH3N3EJ6eO5mqF1QGvg184xwrikakjezFpN9WIeKgIqZo2k7T59STZuLg==",
+  "dgSpecHash": "YbZd5SbcJ/q6nWbqojs0DWq58AghXHwmeAAhgFXH6mJiw1p/e4KfMe9p4RsYu3/AXw65tc2G5sGp22RbtTsuhw==",
   "success": true,
-  "projectFilePath": "D:\\GitHub_\\exercise\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverThree\\ObserverThree.csproj",
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverThree\\ObserverThree.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

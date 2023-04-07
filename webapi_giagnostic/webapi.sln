@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi", "webapi\webapi.csproj", "{4272A4D8-14C5-4C24-AFFB-69DF73194FFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{1594DF52-D91E-4567-A3EC-9292DEC920A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLibrary", "LogLibrary\LogLibrary.csproj", "{13C8D4DD-32EC-4E5D-8FF0-7BD00A7DABAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4272A4D8-14C5-4C24-AFFB-69DF73194FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4272A4D8-14C5-4C24-AFFB-69DF73194FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4272A4D8-14C5-4C24-AFFB-69DF73194FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4272A4D8-14C5-4C24-AFFB-69DF73194FFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1594DF52-D91E-4567-A3EC-9292DEC920A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1594DF52-D91E-4567-A3EC-9292DEC920A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1594DF52-D91E-4567-A3EC-9292DEC920A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1594DF52-D91E-4567-A3EC-9292DEC920A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C8D4DD-32EC-4E5D-8FF0-7BD00A7DABAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C8D4DD-32EC-4E5D-8FF0-7BD00A7DABAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C8D4DD-32EC-4E5D-8FF0-7BD00A7DABAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C8D4DD-32EC-4E5D-8FF0-7BD00A7DABAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8777269-AF9A-429A-A965-E5567A9AC700}
+	EndGlobalSection
+EndGlobal

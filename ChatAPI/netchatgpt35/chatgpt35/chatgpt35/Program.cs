@@ -16,7 +16,7 @@ namespace chatgpt35
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddOpenAIService(settings => { settings.ApiKey = "openapikey"; });
+            builder.Services.AddOpenAIService(settings => { settings.ApiKey = "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"; });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
