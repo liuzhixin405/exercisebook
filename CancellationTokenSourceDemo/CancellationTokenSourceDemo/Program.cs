@@ -1,4 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
 CancellationTokenSource tokenSource = new CancellationTokenSource();
 Task.Run(() => {
     Thread.Sleep(2000);
