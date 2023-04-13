@@ -10,7 +10,7 @@
         /// <summary>
         /// 每页行数
         /// </summary>
-        public int PageRows { get; set; } = 100;
+        public int PageRows { get; set; } = 20;
 
         /// <summary>
         /// 排序列

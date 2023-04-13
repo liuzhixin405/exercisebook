@@ -9,7 +9,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace webapi.Endpoints
 {
-    public class ProductEndpoint : IEndpoint<List<Product>, PageInput<ProductRequestDto>, ProductDbContext>
+    public class ProductEndpoint : IEndpoint<ProductResponseDto<List<Product>>, PageInput<ProductRequestDto>, ProductDbContext>
     {
         public void AddRoute(IEndpointRouteBuilder app)
         {
@@ -30,15 +30,26 @@ namespace webapi.Endpoints
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
             );
-        
-        public async Task<List<Product>> HandleAsync(PageInput<ProductRequestDto> request,ProductDbContext productDbContext)
+
+        private static readonly Func<ProductDbContext,  string, string, decimal?, DateTime?, int> GetProductCount =
+           EF.CompileQuery((ProductDbContext ctx,  string name, string description, decimal? price, DateTime? createtime) =>
+           ctx.Products
+           .Where(x => string.IsNullOrEmpty(name) || x.Name.Contains(name))
+           .Where(x => string.IsNullOrEmpty(description) || x.Description.Contains(description))
+           .Where(x => !price.HasValue || price == x.Price)
+           .Where(x => !createtime.HasValue || createtime == x.CreateDateTime).Count()
+           );
+
+        public async Task<ProductResponseDto<List<Product>>> HandleAsync(PageInput<ProductRequestDto> request,ProductDbContext productDbContext)
         {
             List<Product> list = new List<Product>(); 
             await foreach (var item in GetProductAsync(productDbContext,request.PageIndex,request.PageRows,request.Desc, request.SortField,request.Search.Name,request.Search.Description,request.Search.Price,request.Search.CreateDateTime))
             {
                 list.Add(item);
             } ;
-            return list;
+            return new ProductResponseDto<List<Product>> {Data =list ,TotalCount= GetProductCount(productDbContext,  request.Search.Name, request.Search.Description, request.Search.Price, request.Search.CreateDateTime) };
         }
+
+       
     }
 }

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using MinimalApi.Endpoint.Extensions;
+using System;
+using System.Text;
 
 namespace webapi
 {
@@ -32,27 +34,27 @@ namespace webapi
             var bContext = app.Services.CreateScope().ServiceProvider.GetService<ProductDbContext>();
             if (!bContext.Products.Any())
             {
-                bContext.Products.AddRange(new List<Product> { 
-                    new Product
+                List<Product> products = new List<Product>();
+                string[] pnames = new string[] { "铜线", "帽子", "钢笔", "笔记本", "台灯", "太阳能", "锤子", "钉子" };
+                int start = 0x4e00; // 中文字符范围的起始码点
+                int end = 0x9fff; // 中文字符范围的结束码点
+
+                for (int i = 0; i < 100; i++)
                 {
-                      Name="铜线",
-                      CreateDateTime= DateTime.Now,
-                      Description="很细",
-                      Price=1.0M
-                }, new Product
-                {
-                      Name="帽子",
-                      CreateDateTime= DateTime.Now.AddDays(-3),
-                      Description="很漂亮",
-                      Price=12.0M
-                }, new Product
-                {
-                      Name="mac笔记本",
-                      CreateDateTime= DateTime.Now.AddDays(-6),
-                      Description="不便宜",
-                      Price=8999.0M
-                },
-                });
+                    StringBuilder sb = new StringBuilder();
+                    int codePoint = Random.Shared.Next(start, end + 1); // 生成一个在中文字符范围内的随机码点
+                    char c = (char)codePoint; // 将码点转换为对应的 Unicode 字符
+                    sb.Append(c); // 将字符添加到字符串生成器中
+                    products.Add(new Product
+                    {
+                        Name = pnames[Random.Shared.Next(pnames.Length)],
+                        CreateDateTime = DateTime.Now.AddDays(Random.Shared.Next(-10, 10)),
+                        Description = sb.ToString(),
+                        Price = decimal.Parse(Random.Shared.NextDouble().ToString())
+                    });
+                }
+                if(products.Count > 0)
+                bContext.Products.AddRange(products);
                 bContext.SaveChanges();
             }
             app.UseHttpsRedirection();
