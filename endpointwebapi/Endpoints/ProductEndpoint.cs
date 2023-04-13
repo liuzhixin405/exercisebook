@@ -20,10 +20,10 @@ namespace webapi.Endpoints
         }
         private static readonly Func<ProductDbContext, string,string,decimal?,DateTime?, IAsyncEnumerable<Product>> GetProductAsync =
             EF.CompileAsyncQuery((ProductDbContext ctx,string name,string description, decimal? price,DateTime? createtime) =>
-            ctx.Products.Where(x => string.IsNullOrEmpty(name) ? true : x.Name.Contains(name))
-            .Where(x => string.IsNullOrEmpty(description) ? true : x.Description.Contains(description))
-            .Where(x => price.HasValue ? price == x.Price : true)
-            .Where(x => createtime.HasValue ? createtime == x.CreateDateTime : true)
+            ctx.Products.Where(x => string.IsNullOrEmpty(name) || x.Name.Contains(name))
+            .Where(x => string.IsNullOrEmpty(description) || x.Description.Contains(description))
+            .Where(x => !price.HasValue || price == x.Price)
+            .Where(x => !createtime.HasValue || createtime == x.CreateDateTime)
             );
         
             
