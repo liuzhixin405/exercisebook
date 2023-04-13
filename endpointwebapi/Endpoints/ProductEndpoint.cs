@@ -13,7 +13,7 @@ namespace webapi.Endpoints
     {
         public void AddRoute(IEndpointRouteBuilder app)
         {
-            app.MapPost("api/prodct", async ([FromBody] PageInput<ProductRequestDto> request, ProductDbContext dbContext) =>
+            app.MapPost("api/product", async ([FromBody] PageInput<ProductRequestDto> request, ProductDbContext dbContext) =>
             {
                return await  HandleAsync(request, dbContext);
             });
@@ -40,14 +40,20 @@ namespace webapi.Endpoints
            .Where(x => !createtime.HasValue || createtime == x.CreateDateTime).Count()
            );
 
+
         public async Task<ProductResponseDto<List<Product>>> HandleAsync(PageInput<ProductRequestDto> request,ProductDbContext productDbContext)
         {
+            int start = DateTimeOffset.Now.Millisecond;
             List<Product> list = new List<Product>(); 
             await foreach (var item in GetProductAsync(productDbContext,request.PageIndex,request.PageRows,request.Desc, request.SortField,request.Search.Name,request.Search.Description,request.Search.Price,request.Search.CreateDateTime))
             {
                 list.Add(item);
             } ;
-            return new ProductResponseDto<List<Product>> {Data =list ,TotalCount= GetProductCount(productDbContext,  request.Search.Name, request.Search.Description, request.Search.Price, request.Search.CreateDateTime) };
+          
+            var result = new ProductResponseDto<List<Product>> {Data =list ,TotalCount= GetProductCount(productDbContext,  request.Search.Name, request.Search.Description, request.Search.Price, request.Search.CreateDateTime) };
+            int end = DateTimeOffset.Now.Millisecond;
+            Console.WriteLine($"执行时间为{end - start}ms");
+            return result;
         }
 
        
