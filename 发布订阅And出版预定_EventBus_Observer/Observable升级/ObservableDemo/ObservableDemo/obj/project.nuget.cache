@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KVNTNLFf0NV1Vc0VR3E94rqGPZS2oKrleed1atrZZ2ESmSszFDHD9ht8TS4RoPhBVeaQf8ZEKfqARyNiiEePUQ==",
+  "dgSpecHash": "h53tANX1W8YYqXjUj8wFSSwKJ9gQpWLYx/psqncv0DxJp+Q20V28fj9gdfDVHAdYD59rch9O7YVL+Yn9+Sn0rw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\ObservableDemo\\ObservableDemo\\ObservableDemo.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.6\\microsoft.netcore.app.host.win-x64.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
-  ],
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\发布订阅And出版预定_EventBus_Observer\\Observable升级\\ObservableDemo\\ObservableDemo\\ObservableDemo.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

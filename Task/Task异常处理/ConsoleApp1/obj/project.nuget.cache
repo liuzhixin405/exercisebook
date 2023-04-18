@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "buMOi7qvZ4gTsLf5B+WCFmNpJPtKSJiPDinQP88tp5puLWgf+houaGDsVgWKbsZ8BxdUag5AKGtgzd6yQqrYlw==",
+=======
+  "dgSpecHash": "AXmOIskB8hUuOxWiIZnmD2xo3m+VS5CuVk4al/peAqCETAru/1mLURwwI5ZOl1XoIqQpwZzBst4kqnXChYqJ0Q==",
+>>>>>>> fa56bf720e4c88ccbc0ceb2db86cdd62a3b67e29
   "success": true,
   "projectFilePath": "D:\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [],

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FamPIrE5ujXRg3dxGOCmL3lOPEI5AwP2NlMpy9xp/MXamevpHwQ5qMwZ9gHpUCk6wYOaysFpHMhYsoOVehWKQw==",
+  "dgSpecHash": "5m1IaFwbNGJf6ClDEpXZAehHo1E0gycGWYuxPs5GccuLxz3a1eLMTvGulbtUO9jGihGYXwH9fxXEZnUMsMCPHw==",
   "success": true,
-  "projectFilePath": "D:\\GitHub_\\exercise\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverTwo\\ObserverTwo.csproj",
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverTwo\\ObserverTwo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

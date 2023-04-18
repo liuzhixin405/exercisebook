@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8uhPnEGUtBJ9Jq6xCy8jWSOXVfUN1w0EFjnsDySxDfifch5DHwWr6qjKuJk0SNM4NS4aomQpdIYavqVVk6BLcQ==",
+  "dgSpecHash": "Oc8HRl7aIbimHykyI+k/iWdJGVnTjWcYZ7t4jbZ7MyamC0Hw53UZX+dcEcb43lp8VRYBgIF4m6fDVKnyqO6Eew==",
   "success": true,
-  "projectFilePath": "D:\\GitHub_\\exercise\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverSeven\\ObserverSeven.csproj",
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverSeven\\ObserverSeven.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -150,7 +150,10 @@
         "net6.0"
       ],
       "sources": {
+<<<<<<< HEAD
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+=======
+>>>>>>> fa56bf720e4c88ccbc0ceb2db86cdd62a3b67e29
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -190,7 +193,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> fa56bf720e4c88ccbc0ceb2db86cdd62a3b67e29
       }
     }
   }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EktRLWaOyWUOsX2q7QKf0mDDiBOXCAQCJJ4kfhmiins9Q67DYJB/ALfkvEKkxOkYAuZ8KQZ7x1tTzMxzKCyutg==",
+  "dgSpecHash": "wtQj9XWUqyPEuXfY3urijFUu/JrbZzq8izHFvb97kWY+Lx575bCgykqhHtmHPtshDbcgn07IQWf3fzgwabbJ4w==",
   "success": true,
-  "projectFilePath": "D:\\GitHub_\\exercise\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverOne\\ObserverOne.csproj",
+  "projectFilePath": "G:\\Users\\GitHub\\exercisebook\\发布订阅And出版预定_EventBus_Observer\\Observer\\Observer\\ObserverOne\\ObserverOne.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
