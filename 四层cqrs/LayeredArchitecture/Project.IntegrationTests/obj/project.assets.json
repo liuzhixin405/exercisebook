@@ -7033,7 +7033,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "D:\\Program Files\\.nuget\\packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7041,7 +7041,7 @@
       "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.IntegrationTests\\Project.IntegrationTests.csproj",
       "projectName": "Project.IntegrationTests",
       "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.IntegrationTests\\Project.IntegrationTests.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "packagesPath": "D:\\Program Files\\.nuget\\packages",
       "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.IntegrationTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [

@@ -10,7 +10,7 @@
         "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\Project.Application.csproj",
         "projectName": "Project.Application",
         "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\Project.Application.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "D:\\Program Files\\.nuget\\packages",
         "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
@@ -79,7 +79,7 @@
         "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Domain\\Project.Domain.csproj",
         "projectName": "Project.Domain",
         "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Domain\\Project.Domain.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "D:\\Program Files\\.nuget\\packages",
         "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [

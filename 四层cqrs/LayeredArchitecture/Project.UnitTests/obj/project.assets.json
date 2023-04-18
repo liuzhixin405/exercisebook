@@ -7033,7 +7033,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "D:\\Program Files\\.nuget\\packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -7041,7 +7041,7 @@
       "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.UnitTests\\Project.UnitTests.csproj",
       "projectName": "Project.UnitTests",
       "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.UnitTests\\Project.UnitTests.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "packagesPath": "D:\\Program Files\\.nuget\\packages",
       "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [

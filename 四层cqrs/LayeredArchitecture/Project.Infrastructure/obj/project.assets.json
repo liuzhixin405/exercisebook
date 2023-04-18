@@ -3782,7 +3782,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "D:\\Program Files\\.nuget\\packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -3790,7 +3790,7 @@
       "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Infrastructure\\Project.Infrastructure.csproj",
       "projectName": "Project.Infrastructure",
       "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Infrastructure\\Project.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "packagesPath": "D:\\Program Files\\.nuget\\packages",
       "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [

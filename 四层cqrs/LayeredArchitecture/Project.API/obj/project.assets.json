@@ -8153,7 +8153,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "D:\\Program Files\\.nuget\\packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -8161,7 +8161,7 @@
       "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.API\\Project.API.csproj",
       "projectName": "Project.API",
       "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.API\\Project.API.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "packagesPath": "D:\\Program Files\\.nuget\\packages",
       "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [

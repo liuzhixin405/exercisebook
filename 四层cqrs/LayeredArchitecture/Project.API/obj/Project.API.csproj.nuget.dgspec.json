@@ -10,7 +10,7 @@
         "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.API\\Project.API.csproj",
         "projectName": "Project.API",
         "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.API\\Project.API.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "D:\\Program Files\\.nuget\\packages",
         "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
@@ -101,7 +101,7 @@
         "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\Project.Application.csproj",
         "projectName": "Project.Application",
         "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\Project.Application.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "D:\\Program Files\\.nuget\\packages",
         "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
@@ -170,7 +170,7 @@
         "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Domain\\Project.Domain.csproj",
         "projectName": "Project.Domain",
         "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Domain\\Project.Domain.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "D:\\Program Files\\.nuget\\packages",
         "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
@@ -231,7 +231,7 @@
         "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Infrastructure\\Project.Infrastructure.csproj",
         "projectName": "Project.Infrastructure",
         "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Infrastructure\\Project.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "D:\\Program Files\\.nuget\\packages",
         "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [

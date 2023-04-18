@@ -158,7 +158,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "D:\\Program Files\\.nuget\\packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -166,7 +166,7 @@
       "projectUniqueName": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\Project.Application.csproj",
       "projectName": "Project.Application",
       "projectPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\Project.Application.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "packagesPath": "D:\\Program Files\\.nuget\\packages",
       "outputPath": "D:\\GitHub\\exercisebook\\四层cqrs\\LayeredArchitecture\\Project.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [

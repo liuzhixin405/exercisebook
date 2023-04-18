@@ -131,19 +131,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\86130\\.nuget\\packages\\": {}
+    "D:\\Program Files\\.nuget\\packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp5\\ConsoleApp5.csproj",
+      "projectUniqueName": "D:\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp5\\ConsoleApp5.csproj",
       "projectName": "ConsoleApp5",
-      "projectPath": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp5\\ConsoleApp5.csproj",
-      "packagesPath": "C:\\Users\\86130\\.nuget\\packages\\",
-      "outputPath": "G:\\Users\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp5\\obj\\",
+      "projectPath": "D:\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp5\\ConsoleApp5.csproj",
+      "packagesPath": "D:\\Program Files\\.nuget\\packages",
+      "outputPath": "D:\\GitHub\\exercisebook\\Task\\Task异常处理\\ConsoleApp5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\86130\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -151,8 +151,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nexus.klickl.com/repository/klickl": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -191,7 +190,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
