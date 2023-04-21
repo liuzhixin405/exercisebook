@@ -1,13 +1,15 @@
 
 using chatgptwriteproject.Context;
+using chatgptwriteproject.DbFactories;
 using chatgptwriteproject.Models;
 using chatgptwriteproject.Repositories;
 using chatgptwriteproject.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace chatgptwriteproject
 {
-    public class Program       //chatgpt的基础上改进的
+    public class Program       //chatgpt只能写基础的逻辑代码
     {
         public static void Main(string[] args)
         {
@@ -16,10 +18,11 @@ namespace chatgptwriteproject
             // Add services to the container.
 
             builder.Services.AddControllers();
-
-            builder.Services.AddScoped(typeof(IRepository<Product>), typeof(ProductRepository));        
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("DefaultConnection"));
-            builder.Services.AddScoped(typeof(IUnitOfWork), typeof(ApplicationDbContext));
+                 
+            builder.Services.AddDbContextFactory<ApplicationDbContext>(options => options.UseInMemoryDatabase("DefaultConnection"));
+            builder.Services.AddScoped<Func<ApplicationDbContext>>(provider => () => provider.GetService<ApplicationDbContext>()??throw new ArgumentNullException("ApplicationDbContext is not inject to program"));
+            builder.Services.AddScoped<DbFactory<ApplicationDbContext>>();
+            builder.Services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
             builder.Services.AddTransient<IProductService, ProductService>();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

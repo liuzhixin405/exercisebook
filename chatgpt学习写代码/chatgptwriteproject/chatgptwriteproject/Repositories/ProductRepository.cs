@@ -1,46 +1,30 @@
-﻿using chatgptwriteproject.Context;
+﻿using chatgptwriteproject.BaseRepository;
+using chatgptwriteproject.Context;
+using chatgptwriteproject.DbFactories;
 using chatgptwriteproject.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace chatgptwriteproject.Repositories
 {
-    public class ProductRepository : IRepository<Product>
+    public class ProductRepository : RepositoryBase<ApplicationDbContext,Product>, IProductRepository
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _productDbContext;
 
-        public IUnitOfWork UnitOfWork => _dbContext;
-
-        public ProductRepository(ApplicationDbContext dbContext)
+        public ProductRepository(DbFactory<ApplicationDbContext> dbfactory) : base(dbfactory)
         {
-            _dbContext = dbContext;
+            _productDbContext = dbfactory.Context;
         }
 
-        public async Task<IEnumerable<Product>> GetAll()
+        public async ValueTask<Product> GetById(int id)
         {
-            return await _dbContext.Products.ToListAsync();
+            var result =await _productDbContext.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return result;
         }
 
-        public ValueTask<Product> GetById(int id)
+        public override IUnitOfWork GetUnitOfWork()
         {
-            return _dbContext.Products.FindAsync(id);
-        }
-
-        public void Add(Product product)
-        {
-            _dbContext.Products.Add(product);
-           
-        }
-
-        public void Update(Product product)
-        {
-            _dbContext.Entry(product).State = EntityState.Modified;
-            _dbContext.Products.Update(product);
-          
-        }
-
-        public void Delete(Product product)
-        {
-            _dbContext.Products.Remove(product);
+            return _productDbContext;
         }
     }
 

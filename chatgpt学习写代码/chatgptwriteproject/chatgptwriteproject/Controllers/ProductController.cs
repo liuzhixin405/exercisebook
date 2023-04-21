@@ -21,7 +21,7 @@ namespace chatgptwriteproject.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> Get()
         {
-            var products = await _productService.GetAll();
+            var products = await _productService.GetList(); 
             return Ok(products);
         }
 

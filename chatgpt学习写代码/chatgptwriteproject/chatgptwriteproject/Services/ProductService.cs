@@ -6,27 +6,27 @@ namespace chatgptwriteproject.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IRepository<Product> _repository;
-      
-        public ProductService(IRepository<Product> repository)
+        private readonly IProductRepository _repository;
+        
+        public ProductService(IProductRepository repository)
         {
             _repository = repository;
         }
         public async Task Add(Product product)
         {
             _repository.Add(product);
-            await _repository.UnitOfWork.SaveChangeAsync();
+            await _repository.GetUnitOfWork().SaveChangeAsync();
         }
 
         public async Task Delete(Product entity)
         {
             _repository.Delete(entity);
-            await _repository.UnitOfWork.SaveChangeAsync();
+            await _repository.GetUnitOfWork().SaveChangeAsync();
         }
 
-        public Task<IEnumerable<Product>> GetAll()
+        public Task<IEnumerable<Product>> GetList()
         {
-            return _repository.GetAll();
+            return _repository.GetList();
         }
 
         public ValueTask<Product> GetById(int id)
@@ -37,7 +37,7 @@ namespace chatgptwriteproject.Services
         public async Task Update(Product entity)
         {
             _repository.Update(entity);
-            await _repository.UnitOfWork.SaveChangeAsync();
+            await _repository.GetUnitOfWork().SaveChangeAsync();
         }
     }
 }
