@@ -30,7 +30,7 @@ i--;
 }
 
 
-
+//获取中奖用户预设中奖人数百分之百中奖
 static List<User> GetWinners(List<User> users)
 {
     Random random = new Random();
@@ -85,7 +85,7 @@ static List<User> GetWinners(List<User> users)
     return winners;
 }
 
-
+//获取中奖用户有百分之一的概率只有9个中奖
   /* /// <summary>
         /// 获取中奖用户
         /// </summary>
