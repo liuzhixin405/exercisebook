@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "5N22BfT5S1Cvvf9p9e8mCWaxR2gM/9O8vEhGRL9IvfB9m5YD42PkWuAqZ3ShJWkyV8o/kwojrCSUW6Teh/6M3A==",
+  "dgSpecHash": "FGye/7EN/40cAcSDfSbiZtkck8nATAZBCYRndJnptJGBgIWgrjvRqrLpyNsfH/ocqyHWQqaUY10xa29zktBTiQ==",
   "success": true,
   "projectFilePath": "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\sample.nettcore6.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.ratelimiting\\7.0.0-preview.6.22330.3\\microsoft.aspnetcore.ratelimiting.7.0.0-preview.6.22330.3.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0-preview.6.22324.4\\microsoft.extensions.dependencyinjection.abstractions.7.0.0-preview.6.22324.4.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0-preview.6.22324.4\\microsoft.extensions.logging.abstractions.7.0.0-preview.6.22324.4.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.options\\7.0.0-preview.6.22324.4\\microsoft.extensions.options.7.0.0-preview.6.22324.4.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0-preview.6.22324.4\\microsoft.extensions.primitives.7.0.0-preview.6.22324.4.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.3.0\\swashbuckle.aspnetcore.swagger.6.3.0.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.3.0\\swashbuckle.aspnetcore.swaggergen.6.3.0.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.3.0\\swashbuckle.aspnetcore.swaggerui.6.3.0.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\system.threading.ratelimiting\\7.0.0-preview.6.22324.4\\system.threading.ratelimiting.7.0.0-preview.6.22324.4.nupkg.sha512"
+    "D:\\Program Files\\.nuget\\packages\\microsoft.aspnetcore.ratelimiting\\7.0.0-preview.6.22330.3\\microsoft.aspnetcore.ratelimiting.7.0.0-preview.6.22330.3.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0-preview.6.22324.4\\microsoft.extensions.dependencyinjection.abstractions.7.0.0-preview.6.22324.4.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0-preview.6.22324.4\\microsoft.extensions.logging.abstractions.7.0.0-preview.6.22324.4.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\microsoft.extensions.options\\7.0.0-preview.6.22324.4\\microsoft.extensions.options.7.0.0-preview.6.22324.4.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0-preview.6.22324.4\\microsoft.extensions.primitives.7.0.0-preview.6.22324.4.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.3.0\\swashbuckle.aspnetcore.swagger.6.3.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.3.0\\swashbuckle.aspnetcore.swaggergen.6.3.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.3.0\\swashbuckle.aspnetcore.swaggerui.6.3.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\system.threading.ratelimiting\\7.0.0-preview.6.22324.4\\system.threading.ratelimiting.7.0.0-preview.6.22324.4.nupkg.sha512"
   ],
   "logs": []
 }

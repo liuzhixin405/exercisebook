@@ -1,16 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "zK2wOuhPxdD1uEUdP9MfIcuAwsV+SyVENCAkOxxWzztMNkJwOIWjHh6UuvzGBq7OgOQOzhkfYAwYrBNE0fizEw==",
+  "dgSpecHash": "/n4m+4NV+E4AqYWyKCeHCPrTWbzjxpKgt2yz8p9S3q9akbFiwIVMTFkSS+Lzn6oX7k3ollKpVTBImZKZ03xsIA==",
   "success": true,
-  "projectFilePath": "D:\\GitHub_\\exercise\\grpc\\GrpcGreeter\\GrpcGreeterClient\\GrpcGreeterClient.csproj",
+  "projectFilePath": "D:\\GitHub\\exercisebook\\grpc\\GrpcGreeter\\GrpcGreeterClient\\GrpcGreeterClient.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\admin\\.nuget\\packages\\google.protobuf\\3.20.0\\google.protobuf.3.20.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\grpc.core.api\\2.44.0\\grpc.core.api.2.44.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\grpc.net.client\\2.44.0\\grpc.net.client.2.44.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\grpc.net.common\\2.44.0\\grpc.net.common.2.44.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\grpc.tools\\2.45.0\\grpc.tools.2.45.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "D:\\Program Files\\.nuget\\packages\\google.protobuf\\3.20.0\\google.protobuf.3.20.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\grpc.core.api\\2.44.0\\grpc.core.api.2.44.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\grpc.net.client\\2.44.0\\grpc.net.client.2.44.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\grpc.net.common\\2.44.0\\grpc.net.common.2.44.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\grpc.tools\\2.45.0\\grpc.tools.2.45.0.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
+    "D:\\Program Files\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
 }

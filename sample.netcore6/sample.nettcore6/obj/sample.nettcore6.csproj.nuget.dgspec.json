@@ -10,7 +10,7 @@
         "projectUniqueName": "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\sample.nettcore6.csproj",
         "projectName": "sample.nettcore6",
         "projectPath": "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\sample.nettcore6.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "D:\\Program Files\\.nuget\\packages",
         "outputPath": "D:\\GitHub\\exercisebook\\sample.netcore6\\sample.nettcore6\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
