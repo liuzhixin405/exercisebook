@@ -35,7 +35,7 @@ static List<User> GetWinners(List<User> users)
 {
     Random random = new Random();
     List<User> winners = new List<User>();
-    int lotteryCount = 10; // 抽奖人数为10
+    int lotteryCount = users.Count > 10? 10:users.Count; // 抽奖人数为10
 
     // 创建中奖者名单数组
     List<string> winnerNames = new List<string>();
