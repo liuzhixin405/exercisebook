@@ -16,7 +16,7 @@ namespace auth_cookie.Controllers
         {
             // 执行验证用户名和密码的逻辑
             //这里可以和存到数据库的用户和密码进行比对
-            if(username != "admin" || password != "123456")
+            if(username != "admin" && password != "123456")
             {
                 return BadRequest("Invalid username or password");
             }
