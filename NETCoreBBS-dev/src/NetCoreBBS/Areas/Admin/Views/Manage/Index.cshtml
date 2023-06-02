@@ -1,0 +1,45 @@
+﻿@model List<Topic>
+@{
+    ViewBag.Title = "首页";
+    var Statistics = ViewBag.Statistics as Tuple<int, int, int>;
+}
+
+<h1 class="page-header">后台管理</h1>
+
+<div class="row placeholders">
+    <div class="col-xs-6 col-sm-4 placeholder">
+        <h4>@Statistics.Item2</h4>
+        <span class="text-muted">主题数</span>
+    </div>
+    <div class="col-xs-6 col-sm-4 placeholder">
+        <h4>@Statistics.Item3</h4>
+        <span class="text-muted">回复数</span>
+    </div>
+    <div class="col-xs-6 col-sm-4 placeholder">
+        <h4>@Statistics.Item1</h4>
+        <span class="text-muted">用户数</span>
+    </div>
+</div>
+
+<h2 class="sub-header">最新主题列表</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>主题</th>
+                <th>发布时间</th>
+                <th>回复数</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.CreateOn</td>
+                        <td>@item.ReplyCount</td>
+                    </tr>
+                    }
+        </tbody>
+    </table>
+</div>

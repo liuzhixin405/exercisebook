@@ -1,0 +1,107 @@
+﻿@inject UserServices services
+@model Topic
+@{
+    ViewData["Title"] = Model.Title;
+    var list = ViewBag.Replys as List<TopicReply>;
+    var user = await services.User;
+}
+<div class="row">
+    <div class="col-md-9" style="margin-top:20px;">
+        <div class="topic-detail panel panel-default">
+            <div class="panel-heading media clearfix">
+                <div class="media-body">
+                    <h1 class="media-heading">@(Model.Top == 1 ? "[置顶]" : "")@Model.Title</h1>
+                    <div class="info">
+                        <a class="node" href="/topic/node/@Model.Node.Id">@Model.Node.Name</a>
+                        ·
+                        <a href="#">@Model.User.UserName</a>
+                        ·
+                        于 <abbr class="timeago">@Model.CreateOn.ToString("MM-dd HH:mm")</abbr>发布
+                        ·
+                        @Model.ViewCount 次阅读
+                    </div>
+                </div>
+                <div class="media-right">
+                    <a href="#"><img class="media-object avatar-48" src="@(string.IsNullOrEmpty(Model.User.Avatar)?"/images/96.png": Model.User.Avatar)"></a>
+                </div>
+            </div>
+            <div class="panel-body markdown">
+                <p id="content">@Model.Content</p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p class="panel-info">共收到 @list.Count 条回复：</p>
+            </div>
+            <div class="items panel-body">
+                @for (int i = 0; i < list.Count; i++)
+                {
+                    var item = list[i];
+                    <div class="reply" data-id="@item.Id" id="reply@(i+1)">
+                        <div class="avatar">
+                            <a href="#">
+                                <img class="media-object avatar-48" src="@(string.IsNullOrEmpty(item.ReplyUser.Avatar)?"/images/96.png": item.ReplyUser.Avatar)">
+                            </a>
+                        </div>
+                        <div class="infos">
+                            <div class="info">
+                                <span class="name">
+                                    <a href="#replyuser_@item.ReplyUser.Id">@item.ReplyUser.UserName</a>
+                                </span> ·
+                                <span class="time">
+                                    <a class="reply-floor" href="#reply@(i+1)">#@(i + 1)</a> · <abbr class="timeago">@item.CreateOn.ToString("MM-dd HH:mm")</abbr>
+                                </span>
+                                <span class="opts pull-right">
+                                    <a title="赞" data-count="0" data-state="" data-type="Reply" data-id="297575" class="likeable " href="#"><i class="fa fa-thumbs-up"></i> <span></span></a>
+                                    <a data-floor="1" data-login="adamshen" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+                                </span>
+                            </div>
+                            <div class="markdown">
+                                <p>@item.ReplyContent</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="panel panel-default" style="padding:20px;">
+            @if (user != null)
+            {
+                <form class="form-horizontal" method="post" asp-controller="Topic" asp-action="Index">
+                    <input type="hidden" name="TopicId" value="@Model.Id" />
+                    <input type="hidden" name="ReplyUserId" value="@(user.Id)" />
+                    <input type="hidden" name="ReplyEmail" value="@(user.Email)" />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">内容</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="10" placeholder="填写内容" name="ReplyContent" data-provide="markdown"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">回复</button>
+                        </div>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <p>
+                    需要<a asp-controller="Account" asp-action="Login" class="btn btn-primary">登录</a>发表回复,
+                    如果你还没有账号请点击这里 <a asp-controller="Account" asp-action="Register" class="btn btn-danger">注册</a>。
+                </p>
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        @await Html.PartialAsync("_SidebarPartial")
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(".markdown p").each(function () {
+            var c = $(this).text();
+            $(this).html(markdown.toHTML(c));
+        })
+    </script>
+}
