@@ -1,5 +1,0 @@
-G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\CommandPattern2\obj\Debug\net6.0\CommandPattern02.csproj.AssemblyReference.cache
-G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\CommandPattern2\obj\Debug\net6.0\CommandPattern02.GeneratedMSBuildEditorConfig.editorconfig
-G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\CommandPattern2\obj\Debug\net6.0\CommandPattern02.AssemblyInfoInputs.cache
-G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\CommandPattern2\obj\Debug\net6.0\CommandPattern02.AssemblyInfo.cs
-G:\Users\l\Documents\GitHub\exercise\MarvellousWorks\CommandPattern2\obj\Debug\net6.0\CommandPattern02.csproj.CoreCompileInputs.cache

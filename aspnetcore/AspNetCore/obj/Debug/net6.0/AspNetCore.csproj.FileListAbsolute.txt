@@ -1,8 +1,0 @@
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.csproj.AssemblyReference.cache
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.GeneratedMSBuildEditorConfig.editorconfig
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.AssemblyInfoInputs.cache
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.AssemblyInfo.cs
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.csproj.CoreCompileInputs.cache
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.MvcApplicationPartsAssemblyInfo.cache
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.RazorAssemblyInfo.cache
-D:\GitHub_\exercise\aspnetcore\AspNetCore\obj\Debug\net6.0\AspNetCore.RazorAssemblyInfo.cs

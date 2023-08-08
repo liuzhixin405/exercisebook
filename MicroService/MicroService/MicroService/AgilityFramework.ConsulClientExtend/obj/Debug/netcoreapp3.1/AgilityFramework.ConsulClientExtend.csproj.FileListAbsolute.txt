@@ -1,9 +1,0 @@
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\bin\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.deps.json
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\bin\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.dll
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.AssemblyInfoInputs.cache
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.AssemblyInfo.cs
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\bin\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.pdb
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.dll
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.pdb
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.csproj.CoreCompileInputs.cache
-C:\Users\lzx\source\repos\MicroService\AgilityFramework.ConsulClientExtend\obj\Debug\netcoreapp3.1\AgilityFramework.ConsulClientExtend.csprojAssemblyReference.cache

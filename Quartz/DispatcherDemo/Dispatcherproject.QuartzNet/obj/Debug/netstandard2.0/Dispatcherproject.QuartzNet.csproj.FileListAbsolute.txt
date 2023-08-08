@@ -1,9 +1,0 @@
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\bin\Debug\netstandard2.0\Dispatcherproject.QuartzNet.deps.json
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\bin\Debug\netstandard2.0\Dispatcherproject.QuartzNet.dll
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\obj\Debug\netstandard2.0\Dispatcherproject.QuartzNet.csprojAssemblyReference.cache
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\obj\Debug\netstandard2.0\Dispatcherproject.QuartzNet.AssemblyInfoInputs.cache
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\obj\Debug\netstandard2.0\Dispatcherproject.QuartzNet.AssemblyInfo.cs
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\obj\Debug\netstandard2.0\Dispatcherproject.QuartzNet.csproj.CoreCompileInputs.cache
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\bin\Debug\netstandard2.0\Dispatcherproject.QuartzNet.pdb
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\obj\Debug\netstandard2.0\Dispatcherproject.QuartzNet.dll
-C:\Users\lzx\source\repos\DispatcherDemo\Dispatcherproject.QuartzNet\obj\Debug\netstandard2.0\Dispatcherproject.QuartzNet.pdb

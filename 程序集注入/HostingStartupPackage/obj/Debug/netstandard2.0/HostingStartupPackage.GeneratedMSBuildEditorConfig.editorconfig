@@ -1,3 +1,0 @@
-is_global = true
-build_property.RootNamespace = HostingStartupPackage
-build_property.ProjectDir = G:\下载\AspNetCore.Docs-main\AspNetCore.Docs-main\aspnetcore\fundamentals\host\platform-specific-configuration\samples\3.x\HostingStartupPackage\

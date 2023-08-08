@@ -1,5 +1,0 @@
-C:\Users\admin\source\repos\SignService\SignService.Util\obj\Debug\netstandard2.0\SignService.Util.csproj.AssemblyReference.cache
-C:\Users\admin\source\repos\SignService\SignService.Util\obj\Debug\netstandard2.0\SignService.Util.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\admin\source\repos\SignService\SignService.Util\obj\Debug\netstandard2.0\SignService.Util.AssemblyInfoInputs.cache
-C:\Users\admin\source\repos\SignService\SignService.Util\obj\Debug\netstandard2.0\SignService.Util.AssemblyInfo.cs
-C:\Users\admin\source\repos\SignService\SignService.Util\obj\Debug\netstandard2.0\SignService.Util.csproj.CoreCompileInputs.cache
