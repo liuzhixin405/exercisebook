@@ -25,7 +25,7 @@ namespace GrpcService.Services
             while(batchQueue.TryDequeue(out var catId))
             {
                 await responseStream.WriteAsync(new BathTheCatResp { Message = $"铲屎的成功给一只{Cats[catId]}洗了澡！" });
-                await Task.Delay(10000);//此处主要是为了方便客户端能看出流调用的效果
+                await Task.Delay(500);//此处主要是为了方便客户端能看出流调用的效果
             }
         }
 

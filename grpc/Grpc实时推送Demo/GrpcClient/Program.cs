@@ -44,7 +44,7 @@ var bathCatRespTask = Task.Run(async () =>
 //随机给10个猫洗澡
 for (int i = 0; i < 10; i++)
 {
-    await Task.Delay(1000);
+    //await Task.Delay(1000);
     await bathCat.RequestStream.WriteAsync(new BathTheCatReq() { Id = rand.Next(0, catCount.Count) });
 }
 //发送完毕
