@@ -1,0 +1,3 @@
+{
+    "dotnet.defaultSolution": "grpc-service-web.sln"
+}
