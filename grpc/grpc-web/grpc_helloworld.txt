@@ -1,0 +1,10 @@
+protoc  helloworld.proto --plugin=protoc-gen-grpc-web=D:\software\protoc-gen-grpc-web/protoc-gen-grpc-web-1.4.2-windows-x86_64.exe  --plugin=protoc-gen-js=D:/software/protobuf-javascript-3.21.2-win64/bin/protoc-gen-js.exe   --js_out=import_style=commonjs:.\   --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.\
+
+代理
+grpcwebproxy-v0.13.0-win64.exe --allow_all_origins --backend_addr=localhost:5158 --run_tls_server=false --server_http_debug_port=8080 --allow_all_origins=true
+
+相关软件：
+grpcwebproxy-v0.13.0-win64.exe
+protobuf-javascript-3.21.2-win64
+protoc-24.0-win64
+protoc-gen-grpc-web
