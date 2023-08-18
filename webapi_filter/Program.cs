@@ -15,7 +15,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocument();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -23,10 +22,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUi3();
 }
 
+app.UseMiddleware<CustomMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseMiddleware<CustomMiddleware>(); //只有放这里合适
+
 app.Run();
