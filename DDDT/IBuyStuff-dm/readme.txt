@@ -1,1 +1,0 @@
-Newer releases available here: https://naa4e.codeplex.com/

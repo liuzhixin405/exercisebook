@@ -1,0 +1,107 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using IBuyStuff.Domain.Orders;
+using IBuyStuff.Domain.Repositories;
+using IBuyStuff.Persistence.Facade;
+using Microsoft.EntityFrameworkCore;
+
+namespace IBuyStuff.Persistence.Repositories
+{
+    public class OrderRepository : IOrderRepository
+    {
+        #region Specific members
+
+        //public Order FindById(int id)
+        //{
+        //    using (var db = new DomainModelFacade())
+        //    {
+        //        try
+        //        {
+        //            // Need to load the entire graph of objects
+        //            var order = (from o in db.Orders
+        //                .Include("Items")
+        //                .Include("Items.Product")
+        //                         where o.OrderId == id
+        //                         select o).Single();
+        //            return order;
+        //        }
+        //        catch (InvalidOperationException)
+        //        {
+        //            return new MissingOrder();
+        //        }
+        //    }
+        //}
+        private readonly CommandModelDatabase db;
+        public OrderRepository(CommandModelDatabase context)
+        {
+            db = context;
+        }
+        public Order FindLastByCustomer(string customerId)
+        {
+            //using (var db = new CommandModelDatabase())
+            {
+                try
+                {
+                    // Need to load the entire graph of objects
+                    var order = (from o in db.Orders
+                        .Include("Buyer")
+                        .Include("Items")
+                        .Include("Items.Product")
+                                 where o.CustomerId == customerId
+                                 orderby o.OrderId descending
+                                 select o).First();
+                    return order;
+                }
+                catch (InvalidOperationException)
+                {
+                    return new MissingOrder();
+                }
+            }
+        }
+
+        public int AddAndReturnKey(Order aggregate)
+        {
+            //using (var db = new CommandModelDatabase())
+            {
+                db.Entry(aggregate.CustomerId).State = EntityState.Unchanged;
+                db.Orders.Add(aggregate);
+                if (db.SaveChanges() > 0)
+                {
+                    return aggregate.OrderId;
+                }
+                return 0;
+            }
+        }
+
+        #endregion
+
+        #region IRepository MEMBERS
+
+        public IList<Order> FindAll()
+        {
+            //using (var db = new CommandModelDatabase())
+            {
+                var orders = (from o in db.Orders select o).ToList();
+                return orders;
+            }
+        }
+
+        public bool Add(Order aggregate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Save(Order aggregate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(Order aggregate)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
+}
