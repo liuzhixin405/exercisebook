@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\IBuyStuff.QueryModel\IBuyStuff.QueryModel.csproj" />
+    <ProjectReference Include="..\IBuyStuff.Persistence\IBuyStuff.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

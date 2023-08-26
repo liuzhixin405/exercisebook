@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="InputModels\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\IBuyStuff.Domain.Services\IBuyStuff.Domain.Services.csproj" />
+    <ProjectReference Include="..\..\Domain\IBuyStuff.Domain\IBuyStuff.Domain.csproj" />
+    <ProjectReference Include="..\..\Domain\IBuyStuff.QueryModel\IBuyStuff.QueryModel.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\IBuyStuff.Infrastructure\IBuyStuff.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\IBuyStuff.Persistence\IBuyStuff.Persistence.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\IBuyStuff.QueryModel.Persistence\IBuyStuff.QueryModel.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
