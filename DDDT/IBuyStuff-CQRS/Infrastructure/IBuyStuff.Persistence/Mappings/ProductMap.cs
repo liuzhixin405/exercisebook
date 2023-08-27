@@ -16,9 +16,12 @@ namespace IBuyStuff.Persistence.Mappings
             builder.OwnsOne(o => o.UnitPrice, m =>
             {
                 m.OwnsOne(z => z.Currency,
-                    c => { c.Ignore(v => v.Name); }
+                    c => { 
+                        c.Ignore(v => v.Name);        
+                    }
+                    
                     );
-
+                
             });
         }
     }

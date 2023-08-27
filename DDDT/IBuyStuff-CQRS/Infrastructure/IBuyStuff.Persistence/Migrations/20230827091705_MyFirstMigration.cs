@@ -44,7 +44,8 @@ namespace IBuyStuff.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        //.Annotation("SqlServer:Identity", "1, 1")
+                        ,
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UnitPrice_Currency_Symbol = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UnitPrice_Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -93,7 +94,8 @@ namespace IBuyStuff.Persistence.Migrations
                 columns: table => new
                 {
                     OrderId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        //.Annotation("SqlServer:Identity", "1, 1")
+                        ,
                     BuyerCustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Total_Currency_Symbol = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Total_Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),

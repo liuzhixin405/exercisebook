@@ -11,9 +11,14 @@ using IBuyStuff.Persistence.Facade;
 
 namespace IBuyStuff.Persistence.Utils
 {
-    internal class SampleAppInitializer
+    public class SampleAppInitializer
     {
-        public void Seed(CommandModelDatabase context)
+        private readonly CommandModelDatabase context;
+        public SampleAppInitializer(CommandModelDatabase context)
+        {
+            this.context = context;
+        }
+        public void Seed()
         {
             /////////////////////////////////////////////////////////////////
             // Products
@@ -32,7 +37,7 @@ namespace IBuyStuff.Persistence.Utils
             };
             if(context.Products.Count()==0)
             context.Products.AddRange(products);
-
+      
             /////////////////////////////////////////////////////////////////
             // Customers
             var defaultCustomer = Customer.CreateNew(Gender.Male, "naa4e", "Foo", "Bar", "naa4e@expoware.org");
@@ -42,7 +47,7 @@ namespace IBuyStuff.Persistence.Utils
             };
             if (context.Customers.Count() == 0)
                 context.Customers.AddRange(customers);
-
+        
             /////////////////////////////////////////////////////////////////
             // Admins
 
@@ -56,7 +61,7 @@ namespace IBuyStuff.Persistence.Utils
             };
             if (context.Orders.Count() == 0)
                 context.Orders.AddRange(orders);
-
+          
             /////////////////////////////////////////////////////////////////
             // Fidelity Cards
             var cards = new List<FidelityCard>

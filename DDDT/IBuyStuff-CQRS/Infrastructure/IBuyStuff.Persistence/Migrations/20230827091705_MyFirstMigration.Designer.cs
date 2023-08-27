@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IBuyStuff.Persistence.Migrations
 {
     [DbContext(typeof(CommandModelDatabase))]
-    [Migration("20230826060654_MyFirstMigration")]
+    [Migration("20230827091705_MyFirstMigration")]
     partial class MyFirstMigration
     {
         /// <inheritdoc />

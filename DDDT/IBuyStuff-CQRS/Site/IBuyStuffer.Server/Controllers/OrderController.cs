@@ -6,6 +6,10 @@ using IBuyStuff.Application.ViewModels.Orders;
 using IBuyStuff.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using IBuyStuff.Persistence.Facade;
+using IBuyStuff.Domain.Products;
+using IBuyStuff.Domain.Shared;
+using IBuyStuff.Persistence.Utils;
 
 namespace IBuyStuffer.Server.Controllers
 {
@@ -14,11 +18,12 @@ namespace IBuyStuffer.Server.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderControllerService _service;
+       
         public OrderController(IOrderControllerService service)
         {
             _service = service;
         }
-
+      
 
         #region Search task
 

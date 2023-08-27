@@ -9,7 +9,6 @@ using IBuyStuff.Domain.Orders;
 using IBuyStuff.Domain.Products;
 using IBuyStuff.Domain.Shared;
 using IBuyStuff.Persistence.Mappings;
-using IBuyStuff.Persistence.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace IBuyStuff.Persistence.Facade
@@ -26,8 +25,6 @@ namespace IBuyStuff.Persistence.Facade
            
             FidelityCards = base.Set<FidelityCard>();
             Subscribers = base.Set<Subscriber>();
-
-            //new SampleAppInitializer().Seed(this);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
