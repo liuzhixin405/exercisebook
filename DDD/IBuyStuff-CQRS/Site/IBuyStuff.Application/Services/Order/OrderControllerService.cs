@@ -25,38 +25,23 @@ namespace IBuyStuff.Application.Services.Order
         private readonly IOrderRepository _orderRepository;
         private readonly ICatalogService _catalogService;
         private readonly QueryModelDatabase db;
-
-        public OrderControllerService(IOrderRepository orderRepository, ICatalogService catalogService, QueryModelDatabase db)
+        private readonly CommandModelDatabase commandModelDatabase;
+        public OrderControllerService(IOrderRepository orderRepository, 
+            ICatalogService catalogService, 
+            QueryModelDatabase db,
+            CommandModelDatabase commandModeldb)
         {
             _orderRepository = orderRepository;
             _catalogService = catalogService;
             this.db = db;
+            this.commandModelDatabase = commandModeldb;
         }
 
         // TO BE MODIFIED (LET)
         public OrderFoundViewModel RetrieveOrderForCustomer(int orderId)
         {
-            //using (var db = new DomainModelFacade())
-            //{
-            //    try
-            //    {
-            //        // Need to load the entire graph of objects
-            //        var order = (from o in db.Orders
-            //            .Include("Items")
-            //            .Include("Items.Product")
-            //            where o.OrderId == orderId
-            //            select o).Single();
-            //        var oxx = order;
-            //        return null;
-            //    }
-            //    catch (InvalidOperationException)
-            //    {
-            //        return new OrderFoundViewModel();
-            //    }
-            //}
-            //using (var db = new QueryModelDatabase())
             {
-                var queryable = from o in db.Orders.Include(p => p.Items).Include("Details.Product")
+                var queryable = from o in db.Orders
                                 where o.OrderId == orderId
                                 select new OrderFoundViewModel
                                 {

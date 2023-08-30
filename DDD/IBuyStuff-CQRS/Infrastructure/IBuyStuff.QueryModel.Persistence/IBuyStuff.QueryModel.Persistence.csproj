@@ -15,4 +15,8 @@
     <ProjectReference Include="..\IBuyStuff.Persistence\IBuyStuff.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

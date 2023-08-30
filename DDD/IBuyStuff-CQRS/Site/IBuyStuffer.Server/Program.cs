@@ -15,6 +15,7 @@ namespace IBuyStuffer.Server
      * codefirst生成表三部曲：
         Install-Package Microsoft.EntityFrameworkCore.Tools
         Add-Migration MyFirstMigration   -Context CommandModelDatabase
+                            update-database -context QueryModelDatabase
        update-database -Context CommandModelDatabase
      */
     public class Program

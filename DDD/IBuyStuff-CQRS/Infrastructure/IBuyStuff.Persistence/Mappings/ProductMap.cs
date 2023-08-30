@@ -13,6 +13,7 @@ namespace IBuyStuff.Persistence.Mappings
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.ToTable("Products");
             builder.OwnsOne(o => o.UnitPrice, m =>
             {
                 m.OwnsOne(z => z.Currency,
