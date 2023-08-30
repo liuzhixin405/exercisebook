@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace IBuyStuff.Domain.Shared
@@ -7,7 +9,8 @@ namespace IBuyStuff.Domain.Shared
     public class Currency
     {
         public static Currency Default = new UsdCurrency();
-
+       
+      
         protected Currency(string symbol, string name)
         {
             Symbol = symbol;
@@ -24,10 +27,11 @@ namespace IBuyStuff.Domain.Shared
         }
 
         #endregion
-
+       
         public string Symbol { get; private set; }
+      
         public string Name { get; private set; }
-
+        
 
         #region Equality
         public static bool operator ==(Currency c1, Currency c2)
@@ -64,6 +68,9 @@ namespace IBuyStuff.Domain.Shared
             result = (result * hashIndex) ^ (Name != null ? Name.GetHashCode() : 0);
             return result;
         }
+
+        public virtual Currency GetCopy() { return this; }
+       
         #endregion
     }
 
@@ -75,6 +82,11 @@ namespace IBuyStuff.Domain.Shared
             : base("$", "USD")
         {
         }
+
+        public override Currency GetCopy()
+        {
+            return MemberwiseClone() as UsdCurrency;
+        }
     }
 
     public class EurCurrency : Currency
@@ -85,6 +97,11 @@ namespace IBuyStuff.Domain.Shared
             : base("€", "EUR")
         {
         }
+
+        public override Currency GetCopy()
+        {
+            return MemberwiseClone() as EurCurrency;
+        }
     }
 
     public class GbpCurrency : Currency
@@ -94,6 +111,11 @@ namespace IBuyStuff.Domain.Shared
         public GbpCurrency()
             : base("£", "GBP")
         {
+        }
+
+        public override Currency GetCopy()
+        {
+            return MemberwiseClone() as GbpCurrency;
         }
     }
 }

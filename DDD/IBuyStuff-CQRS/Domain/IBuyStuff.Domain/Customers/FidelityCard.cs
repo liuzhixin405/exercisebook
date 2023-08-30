@@ -1,5 +1,8 @@
 ﻿namespace IBuyStuff.Domain.Customers
 {
+    /// <summary>
+    /// 积分卡
+    /// </summary>
     public class FidelityCard
     {
         public static FidelityCard CreateNew(string number, Customer customer)

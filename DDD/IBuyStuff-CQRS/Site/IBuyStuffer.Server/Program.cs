@@ -31,7 +31,7 @@ namespace IBuyStuffer.Server
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<QueryModelDatabase>(options => options.UseSqlServer("Data Source=(localdb)\\ProjectModels;Initial Catalog=BuyStuffer;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"), ServiceLifetime.Scoped);
             builder.Services.AddDbContext<CommandModelDatabase>(options => options.UseSqlServer("Data Source=(localdb)\\ProjectModels;Initial Catalog=BuyStuffer;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"), ServiceLifetime.Scoped);
-            ServiceProvider  sp =builder.Services.BuildServiceProvider();
+
             builder.Services.AddTransient<IProductRepository,ProductRepository>();
             builder.Services.AddTransient<ICustomerRepository,CustomerRepository>();
             builder.Services.AddTransient<ISubscriberRepository, SubscriberRepository>();
@@ -42,7 +42,12 @@ namespace IBuyStuffer.Server
          
             builder.Services.AddTransient<IOrderControllerService, OrderControllerService>();
             var app = builder.Build();
-
+            using(var serviceScope = app.Services.CreateScope())
+            {
+                var services = serviceScope.ServiceProvider;
+                var dbContext = services.GetRequiredService<CommandModelDatabase>();
+                new SampleAppInitializer(dbContext).Seed();
+            }
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

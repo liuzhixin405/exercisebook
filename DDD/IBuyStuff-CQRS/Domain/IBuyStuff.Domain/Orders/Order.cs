@@ -32,7 +32,7 @@ namespace IBuyStuff.Domain.Orders
         {
             OrderId = orderId;
             State = OrderState.Pending;
-            Total = Money.Zero;
+            Total =(Money)Money.Zero.Clone();
             Date = DateTime.Today;
             Items = new Collection<OrderItem>();
             Buyer = customer;

@@ -48,11 +48,11 @@ namespace IBuyStuff.Persistence.Facade
         public static void EnsureDatabase(ModelBuilder modelBuilder)
         {
             
-            modelBuilder.Owned<Money>();
-            modelBuilder.Owned<Address>();
-            modelBuilder.Owned<CreditCard>();
-           
-            
+            modelBuilder.Owned<Money>(); //值对象
+            modelBuilder.Owned<Address>();//值对象
+            modelBuilder.Owned<CreditCard>();//值对象
+
+
             //modelBuilder.ApplyConfiguration(new ExpiryDateMap());
             modelBuilder.ApplyConfiguration(new FidelityCardMap());
             modelBuilder.ApplyConfiguration(new OrderMap());

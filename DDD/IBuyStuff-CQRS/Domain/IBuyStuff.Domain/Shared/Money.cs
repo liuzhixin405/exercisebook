@@ -1,16 +1,20 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace IBuyStuff.Domain.Shared
 {
-   
-    public sealed class Money
+    
+    public sealed class Money:ICloneable
     {
+      
         public static Money Zero = new Money(Currency.Default, 0);
+        
         public Money(Currency currency, decimal amount)
         {
-            Currency = currency;
+            Currency = currency.GetCopy();
             Value = amount;
         }
 
@@ -25,9 +29,11 @@ namespace IBuyStuff.Domain.Shared
 
         #endregion
 
-        
+      
         public Currency Currency { get; private set; }
+      
         public decimal Value { get; private set; }
+      
 
         public override string ToString()
         {
@@ -94,6 +100,11 @@ namespace IBuyStuff.Domain.Shared
         public override int GetHashCode()
         {
             return Value.GetHashCode();
+        }
+
+        public object Clone()
+        {
+            return new Money { Currency = Currency.GetCopy(), Value = Value };
         }
         #endregion
     }
