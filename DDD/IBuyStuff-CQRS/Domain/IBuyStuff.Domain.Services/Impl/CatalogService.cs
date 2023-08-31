@@ -31,6 +31,7 @@ namespace IBuyStuff.Domain.Services.Impl
             //using (var db = new CommandModelDatabase())
             {
                 catalog.Products = (from p in db.Products select p).ToList();
+               
                 catalog.Customer = (from c in db.Customers where c.CustomerId == customerId select c).Single();
             }
             return catalog;

@@ -41,7 +41,7 @@ namespace IBuyStuff.Domain.Customers
         /// <summary>
         /// Password hash
         /// </summary>
-        public string PasswordHash { get; private set; }
+        public string? PasswordHash { get; private set; }
 
         /// <summary>
         /// First name. 
@@ -66,13 +66,13 @@ namespace IBuyStuff.Domain.Customers
         /// <summary>
         /// URL of the avatar
         /// </summary>
-        public string Avatar { get; private set; }
+        public string? Avatar { get; private set; }
 
         /// <summary>
         /// Postal address of the customer  
         /// At the very minimum, you might want to use an Address object.
         /// </summary>
-        public Address Address { get; private set; }
+        public Address? Address { get; private set; }
 
         /// <summary>
         /// Payment details for the customer (whatever that means)

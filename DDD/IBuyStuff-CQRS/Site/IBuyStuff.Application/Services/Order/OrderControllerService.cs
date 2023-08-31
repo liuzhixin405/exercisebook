@@ -24,17 +24,14 @@ namespace IBuyStuff.Application.Services.Order
     {
         private readonly IOrderRepository _orderRepository;
         private readonly ICatalogService _catalogService;
-        private readonly QueryModelDatabase db;
-        private readonly CommandModelDatabase commandModelDatabase;
+        private readonly QueryModelDatabase db;       
         public OrderControllerService(IOrderRepository orderRepository, 
             ICatalogService catalogService, 
-            QueryModelDatabase db,
-            CommandModelDatabase commandModeldb)
+            QueryModelDatabase db)
         {
             _orderRepository = orderRepository;
             _catalogService = catalogService;
             this.db = db;
-            this.commandModelDatabase = commandModeldb;
         }
 
         // TO BE MODIFIED (LET)

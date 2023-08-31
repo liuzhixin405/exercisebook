@@ -134,7 +134,7 @@ namespace IBuyStuffer.Server.Controllers
         }
         private ShoppingCartViewModel RetrieveCurrentShoppingCart()
         {
-            var customerId = User.Identity.Name;
+            var customerId = "naa4e"; //User.Identity.Name 
             var cartName = GetShoppingCartName(customerId);
             var cart =  _service.CreateShoppingCartForCustomer(customerId);
             return cart;
