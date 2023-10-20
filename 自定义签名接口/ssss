@@ -1,0 +1,1109 @@
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// gRPC通道池
+    /// </summary>
+    internal class GrpcChannelPool : ResourcePoolBase<string, GrpcChannel, GrpcChannelOptions>, IGrpcChannelPool
+    {
+        /// <summary>
+        /// 缓存字典
+        /// </summary>
+        private static readonly ConcurrentDictionary<string, List<ResourceContext<GrpcChannel>>> _channelCaches = new ConcurrentDictionary<string, List<ResourceContext<GrpcChannel>>>();
+
+        /// <summary>
+        /// 同步键缓存
+        /// </summary>
+        private static readonly ConcurrentDictionary<string, object> syncKeyCache = new ConcurrentDictionary<string, object>();
+
+        /// <summary>
+        /// 等待资源队列
+        /// </summary>
+        private static readonly ConcurrentDictionary<string, ConcurrentQueue<string>> waitResourseQueues = new ConcurrentDictionary<string, ConcurrentQueue<string>>();
+
+        /// <summary>
+        /// 忽略等待资源ID缓存
+        /// </summary>
+        private static readonly IList<string> ignoreWaitResourceIds = new List<string>();
+
+        /// <summary>
+        /// 同步忽略等待资源ID缓存
+        /// </summary>
+        private static readonly object syncIgnoreWaitResourceIds = new object();
+
+        /// <summary>
+        /// 同步同步资源状态字典
+        /// </summary>
+        private static readonly ConcurrentDictionary<ResourceContext<GrpcChannel>, object> syncResourceStatus = new ConcurrentDictionary<ResourceContext<GrpcChannel>, object>();
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="poolConfig">池配置</param>
+        public GrpcChannelPool(IResourcePoolConfig<string, GrpcChannelOptions> poolConfig = null)
+            : base(poolConfig)
+        { }
+
+        /// <summary>
+        /// 创建资源值
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <returns>资源值</returns>
+        protected override GrpcChannel Create(string key)
+        {
+            if (Config.ConcreateResourceOptiones != null && Config.ConcreateResourceOptiones.Count > 0 && Config.ConcreateResourceOptiones.ContainsKey(key))
+            {
+                return GrpcChannel.ForAddress(key, Config.ConcreateResourceOptiones[key]);
+            }
+            else
+            {
+                if (Config.GlobalConcreateResourceOptions == null)
+                {
+                    return GrpcChannel.ForAddress(key);
+                }
+                else
+                {
+                    return GrpcChannel.ForAddress(key, Config.GlobalConcreateResourceOptions);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取缓存
+        /// </summary>
+        /// <returns>缓存</returns>
+        protected override ConcurrentDictionary<string, List<ResourceContext<GrpcChannel>>> GetCache() => _channelCaches;
+
+        /// <summary>
+        /// 获取同步缓存键
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <returns>同步缓存键</returns>
+        protected override object GetSyncCacheKey(string key)
+        {
+            return syncKeyCache.GetOrAdd(key, x =>
+            {
+                return new object();
+            });
+        }
+
+        /// <summary>
+        /// 释放资源值
+        /// </summary>
+        /// <param name="resourceValue">资源值</param>
+        protected override void Release(GrpcChannel resourceValue)
+        {
+            try
+            {
+                resourceValue.ShutdownAsync();
+                resourceValue.Dispose();
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// 获取等待资源队列
+        /// key：资源键
+        /// value：资源值ID
+        /// </summary>
+        /// <returns>等待资源队列</returns>
+        protected override ConcurrentDictionary<string, ConcurrentQueue<string>> GetWaitResourceQueues() => waitResourseQueues;
+
+        /// <summary>
+        /// 获取忽略等待资源ID缓存
+        /// </summary>
+        /// <returns>忽略等待资源ID缓存</returns>
+        protected override IList<string> GetIgnoreWaitResourceIdCache() => ignoreWaitResourceIds;
+
+        /// <summary>
+        /// 获取忽略同步等待资源ID缓存
+        /// </summary>
+        /// <returns>忽略同步等待资源ID缓存</returns>
+        protected override object GetSyncIgnoreWaitResourceIdCache() => syncIgnoreWaitResourceIds;
+
+        /// <summary>
+        /// 获取同步资源状态
+        /// </summary>
+        /// <param name="rs">资源状态</param>
+        /// <returns>同步资源状态</returns>
+        protected override object GetSyncResourceStatus(ResourceContext<GrpcChannel> rs)
+        {
+            return syncResourceStatus.GetOrAdd(rs, x =>
+            {
+                return new object();
+            });
+        }
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// gRPC通道池配置
+    /// </summary>
+    internal class GrpcChannelPoolConfig : IResourcePoolConfig<string, GrpcChannelOptions>
+    {
+        /// <summary>
+        /// 读取
+        /// </summary>
+        /// <returns>池配置信息</returns>
+        public ResourceSettings<string, GrpcChannelOptions> Reader()
+        {
+            return new ResourceSettings<string, GrpcChannelOptions>();
+        }
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// gRPC通道池接口
+    /// </summary>
+    internal interface IGrpcChannelPool : IResourcePool<string, GrpcChannel, GrpcChannelOptions>
+    {
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// 资源池接口
+    /// </summary>
+    /// <typeparam name="TKey">资源键类型</typeparam>
+    /// <typeparam name="TValue">资源值类型</typeparam>
+    /// <typeparam name="TOptions">具体资源配置类型</typeparam>
+    internal interface IResourcePool<TKey, TValue, TOptions>
+        where TValue : class
+    {
+        /// <summary>
+        /// 配置
+        /// </summary>
+        ResourceSettings<TKey, TOptions> Config { get; }
+
+        /// <summary>
+        /// 根据键获取值
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns>值</returns>
+        TValue Get(TKey key);
+
+        /// <summary>
+        /// 回收，使用后需要执行回收
+        /// </summary>
+        /// <param name="value">资源值</param>
+        void Recycle(TValue value);
+
+        /// <summary>
+        /// 根据资源键移除
+        /// </summary>
+        /// <param name="key">资源键</param>
+        void Remove(TKey key);
+
+        /// <summary>
+        /// 执行，会自动回收
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <param name="action">回调</param>
+        void Exec(TKey key, Action<TValue> action);
+
+        /// <summary>
+        /// 异步执行，会自动回收
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <param name="func">回调</param>
+        Task ExecAsync(TKey key, Func<TValue, Task> func);
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// 资源池配置
+    /// </summary>
+    /// <typeparam name="ResourceKeyT">资源键</typeparam>
+    /// <typeparam name="ConcreateReourseOptionsT">具体资源选项类型</typeparam>
+    internal interface IResourcePoolConfig<ResourceKeyT, ConcreateReourseOptionsT>
+    {
+        /// <summary>
+        /// 读取
+        /// </summary>
+        /// <returns>池配置信息</returns>
+        ResourceSettings<ResourceKeyT, ConcreateReourseOptionsT> Reader();
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// 资源状态信息
+    /// </summary>
+    /// <typeparam name="TValue">资源类型</typeparam>
+    internal class ResourceContext<TValue> where TValue : class
+    {
+        /// <summary>
+        /// 使用中数量
+        /// </summary>
+        public uint UseingLength { get; set; }
+
+        /// <summary>
+        /// 开始一次使用时间
+        /// </summary>
+        public DateTime StartUseTime { get; set; }
+
+        /// <summary>
+        /// 结束使用时间
+        /// </summary>
+        public DateTime EndUseTime { get; set; }
+
+        /// <summary>
+        /// 资源
+        /// </summary>
+        public TValue Value { get; set; }
+
+        /// <summary>
+        /// 统计现在与结束时间的间隔毫秒数
+        /// </summary>
+        public double TotalEndMillseconds
+        {
+            get
+            {
+                if (EndUseTime == DateTime.MinValue)
+                {
+                    return 0;
+                }
+                var ts = DateTime.Now - EndUseTime;
+                return ts.TotalMilliseconds;
+            }
+        }
+    }
+}
+
+using Mjb.Threading.Locker;
+
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// 资源池基类
+    /// </summary>
+    /// <typeparam name="TKey">资源键类型</typeparam>
+    /// <typeparam name="TValue">资源值类型</typeparam>
+    /// <typeparam name="TOptions">具体资源配置类型</typeparam>
+    internal abstract class ResourcePoolBase<TKey, TValue, TOptions> : IResourcePool<TKey, TValue, TOptions>
+        where TValue : class
+    {
+        /// <summary>
+        /// 异步释放
+        /// </summary>
+        private readonly IThreadLocker<string> threadLocker = new ThreadLocker<string>();
+
+        /// <summary>
+        /// 配置
+        /// </summary>
+        private readonly ResourceSettings<TKey, TOptions> config;
+
+        /// <summary>
+        /// 定时器
+        /// </summary>
+        private Timer timer;
+
+        /// <summary>
+        /// 同步定时器
+        /// </summary>
+        private readonly object syncTimer = new object();
+
+        /// <summary>
+        /// 配置
+        /// </summary>
+        public ResourceSettings<TKey, TOptions> Config
+        {
+            get => config;
+        }
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="poolConfig">池配置</param>
+        public ResourcePoolBase(IResourcePoolConfig<TKey, TOptions> poolConfig = null)
+        {
+            if (poolConfig != null)
+            {
+                config = poolConfig.Reader();
+            }
+            if (config == null)
+            {
+                config = new ResourceSettings<TKey, TOptions>();
+            }
+        }
+
+        /// <summary>
+        /// 根据键获取值
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns>值</returns>
+        public TValue Get(TKey key)
+        {
+            InitTimer();
+            lock (GetSyncCacheKey(key))
+            {
+                var dicCaches = GetCache();
+                if (dicCaches.ContainsKey(key))
+                {
+                    var list = dicCaches[key];
+                    return GetOptimalResourceStatus(key, list).Value;
+                }
+                else
+                {
+                    var context = new ResourceContext<TValue>()
+                    {
+                        Value = Create(key)
+                    };
+                    var list = new List<ResourceContext<TValue>>();
+                    dicCaches.TryAdd(key, list);
+                    list.Add(context);
+
+                    SetStartUse(context);
+
+                    return context.Value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 回收，使用后需要执行回收
+        /// </summary>
+        /// <param name="value">资源值</param>
+        public void Recycle(TValue value)
+        {
+            TKey key;
+            var context = GetResourceContext(value, out key);
+            if (context == null)
+            {
+                return;
+            }
+
+            lock (GetSyncResourceStatus(context))
+            {
+                context.UseingLength--;
+                context.EndUseTime = DateTime.Now;
+            }
+
+            var waitReses = GetWaitResourceQueues();
+            ConcurrentQueue<string> queue;
+            if (waitReses.TryGetValue(key, out queue) && queue != null)
+            {
+                var ignoreWaitResIds = GetIgnoreWaitResourceIdCache();
+                while (true)
+                {
+                    string id;
+                    if (queue.TryDequeue(out id))
+                    {
+                        if (ignoreWaitResIds.Contains(id))
+                        {
+                            continue;
+                        }
+
+                        threadLocker.Release(id);
+
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 根据资源键移除
+        /// </summary>
+        /// <param name="key">资源键</param>
+        public void Remove(TKey key)
+        {
+            var dicCache = GetCache();
+            if (dicCache == null || dicCache.Count == 0)
+            {
+                return;
+            }
+
+            if (dicCache.ContainsKey(key))
+            {
+                var list = dicCache[key];
+                if (list == null || dicCache.Count == 0)
+                {
+                    return;
+                }
+
+                lock (GetSyncCacheKey(key))
+                {
+                    foreach (var item in list)
+                    {
+                        Release(item.Value);
+                    }
+
+                    if (dicCache.ContainsKey(key))
+                    {
+                        dicCache.Remove(key, out _);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 执行，会自动回收
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <param name="action">回调</param>
+        public void Exec(TKey key, Action<TValue> action)
+        {
+            if (action == null)
+            {
+                throw new ArgumentNullException("回调不能为null");
+            }
+            var value = Get(key);
+            try
+            {
+                action(value);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+            finally
+            {
+                Recycle(value);
+            }
+        }
+
+        /// <summary>
+        /// 异步执行，会自动回收
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <param name="func">回调</param>
+        public async Task ExecAsync(TKey key, Func<TValue, Task> func)
+        {
+            if (func == null)
+            {
+                throw new ArgumentNullException("回调不能为null");
+            }
+            await Task.Run(() =>
+            {
+                Exec(key, value =>
+                {
+                    func(value);
+                });
+            });
+        }
+
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        public void Close()
+        {
+            EachResourceStatus((k, v) =>
+            {
+                Release(v.Value);
+                return false;
+            });
+        }
+
+        /// <summary>
+        /// 从列表里获取最优的资源状态
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="list">列表</param>
+        /// <returns>资源状态</returns>
+        private ResourceContext<TValue> GetOptimalResourceStatus(TKey key, List<ResourceContext<TValue>> list)
+        {
+            ResourceContext<TValue> context = null;
+            // 如果列表里为空，则直接创建使用
+            if (list.Count == 0)
+            {
+                context = new ResourceContext<TValue>()
+                {
+                    Value = Create(key)
+                };
+                list.Add(context);
+                SetStartUse(context);
+
+                return context;
+            }
+
+            // 从列表里获取可用的资源状态（排除掉超过最大使用数量，且按使用中数量从小排序）
+            var canList = config.MaxSingleUseSize > 0 ? list.Where(p => p.UseingLength + 1 <= config.MaxSingleUseSize).ToList() : list;
+            // 如果单个最大数量都满了，则看是否超过最大池，如果超过，则进入等待期，否则新创建
+            context = FilterOptimalResourceStatus(canList);
+            if (context == null)
+            {
+                // 如果超过了最大池数量，则进入等待
+                if (config.MaxPoolSize > 0 && list.Count >= config.MaxPoolSize)
+                {
+                    var waitReses = GetWaitResourceQueues();
+                    var queue = waitReses.GetOrAdd(key, x =>
+                    {
+                        return new ConcurrentQueue<string>();
+                    });
+                    var id = Guid.NewGuid().ToString();
+                    queue.Enqueue(id);
+
+                    // 如果是超时，则需要加入忽略ID
+                    if (!threadLocker.Wait(id, TimeSpan.FromMilliseconds(config.TimeoutMillseconds)))
+                    {
+                        lock (GetSyncIgnoreWaitResourceIdCache())
+                        {
+                            GetIgnoreWaitResourceIdCache().Add(id);
+                        }
+                    }
+
+                    context = FilterOptimalResourceStatus(canList);
+                    if (context == null)
+                    {
+                        throw new Exception("获取资源已超时");
+                    }
+                }
+                else
+                {
+                    context = new ResourceContext<TValue>()
+                    {
+                        Value = Create(key)
+                    };
+                    list.Add(context);
+                }
+            }
+
+            SetStartUse(context);
+
+            return context;
+        }
+
+        /// <summary>
+        /// 开始使用
+        /// </summary>
+        /// <param name="rs">资源状态</param>
+        private void SetStartUse(ResourceContext<TValue> rs)
+        {
+            lock (GetSyncResourceStatus(rs))
+            {
+                rs.UseingLength++;
+                rs.StartUseTime = DateTime.Now;
+            }
+        }
+
+        /// <summary>
+        /// 筛选从最优的资源状态
+        /// </summary>
+        /// <param name="list">资源状态列表</param>
+        /// <returns>资源状态</returns>
+        protected virtual ResourceContext<TValue> FilterOptimalResourceStatus(List<ResourceContext<TValue>> list)
+        {
+            return list.OrderBy(x => x.UseingLength).OrderByDescending(x => x.EndUseTime).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 根据资源值获取资源状态
+        /// </summary>
+        /// <param name="value">资源值</param>
+        /// <param name="key">资源键</param>
+        /// <returns>资源状态</returns>
+        private ResourceContext<TValue> GetResourceContext(TValue value, out TKey key)
+        {
+            ResourceContext<TValue> context = null;
+            TKey tempKey = default;
+            EachResourceStatus((k, v) =>
+            {
+                if (v.Value == value)
+                {
+                    context = v;
+                    tempKey = k;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            });
+            key = tempKey;
+
+            return context;
+        }
+
+        /// <summary>
+        /// 循环资源状态
+        /// </summary>
+        /// <param name="callback">回调</param>
+        private void EachResourceStatus(Func<TKey, ResourceContext<TValue>, bool> callback)
+        {
+            var dicCaches = GetCache();
+            if (dicCaches == null || dicCaches.Count == 0)
+            {
+                return;
+            }
+
+            foreach (var item in dicCaches)
+            {
+                if (item.Value == null || dicCaches.Count == 0)
+                {
+                    continue;
+                }
+
+                foreach (var item2 in item.Value)
+                {
+                    if (callback(item.Key, item2))
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 初始化定时器
+        /// </summary>
+        private void InitTimer()
+        {
+            if (timer != null || config.TimerCheckIntervalMillSeconds == 0)
+            {
+                return;
+            }
+
+            lock (syncTimer)
+            {
+                if (timer == null)
+                {
+                    timer = new Timer(st =>
+                    {
+                        CheckIdleResource();
+                    }, null, 0, config.TimerCheckIntervalMillSeconds);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 检查空闲资源
+        /// </summary>
+        private void CheckIdleResource()
+        {
+            var dicCaches = GetCache();
+            if (dicCaches == null || dicCaches.Count == 0)
+            {
+                return;
+            }
+
+            foreach (var item in dicCaches)
+            {
+                if (item.Value == null || dicCaches.Count == 0)
+                {
+                    continue;
+                }
+
+                lock (GetSyncCacheKey(item.Key))
+                {
+                    item.Value.RemoveAll(p => p.UseingLength == 0 && p.TotalEndMillseconds > 0 && config.MaxIdleMillseconds > 0 && p.TotalEndMillseconds >= config.MaxIdleMillseconds);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 创建资源值
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <returns>资源值</returns>
+        protected abstract TValue Create(TKey key);
+
+        /// <summary>
+        /// 获取缓存
+        /// </summary>
+        /// <returns>缓存</returns>
+        protected abstract ConcurrentDictionary<TKey, List<ResourceContext<TValue>>> GetCache();
+
+        /// <summary>
+        /// 获取同步缓存键
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <returns>同步缓存键</returns>
+        protected abstract object GetSyncCacheKey(TKey key);
+
+        /// <summary>
+        /// 释放资源值
+        /// </summary>
+        /// <param name="resourceValue">资源值</param>
+        protected abstract void Release(TValue resourceValue);
+
+        /// <summary>
+        /// 获取等待资源队列
+        /// key：资源键
+        /// value：资源值ID
+        /// </summary>
+        /// <returns>等待资源队列</returns>
+        protected abstract ConcurrentDictionary<TKey, ConcurrentQueue<string>> GetWaitResourceQueues();
+
+        /// <summary>
+        /// 获取忽略等待资源ID缓存
+        /// </summary>
+        /// <returns>忽略等待资源ID缓存</returns>
+        protected abstract IList<string> GetIgnoreWaitResourceIdCache();
+
+        /// <summary>
+        /// 获取同步忽略等待资源ID缓存
+        /// </summary>
+        /// <returns>同步忽略等待资源ID缓存</returns>
+        protected abstract object GetSyncIgnoreWaitResourceIdCache();
+
+        /// <summary>
+        /// 获取同步资源状态
+        /// </summary>
+        /// <param name="rs">资源状态</param>
+        /// <returns>同步资源状态</returns>
+        protected abstract object GetSyncResourceStatus(ResourceContext<TValue> rs);
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory.Internal
+{
+    /// <summary>
+    /// 池配置信息
+    /// </summary>
+    /// <typeparam name="TKey">资源键类型</typeparam>
+    /// <typeparam name="TOptions">具体资源配置类型</typeparam>
+    internal class ResourceSettings<TKey, TOptions>
+    {
+        /// <summary>
+        /// 最大的池大小，0为不限制，默认为100
+        /// 如果超过了，则进入等待
+        /// </summary>
+        public uint MaxPoolSize { get; set; } = 100;
+
+        /// <summary>
+        /// 最大单个使用大小，0为不限制，默认为20
+        /// 如果超过了，则创建新的资源
+        /// </summary>
+        public uint MaxSingleUseSize { get; set; } = 20;
+
+        /// <summary>
+        /// 等待超时毫秒数，默认为60000，即1分钟
+        /// </summary>
+        public uint TimeoutMillseconds { get; set; } = 60000;
+
+        /// <summary>
+        /// 最大空闲毫秒数，如果超过，则会移除，0则不限制，默认为30分钟
+        /// </summary>
+        public uint MaxIdleMillseconds { get; set; } = 1800000;
+
+        /// <summary>
+        /// 定时器检测间隔毫秒数，如果为0，则不检查。默认为2分钟
+        /// </summary>
+        public uint TimerCheckIntervalMillSeconds { get; set; } = 120000;
+
+        /// <summary>
+        /// 全局具体资源配置
+        /// </summary>
+        public TOptions GlobalConcreateResourceOptions { get; set; }
+
+        /// <summary>
+        /// 具体资源配置字典，如果按资源键未找到，则使用全局具体资源配置
+        /// </summary>
+        public IDictionary<TKey, TOptions> ConcreateResourceOptiones { get; set; }
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory
+{
+    public class GrpcClientFactory : IGrpcClientFactory
+    {
+        private readonly Dictionary<string, string> _settings;
+
+        private readonly IGrpcChannelPool _channelPool;
+        public GrpcClientFactory(IServiceProvider serviceProvider,
+            IOptions<GrpcOptions> options)
+        {
+            _channelPool = serviceProvider.GetRequiredService<IGrpcChannelPool>();
+            _settings = new Dictionary<string, string>()
+            {
+                { GrpcDefaults.Catalog,options.Value.Catalog},
+                { GrpcDefaults.Foundation,options.Value.Foundation},
+                { GrpcDefaults.Customer,options.Value.Customer},
+                { GrpcDefaults.Ordering,options.Value.Ordering},
+                { GrpcDefaults.Merchant,options.Value.Merchant},
+                { GrpcDefaults.Scheduling,options.Value.Scheduling},
+            };
+        }
+        public GrpcChannel CreateChannel(string serviceName)
+        {
+            if (!_settings.TryGetValue(serviceName, out var address) || string.IsNullOrEmpty(address))
+                throw new ArgumentNullException(nameof(address), $"未获取服务`{serviceName}`gRPC的配置地址。");
+            return _channelPool.Get(address);
+        }
+
+        /// <summary>
+        /// 回收，使用后需要执行回收
+        /// </summary>
+        /// <param name="channel">渠道</param>
+        public void Recycle(GrpcChannel channel) => _channelPool.Recycle(channel);
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory
+{
+    /// <summary>
+    /// Grpc客户端工厂接口
+    /// </summary>
+    public interface IGrpcClientFactory
+    {
+        /// <summary>
+        /// 创建gRPC通道
+        /// </summary>
+        /// <param name="serviceName">服务名</param>
+        /// <returns>gRPC通道</returns>
+        GrpcChannel CreateChannel(string serviceName);
+
+        /// <summary>
+        /// 回收，使用后需要执行回收
+        /// </summary>
+        /// <param name="channel">gRPC通道</param>
+        void Recycle(GrpcChannel channel);
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.ClientFactory
+{
+    public static class IGrpcClientFactoryExtensions
+    {
+
+        /// <summary>
+        /// 执行gRPC调用
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="factory"></param>
+        /// <param name="serviceName"></param>
+        /// <param name="serviceAction"></param>
+        /// <returns></returns>
+        public static async Task<TResult> InvokeAsync<TService, TResult>(this IGrpcClientFactory factory, string serviceName, Func<TService, Task<TResult>> serviceAction)
+            where TService : IService<TService>
+        {
+            if (string.IsNullOrEmpty(serviceName)) throw new ArgumentNullException(nameof(serviceName), "服务名不能为空。");
+            GrpcChannel channel = null;
+            try
+            {
+                channel = factory.CreateChannel(serviceName);
+                var service = MagicOnionClient.Create<TService>(channel);
+                return await serviceAction?.Invoke(service);
+            }
+            finally
+            {
+                if (channel != null)
+                {
+                    factory.Recycle(channel);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 执行gRPC调用
+        /// </summary>
+        /// <typeparam name="TService"></typeparam>
+        /// <param name="factory"></param>
+        /// <param name="serviceName"></param>
+        /// <param name="serviceAction"></param>
+        /// <returns></returns>
+        public static async Task InvokeAsync<TService>(this IGrpcClientFactory factory, string serviceName, Func<TService, Task> serviceAction)
+            where TService : IService<TService>
+        {
+            if (string.IsNullOrEmpty(serviceName)) throw new ArgumentNullException(nameof(serviceName), "服务名不能为空。");
+            GrpcChannel channel = null;
+            try
+            {
+                channel = factory.CreateChannel(serviceName);
+                var service = MagicOnionClient.Create<TService>(channel);
+                await serviceAction?.Invoke(service);
+            }
+            finally
+            {
+                if (channel != null)
+                {
+                    factory.Recycle(channel);
+                }
+            }
+        }
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions.Filters
+{
+    /// <summary>
+    /// 服务过滤特性
+    /// </summary>
+    public class NomalizedResultFilterAttribute : MagicOnionFilterAttribute
+    {
+        /// <summary>
+        /// 日志
+        /// </summary>
+        private readonly ILogger<NomalizedResultFilterAttribute> _logger;
+
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="logger">日志</param>
+        public NomalizedResultFilterAttribute(ILogger<NomalizedResultFilterAttribute> logger)
+        {
+            _logger = logger;
+        }
+
+        /// <summary>
+        /// 执行
+        /// </summary>
+        /// <param name="context">上下文</param>
+        /// <param name="next">下一个中间件</param>
+        /// <returns></returns>
+        public override async ValueTask Invoke(ServiceContext context, Func<ServiceContext, ValueTask> next)
+        {
+            try
+            {
+                await next(context);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(exception: ex, "gRPC服务端出现异常:{0}", ex.Message);
+                if (context.MethodInfo.ReturnType.GenericTypeArguments == null || context.MethodInfo.ReturnType.GenericTypeArguments.Length == 0)
+                {
+                    throw new Exception(ex.Message, ex);
+                }
+                var result = Activator.CreateInstance(context.MethodInfo.ReturnType.GenericTypeArguments[0]) as GrpcResult;
+                if (result == null)
+                {
+                    throw new Exception(ex.Message, ex);
+                }
+                result.IsSuccessful = false;
+                result.Message = ex.Message;
+                context.SetRawResponse(result);
+            }
+        }
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions
+{
+    public static class GrpcDefaults
+    {
+        public const string Catalog = "Catalog";
+        public const string Foundation = "Foundation";
+        public const string Customer = "Customer";
+        public const string Merchant = "Merchant";
+        public const string Ordering = "Ordering";
+        public const string Scheduling = "Scheduling";
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions
+{
+    public class GRpcMapperConfigs : IAutoMapperConfig
+    {
+        public void Register(IMapperConfigurationExpression config)
+        {
+            
+        }
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions
+{
+    public class GrpcOptions
+    {
+        public string Catalog { get; set; }
+        public string Foundation { get; set; }
+        public string Customer { get; set; }
+        public string Merchant { get; set; }
+        public string Ordering { get; set; }
+        public string Scheduling { get; set; }
+    }
+}
+namespace Ysy.SharedKernel.gRPC.Abstractions
+{
+    /// <summary>
+    /// GRPC数据结果
+    /// </summary>
+    [MessagePackObject]
+    public class GrpcResult
+    {
+        /// <summary>
+        /// 消息
+        /// </summary>
+        [Key("Message")]
+        public string Message { get; set; } = "成功";
+
+        /// <summary>
+        /// 是否成功
+        /// </summary>
+        [Key("IsSuccessful")]
+        public bool IsSuccessful { get; set; } = true;
+
+        /// <summary>
+        /// 验证结果是否有效
+        /// </summary>
+        /// <exception cref="InvalidOperationException"></exception>
+        public virtual void Validate(string customMessage = null)
+        {
+            if (IsSuccessful)
+                return;
+
+            throw new InvalidOperationException(string.IsNullOrWhiteSpace(Message) ? customMessage : Message);
+        }
+    }
+
+    /// <summary>
+    /// GRPC数据结果
+    /// </summary>
+    /// <typeparam name="T">业务类型</typeparam>
+    [MessagePackObject]
+    public class GrpcResult<T> : GrpcResult
+    {
+        /// <summary>
+        /// 结果
+        /// </summary>
+        [Key("Result")]
+        public T Result { get; set; }
+
+        /// <summary>
+        /// 验证结果是否有效
+        /// </summary>
+        /// <exception cref="InvalidOperationException"></exception>
+        public void Validate(string customMessage = null, bool isAllowResultNull = false)
+        {
+            base.Validate(customMessage);
+            if (Result == null && !isAllowResultNull)
+                throw new InvalidOperationException("gRPC未获取到任何数据。");
+        }
+
+        /// <summary>
+        /// 验证结果是否有效
+        /// </summary>
+        /// <exception cref="InvalidOperationException"></exception>
+        public override void Validate(string customMessage = null)
+        {
+            Validate(customMessage: customMessage, isAllowResultNull: false);
+        }
+    }
+}
+namespace Microsoft.Extensions.DependencyInjection
+{
+    public static class IServiceCollectionExtensions
+    {
+        /// <summary>
+        /// 添加gRPC客户端支持
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddGrpcClient(this IServiceCollection services, Action<GrpcOptions> configure)
+        {
+            services.AddSingleton<IGrpcChannelPool, GrpcChannelPool>();
+            services.AddSingleton<IGrpcClientFactory, GrpcClientFactory>();
+            services.AddSingleton<IResourcePoolConfig<string, GrpcChannelOptions>, GrpcChannelPoolConfig>();
+            services.Configure(configure);
+            return services;
+        }
+
+        /// <summary>
+        /// 添加gRPC服务端支持
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddGrpcServer(this IServiceCollection services)
+        {
+            services.AddGrpc(options =>
+            {
+                options.EnableDetailedErrors = true;
+            });
+            services.AddMagicOnion(options =>
+            {
+                options.GlobalFilters.Add<NomalizedResultFilterAttribute>();
+            });
+            return services;
+        }
+    }
+}
