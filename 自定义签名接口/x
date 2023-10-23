@@ -1,0 +1,176 @@
+namespace Mjb.Threading.Locker
+{
+    /// <summary>
+    /// 线程锁
+    /// 提供对本地线程阻塞，在本进程内，另处进行线程继续执行(释放)
+    /// </summary>
+    /// <typeparam name="TKey">键类型</typeparam>
+    public interface IThreadLocker<TKey>
+    {
+        /// <summary>
+        /// 等待
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="timeout">超时，默认永不超时</param>
+        /// <returns>回调的返回值。例如：如果超时，则返回false</returns>
+        bool Wait(TKey key, TimeSpan? timeout = null);
+
+        /// <summary>
+        /// 等待
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="returnValue">返回值</param>
+        /// <param name="timeout">超时，默认永不超时</param>
+        /// <returns>是否接收到信号。例如：如果超时，则返回false</returns>
+        bool Wait(TKey key, out object returnValue, TimeSpan? timeout = null);
+
+        /// <summary>
+        /// 释放
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="callbackReturnValue">回调的返回值</param>
+        /// <returns>是否释放成功</returns>
+        bool Release(TKey key, object callbackReturnValue = null);
+
+        /// <summary>
+        /// 释放，如果不存在则抛出异常
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">回调的返回值</param>
+        /// <returns>是否释放成功</returns>
+        bool ReleaseNotExistsThrowException(TKey key, object value = null);
+    }
+}
+using System.Collections.Concurrent;
+
+namespace Mjb.Threading.Locker
+{
+    public class ThreadLocker<TKey> : IThreadLocker<TKey>
+    {
+        /// <summary>
+        /// 缓存键
+        /// </summary>
+        private static readonly IDictionary<TKey, AutoResetInfo> _caches = new ConcurrentDictionary<TKey, AutoResetInfo>();
+
+        /// <summary>
+        /// 等待
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="timeout">超时，默认永不超时</param>
+        /// <returns>回调的返回值。例如：如果超时，则返回false</returns>
+        public bool Wait(TKey key, TimeSpan? timeout = null)
+        {
+            return Wait(key: key, value: out _, timeout: timeout);
+        }
+
+        /// <summary>
+        /// 等待
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">返回值</param>
+        /// <param name="timeout">超时，默认永不超时</param>
+        /// <returns>是否接收到信号。例如：如果超时，则返回false</returns>
+        public bool Wait(TKey key, out object value, TimeSpan? timeout = null)
+        {
+            var autoReset = new AutoResetInfo()
+            {
+                Event = new AutoResetEvent(false)
+            };
+            var result = false;
+            try
+            {
+                if (!_caches.ContainsKey(key))
+                {
+                    _caches.Add(key, autoReset);
+                }
+                if (timeout == null)
+                {
+                    result = autoReset.Event.WaitOne();
+                }
+                else
+                {
+                    result = autoReset.Event.WaitOne(timeout.Value);
+                }
+                value = autoReset.Value;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+            finally
+            {
+                autoReset.Event.Close();
+                if (_caches.ContainsKey(key))
+                {
+                    _caches.Remove(key);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 释放
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">回调的返回值</param>
+        /// <returns>是否释放成功</returns>
+        public bool Release(TKey key, object value = null)
+        {
+            if (_caches.ContainsKey(key))
+            {
+                var autoReset = _caches[key];
+                autoReset.Value = value;
+                return autoReset.Event.Set();
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 释放，如果不存在则抛出异常
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <param name="value">回调的返回值</param>
+        /// <returns>是否释放成功</returns>
+        public bool ReleaseNotExistsThrowException(TKey key, object value = null)
+        {
+            if (Release(key, value))
+            {
+                return true;
+            }
+            throw new Exception($"本进程不存在key[{key}]");
+        }
+
+        /// <summary>
+        /// 自动重置返回信息
+        /// </summary>
+        internal class AutoResetInfo
+        {
+            /// <summary>
+            /// 自动重置事件
+            /// </summary>
+            public AutoResetEvent Event { get; set; }
+
+            /// <summary>
+            /// 回调返回
+            /// </summary>
+            public object Value { get; set; }
+        }
+    }
+}
+namespace Mjb.Threading
+{
+    public class DefaultSignal : ISignal
+    {
+        public CancellationToken CancellationToken => CancellationToken.None;
+    }
+}
+namespace Mjb.Threading
+{
+    public interface ISignal
+    {
+        /// <summary>
+        /// 取消令牌
+        /// </summary>
+        CancellationToken CancellationToken { get; }
+    }
+}
