@@ -9,7 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+
+using NSwag;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,35 +31,25 @@ namespace JwtClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<JwtOptions>(Configuration.GetSection("jwt"));
-            var jwtOptions = Configuration.GetSection("jwt").Get<JwtOptions>();
-
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-           .AddJwtBearer(x => {
-               x.RequireHttpsMetadata = false;
-               x.SaveToken = false;
-               x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-               {
-                   ClockSkew = TimeSpan.Zero,
-                   ValidateIssuerSigningKey = true,
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.Secret)),
-                   ValidateIssuer = false,
-                   ValidateAudience = false
-               };
-           });
+            services.AddJwt(Configuration);
             services.AddControllers(
                 options =>
                 {
                     options.Filters.Add<AuthorizeFilter>();
                 }
                 );
-            services.AddSwaggerGen(c =>
+            services.AddOpenApiDocument(settings =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JwtClient", Version = "v1" });
+                settings.Title = "后台管理系统";
+                settings.AllowReferencesWithProperties = true;
+                settings.AddSecurity("身份认证Token", Enumerable.Empty<string>(), new OpenApiSecurityScheme()
+                {
+                    Scheme = "bearer",
+                    Description = "Authorization:Bearer {your JWT token}<br/><b>授权地址:/Token/GetToken</b>",
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Type = OpenApiSecuritySchemeType.Http
+                });
             });
         }
 
@@ -68,8 +59,8 @@ namespace JwtClient
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JwtClient v1"));
+                app.UseOpenApi();
+                app.UseSwaggerUi3();
             }
 
             app.UseHttpsRedirection();
