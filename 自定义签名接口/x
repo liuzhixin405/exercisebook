@@ -474,3 +474,12 @@ namespace Microsoft.Extensions.DependencyInjection
         }
     }
 }
+ services.RegisterAssembly("Mjb.Erp2.Ordering.IService", "Mjb.Erp2.Ordering.ServiceImpl", ServiceLifetime.Scoped, interceptedClasses, interfacTypeCallback: type =>
+            {
+                if (type.Name.StartsWith("IComOrderNoFactory"))
+                {
+                    return true;
+                }
+
+                return false;
+            });
