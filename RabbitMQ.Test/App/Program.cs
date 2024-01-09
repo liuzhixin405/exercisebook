@@ -20,7 +20,7 @@ namespace App
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddHostedService<ConsumerService>();
-            builder.Services.AddHostedService<DeadConsumerService>();
+            builder.Services.AddHostedService<DelayConsumerService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -34,6 +34,8 @@ namespace App
                 ConnectionFactory factory = new ConnectionFactory();
                 factory.HostName = "localhost";
                 factory.Port = 5672;
+                factory.UserName = "admin";
+                factory.Password = "admin";
                 using (IConnection connection = factory.CreateConnection())
                 {
                     using (IModel channel = connection.CreateModel())
