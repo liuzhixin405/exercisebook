@@ -23,7 +23,7 @@ namespace App
 
             channel.QueueDeclare(queueName, true, false, false, null);
 
-            channel.QueueBind(queueName, "exchange.dlx", "routingkey");  //可能是新版问题吧，不绑定routingkey消费不了。
+            channel.QueueBind(queueName, "exchange.dlx", "");  //可能是新版问题吧，不绑定routingkey消费不了。
             //输入1，那如果接收一个消息，但是没有应答，则客户端不会收到下一个消息
             channel.BasicQos(0, 1, false);
             //在队列上定义一个消费者

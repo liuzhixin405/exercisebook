@@ -20,7 +20,7 @@ namespace App
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddHostedService<ConsumerService>();
-            builder.Services.AddHostedService<DelayConsumerService>();
+            //builder.Services.AddHostedService<DelayConsumerService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -40,27 +40,30 @@ namespace App
                 {
                     using (IModel channel = connection.CreateModel())
                     {
-                        var queueName = "rbTest2023010";
+                        //var queueName = "rbTest2023010";
                       
-                        //channel.ExchangeDeclare("exchange.dlx", ExchangeType.Direct, true);
-                        //channel.QueueDeclare("queue.dlx", true, false, false, null);
-                        channel.ExchangeDeclare("exchange.normal", ExchangeType.Fanout, true);
-                        channel.QueueDeclare(queueName, true, false, false,
+                        channel.ExchangeDeclare("exchange.dlx", ExchangeType.Direct, true);
+                        channel.QueueDeclare("queue.dlx", true, false, false,
                             new Dictionary<string, object>
                         {
-                            { "x-message-ttl" ,10000},
-                            {"x-dead-letter-exchange","exchange.dlx" },
+                            { "x-message-ttl" ,1000*60},
+                            {"x-dead-letter-exchange","exchange.normal" },
                             {"x-dead-letter-routing-key","routingkey" }
                         }
                             );
-                       
-                        channel.QueueBind(queueName, "exchange.normal", "");
+                        channel.QueueBind("queue.dlx","exchange.dlx","");
+
+
+                        channel.QueueDeclare("queue.normal", true, false, false, null);
+                        channel.ExchangeDeclare("exchange.normal", ExchangeType.Fanout, true);       
+                        channel.QueueBind("queue.normal", "exchange.normal", "routingkey");
+
                         {
                             string sendMessage = string.Format("Message_{0}", message);
                             byte[] buffer = Encoding.UTF8.GetBytes(sendMessage);
                             IBasicProperties basicProperties = channel.CreateBasicProperties();
                             basicProperties.DeliveryMode = 2; //持久化  1=非持久化
-                            channel.BasicPublish("exchange.normal", queueName, basicProperties, buffer);
+                            channel.BasicPublish("exchange.dlx", "", basicProperties, buffer);
                             Console.WriteLine($"{DateTime.Now}消息发送成功：{sendMessage}" );
                         }
                     }
