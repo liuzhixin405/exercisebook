@@ -1,11 +1,16 @@
 ﻿using System.Runtime.CompilerServices;
-using Panda.DynamicWebApi.Attributes;
+using ICliService;
 
 namespace clib
 {
     [MyServiceAttribute.My]
     public class MyService
     {
+        private readonly ICusService _cliservice;
+        public MyService(ICusService cliservice)
+        {
+            _cliservice = cliservice;
+        }
         public string GetStr()
         {
             return "x";
@@ -13,7 +18,7 @@ namespace clib
 
         public void Add(Pars pars)
         {
-
+            _cliservice.Query(pars.Name);
         }
     }
 

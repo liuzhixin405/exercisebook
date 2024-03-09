@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ICliService\ICliService.csproj" />
     <ProjectReference Include="..\MyServiceAttribute\MyServiceAttribute.csproj" />
-    <ProjectReference Include="..\src\Panda.DynamicWebApi\Panda.DynamicWebApi.csproj" />
   </ItemGroup>
 
 </Project>

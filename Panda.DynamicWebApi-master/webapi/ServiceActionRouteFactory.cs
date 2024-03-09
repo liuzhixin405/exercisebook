@@ -9,7 +9,7 @@ namespace Panda.DynamicWebApiSample.Dynamic
     internal class ServiceActionRouteFactory : IActionRouteFactory
     {
         public string CreateActionRouteModel(string areaName, string controllerName, ActionModel action)
-        {
+         {
             var controllerType = action.ActionMethod.DeclaringType;
             var serviceAttribute = controllerType.GetCustomAttribute<MyAttribute>();
 
