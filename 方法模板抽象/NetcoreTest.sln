@@ -35,11 +35,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式一", "状态�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式二", "状态模式二\状态模式二.csproj", "{A189C816-5032-41EA-BEC9-C2A03B00A7F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式三", "状态模式三\状态模式三.csproj", "{8482334B-2DBC-42CB-8737-DCD30E020D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式三", "状态模式三\状态模式三.csproj", "{8482334B-2DBC-42CB-8737-DCD30E020D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式四", "状态模式四\状态模式四.csproj", "{8D371EC9-6C15-4F40-912A-1CC4B6D2BE57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式四", "状态模式四\状态模式四.csproj", "{8D371EC9-6C15-4F40-912A-1CC4B6D2BE57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "状态模式五", "状态模式五\状态模式五.csproj", "{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式五", "状态模式五\状态模式五.csproj", "{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CallbackToPattern", "CallbackToPattern\CallbackToPattern.csproj", "{9D240B53-1F9F-4CF1-AF14-9BF8AA3655A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyTest", "LazyTest\LazyTest.csproj", "{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +127,14 @@ Global
 		{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B40CD80C-775A-4C9C-8423-F32A7DE26DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D240B53-1F9F-4CF1-AF14-9BF8AA3655A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D240B53-1F9F-4CF1-AF14-9BF8AA3655A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D240B53-1F9F-4CF1-AF14-9BF8AA3655A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D240B53-1F9F-4CF1-AF14-9BF8AA3655A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
