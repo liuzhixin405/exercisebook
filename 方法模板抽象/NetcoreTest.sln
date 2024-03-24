@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "状态模式五", "状态�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CallbackToPattern", "CallbackToPattern\CallbackToPattern.csproj", "{9D240B53-1F9F-4CF1-AF14-9BF8AA3655A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyTest", "LazyTest\LazyTest.csproj", "{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyTest", "LazyTest\LazyTest.csproj", "{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "代理模式", "代理模式\代理模式.csproj", "{B15D6246-678C-4F9E-A76B-22243F6F38B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD429A6E-CD56-42BE-80D9-5BF26EB0F917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15D6246-678C-4F9E-A76B-22243F6F38B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15D6246-678C-4F9E-A76B-22243F6F38B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15D6246-678C-4F9E-A76B-22243F6F38B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15D6246-678C-4F9E-A76B-22243F6F38B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
