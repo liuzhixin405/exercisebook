@@ -11,8 +11,7 @@ namespace DesignPatternsForDatabase
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            if(GlobalConfigure.GlobalServiceProvider == null)
-                GlobalConfigure.GlobalServiceProvider = builder.Services.BuildServiceProvider();
+            
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -21,7 +20,8 @@ namespace DesignPatternsForDatabase
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
+            if (GlobalConfigure.GlobalServiceProvider == null)
+                GlobalConfigure.GlobalServiceProvider = app.Services;
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
