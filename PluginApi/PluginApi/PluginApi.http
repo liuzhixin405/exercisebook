@@ -1,0 +1,6 @@
+@PluginApi_HostAddress = http://localhost:5273
+
+GET {{PluginApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
