@@ -76,6 +76,21 @@ namespace DataStruct
                 current = current.Next;
             }
         }
+
+        public void Reverse()
+        {
+            Node<T> prev = null;
+            Node<T> current = head;
+            Node<T> next = null;
+            while (current != null)
+            {
+                next = current.Next;
+                current.Next = prev;
+                prev = current;
+                current = next;
+            }
+            head = prev;
+        }
     }
 
     public class Node<T>
