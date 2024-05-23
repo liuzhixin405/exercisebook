@@ -5,27 +5,37 @@
     /// </summary>
     internal class Program
     {
-        static Task Main(string[] args)
+        static async Task Main(string[] args)
         {
             try
             {
                 MyDataModel model = new MyDataModel();
 
-                while (!model.IsDataLoaded)
+                // 等待2秒，看看数据是否加载完成
+                var timeoutTask = Task.Delay(2000);
+
+                // 等待数据加载完成或者超时
+                var completedTask = await Task.WhenAny(Task.Run(async () =>
                 {
-                    Console.WriteLine("Loading data..."); //这样有点危险，如果加载数据失败，程序会陷入死循环
-                    Thread.Sleep(100); //等待数据加载完成
+                    while (!model.IsDataLoaded)
+                    {
+                        await Task.Delay(100); // 等待数据加载完成
+                    }
+                }), timeoutTask);
+
+                if (completedTask == timeoutTask)
+                {
+                    Console.WriteLine("Data loading failed!");
                 }
-
-
-                model.Data.ForEach(x => Console.WriteLine(x)); //ForEach性能最低
+                else if (model.IsDataLoaded)
+                {
+                    model.Data?.ForEach(x => Console.WriteLine(x));
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            return Task.CompletedTask;
-          
         }
     }   
 
@@ -46,13 +56,14 @@
             if (t.IsFaulted)
             {
                 Console.WriteLine(t.Exception.InnerException.Message);
+                return false;
             }
             return IsDataLoaded = true;
         }
         private async Task LoadDataAsync()
         {
             await Task.Delay(1000);
-            throw new Exception("Data loading failed!"); //两中的异常都能捕获到,但是结果依然是isloaded=true , data=null
+            //throw new Exception("Data loading failed!"); //两中的异常都能捕获到,但是结果依然是isloaded=true , data=null
             Data = Enumerable.Range(1, 10).ToList();
         }
         private async void SafeFireAndForget(Task task, Action? onCompleted = null, Action<Exception>? onError = null)
