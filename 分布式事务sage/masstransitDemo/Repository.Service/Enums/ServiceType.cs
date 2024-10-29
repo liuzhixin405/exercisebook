@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityEF.Models
+namespace Repository.Service.Enums
 {
-    public interface IKey
+    public enum ServiceType
     {
+        Order,
+        Product
     }
 }

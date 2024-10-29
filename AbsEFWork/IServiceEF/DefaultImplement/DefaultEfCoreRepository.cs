@@ -11,59 +11,65 @@ using EntityEF.Extensions;
 
 namespace IServiceEF.DefaultImplement
 {
-    public class DefaultEfCoreRepository<Context, T> : IBaseRepository<T> where T : class,IEntity where Context : DbContext
+    public class DefaultEfCoreRepository<T, TContext> : IBaseRepository<T> where T : class,IEntity where TContext : DbContext
     {
-        private readonly Context _context;
-        public DefaultEfCoreRepository(Context context)
+        private readonly TContext _context;
+
+        public DefaultEfCoreRepository(TContext context)
         {
-            _context = context;
+            _context =context;
         }
-        public async Task<bool> Add(T entity)
+        public async Task<T> Add(T entity)
         {
-            _context.Add(entity);
-           var result =await _context.SaveChangesAsync();
-            return result != 0;
+           var result = await _context.AddAsync(entity);
+            return result.Entity;
         }
 
-         public async Task<bool> Update(T entity)
+         public async Task<T> Update(T entity)
         {
-             //_context.Set<T>().Update(entity);
-            _context.Entry(entity).State = EntityState.Modified;
-            var result = await _context.SaveChangesAsync();
-            return result != 0;
-        }
-
-        public async Task<bool> Delete(T entity)
-        {
-            _context.Remove(entity);
-            var result = await _context.SaveChangesAsync();
-            return result!=0;
-        }
-
-        public async Task<bool> Add(List<T> entity)
-        {
-            _context.Add(entity);
-            var result = await _context.SaveChangesAsync();
-            return result != 0;
-        }
-
-        public async Task<bool> Update(List<T> entity)
-        {
+            _context.Attach(entity);
             //_context.Set<T>().Update(entity);
             _context.Entry(entity).State = EntityState.Modified;
-            var result = await _context.SaveChangesAsync();
-            return result != 0;
+            return entity; // 返回更新后的实体
+
         }
 
-        public async Task<bool> Delete(List<T> entity)
+        public async Task<bool> Delete(object id)
         {
-            _context.Remove(entity);
-            var result = await _context.SaveChangesAsync();
-            return result != 0;
+            var entity = await _context.Set<T>().FindAsync(id);
+            if (entity != null)
+            {
+                _context.Remove(entity);
+                return true; // 返回成功标志，提交留给 UnitOfWork
+            }
+            return false;
+        }
+
+        public async Task<bool> Add(List<T> entities)
+        {
+            await _context.AddRangeAsync(entities);
+            return true; // 返回成功标志，提交留给 UnitOfWork
+        }
+
+        public async Task<bool> Update(List<T> entities)
+        {
+            foreach (var entity in entities)
+            {
+                _context.Attach(entity);
+                _context.Entry(entity).State = EntityState.Modified; // 批量更新
+            }
+            return true; // 可以根据实际需要返回更详细的结果
+        }
+
+        public async Task<bool> Delete(List<object> ids)
+        {
+            var entities = await Task.WhenAll(ids.Select(async id =>await _context.Set<T>().FindAsync(id)));
+            _context.RemoveRange(entities.Where(e => e != null)); // 批量删除
+            return true; // 可以根据实际需要返回更详细的结果
         }
         public async Task<T> GetEntity(Expression<Func<T, bool>> expression)
         {
-          return await  _context.Set<T>().Where(expression).AsNoTracking().FirstOrDefaultAsync();
+            return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(expression); // 返回满足条件的实体
         }
 
         public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, List<Expression<Func<T, object>>> includes = null, bool disableTracking = true)
@@ -98,5 +104,10 @@ namespace IServiceEF.DefaultImplement
             return await _context.Set<T>().AsQueryable<T>().GetPageResultAsync(pagInput);
         }
 
+       
+        public async Task<T> GetById(object id)
+        {
+            return await _context.Set<T>().FindAsync(id);
+        }
     }
 }

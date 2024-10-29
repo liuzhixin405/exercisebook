@@ -9,7 +9,7 @@ namespace BaseEntityFramework.Implementations.Entitys
     public class Product:IEntity,IRequestDto,IResponseDto
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get;  set; }
         public string Name { get; set; }
         public string Description { get; set; }
 
@@ -17,5 +17,7 @@ namespace BaseEntityFramework.Implementations.Entitys
         public decimal Price { get; set; }
 
         public double CreateTime { get; set; }
+
+      
     }
 }

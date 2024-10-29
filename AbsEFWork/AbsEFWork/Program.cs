@@ -2,7 +2,10 @@
 using AbsEFWork.Implementations;
 using BaseEntityFramework.Implementations;
 using BaseEntityFramework.Implementations.Entitys;
+using EntityEF.Models;
 using IServiceEF;
+using IServiceEF.DefaultImplement;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
@@ -30,7 +33,9 @@ namespace BaseEntityFramework
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerDocument();
-            builder.Services.AddScoped<IBaseRepository<Product>, ProductRepository>();
+            builder.Services.AddScoped<IBaseRepository<Product>,DefaultEfCoreRepository<Product, ProductDbContext>>();  //每个实体对用一个repository
+           
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork<ProductDbContext>>();   
             builder.Services.AddScoped<IEFCoreService, ProductService>();
             var app = builder.Build();
 

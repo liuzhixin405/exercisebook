@@ -1,5 +1,6 @@
 ﻿using BaseEntityFramework.Implementations.Entitys;
 using Microsoft.EntityFrameworkCore;
+using Namotion.Reflection;
 
 namespace BaseEntityFramework.Implementations
 {
@@ -10,5 +11,6 @@ namespace BaseEntityFramework.Implementations
 
         } 
         public DbSet<Product> Products { get; set; }
+       
     }
 }

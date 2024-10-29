@@ -50,8 +50,6 @@ namespace AbsEFWork.Controllers
                 default:
                     throw new Exception("未知");
             }
-            await Task.CompletedTask;
-            return Ok();
         }
 
         
@@ -65,7 +63,7 @@ namespace AbsEFWork.Controllers
         private async Task<IActionResult> CreateOrUpdate(Product product)
         {
             bool result = false;
-            if(product.Id!= 0)
+            if(product.Id != null)
             {
                 result =await _eFCoreService.Update(product);
             }
