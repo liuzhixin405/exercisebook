@@ -9,7 +9,9 @@ namespace mfc.Core
 {
     public class MiniDbContext
     {
-      
+        // 定义事件
+        public event EventHandler<SavingChangesEventArgs> SavingChanges;
+        public event EventHandler<SavedChangesEventArgs> SavedChanges;
         private readonly EntityStateTracker _entityStateTracker = new EntityStateTracker();
         private readonly IDatabaseProvider _databaseProvider;
 
@@ -32,9 +34,12 @@ namespace mfc.Core
             return new DbSet<TEntity>(_entityStateTracker, _databaseProvider);
         }
 
-        public async Task SaveChangesAsync()
+        public async Task SaveChangesAsync(bool acceptAllChangesOnSuccess = true)
         {
-            Console.WriteLine("Saving changes...");
+            // 触发 SavingChanges 事件
+            OnSavingChanges(new SavingChangesEventArgs(acceptAllChangesOnSuccess));
+
+            var affectedRows = 0;
             // 从 EntityStateTracker 获取所有状态变化的实体
             var changedEntities = _entityStateTracker.GetChangedEntities();
 
@@ -49,15 +54,15 @@ namespace mfc.Core
                     // 直接操作内存表而非生成 SQL
                     if (state == EntityState.Added)
                     {
-                        await inMemoryProvider.InsertEntityAsync(entity);
+                        affectedRows += await inMemoryProvider.InsertEntityAsync(entity);
                     }
                     else if (state == EntityState.Modified)
                     {
-                       await  inMemoryProvider.UpdateEntity(entity, e => e.Equals(entity));
+                        affectedRows += await  inMemoryProvider.UpdateEntity(entity, e => e.Equals(entity));
                     }
                     else if (state == EntityState.Deleted)
                     {
-                        await inMemoryProvider.DeleteEntity(e => e.Equals(entity));
+                        affectedRows += await inMemoryProvider.DeleteEntity(e => e.Equals(entity));
                     }
                 }
                 else
@@ -66,27 +71,42 @@ namespace mfc.Core
                     {
                         var insertSql = SqlGenerator.GenerateInsertSql(entity);
                         Console.WriteLine($"INSERT SQL: {insertSql}");
-                        await _databaseProvider.ExecuteNonQueryAsync(insertSql);
+                        affectedRows += await _databaseProvider.ExecuteNonQueryAsync(insertSql);
                     }
                     else if (state == EntityState.Modified)
                     {
                         var updateSql = SqlGenerator.GenerateUpdateSql(entity);
                         Console.WriteLine($"UPDATE SQL: {updateSql}");
-                        await _databaseProvider.ExecuteNonQueryAsync(updateSql);
+                        affectedRows += await _databaseProvider.ExecuteNonQueryAsync(updateSql);
                     }
                     else if (state == EntityState.Deleted)
                     {
                         var deleteSql = SqlGenerator.GenerateDeleteSql(entity);
                         Console.WriteLine($"DELETE SQL: {deleteSql}");
-                        await _databaseProvider.ExecuteNonQueryAsync(deleteSql);
+                        affectedRows += await _databaseProvider.ExecuteNonQueryAsync(deleteSql);
                     }
                 }
             }
+            if (acceptAllChangesOnSuccess)
+            {
+                _entityStateTracker.ClearChangedEntities();
+            }
 
-            // 清空变更列表
-            _entityStateTracker.ClearChangedEntities();
+            // 触发 SavedChanges 事件
+            OnSavedChanges(new SavedChangesEventArgs(acceptAllChangesOnSuccess, affectedRows));
+
+        }
+        // 触发 SavingChanges 事件
+        protected virtual void OnSavingChanges(SavingChangesEventArgs e)
+        {
+            SavingChanges?.Invoke(this, e);
         }
 
+        // 触发 SavedChanges 事件
+        protected virtual void OnSavedChanges(SavedChangesEventArgs e)
+        {
+            SavedChanges?.Invoke(this, e);
+        }
         public async Task ExecuteInTransactionAsync(Func<Task> action)
         {
             try

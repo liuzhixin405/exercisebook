@@ -10,9 +10,29 @@ namespace sample
 
             //await ExcecuteOrder();
 
-            await InMemoryUser();
+           // await InMemoryUser();
+           await Logger();
         }
 
+        private static async Task Logger()
+        {
+            var dbProvider = DatabaseProviderFactory.CreateProvider("inmemory");
+            var dbContext = new MiniDbContext(dbProvider);
+            // 订阅 SavingChanges 事件
+            dbContext.SavingChanges += (sender, e) =>
+            {
+                Console.WriteLine("Saving changes...");
+            };
+
+            // 订阅 SavedChanges 事件
+            dbContext.SavedChanges += (sender, e) =>
+            {
+                Console.WriteLine($"Saved changes successfully. Affected rows: {e.AffectedRows}");
+            };
+            dbContext.Set<User>().Add(new User { Id = 1, Name = "Alice" });
+            await dbContext.SaveChangesAsync();
+            var users = await dbContext.Set<User>().FindAsync(user => user.Id == 1);
+        }
 
         private static async Task InMemoryUser()
         {

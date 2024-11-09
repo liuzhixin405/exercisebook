@@ -231,7 +231,7 @@ namespace mfc.Core
             throw new NotImplementedException();
         }
 
-        public Task InsertEntityAsync(object entity)
+        public Task<int> InsertEntityAsync(object entity)
         {
             var tableName = entity.GetType().Name;
             if (!_tables.ContainsKey(tableName))
@@ -239,7 +239,7 @@ namespace mfc.Core
                 _tables[tableName] = new List<object>();
             }
             _tables[tableName].Add(entity);
-            return Task.CompletedTask;
+            return Task.FromResult(1);
         }
 
         public Task<List<TEntity>> QueryAsync<TEntity>() where TEntity : class
