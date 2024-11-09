@@ -9,17 +9,18 @@ namespace mfc.Core
 {
     public class MiniDbContext
     {
-        private readonly List<object> _entities = new List<object>();
+      
         private readonly EntityStateTracker _entityStateTracker = new EntityStateTracker();
         private readonly IDatabaseProvider _databaseProvider;
-        // 追踪实体
-        public void TrackEntity(object entity)
-        {
-            // 默认为新实体，设置为 Added
-            _entityStateTracker.SetAdded(entity);
+
+        //// 追踪实体
+        //public void TrackEntity(object entity)
+        //{
+        //    // 默认为新实体，设置为 Added
+        //    _entityStateTracker.SetAdded(entity);
             
-            _entities.Add(entity);
-        }
+        //    _entities.Add(entity);
+        //}
 
         public MiniDbContext(IDatabaseProvider databaseProvider)
         {
@@ -28,10 +29,7 @@ namespace mfc.Core
 
         public DbSet<TEntity> Set<TEntity>() where TEntity : class
         {
-            // 这里直接从 EntityStateTracker 获取追踪的实体
-            var trackedEntities = _entities.OfType<TEntity>().ToList();
-
-            return new DbSet<TEntity>(_databaseProvider, trackedEntities, _entityStateTracker);
+            return new DbSet<TEntity>(_entityStateTracker, _databaseProvider);
         }
 
         public async Task SaveChangesAsync()
@@ -39,27 +37,49 @@ namespace mfc.Core
             Console.WriteLine("Saving changes...");
             // 从 EntityStateTracker 获取所有状态变化的实体
             var changedEntities = _entityStateTracker.GetChangedEntities();
+
             foreach (var entity in changedEntities)
             {
                 // 直接通过状态判断实体的操作
                 var state = _entityStateTracker.GetEntityState(entity);
-                if (state==EntityState.Added)
+
+                // 检查当前的数据库提供者类型
+                if (_databaseProvider is InMemoryDatabaseProvider inMemoryProvider)
                 {
-                    var insertSql = SqlGenerator.GenerateInsertSql(entity);
-                    Console.WriteLine($"INSERT SQL: {insertSql}");
-                    await _databaseProvider.ExecuteNonQueryAsync(insertSql);
+                    // 直接操作内存表而非生成 SQL
+                    if (state == EntityState.Added)
+                    {
+                        await inMemoryProvider.InsertEntityAsync(entity);
+                    }
+                    else if (state == EntityState.Modified)
+                    {
+                       await  inMemoryProvider.UpdateEntity(entity, e => e.Equals(entity));
+                    }
+                    else if (state == EntityState.Deleted)
+                    {
+                        await inMemoryProvider.DeleteEntity(e => e.Equals(entity));
+                    }
                 }
-                else if (state==EntityState.Modified)
+                else
                 {
-                    var updateSql = SqlGenerator.GenerateUpdateSql(entity);
-                    Console.WriteLine($"UPDATE SQL: {updateSql}");
-                    await _databaseProvider.ExecuteNonQueryAsync(updateSql);
-                }
-                else if(state==EntityState.Deleted)
-                {
-                    var deleteSql = SqlGenerator.GenerateDeleteSql(entity);
-                    Console.WriteLine($"DELETE SQL: {deleteSql}");
-                    await _databaseProvider.ExecuteNonQueryAsync(deleteSql);
+                    if (state == EntityState.Added)
+                    {
+                        var insertSql = SqlGenerator.GenerateInsertSql(entity);
+                        Console.WriteLine($"INSERT SQL: {insertSql}");
+                        await _databaseProvider.ExecuteNonQueryAsync(insertSql);
+                    }
+                    else if (state == EntityState.Modified)
+                    {
+                        var updateSql = SqlGenerator.GenerateUpdateSql(entity);
+                        Console.WriteLine($"UPDATE SQL: {updateSql}");
+                        await _databaseProvider.ExecuteNonQueryAsync(updateSql);
+                    }
+                    else if (state == EntityState.Deleted)
+                    {
+                        var deleteSql = SqlGenerator.GenerateDeleteSql(entity);
+                        Console.WriteLine($"DELETE SQL: {deleteSql}");
+                        await _databaseProvider.ExecuteNonQueryAsync(deleteSql);
+                    }
                 }
             }
 

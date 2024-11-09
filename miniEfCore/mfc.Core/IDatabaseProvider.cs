@@ -12,5 +12,9 @@ namespace mfc.Core
         Task<List<T>> ExecuteQueryAsync<T>(string sql);
         Task<int> ExecuteScalarAsync(string sql);
         Task<List<TEntity>> Query<TEntity>(string selectClause = "*", string whereClause = null, object parameters = null, string orderBy = null, int? skip = null, int? take = null) where TEntity : class;
+
+        Task<List<TEntity>> QueryAsync<TEntity>() where TEntity : class;
+        Task<TEntity> FindAsync<TEntity>(Func<TEntity, bool> predicate) where TEntity : class;
+
     }
 }

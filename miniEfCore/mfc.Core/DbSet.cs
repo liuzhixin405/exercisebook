@@ -9,16 +9,16 @@ namespace mfc.Core
 {
     public class DbSet<TEntity> where TEntity : class
     {
-        private readonly IDatabaseProvider _databaseProvider;
-        private readonly List<TEntity> _entities;
+     
+        private readonly List<TEntity> _entities=new();
         private readonly EntityStateTracker _entityStateTracker;
 
+        private readonly IDatabaseProvider _dataProvider;
         // 构造函数
-        public DbSet(IDatabaseProvider databaseProvider, List<TEntity> entities, EntityStateTracker entityStateTracker)
+        public DbSet( EntityStateTracker entityStateTracker, IDatabaseProvider dataProvider)
         {
-            _databaseProvider = databaseProvider;
-            _entities = entities ?? new List<TEntity>();
             _entityStateTracker = entityStateTracker;
+            _dataProvider = dataProvider;
         }
 
         // 添加实体
@@ -52,21 +52,17 @@ namespace mfc.Core
             }
         }
 
-        // 获取所有实体
-        public List<TEntity> ToList()
+
+        // 获取所有实体，使用数据提供者查询
+        public async Task<List<TEntity>> ToListAsync()
         {
-            // 查询条件只会在需要时传递给数据库
-            var dbEntities = _databaseProvider.Query<TEntity>().Result;  // 根据条件查询数据
-            return dbEntities;
+            return await _dataProvider.QueryAsync<TEntity>();
         }
 
-        // 查找符合条件的实体
-        public IEnumerable<TEntity> Where(Func<TEntity, bool> predicate)
+        // 根据条件查找实体
+        public async Task<TEntity> FindAsync(Func<TEntity, bool> predicate)
         {
-            //return _entities.Where(predicate);
-            // 查询条件只会在需要时传递给数据库
-            var dbEntities = _databaseProvider.Query<TEntity>().Result;  // 根据条件查询数据
-            return dbEntities.Where(predicate);
+            return await _dataProvider.FindAsync(predicate);
         }
     }
 }

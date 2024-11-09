@@ -77,6 +77,11 @@ namespace mfc.Core
             }
         }
 
+        public Task<TEntity> FindAsync<TEntity>(Func<TEntity, bool> predicate) where TEntity : class
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<TEntity>> Query<TEntity>(string selectClause = "*", string whereClause = null,object parameters = null,string orderBy = null,int? skip = null,int? take = null) where TEntity : class
         {
            
@@ -140,6 +145,9 @@ namespace mfc.Core
             return entities;
         }
 
-       
+        public Task<List<TEntity>> QueryAsync<TEntity>() where TEntity : class
+        {
+            throw new NotImplementedException();
+        }
     }
 }

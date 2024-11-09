@@ -8,9 +8,20 @@ namespace sample
         static async Task Main(string[] args)
         {
 
-            await ExcecuteOrder();
+            //await ExcecuteOrder();
+
+            await InMemoryUser();
         }
 
+
+        private static async Task InMemoryUser()
+        {
+            var dbProvider = DatabaseProviderFactory.CreateProvider("inmemory");
+            var dbContext = new MiniDbContext(dbProvider);
+            dbContext.Set<User>().Add(new User { Id = 1, Name = "Alice" });
+           await dbContext.SaveChangesAsync();
+           var users =await dbContext.Set<User>().FindAsync(user => user.Id == 1);
+        }
         private static async Task ExcecuteOrder()
         {
             var dbProvider = DatabaseProviderFactory.CreateProvider("mysql", "server=127.0.0.1;port=3307;user=root;password=123456;database=testdb;SslMode = none;AllowLoadLocalInfile=true");
@@ -19,10 +30,10 @@ namespace sample
             //await AddOrder(dbContext);
 
             // 使用扩展方法进行查询
-            var discountedOrders = dbContext.Where<Orders>(order => order.Discount > 0);
-            var firstOrder = dbContext.FirstOrDefault<Orders>(order => order.Id == 1);
-            var orderCount = dbContext.Count<Orders>();
-            var pagedOrders = dbContext.SkipTake<Orders>(0, 10);
+            var discountedOrders =await dbContext.Where<Orders>(order => order.Discount > 0);
+            var firstOrder =await dbContext.FirstOrDefault<Orders>(order => order.Id == 1);
+            var orderCount = await dbContext.Count<Orders>();
+            var pagedOrders =await dbContext.SkipTake<Orders>(0, 10);
 
             // 打印查询结果
             Console.WriteLine($"Discounted Orders: {discountedOrders.Count()}");
@@ -61,7 +72,7 @@ namespace sample
             await context.SaveChangesAsync();
 
             // 执行查询
-            var people = personSet.ToList();
+            var people =await personSet.ToListAsync();
             foreach (var person in people)
             {
                 Console.WriteLine($"Person: {person.Name}");
@@ -76,7 +87,7 @@ namespace sample
             });
 
             // 查看事务提交后的结果
-            var peopleAfterTransaction = personSet.ToList();
+            var peopleAfterTransaction =await personSet.ToListAsync();
             foreach (var person in peopleAfterTransaction)
             {
                 Console.WriteLine($"Person after transaction: {person.Name}");
