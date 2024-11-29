@@ -33,3 +33,21 @@ namespace EF.GraphQL.Demo.Controllers
 
     }
 }
+/*
+ var parameters = new QueryParameters
+{
+    Filters = new List<Filter>
+    {
+        new Filter { FieldName = "Name", Value = "Test", Operator = "like" }, // 模糊查询
+        new Filter { FieldName = "Age", Value = 25, Operator = ">=" }, // 年龄大于等于 25
+        new Filter { FieldName = "CreatedDate", Value = DateTime.UtcNow.AddDays(-7), Operator = ">=" } // 时间区间起点
+    },
+    OrderBy = "Name", // 按 Name 排序
+    IsDescending = false,
+    PageIndex = 1,
+    PageSize = 10
+};
+
+var pagedResult = await dbContext.YourDbSet.ToPagedResultAsync(parameters);
+
+ */
