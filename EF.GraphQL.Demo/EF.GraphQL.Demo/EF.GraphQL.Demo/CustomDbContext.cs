@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using YamlDotNet.Core;
 
 namespace EF.GraphQL.Demo
 {
@@ -10,30 +11,12 @@ namespace EF.GraphQL.Demo
         }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        //override protected void OnModelCreating(ModelBuilder modelBuilder)
-        //{
 
-        //    modelBuilder.Entity<Address>().ToTable("Address");
-        //    modelBuilder.Entity<Employee>().ToTable("Employee");
 
-        //    modelBuilder.Entity<Employee>().Property(e => e.Id).HasColumnName("id").ValueGeneratedOnAdd();
-        //    modelBuilder.Entity<Employee>().Property(e => e.Name).HasColumnName("name");
-        //    modelBuilder.Entity<Employee>().Property(e => e.Email).HasColumnName("email");
-
-        //    modelBuilder.Entity<Address>().Property(e => e.Id).HasColumnName("id").ValueGeneratedOnAdd();
-        //    modelBuilder.Entity<Address>().Property(e => e.Street).HasColumnName("street");
-        //    modelBuilder.Entity<Address>().Property(e => e.City).HasColumnName("city");
-        //    modelBuilder.Entity<Address>().Property(e => e.State).HasColumnName("state");
-        //    modelBuilder.Entity<Address>().Property(e => e.Zip).HasColumnName("zip");
-
-        //    modelBuilder.Entity<Address>().HasOne<Employee>().WithMany().HasForeignKey("employeeid");
-        //    // 配置外键和导航属性
-        //    modelBuilder.Entity<Address>()
-        //        .HasOne(a => a.Employee)
-        //        .WithMany(e => e.Addresses)
-        //        .HasForeignKey(a => a.Employeeid)
-        //        .HasConstraintName("FK_Address_Employee");
-        //}
+        public DbSet<MarketCoinTicker> MarketCoinTickers { get; set; }
+        public DbSet<Trader> Traders { get; set; }
+        public DbSet<Market> Markets { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -31,7 +31,26 @@ namespace EF.GraphQL.Demo.Controllers
             return result;
         }
 
+
+        [HttpGet("search")]
+        public async Task<IActionResult> Search()
+        {
+            var dynamicQueryService = new DynamicQueryService(_dbContext);
+
+            var results = await dynamicQueryService
+                .From<MarketCoinTicker>()  // 指定主表
+                .Join<Trader>("Trader", (main, sub) => main.TraderId == sub.Id)  // 动态关联分表
+                .Join<Market>("Market", (main, sub) => main.MarketId == sub.Id)
+                .Where("main.Price > 1000 AND Trader.Country == \"Japan\"")  // 动态条件
+                .Select("main.Id, main.CoinType, main.Price, Trader.Name as TraderName, Market.Name as MarketName")  // 动态字段选择
+                .OrderBy("main.Price DESC")  // 动态排序
+                .Paginate(1, 10)  // 分页
+                .ExecuteAsync();
+            return Ok(results);
+        }
     }
+
+    
 }
 /*
  var parameters = new QueryParameters
