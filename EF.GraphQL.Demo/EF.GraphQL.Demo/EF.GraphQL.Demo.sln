@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.GraphQL.Demo", "EF.GraphQL.Demo\EF.GraphQL.Demo.csproj", "{D02C7FA8-9C5F-4FFE-BB9D-2485F8A27C8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF.GraphQL.Demo", "EF.GraphQL.Demo\EF.GraphQL.Demo.csproj", "{D02C7FA8-9C5F-4FFE-BB9D-2485F8A27C8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.GraphQL.Two", "EF.GraphQL.Two\EF.GraphQL.Two.csproj", "{5C630A79-A58B-46B1-9C3F-7A0D19145E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODataService.Web", "ODataService.Web\ODataService.Web.csproj", "{E0295656-055E-45C2-8277-50A27957FDB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODataClientSample", "ODataClientSample\ODataClientSample.csproj", "{48D5BD34-12AE-4911-9688-58B03CEFD2DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{D02C7FA8-9C5F-4FFE-BB9D-2485F8A27C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D02C7FA8-9C5F-4FFE-BB9D-2485F8A27C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D02C7FA8-9C5F-4FFE-BB9D-2485F8A27C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C630A79-A58B-46B1-9C3F-7A0D19145E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C630A79-A58B-46B1-9C3F-7A0D19145E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C630A79-A58B-46B1-9C3F-7A0D19145E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C630A79-A58B-46B1-9C3F-7A0D19145E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0295656-055E-45C2-8277-50A27957FDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0295656-055E-45C2-8277-50A27957FDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0295656-055E-45C2-8277-50A27957FDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0295656-055E-45C2-8277-50A27957FDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48D5BD34-12AE-4911-9688-58B03CEFD2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48D5BD34-12AE-4911-9688-58B03CEFD2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48D5BD34-12AE-4911-9688-58B03CEFD2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48D5BD34-12AE-4911-9688-58B03CEFD2DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
