@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>jQuery Date Range Picker Demo</title>
+    <link rel="stylesheet" type="text/css" href="dist/daterangepicker.min.css">
+    <script type="text/javascript" src="moment.min.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="dist/jquery.daterangepicker.min.js"></script>
+</head>
+<body>
+    <li class="demo">
+        Use two inputs:
+        <span id="two-inputs"><input id="date-range200" size="20" value=""> to <input id="date-range201" size="20" value=""></span>
+    </li>
+
+<script>
+    $(function()
+    {
+        /**
+            language:'cn',
+            language:'en',
+            language:'ja',
+            language:'ko',
+        */
+       
+        $('#two-inputs').dateRangePicker(
+        {
+            language:'en',
+    
+            startDate: '2019-06-10',
+            endDate: '2019-08-10',
+    
+            separator : ' to ',
+            getValue: function()
+            {
+                if ($('#date-range200').val() && $('#date-range201').val() )
+                    return $('#date-range200').val() + ' to ' + $('#date-range201').val();
+                else
+                    return '';
+            },
+            setValue: function(s,s1,s2)
+            {
+                $('#date-range200').val(s1);
+                $('#date-range201').val(s2);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+

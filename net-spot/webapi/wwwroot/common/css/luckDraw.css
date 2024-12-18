@@ -1,0 +1,560 @@
+/*幸运大转盘样式*/
+body {
+    background: linear-gradient(144deg, #1C0044 0%, #5000C4 100%);
+}
+.lk-container {
+    width: 1012px;
+    margin: 0 auto;
+    background: transparent;
+}
+.center-cont {
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+.turntable-content {
+    position: relative;
+}
+.turntable-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url("../images/luckDraw/Celebrate-bg@2x.png") no-repeat;
+    background-size: 100%;
+    width: 958px;
+    height: 747px;
+    pointer-events: none;
+}
+.turntable-title {
+    text-align: center;
+    padding-top: 48px;
+}
+.turntable-title img {
+    display: block;
+    margin: 10px auto;
+}
+.celebrate-bfx {
+    width: 212px;
+    height: 55px;
+}
+.celebrate-text {
+    width: 410px;
+    height: 96px;
+}
+.turntable-swiper {
+    width: 580px;
+    height: 34px;
+    background: #5000C5;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 34px;
+    margin: 40px auto 0;
+    overflow: hidden;
+    cursor: default;
+}
+.swiper-slide span {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 0 10px;
+}
+.turntable-prize {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Heavy, AlibabaPuHuiTi;
+    font-weight: 800;
+    color: #FFDD00;
+    font-style: normal;
+}
+.turntable-luckdraw-bg {
+    background: url("../images/luckDraw/turnplates-new-bg.png") no-repeat;
+    background-size: 100%;
+    width: 1011px;
+    height: 682px;
+}
+.turntable-luckdraw-disc {
+    background: url("../images/luckDraw/roundGift.png") no-repeat;
+    background-size: 100%;
+    width: 446px;
+    height: 446px;
+    position: absolute;
+    bottom: 166px;
+    left: 283px;
+}
+.turntable-luckdraw-click {
+    cursor: pointer;
+    z-index: 999;
+}
+.turntable-luckdraw-pointer {
+    background: url("../images/luckDraw/turnplate-pointer.png") no-repeat;
+    background-size: 100%;
+    width: 139px;
+    height: 160px;
+    position: absolute;
+    left: 442px;
+    bottom: 320px;
+    cursor: pointer;
+}
+.turntable-luckdraw-text {
+    font-size: 30px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 372px;
+    left: 477px;
+    cursor: pointer;
+    text-align: center;
+}
+.luckdraw-position {
+    bottom: 350px;
+}
+.turntable-luckdraw-text .turntable-luckdraw-num {
+    display: block;
+}
+.turntable-luckdraw-text {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+.batman {
+    background: url("../images/luckDraw/BFX-Batman.png") no-repeat;
+    background-size: 100%;
+    width: 159px;
+    height: 93px;
+    position: absolute;
+    right: 228px;
+    bottom: -5px;
+    cursor: pointer;
+}
+.turntable-items {
+    width: 1012px;
+    height: auto;
+    -moz-box-shadow: 2px 13px 114px #180039;
+    -webkit-box-shadow: 2px 13px 114px #180039;
+    box-shadow: 2px 13px 114px #180039;
+    background: #5000C5;
+}
+.turntable-items-padding {
+    padding: 50px 30px;
+}
+.turntable-service-charge {
+    text-align: center;
+}
+.service-charge-title span {
+    display: inline-block;
+}
+.service-charge-title span:nth-child(1),
+.service-charge-title span:nth-child(3) {
+    width: 50px;
+    height: 5px;
+    border-top: 2px solid #D8D8D8;
+}
+.service-charge-title span:nth-child(2) {
+    font-size: 20px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 0 60px;
+}
+.service-charge-content .service-charge-item {
+    display: inline-block;
+    padding: 40px 145px;
+}
+.service-charge-content .service-charge-item span {
+    display: block;
+}
+.service-charge-content .service-charge-item span:nth-child(1) {
+    font-size: 28px;
+    font-family: AlibabaPuHuiTi-Bold, AlibabaPuHuiTi;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding-bottom: 5px;
+}
+.service-charge-content .service-charge-item span:nth-child(2),
+.service-charge-content .service-charge-item span:nth-child(3) {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    font-weight: 400;
+    color: #FFFFFF;
+    opacity: .5;
+}
+.turntable-items-padding {
+    text-align: center;
+}
+.turntable-item-title li {
+    display: inline-block;
+    font-size: 16px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 16px;
+    padding: 0 80px;
+    cursor: pointer;
+}
+.turntable-item-title .active {
+    color: #FFC61B;
+}
+.turntable-item-content .hide {
+    display: none;
+}
+.turntable-list {
+    background: #2F0375;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+.turntable-padding {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.raffle-item-left span {
+    font-size: 20px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-align: left;
+    display: block;
+    padding-bottom: 10px;
+}
+.raffle-item-left p {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    opacity: .5;
+    padding-top: 5px;
+}
+.icon-contract {
+    background: url("../images/luckDraw/icon_contract.png") no-repeat;
+    background-size: 100%;
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 10px;
+}
+.raffle-item-right a {
+    width: 109px;
+    height: 40px;
+    background: linear-gradient(72deg, #9000FF 0%, #5000C4 100%);
+    border-radius: 10px;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+.turntable-list-nobg {
+    margin-top: 30px;
+}
+.turntable-prize-padding {
+    padding: 60px 30px;
+    display: flex;
+    justify-content: center;
+}
+.prize-item {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+}
+.prize-item a {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    opacity: .5;
+}
+.prize-item ul {
+    width: 588px;
+    height: auto;
+}
+.prize-item ul li {
+    width: 175px;
+    height: 224px;
+    background: #2F0375;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 0 10px 20px 10px;
+    float: left;
+}
+.content-prize {
+    padding: 22px 0;
+}
+/*.prize-item ul li:nth-child(1) img {*/
+/*    width: 109px;*/
+/*    height: 89px;*/
+/*    display: block;*/
+/*    margin: 0 auto;*/
+/*    padding-bottom: 15px;*/
+/*}*/
+.prize-item ul li img {
+    padding-bottom: 6px;
+    width: 87px;
+    height: 74px;
+}
+.prize-item ul li .num-of-prize {
+    font-size: 20px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #9000FF;
+    display: block;
+    padding-bottom: 30px;
+}
+.prize-item ul li .type-of-prize {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    display: block;
+}
+.icon-cion {
+    background: url("../images/luckDraw/icon-cion.png") no-repeat;
+    background-size: 100%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.filling-in-address {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    width: 588px;
+    display: inline-flex;
+    padding-left: 20px;
+}
+.filling-in-address span {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    font-weight: 400;
+    opacity: .5;
+}
+.filling-in-address span a {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    font-weight: 400;
+    padding-left: 10px;
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+.login-to-query {
+    background: url("../images/luckDraw/login-to-query.png") no-repeat;
+    background-size: 100%;
+    width: 75px;
+    height: 77px;
+    display: block;
+}
+.turntable-record-padding {
+    padding: 30px 0;
+}
+.record-item ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 184px;
+    margin: 5px 0;
+}
+.record-item ul li {
+    font-size: 16px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 74px;
+    display: inline-block;
+}
+.ul-bg-list {
+    background: rgba(80, 0, 197, .19);
+}
+.ul-bg-list li {
+    color: rgba(255,255,255, .5) !important;
+}
+
+/*填写地址页面样式*/
+.address-container {
+    width: 780px;
+    margin: 0 auto;
+    background: #FFFFFF;
+}
+.address-center-cont {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+.address-content {
+    padding: 30px 15px;
+}
+.activity-banner img {
+    width: 750px;
+    height: 284px;
+    display: block;
+}
+.address-filling-part {
+    padding: 20px 70px;
+ }
+.address-title {
+    margin-bottom: 50px;
+}
+.address-title h2 {
+    font-size: 30px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    font-weight: 400;
+    color: #777777;
+    padding-bottom: 20px;
+}
+.address-title h3 {
+    font-size: 23px;
+    font-family: AlibabaPuHuiTi-Bold, AlibabaPuHuiTi;
+    font-weight: bold;
+    color: #333333;
+}
+.address-detile-content {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #CCCCCC;
+}
+.address-detile-content p {
+    font-size: 14px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    font-weight: 400;
+    color: #333333;
+    line-height: 14px;
+    padding-bottom: 15px;
+}
+.address-input-part form {
+    padding-top: 30px;
+}
+.address-input-item {
+    padding-bottom: 30px;
+}
+.address-input-item label {
+    display: block;
+    font-size: 20px;
+    font-family: AlibabaPuHuiTi-Bold, AlibabaPuHuiTi;
+    font-weight: bold;
+    color: #333333;
+    line-height: 20px;
+    margin-bottom: 12px;
+}
+.address-input-item input {
+    width: 605px;
+    height: 40px;
+    border-radius: 2px;
+    border: 1px solid #CCCCCC;
+    text-indent: 10px;
+}
+.address-input-select select {
+    width: 200px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border: 1px solid #CCCCCC;
+    text-indent: 10px;
+}
+.address-input-botton {
+    width: 611px;
+    height: 40px;
+    background: #5000C4;
+    border-radius: 4px;
+    font-size: 18px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    font-weight: 400;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+}
+.address-input-botton:hover {
+    opacity: .8;
+}
+.address-input-item .checked {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+.address-input-item .checkbox-text {
+    font-size: 12px;
+    font-family: AlibabaPuHuiTi-Regular, AlibabaPuHuiTi;
+    font-weight: 400;
+    color: #999999;
+    line-height: 12px;
+}
+.add-prize-wrap {
+    z-index: 78;
+    overflow: hidden;
+    position: absolute;
+    top: 220px;
+    left: 50%;
+    display: none
+}
+.dialogs-prize-title {
+    width: 100%;
+    background: linear-gradient(99deg, #1C0044 0%, #5000C4 100%);;
+    line-height: 40px;
+    position: relative;
+    width: 324px;
+    /*height: 212px;*/
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+}
+.dialogs-prize-item {
+    margin-bottom: 20px;
+}
+.dialogs-prize-item span {
+    padding: 0 10px;
+}
+.dialogs-prize-item .prize-title {
+    font-size: 20px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 27px;
+    opacity: .5;
+}
+.dialogs-prize-item .prize-lever {
+    font-size: 25px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 38px;
+}
+.dialogs-prize-item .prize-title-content {
+    font-size: 18px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #FFFFFF;
+    line-height: 30px;
+}
+.affirm-button button {
+    width: 207px;
+    height: 40px;
+    background: #FFC61B;
+    box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    border: 2px solid transparent;
+    /*border-image: linear-gradient(182deg, rgba(255, 255, 255, 1), rgba(255, 198, 27, 1)) 2 2;*/
+    font-size: 20px;
+    font-family: AlibabaPuHuiTi-Medium, AlibabaPuHuiTi;
+    font-weight: 500;
+    color: #1C0044;
+    line-height: 30px;
+    outline: none;
+}
+.pagination li a:hover, .pagination li a:focus, .pagination li span:hover,
+.pagination li span:focus {
+    color: #fff;
+    background-color: #5000C5;
+    border-color: #5000C5;
+}
+.pagination .active a, .pagination .active a:hover, .pagination .active a:focus,
+.pagination .active span, .pagination .active span:hover, .pagination .active span:focus
+{
+    z-index: 2;
+    color: #fff;
+    background-color: #5000C5;
+    border-color: #5000C5;
+    cursor: default;
+}

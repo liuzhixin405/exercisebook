@@ -1,0 +1,116 @@
+.chart-page {
+	background: #ffffff;
+}
+html.theme-dark .chart-page {
+	background: #0d1923;
+}
+._tv-dialog-content .main-properties {
+	overflow: auto;
+    max-height: calc(100vh - 180px) !important;
+}
+.js-button-text.text-1sK7vbvh- {
+    display: none;
+}
+.chart-page .chart-container {
+    border: none;
+}
+.layout__area--top {
+    background: #ffffff;
+}
+.group-wWM3zP_M- {
+    background: #ffffff;
+	min-width: 32px;
+}
+/*.layout__area--left .drawingToolbar-U3_QXRof- {
+    background: #ffffff;
+}*/
+.loading-indicator {
+    background: #ffffff;
+}
+.customButton--jqJTfH5- {
+    padding: 0px;
+}
+.fill-2axUON87-{
+    display: none;
+}
+.pane-legend {
+	top: 0;
+}
+.pane-legend-line.pane-legend-wrap.main {
+	padding-top: 0;
+}
+.group-wWM3zP_M- .icon-beK_KS0k- {
+    color: #4a5f78;
+}
+.group-wWM3zP_M- .customButton--jqJTfH5- span{
+    padding: 5px;
+    color: #4a5f78;
+}
+.group-wWM3zP_M-.active .customButton--jqJTfH5- span {
+    color: #fff;
+    background: #4980E3;
+}
+.group-wWM3zP_M-:hover .customButton--jqJTfH5- span {
+    color: #fff;
+    background: #4980E3;
+}
+.group-wWM3zP_M-:hover .button-3xrjDzA4- {
+    color: #4980E3;
+}
+.group-wWM3zP_M-:hover .icon-beK_KS0k- {
+    color: #4980E3;
+}
+.button-2ioYhFEY-.isInteractive-20uLObIc-.isOpened-p-Ume5l9- {
+    background: #ffffff;
+}
+.button-2ioYhFEY-.isInteractive-20uLObIc-.isOpened-p-Ume5l9- {
+    background: #ffffff;
+}
+.button-YsN2vRuA-.withText-JhQdRoPu- {
+	padding: 0;
+}
+/*.layout__area--left .group-2JyOhh7Z- {
+    background: #ffffff;
+}*/
+.group-wWM3zP_M-:first-child {
+    order: 1;
+}
+
+.fill-2axUON87- {
+    order: 2;
+}
+
+.group-wWM3zP_M-:nth-child(12) {
+    order: 2;
+}
+
+.group-wWM3zP_M-:nth-child(13) {
+    order: 2;
+}
+.toggleButton-13QgefpG- {
+    bottom: 50%;
+}
+.common-tooltip-wrapper {
+    display: none;
+}
+
+/*鍏ㄥ睆浜ゆ槗涓�  瀵硅缃脊绐楃殑澶勭悊*/
+._tv-dialog._tv-dialog-nonmodal.ui-draggable {
+    overflow: auto;
+}
+.toolbar-2n2cwgp5- {
+	padding-right: 125px;
+}
+
+.container-3_8ayT2Q- .arrow-WcYWFXUn- {
+	stroke: #ffffff;
+}
+.container-3_8ayT2Q- .background-Q1Fcmxly- {
+	fill: #94ABC0;
+	stroke: #94ABC0;
+}
+
+.feature-no-touch .container-3_8ayT2Q-:hover .background-Q1Fcmxly- {
+	fill: #4980E3;
+	stroke: #4980E3;
+}
