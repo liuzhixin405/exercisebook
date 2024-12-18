@@ -1,6 +1,0 @@
-@EF.GraphQL.Two_HostAddress = http://localhost:5081
-
-GET {{EF.GraphQL.Two_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
