@@ -30,13 +30,7 @@ namespace webapi.BackService
                 marketArray = contracts.Split(',').ToList();
             }
             List<BqSpotMarketCoinPair> coinPairs = CacheHelper.Get<List<BqSpotMarketCoinPair>>(BTCQMemecacheKeys.SPOTCOINPAIRLIST);
-            if (coinPairs == null)
-            {
-                coinPairs = _bqSpotMarkCoinPairService.fin
-            }
-            if (coinPairs == null)
-            {
-                return Task.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }
