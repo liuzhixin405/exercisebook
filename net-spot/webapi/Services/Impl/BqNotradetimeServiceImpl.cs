@@ -21,7 +21,7 @@ namespace webapi.Services.Impl
 
 
 
-        private bool TradeTime(long transactionId)
+        private async Task<bool> TradeTime(long transactionId)
         {
             long currTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             long time = TimestampHelper.GetTimesMorning(currTime);
@@ -30,7 +30,7 @@ namespace webapi.Services.Impl
             if (sfzc == null)
             {
                 bool zcm = true;
-                List<BqNotradetime> lstNotradetimes = _bqNoTradetimeDalImpl.GetList(x => x.HTime == time && transactionId == transactionId).ToList();
+                List<BqNotradetime> lstNotradetimes =(await _bqNoTradetimeDalImpl.GetList(x => x.HTime == time && transactionId == transactionId)).ToList();
                 if (lstNotradetimes == null || lstNotradetimes.Count <= -0)
                 {
                     zcm = true;
@@ -59,7 +59,7 @@ namespace webapi.Services.Impl
             if (setting == null)
             {
 
-                List<BqStockSetting> list = _bqStockSettingDalImpl.GetList(x => x.TransactionId == transactionId).ToList();
+                List<BqStockSetting> list =(await _bqStockSettingDalImpl.GetList(x => x.TransactionId == transactionId)).ToList();
 
                 if (list != null && list.Count > 0)
                 {
@@ -179,45 +179,45 @@ namespace webapi.Services.Impl
         }
 
 
-        public bool IsTradeTime(long transactionId)
+        public Task<bool> IsTradeTime(long transactionId)
         {
             return TradeTime(transactionId);
         }
 
-        public bool readTradeTime(long transactionId)
+        public Task<bool> readTradeTime(long transactionId)
         {
             return TradeTime(transactionId);
         }
 
-        public void add(BqNotradetime noTrade)
+        public Task add(BqNotradetime noTrade)
         {
-            _bqNoTradetimeDalImpl.Insert(noTrade);
+          return  _bqNoTradetimeDalImpl.Insert(noTrade);
         }
 
-        public BqNotradetime getById(long id)
+        public Task<BqNotradetime> getById(long id)
         {
             return _bqNoTradetimeDalImpl.Get(id);
         }
 
-        public void deleteById(long id)
+        public Task deleteById(long id)
         {
 
-            _bqNoTradetimeDalImpl.SoftDelete(id);
+           return _bqNoTradetimeDalImpl.SoftDelete(id);
         }
 
-        public void updateById(long id, long time)
+        public async Task updateById(long id, long time)
         {
-            var data = _bqNoTradetimeDalImpl.Get(id);
+            var data =await _bqNoTradetimeDalImpl.Get(id);
             data.HTime = time;
-            _bqNoTradetimeDalImpl.Update(data);
+           await _bqNoTradetimeDalImpl.Update(data);
         }
 
-        public void addList(List<BqNotradetime> lstNotrades)
+        public Task addList(List<BqNotradetime> lstNotrades)
         {
-            _bqNoTradetimeDalImpl.Insert(lstNotrades);
+           return _bqNoTradetimeDalImpl.Insert(lstNotrades);
         }
 
-        public Pagination<BqNotradetime> findAllpage(long time, int type, long transactionId,int pageIndex=1,int pageSize=10)
+        public async Task<Pagination<BqNotradetime>> findAllpage(long time, int type, long transactionId,int pageIndex=1,int pageSize=10)
         {
             Predicate<BqNotradetime> predicate = x => x.HType == type;
             var hasType = false;
@@ -234,7 +234,7 @@ namespace webapi.Services.Impl
             }
 
             var sort = new { HId = SortOrder.Descending };
-            var result = _bqNoTradetimeDalImpl.GetListPaged(predicate, sort, pageIndex, pageSize).ToList();
+            var result =(await _bqNoTradetimeDalImpl.GetListPaged(predicate, sort, pageIndex, pageSize)).ToList();
             return new Pagination<BqNotradetime>(result,pageIndex,pageSize);
         }
 

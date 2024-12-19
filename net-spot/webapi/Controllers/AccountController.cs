@@ -19,9 +19,9 @@ namespace webapi.Controllers
         }
 
         [HttpGet("getbyuserandcurrency")]
-        public BqAccount GetByUserAndCurrency(long uid,long cid)
+        public async Task<BqAccount> GetByUserAndCurrency(long uid,long cid)
         {
-            return _bqAccountService.GetByUserAndCurrency(uid, cid);
+            return await _bqAccountService.GetByUserAndCurrency(uid, cid);
         }
     }
 }

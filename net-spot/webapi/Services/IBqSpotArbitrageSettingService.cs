@@ -2,9 +2,9 @@
 {
     public interface IBqSpotArbitrageSettingService
     {
-        BqSpotArbitrageSetting getArbitrageSettingByCode(string code);
-        BqSpotArbitrageSetting readArbitrageSettingByCode(string code);
-        void Save(BqSpotArbitrageSetting ba);
-        void Update(BqSpotArbitrageSetting setting);
+        Task<BqSpotArbitrageSetting> getArbitrageSettingByCode(string code);
+        Task<BqSpotArbitrageSetting> readArbitrageSettingByCode(string code);
+        Task Save(BqSpotArbitrageSetting ba);
+        Task Update(BqSpotArbitrageSetting setting);
     }
 }

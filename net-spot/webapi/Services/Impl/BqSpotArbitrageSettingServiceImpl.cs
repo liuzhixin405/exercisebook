@@ -13,27 +13,27 @@ namespace webapi.Services.Impl
             return new BqSpotArbitrageSettingDalImpl(config);
         }
 
-        public BqSpotArbitrageSetting getArbitrageSettingByCode(String code)
+        public Task<BqSpotArbitrageSetting> getArbitrageSettingByCode(String code)
         {
             return instance.GetFirst(x => x.FCode == code);
         }
 
 
-        public BqSpotArbitrageSetting readArbitrageSettingByCode(String code)
+        public Task<BqSpotArbitrageSetting> readArbitrageSettingByCode(String code)
         {
             return instance.GetFirst(x => x.FCode == code);
         }
 
 
-        public void Save(BqSpotArbitrageSetting ba)
+        public Task Save(BqSpotArbitrageSetting ba)
         {
-            instance.Insert(ba);
+           return instance.Insert(ba);
         }
 
 
-        public void Update(BqSpotArbitrageSetting setting)
+        public Task Update(BqSpotArbitrageSetting setting)
         {
-            instance.Update(setting);
+           return instance.Update(setting);
         }
     }
 }

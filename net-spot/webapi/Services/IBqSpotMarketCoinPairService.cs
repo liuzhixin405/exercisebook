@@ -2,9 +2,9 @@
 {
     public interface IBqSpotMarketCoinPairService
     {
-        bool AddMarketCoinPair(BqSpotMarketCoinPair coinPair);
-        void createTable(string coinPairName);
-        long Time();
-        void Update(BqSpotMarketCoinPair coinPair);
+        Task<bool> AddMarketCoinPair(BqSpotMarketCoinPair coinPair);
+        Task createTable(string coinPairName);
+        Task<long> Time();
+        Task Update(BqSpotMarketCoinPair coinPair);
     }
 }

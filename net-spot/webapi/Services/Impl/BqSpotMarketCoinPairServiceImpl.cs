@@ -16,7 +16,7 @@ namespace webapi.Services.Impl
             return new BqSpotMarketCoinPairDalImpl(config);
         }
 
-        public void createTable(string coinPairName)
+        public Task createTable(string coinPairName)
         {
             String trade_sql = "CREATE TABLE IF NOT EXISTS " + coinPairName + "_member_trade (" +
                "id int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '会员与交易对应关系ID'," +
@@ -196,30 +196,30 @@ namespace webapi.Services.Impl
             sql += ksql1 + coinPairName + "_one_day_trade" + ksql2;
             sql += ksql1 + coinPairName + "_one_week_trade" + ksql2;
             sql += ksql1 + coinPairName + "_one_month_trade" + ksql2;
-            instance.Execute(sql);
+           return instance.Execute(sql);
         }
 
-        public bool AddMarketCoinPair(BqSpotMarketCoinPair coinPair)
+        public async Task<bool> AddMarketCoinPair(BqSpotMarketCoinPair coinPair)
         {
-            return instance.Insert(coinPair) > 0;
+            return (await instance.Insert(coinPair)) > 0;
         }
 
-        public void Update(BqSpotMarketCoinPair coinPair)
+        public Task Update(BqSpotMarketCoinPair coinPair)
         {
-            instance.Update(coinPair);
+           return instance.Update(coinPair);
         }
 
-        public long Time()
+        public Task<long> Time()
         {
             return instance.ExecuteScalar<long>("select UNIX_TIMESTAMP() ");
         }
 
-        public List<BqSpotMarketCoinPair> FindByStateNew(int state)
+        public async Task<List<BqSpotMarketCoinPair>> FindByStateNew(int state)
         {
-           return instance.Query<BqSpotMarketCoinPair>("select * from BQSpotMarketCoinPair where state = @State",new{ State=state}).ToList();
+           return (await instance.Query<BqSpotMarketCoinPair>("select * from BQSpotMarketCoinPair where state = @State",new{ State=state})).ToList();
         }
 
-       public Pagination<BqSpotMarketCoinPair> ReadByStatePM(string coinPairName,int state,int pageIndex=1,int pageSize=10)
+       public async Task<Pagination<BqSpotMarketCoinPair>> ReadByStatePM(string coinPairName,int state,int pageIndex=1,int pageSize=10)
         {
             var predicate = PredicateBuilder.True<BqSpotMarketCoinPair>();
             if (state != 0)
@@ -231,7 +231,7 @@ namespace webapi.Services.Impl
                 predicate = predicate.And(x=>x.CoinPairName == coinPairName);
             }
             var sort = new Sort { PropertyName = "sort", Ascending = true };
-            var query = instance.GetListPaged(predicate, sort, pageIndex, pageSize);
+            var query =await instance.GetListPaged(predicate, sort, pageIndex, pageSize);
             return new Pagination<BqSpotMarketCoinPair>(query, pageIndex, pageSize);    
         }
 

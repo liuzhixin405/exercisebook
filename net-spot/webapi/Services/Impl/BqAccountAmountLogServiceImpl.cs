@@ -24,15 +24,15 @@ namespace webapi.Services.Impl
         }
 
 
-        public Pagination<BqAccountAmountLog> ReadListRechargeWithdraw(long id)
+        public async Task<Pagination<BqAccountAmountLog>> ReadListRechargeWithdraw(long id)
         {
             StringBuilder sbBuilder = new StringBuilder();
-            var result = instance.GetList(x => x.LogId == id).OrderByDescending(x => x.LogId).ToList();
+            var result =(await instance.GetList(x => x.LogId == id)).OrderByDescending(x => x.LogId).ToList();
 
             return new Pagination<BqAccountAmountLog>(result,1,10);
         }
 
-        public List<BqAccountAmountLog> ReadByUserAndTime(long uid, long from, String direct, long startTime, long endTime,
+        public async Task<List<BqAccountAmountLog>> ReadByUserAndTime(long uid, long from, String direct, long startTime, long endTime,
                 int limit)
         {
             var predicate = PredicateBuilder.True<BqAccountAmountLog>();
@@ -62,9 +62,9 @@ namespace webapi.Services.Impl
                 predicate = predicate.And(x => x.LogId <= from);
             }
             var sort = new Sort { PropertyName = "LogId", Ascending = false };
-            List<BqAccountAmountLog> result = instance.GetList(predicate,sort).ToList();
+            var result =await instance.GetList(predicate,sort);
 
-            return result;
+            return result?.ToList();
         }
 
         
@@ -81,7 +81,7 @@ namespace webapi.Services.Impl
             instance.Execute("DELETE FROM bq_account_amount_log WHERE operation <> " + Contents.TRANS_TYPE_TO + " AND operation <> " + Contents.TRANS_TYPE_OUT + " AND dateline < {0}",endTime);
         }
 
-    public Pagination<BqAccountAmountLog> ReadOTCRecords(long uid, int currencyId, int operation)
+    public async Task<Pagination<BqAccountAmountLog>> ReadOTCRecords(long uid, int currencyId, int operation)
         {
             var predicate = PredicateBuilder.True<BqAccountAmountLog>();
             predicate=predicate.And(x => x.CurrencyTypeId == currencyId);
@@ -107,7 +107,7 @@ namespace webapi.Services.Impl
             }
 
             var sort = new Sort { PropertyName = "LogId", Ascending = false };
-            List<BqAccountAmountLog> result = instance.GetList(predicate, sort).ToList();
+            List<BqAccountAmountLog> result =(await instance.GetList(predicate, sort)).ToList();
             return new Pagination<BqAccountAmountLog>(result,1,10);
         }
     }

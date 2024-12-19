@@ -14,11 +14,11 @@ namespace webapi.Services.Impl
             return new BqMemberDalImpl(config);
         }
 
-        public List<BqMember> FindListByemail(string emiEmail)
+        public async Task<List<BqMember>> FindListByemail(string emiEmail)
         {
-            return instance.GetList(x => x.FUserEmail == emiEmail).ToList();
+            return (await instance.GetList(x => x.FUserEmail == emiEmail)).ToList();
         }
-        public BqMember FindByemail(string emiEmail)
+        public Task<BqMember> FindByemail(string emiEmail)
         {
             return instance.GetFirst(x => x.FUserEmail == emiEmail);
         }

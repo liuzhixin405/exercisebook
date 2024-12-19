@@ -16,9 +16,9 @@ namespace webapi.Services.Impl
             return new BqAccountDalImpl(config);
         }
 
-        public bool UpdateAmount(int uid, int currencyId, decimal amount, decimal frozenAmount)
+        public async Task<bool> UpdateAmount(int uid, int currencyId, decimal amount, decimal frozenAmount)
         {
-            var account = instance.GetFirst(x => x.FUserId == uid && x.CurrencyTypeId == currencyId && x.BtcLocked >= 0 && x.Btc >= 0);
+            var account =await instance.GetFirst(x => x.FUserId == uid && x.CurrencyTypeId == currencyId && x.BtcLocked >= 0 && x.Btc >= 0);
             if (account == null)
             {
                 throw new ParamsErrorException($"id={uid} currrenctId={currencyId} 的用户不存在或余额不足");
@@ -26,20 +26,20 @@ namespace webapi.Services.Impl
             account.Btc = amount;
             account.BtcLocked = frozenAmount;
             account.Lastupdate = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            var result = instance.Update(account);
+            var result =await instance.Update(account);
             return result;
 
         }
 
-        public BqAccount GetByUserAndCurrency(long uid, long cid)
+        public async Task<BqAccount> GetByUserAndCurrency(long uid, long cid)
         {
-            var result = instance.GetFirst(x => x.FUserId == uid && x.CurrencyTypeId == cid);
+            var result =await instance.GetFirst(x => x.FUserId == uid && x.CurrencyTypeId == cid);
             return result;
         }
 
-        public void InsertAccount(int uid, string email, int currencyId)
+        public Task InsertAccount(int uid, string email, int currencyId)
         {
-            instance.Insert(new BqAccount
+           return instance.Insert(new BqAccount
             {
                 Btc = 0m,
                 BtcLocked = 0m,

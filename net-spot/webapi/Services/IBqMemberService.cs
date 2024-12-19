@@ -2,7 +2,7 @@
 {
     public interface IBqMemberService
     {
-        BqMember FindByemail(string emiEmail);
-        List<BqMember> FindListByemail(string emiEmail);
+        Task<BqMember> FindByemail(string emiEmail);
+        Task<List<BqMember>> FindListByemail(string emiEmail);
     }
 }
