@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status</title>
+</head>
+<body>
+    <h1>Server Status</h1>
+    <div id="status">
+        <p>Loading...</p>
+    </div>
+
+    <script>
+        const eventSource = new EventSource('/api/serverstatus/status');
+
+        eventSource.onmessage = function (event) {
+            const status = JSON.parse(event.data);
+
+            document.getElementById('status').innerHTML = `
+                    <p><strong>CPU Usage:</strong> ${status.CPU}</p>
+                    <p><strong>Memory Usage:</strong> ${status.Memory}</p>
+                    <p><strong>Uptime:</strong> ${status.Uptime}</p>
+                    <p><strong>Disk Usage:</strong> ${status.DiskUsage}</p>
+                    <p><strong>Network Usage:</strong> ${status.NetworkUsage}</p>
+                    <p><strong>Timestamp:</strong> ${status.Timestamp}</p>
+                `;
+        };
+
+        eventSource.onerror = function (error) {
+            console.error("Error occurred: ", error);
+        };
+    </script>
+</body>
+</html>

@@ -28,6 +28,14 @@ namespace WebApplication
         {
 
             services.AddControllers();
+            // 允许跨域请求
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost",
+                    builder => builder.WithOrigins("https://localhost:5001")  // 允许来自 https://localhost:5001 的请求
+                                      .AllowAnyHeader()  // 允许任何头部
+                                      .AllowAnyMethod()); // 允许任何方法
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication", Version = "v1" });
@@ -43,13 +51,18 @@ namespace WebApplication
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication v1"));
             }
+            // 启用 CORS 中间件
+            app.UseCors("AllowLocalhost");
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthorization();
+            // 启用静态文件中间件
+            app.UseStaticFiles(); // 默认提供 wwwroot 下的静态文件
 
+         
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
