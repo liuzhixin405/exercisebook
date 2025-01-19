@@ -1,0 +1,157 @@
+.chart-page {
+	background: #ffffff;
+}
+html.theme-dark .chart-page {
+	background: #0d1923;
+}
+._tv-dialog-content .main-properties {
+	overflow: auto;
+    max-height: calc(100vh - 180px) !important;
+}
+.js-button-text.text-1sK7vbvh- {
+    display: none;
+}
+.chart-page .chart-container {
+    border: none;
+}
+.layout__area--top {
+    background: #0d1923;
+}
+.group-wWM3zP_M- {
+    background: #0d1923;
+	min-width: 32px;
+}
+/*.layout__area--left .drawingToolbar-U3_QXRof- {
+    background: #1F293A;
+}*/
+.loading-indicator {
+    background: #0d1923;
+}
+.customButton--jqJTfH5- {
+    padding: 0px;
+}
+.fill-2axUON87-{
+    display: none;
+}
+.pane-legend {
+	top: 0;
+}
+.pane-legend-line.pane-legend-wrap.main {
+	padding-top: 0;
+}
+.group-wWM3zP_M- .icon-beK_KS0k- {
+    color: #94ABC0;
+}
+.group-wWM3zP_M- .customButton--jqJTfH5- span{
+    padding: 5px;
+    color: #94ABC0;
+}
+.group-wWM3zP_M-.active .customButton--jqJTfH5- span {
+    color: #fff;
+    background: #4980E3;
+}
+.group-wWM3zP_M-:hover .customButton--jqJTfH5- span {
+    color: #fff;
+    background: #4980E3;
+}
+.group-wWM3zP_M-:hover .button-3xrjDzA4- {
+    color: #4980E3;
+}
+.group-wWM3zP_M-:hover .icon-beK_KS0k- {
+    color: #4980E3;
+}
+.button-2ioYhFEY-.isInteractive-20uLObIc-.isOpened-p-Ume5l9- {
+    background: #1F293A;
+}
+.button-2ioYhFEY-.isInteractive-20uLObIc-.isOpened-p-Ume5l9- {
+    background: #1F293A;
+}
+.button-YsN2vRuA-.withText-JhQdRoPu- {
+	padding: 0;
+}
+/*.layout__area--left .group-2JyOhh7Z- {
+    background: #1F293A;
+}*/
+.group-wWM3zP_M-:first-child {
+    order: 1;
+}
+
+.fill-2axUON87- {
+    order: 2;
+}
+
+.group-wWM3zP_M-:nth-child(12) {
+    order: 2;
+}
+
+.group-wWM3zP_M-:nth-child(13) {
+    order: 2;
+}
+.toggleButton-13QgefpG- {
+    bottom: 50%;
+}
+.common-tooltip-wrapper {
+    display: none;
+}
+
+/*鍏ㄥ睆浜ゆ槗涓�  瀵硅缃脊绐楃殑澶勭悊*/
+._tv-dialog._tv-dialog-nonmodal.ui-draggable {
+    overflow: auto;
+}
+.toolbar-2n2cwgp5- {
+	padding-right: 125px;
+}
+.button-263WXsg-- .icon-1Y-3MM9F- {
+	color: #94ABC0;
+}
+.button-263WXsg-- .icon-1Y-3MM9F-.hovered--MYZioUu-, 
+.feature-no-touch .button-263WXsg-- .icon-1Y-3MM9F-:active, 
+.feature-no-touch .button-263WXsg-- .icon-1Y-3MM9F-:hover, 
+.feature-touch .button-263WXsg-- .icon-1Y-3MM9F-:active {
+	color: #cad9e7;
+}
+.inner-1xuW-gY4- {
+	background-color: #2b364b;
+}
+.container-3_8ayT2Q- .background-Q1Fcmxly- {
+	fill: #4A5F78;
+	stroke: #4A5F78;
+}
+.feature-no-touch .container-3_8ayT2Q-:hover .background-Q1Fcmxly- {
+	fill: #4980E3;
+	stroke: #4980E3;
+}
+html.theme-dark .tv-linetool-properties-toolbar__color-picker .colorpicker-widget+svg .bg {
+	fill: #151F2C;
+}
+html.theme-dark .tv-grouped-floating-toolbar__sub-widget:not(:first-child) {
+	background-color: #151F2C;
+}
+
+html.theme-dark .tv-floating-toolbar,
+html.theme-dark .tv-floating-toolbar__widget,
+html.theme-dark .tv-grouped-floating-toolbar__widget-wrapper,
+html.theme-dark .item-2xPVYue0-,
+html.theme-dark .menuWrap-1gEtmoET-,
+html.theme-dark .dialog-2APwxL3O-,
+html.theme-dark ._tv-dialog,
+html.theme-dark .tv-dialog,
+html.theme-dark .tv-insert-indicator-dialog__search-control input {
+	background: #151F2C;
+}
+html.theme-dark .tv-linetool-properties-toolbar__color-picker .colorpicker-widget+svg:hover .bg {
+	fill: #283143;
+}
+html.theme-dark .isOpened-22vLOY9o- .control-1TyEfSIx- .arrow-1cFKS5Ok-,
+html.theme-dark .control-1TyEfSIx-:hover .arrow-1cFKS5Ok-:hover, 
+html.theme-dark .feature-mobiletouch .control-1TyEfSIx- .arrow-1cFKS5Ok-:hover, 
+html.theme-dark .isOpened-22vLOY9o- .control-1TyEfSIx- .arrow-1cFKS5Ok-:hover,
+html.theme-dark .button-263WXsg--:hover .bg-1kRv1Pf2-,
+html.theme-dark .button-263WXsg--.isTransparent-sRmateFl-.isActive-2mI1-NUL-:hover .bg-1kRv1Pf2-,
+html.theme-dark .tv-grouped-floating-toolbar__sub-widget--current,
+html.theme-dark .tv-grouped-floating-toolbar__widget-wrapper.i-dropped,
+html.theme-dark .tv-grouped-floating-toolbar__widget-wrapper:hover,
+html.theme-dark .tv-grouped-floating-toolbar__sub-widget:hover,
+html.theme-dark .item-2xPVYue0-:hover {
+	background-color: #283143 !important;
+}

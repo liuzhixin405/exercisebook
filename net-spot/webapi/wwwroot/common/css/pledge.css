@@ -1,0 +1,289 @@
+.pledge-title-content {
+	background: #fff;
+	border-top: solid 1px #f1f3f4;
+} 
+.pledge-title {
+	width: 1200px;
+    margin: 0 auto;
+    padding: 52px 0 74px;
+    position: relative;
+}
+.pledge-record-title {
+	line-height: 47px;
+	width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    font-size: 14px;
+    margin-top: 30px;
+}
+.pledge-record-title .tab {
+	margin-right: 40px;
+	color: #94abc0;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-bottom: solid 3px #fff;
+}
+.pledge-record-title .tab.active {
+	color: #4980E3;
+	border-bottom: solid 3px #4980E3;
+}
+.pledge-record-title .tab:hover {
+	color: #4980E3;
+}
+.pledge-content {
+	width: 1200px;
+    margin: -50px auto 0 auto;
+    display: flex;
+}
+.pledge-content-div {
+	background: #fff;
+    flex:1;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 15px;
+    border-radius: 4px;
+}
+.pledge-account {
+	width: 300px;
+	flex: none;
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+}
+.pledge-title h2 {
+	font-size: 36px;
+    line-height: 36px;
+    color: #2b364b;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+.pledge-title h3 {
+	font-size: 16px;
+    color: #44607A;
+    font-weight: 400;
+}
+.pledge-content-title {
+	color: #2b364b;
+	height: 48px;
+    line-height: 48px;
+    border-bottom: solid 1px #f1f3f4;
+    display: flex;
+}
+.pledge-content-title h4 {
+	color: #2b364b;
+	font-weight: 700;
+	font-size: 14px;
+	flex: 1;
+}
+.pledge-content-cnt {
+	padding: 24px 15px;
+}
+.pledge-account-cnt {
+	padding: 15px 0px;
+}
+.pledge-content-item {
+	border-radius: 4px;
+	margin-bottom: 16px;
+	display: flex;
+}
+.pledge-account-item {
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+.pledge-border {
+	border: solid 1px #f1f3f4;
+}
+.pledge-input-cnt {
+	flex: 1;
+	display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+	height: 40px;
+    font-size: 14px;
+    border-right: 1px solid #f1f3f4;
+}
+.pledge-coin-select {
+	width: 140px;
+	line-height: 40px;
+}
+.pledge-rate-text {
+	flex: 1;
+}
+.pledge-rate-text span {
+	color: #44607A;
+}
+.pledge-coin-select span {
+	margin-left: 50px;
+}
+.pledge-label {
+	padding: 0 15px;
+}
+.pledge-input {
+	flex: 1;
+	height: 100%;
+	border: 0;
+	background: transparent;
+}
+.pledge-input::-webkit-input-placeholder{
+	color: #C2C1C1;
+}
+.pledge-input::-moz-placeholder{
+	color: #C2C1C1;
+}
+.pledge-input:-moz-placeholder{
+	color: #C2C1C1;
+}
+.pledge-input:-ms-input-placeholder {
+	color: #C2C1C1;
+}
+.link {
+	color: #4980E3;
+	cursor: pointer;
+}
+.disable {
+	color: #C2C1C1;
+}
+.disable:hover {
+	color: #C2C1C1;
+}
+.pledge-content-item .pledge-cycle {
+	width: 180px;
+	height: 32px;
+	box-sizing: border-box;
+	margin-right: 15px;
+	text-align: center;
+	line-height: 32px;
+	margin-top: 5px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.pledge-content-item .pledge-interest-text {
+	margin-top: 5px;
+	position: relative;
+	width: fit-content;
+}
+.pledge-interest-text:hover .show-contract-box {
+	display: block;
+} 
+.pledge-content-item .btn {
+	flex: 1;
+	margin: 0 auto;
+}
+.pledge-radio-input {
+	display: none;
+}
+.pledge-active {
+	color: #4980E3;
+	border: solid 1px #4980E3;
+}
+.background_overlay {
+	display: flex;
+}
+.pledge-show-box {
+	width: 430px;
+    color: #6a6a6a;
+    background: #fff;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    vertical-align: middle;
+    border-radius: 4px;
+    box-shadow: 0 2px 9px 1px rgba(69, 112, 128, 0.14);
+}
+.pledge-show-box-title {
+	color: #2b364b;
+	height: 48px;
+    line-height: 48px;
+    position: relative;
+    padding: 10px 0;
+}
+.pledge-show-box-title h4 {
+	color: #2b364b;
+	font-weight: 700;
+	font-size: 18px;
+	text-align: center;
+}
+.pledge-show-box-title a {
+	position: absolute;
+	width: 60px;
+	text-align: center;
+	top: 9px;
+	right: 0;
+}
+.pledge-show-box-content {
+	text-align: center;
+	padding: 0 20px;
+}
+.pledge-show-box-content .half-percent {
+	width: 50%;
+	display: inline-block;
+}
+.pledge-show-box-content .label-span {
+	text-align: right;
+}
+.pledge-show-box-content .val-span {
+	text-align: left;
+	color: #2b364b;
+	box-sizing: border-box;
+    padding-left: 5px;
+}
+.pledge-show-box-submit {
+	text-align: center;
+	padding: 30px 15px;
+}
+.pledge-box-btn {
+	width: 120px;
+    height: 42px;
+    border: 1px solid #4980E3;
+    background-color: #4980E3;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #ffffff;
+    cursor: pointer;
+    margin: auto;
+}
+.pledge-account-val {
+	font-size: 16px;
+	margin-top: 5px;
+}
+.pledge-no-record {
+	color: #94abc0;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 50px;
+}
+.pledge-tip {
+	border-bottom: 1px dashed #2b364b;
+    cursor: help;
+}
+.show-contract-box {
+    width: 280px;
+    min-height: 50px;
+    z-index: 9999;
+	background: #fff;
+    box-shadow: 0 0 12px 0 rgba(16,22,45,.25);
+    position: absolute;
+    left: 0;
+    top: 34px;
+    border-radius: 2px;
+    cursor: auto;
+    padding: 16px;
+    line-height: 20px;
+}
+.show-contract-box h4 {
+	margin-bottom: 5px;
+}
+.show-contract-box .triangle {
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    left: 25px;
+    top: -20px;
+}
