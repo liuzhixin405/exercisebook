@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using 内容相似度比较.Tools;
+using 内容相似度比较.Tools.Pandora.Pipeline.Tools;
 
 class Program
 {
@@ -49,11 +51,11 @@ class Program
         //    "Stake Stone公布STO代币经济学：总量10亿枚，空投和未来激励占比7.85%",
         //    "Stake Stone公布STO代币经济学模型，空投和未来激励占比7.85%"
         //};
-        string[] newNewsList = {
+        //string[] newNewsList = {
 
-            "币安将为ARDR，BSW等添加观察标签，并移除JUP，STRK和TON的种子标签",
-            "Binance将为ARDR、BSW和FLM等代币添加观察标签，并移除JUP、STRK和TON的种子标签"
-        };
+        //    "币安将为ARDR，BSW等添加观察标签，并移除JUP，STRK和TON的种子标签",
+        //    "Binance将为ARDR、BSW和FLM等代币添加观察标签，并移除JUP、STRK和TON的种子标签"
+        //};
         //string[] newNewsList = {
 
         //    "BNB跌破600美元",
@@ -66,23 +68,36 @@ class Program
         //};
         //string[] newNewsList = {
 
+        //    "某鲸鱼向交易所存入 500 万美元 USDC 并开启比特币 20 倍杠杆多单",
+        //    "某鲸鱼向交易所存入500万美元USDC并开启比特币20倍杠杆多单"
+        //};
+        string[] newNewsList = {
+
+           "F2Pool联创王纯更新其太空飞行记录，马斯克转发",
+           "F2Pool联创王纯更新其太空飞行记录，Elon Musk转发"
+        };
+        //string[] newNewsList = {
+
         //    "据PandoraTech News显示，4 月 4 日，F2Pool 联创王纯在 X 平台更新其太空飞行第四日记录：「我早早醒来，在 YouTube 上观看了 Starlink Group 11-13 的发射。不久之后，SpaceX 与我们联系，告知我们在第二阶段脱轨燃烧期间，我们将飞越蒙古。我们打开了发射舱，试图观察这一过程，但没有成功。尽管如此，我们从孟加拉湾一直飞到北极，一路欣赏着这一美景。」此前消息，F2Pool 联创王纯于 3 月 31 日晚，乘坐 SpaceX 的猎鹰 9 号火箭在佛罗里达州卡纳维拉尔角空军基地开始太空飞行之旅。",
         //    "深潮 TechFlow 消息，4 月 4 日，F2Pool 联创王纯在 X 平台发文，“飞行第4天：我早早醒来，在YouTube上观看了Starlink Group 11-13的发射。不久之后，SpaceX联系我们，告知我们在二级火箭进行离轨燃烧时，我们将飞越蒙古上空。我们打开了穹顶观察窗，试图观察这一现象，但并未成功。尽管如此，当我们从孟加拉湾一直飞到北极时，我们都欣赏到了美妙的景色。”\r\nElon Musk 转发引用此推文转发称“我刚刚通过星链（Starlink）和 fram2（@framonauts） 进行了 FaceTime 视频通话！”\r\n此前消息，SpaceX 的载人龙飞船将于 2025 年 4 月 1 日开启第六次载人航天任务（Fram-2），本次任务共有 4 名宇航员参与：王纯、扬妮克·米克尔森、拉贝亚·罗格、安埃里克·菲利普斯。"
         //};
+        //var text1 = "数据：First Digital Labs过去24小时内已销毁8700万枚FDUSD";
+        //var text2 = "First Digital Labs在过去24小时内已销毁8700万枚FDUSD";
         //var dedup = new TextDeduplicator("127.0.0.1:6379");
         //Console.WriteLine($"{newNewsList[0]}和{newNewsList[1]}比较的相似度为：{dedup.CalculateCharJaccardSimilarity(TextDeduplicator.NormalizeText(newNewsList[0]), TextDeduplicator.NormalizeText(newNewsList[1]))}");
+        //var text1 = "F2Pool联创王纯更新其太空飞行记录，马斯克转发";
+        //var text2 = "F2Pool联创王纯更新其太空飞行记录，Elon Musk转发";
+
         //foreach (var news in newNewsList)
         //{
         //    //collector.ProcessNewNews(news);
-        //    var result =  new TextDeduplicator("127.0.0.1:6379").Deduplicate(news, true,DateTime.Today,0.7);
+        //    var result = new SimDeduplicator("127.0.0.1:6379").Deduplicate(news, true, DateTime.Today, 3);
         //    Console.WriteLine($"{news} 是否重复{result}");
         //    //NewsDeduplicator.IsDuplicate(news);       
         //}
 
-        //var text1 = "F2Pool联创王纯更新其太空飞行记录，马斯克转发";
-        //var text2 = "F2Pool联创王纯更新其太空飞行记录，Elon Musk转发";
-        var text1 = "数据：First Digital Labs过去24小时内已销毁8700万枚FDUSD";
-        var text2 = "First Digital Labs在过去24小时内已销毁8700万枚FDUSD";
+
+
         //var text1 = "据PandoraTech News显示，行情显示，ACT短时跌破0.055美元，现报0.05531美元，24小时跌幅达到43.74%，行情波动较大，请做好风险控制。";
         //var text2 = "据PandoraTech News显示，4 月 2 日，据 HTX 行情数据显示，ACT 跌破 0.055 美元，现报价 0.0537 美元，24 小时跌幅 44.7%。";
         ////var text1 = "据PandoraTech News显示，4 月 4 日，F2Pool 联创王纯在 X 平台更新其太空飞行第四日记录：「我早早醒来，在 YouTube 上观看了 Starlink Group 11-13 的发射。不久之后，SpaceX 与我们联系，告知我们在第二阶段脱轨燃烧期间，我们将飞越蒙古。我们打开了发射舱，试图观察这一过程，但没有成功。尽管如此，我们从孟加拉湾一直飞到北极，一路欣赏着这一美景。」此前消息，F2Pool 联创王纯于 3 月 31 日晚，乘坐 SpaceX 的猎鹰 9 号火箭在佛罗里达州卡纳维拉尔角空军基地开始太空飞行之旅。";
@@ -90,10 +105,10 @@ class Program
         //var text1="币安将为ARDR，BSW等添加观察标签，并移除JUP，STRK和TON的种子标签";
         //var text2="Binance将为ARDR、BSW和FLM等代币添加观察标签，并移除JUP、STRK和TON的种子标签";
         // 使用 Jaro-Winkler 算法（适合短文本）
-        IStringMetric metric = new JaroWinkler();
+        //IStringMetric metric = new JaroWinkler();
 
-        double similarity = metric.GetSimilarity(text1, text2);
-        Console.WriteLine($"Jaro-Winkler 相似度: {similarity}");
+        //double similarity = metric.GetSimilarity(text1, text2);
+        //Console.WriteLine($"Jaro-Winkler 相似度: {similarity}");
 
         //// 使用 Cosine 算法（适合词袋模型、长文本）
         //metric = new CosineSimilarity();
@@ -104,5 +119,13 @@ class Program
         //metric = new JaccardSimilarity();
         //similarity = metric.GetSimilarity(text1, text2);
         //Console.WriteLine($"Jaccard 相似度: {similarity}");
+
+
+        var simhash = new SimpleSimHash();
+        var hash1 = simhash.ComputeSimHash("据PandoraTech News显示，行情显示，ACT短时跌破0.055美元，现报0.05531美元，24小时跌幅达到43.74%，行情波动较大，请做好风险控制。");
+        var hash2 = simhash.ComputeSimHash("据PandoraTech News显示，4 月 2 日，据 HTX 行情数据显示，ACT 跌破 0.055 美元，现报价 0.0537 美元，24 小时跌幅 44.7%。");
+
+        int distance = simhash.HammingDistance(hash1, hash2);
+        Console.WriteLine($"Hamming 距离：{distance}，相似度：{(64 - distance) / 64.0:F2}");
     }
 }
