@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct"/>
+
+  <Commands package="guidVSAIPluginNewPackage">
+    <Groups>
+      <Group guid="guidVSAIPluginNewPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidVSAIPluginNewPackageCmdSet" id="AIAssistantCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidVSAIPluginNewPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>AI助手</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\AIAssistantCommand.png" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <!-- 包GUID -->
+    <GuidSymbol name="guidVSAIPluginNewPackage" value="{30f3f997-7016-4a07-bae8-57930b7def3c}" />
+
+    <!-- 命令集GUID -->
+    <GuidSymbol name="guidVSAIPluginNewPackageCmdSet" value="{6ff9e33a-5ec4-4e32-a5a7-f5e3c78c9d1b}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="AIAssistantCommandId" value="0x0100" />
+    </GuidSymbol>
+
+    <!-- 图标GUID -->
+    <GuidSymbol name="guidImages" value="{58b3ffb7-bacd-4e8f-9599-2ba22204d4a2}" >
+      <IDSymbol name="bmpPic1" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable> 

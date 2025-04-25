@@ -21,7 +21,7 @@ bool useInMemoryDatabase = builder.Configuration.GetValue<bool>("UseInMemoryData
 
 builder.Services.AddApplicationLayer();
 builder.Services.AddPersistenceInfrastructure(builder.Configuration);
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
