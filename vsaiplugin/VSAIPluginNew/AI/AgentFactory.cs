@@ -22,7 +22,7 @@ namespace VSAIPluginNew.AI
                     if (_instance == null)
                     {
                         _instance = new OllamaAgent(
-                            modelName: "phi4-mini:latest", // 默认模型
+                            modelName: "llama3", // 默认模型
                             systemMessage: @"You are a helpful AI assistant for Visual Studio 2022. 
 You can read code files and help the developer understand, modify, and debug their code.
 When suggesting code changes, be specific about which file and lines need to be changed.

@@ -14,7 +14,7 @@ namespace VSAIPluginNew.AI
     public class OllamaAgent
     {
         private readonly HttpClient _httpClient;
-        private readonly string _modelName;
+        private string _modelName;
         private readonly string _systemMessage;
 
         public OllamaAgent(string modelName, string systemMessage = "You are a helpful AI assistant")
@@ -25,6 +25,14 @@ namespace VSAIPluginNew.AI
             };
             _modelName = modelName;
             _systemMessage = systemMessage;
+        }
+
+        public void UpdateModel(string modelName)
+        {
+            if (!string.IsNullOrEmpty(modelName))
+            {
+                _modelName = modelName;
+            }
         }
 
         public async Task<string> GenerateReplyAsync(string promptText)
