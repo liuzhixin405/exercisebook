@@ -23,6 +23,10 @@ namespace spot.WebApi.Infrastructure.Extensions
                 options.SupportedUICultures = supportedCultures;
             });
 
+            // 添加本地化服务
+            services.AddLocalization();
+            services.AddSingleton<Microsoft.Extensions.Localization.IStringLocalizerFactory, Microsoft.Extensions.Localization.ResourceManagerStringLocalizerFactory>();
+
             return services;
         }
         public static IApplicationBuilder UseCustomLocalization(this IApplicationBuilder app)
