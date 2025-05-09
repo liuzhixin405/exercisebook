@@ -8,7 +8,7 @@ namespace spot.Domain.Accounts.Entities
     {
         [Key]
         [Column("id")]
-        public string Id { get; set; }
+        public required string Id { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -26,13 +26,13 @@ namespace spot.Domain.Accounts.Entities
         /// 用户ID
         /// </summary>
         [Column("user_id")]
-        public string UserId { get; set; }
+        public required string UserId { get; set; }
 
         /// <summary>
         /// 货币代码
         /// </summary>
         [Column("currency")]
-        public string Currency { get; set; }
+        public required string Currency { get; set; }
 
         /// <summary>
         /// 可用余额

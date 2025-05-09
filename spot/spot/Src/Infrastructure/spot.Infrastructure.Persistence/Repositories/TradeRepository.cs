@@ -10,22 +10,29 @@ using System.Threading.Tasks;
 
 namespace spot.Infrastructure.Persistence.Repositories
 {
-    public class TradeRepository(ApplicationDbContext dbContext) : GenericRepository<Trade>(dbContext), ITradeRepository
-    { 
+    public class TradeRepository : GenericRepository<Trade>, ITradeRepository
+    {
+        private readonly ApplicationDbContext _dbContext;
+
+        public TradeRepository(ApplicationDbContext dbContext) : base(dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public Task AddTrades(List<Trade> trades)
         {
-            dbContext.AddAsync(trades);
+            _dbContext.AddAsync(trades);
             return Task.CompletedTask;
         }
 
         public async Task<Trade> GetLastTradeByProductId(string productId)
         {
-           return await dbContext.Trades.Where(x=>x.ProductId.Equals(productId, System.StringComparison.CurrentCultureIgnoreCase)).OrderByDescending(x=>x.Id).FirstOrDefaultAsync();
+           return await _dbContext.Trades.Where(x=>x.ProductId.Equals(productId, System.StringComparison.CurrentCultureIgnoreCase)).OrderByDescending(x=>x.Id).FirstOrDefaultAsync();
         }
 
         public async Task<List<Trade>> GetTradesByProductId(string productId, int count)
         {
-            return await dbContext.Trades.Where(x => x.ProductId.Equals(productId, System.StringComparison.CurrentCultureIgnoreCase)).OrderByDescending(x => x.Id).Take(count).ToListAsync();
+            return await _dbContext.Trades.Where(x => x.ProductId.Equals(productId, System.StringComparison.CurrentCultureIgnoreCase)).OrderByDescending(x => x.Id).Take(count).ToListAsync();
         }
     }
 }

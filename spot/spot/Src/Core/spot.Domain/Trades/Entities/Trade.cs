@@ -8,7 +8,7 @@ namespace spot.Domain.Trades.Entities
     {
         [Key]
         [Column("id")]
-        public string Id { get; set; }
+        public required string Id { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -20,7 +20,7 @@ namespace spot.Domain.Trades.Entities
         /// 产品ID
         /// </summary>
         [Column("product_id")]
-        public string ProductId { get; set; }
+        public required string ProductId { get; set; }
 
         /// <summary>
         /// 交易价格
@@ -38,19 +38,19 @@ namespace spot.Domain.Trades.Entities
         /// 买方订单ID
         /// </summary>
         [Column("taker_order_id")]
-        public string TakerOrderId { get; set; }
+        public required string TakerOrderId { get; set; }
 
         /// <summary>
         /// 卖方订单ID
         /// </summary>
         [Column("maker_order_id")]
-        public string MakerOrderId { get; set; }
+        public required string MakerOrderId { get; set; }
 
         /// <summary>
         /// 交易方向
         /// </summary>
         [Column("side")]
-        public string Side { get; set; }
+        public required string Side { get; set; }
 
         /// <summary>
         /// 交易费用

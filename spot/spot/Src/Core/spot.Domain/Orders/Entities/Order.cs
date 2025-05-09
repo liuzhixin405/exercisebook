@@ -8,7 +8,7 @@ namespace spot.Domain.Orders.Entities
     {
         [Key]
         [Column("id")]
-        public string Id { get; set; }
+        public required string Id { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -26,25 +26,25 @@ namespace spot.Domain.Orders.Entities
         /// 产品ID
         /// </summary>
         [Column("product_id")]
-        public string ProductId { get; set; }
+        public required string ProductId { get; set; }
 
         /// <summary>
         /// 用户ID
         /// </summary>
         [Column("user_id")]
-        public string UserId { get; set; }
+        public required string UserId { get; set; }
 
         /// <summary>
         /// 订单类型（限价单/市价单）
         /// </summary>
         [Column("type")]
-        public string Type { get; set; }
+        public required string Type { get; set; }
 
         /// <summary>
         /// 订单方向（买/卖）
         /// </summary>
         [Column("side")]
-        public string Side { get; set; }
+        public required string Side { get; set; }
 
         /// <summary>
         /// 下单价格
@@ -74,7 +74,7 @@ namespace spot.Domain.Orders.Entities
         /// 订单状态
         /// </summary>
         [Column("status")]
-        public string Status { get; set; }
+        public required string Status { get; set; }
 
         /// <summary>
         /// 是否完全成交

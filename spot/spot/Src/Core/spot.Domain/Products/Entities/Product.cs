@@ -8,29 +8,29 @@ namespace spot.Domain.Products.Entities
     {
         [Key]
         [Column("id")]
-        public string Id { get; set; }
+        public required string Id { get; set; }
         /// <summary>
-        /// 创建时间
+        /// 鍒涘缓鏃堕棿
         /// </summary>
         [Column("createdAt")]
         public long CreatedAt { get; set; }
         /// <summary>
-        /// 更新时间
+        /// 鏇存柊鏃堕棿
         /// </summary>
         [Column("updatedAt")]
         public long UpdatedAt { get; set; }
         /// <summary>
-        /// 基础币种
+        /// 鍩虹甯佺
         /// </summary>
 
         [Column("base_currency")]
-        public string BaseCurrency { get; set; }
+        public required string BaseCurrency { get; set; }
         /// <summary>
-        /// 报价币种
+        /// 璁′环甯佺
         /// </summary>
 
         [Column("quote_currency")]
-        public string QuoteCurrency { get; set; }
+        public required string QuoteCurrency { get; set; }
 
         // Using decimal for high precision decimal values
         [Column("base_min_size")]
