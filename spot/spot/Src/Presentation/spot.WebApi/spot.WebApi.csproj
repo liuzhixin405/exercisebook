@@ -21,5 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\spot.Application\spot.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\spot.Infrastructure.Persistence\spot.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\spot.Infrastructure.FileManager\spot.Infrastructure.FileManager.csproj" />
   </ItemGroup>
 </Project>

@@ -15,10 +15,20 @@ namespace spot.Infrastructure.Persistence
         public static void AddPersistenceInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             // Register DbContext
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+            bool useInMemoryDatabase = configuration.GetValue<bool>("UseInMemoryDatabase");
+            
+            if (useInMemoryDatabase)
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseInMemoryDatabase(nameof(ApplicationDbContext)));
+            }
+            else
+            {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(
+                        configuration.GetConnectionString("DefaultConnection"),
+                        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+            }
 
             // Register Repositories
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));

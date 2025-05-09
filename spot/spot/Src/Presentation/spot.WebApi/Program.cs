@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using spot.Application;
 using spot.Application.Interfaces;
+using spot.Infrastructure.FileManager;
 using spot.Infrastructure.Persistence;
 using spot.Infrastructure.Persistence.Contexts;
 using spot.Infrastructure.Persistence.Seeds;
@@ -21,6 +22,7 @@ bool useInMemoryDatabase = builder.Configuration.GetValue<bool>("UseInMemoryData
 
 builder.Services.AddApplicationLayer();
 builder.Services.AddPersistenceInfrastructure(builder.Configuration);
+builder.Services.AddFileManagerInfrastructure(builder.Configuration, useInMemoryDatabase);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
 builder.Services.AddScoped<ITranslator, Translator>();
