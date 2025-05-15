@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpt08qus3gla1"]
+
+[ext_resource type="Script" uid="uid://c33qbaka5eb25" path="res://Scripts/GameManager.gd" id="1_b2bpf"]
+[ext_resource type="Texture2D" uid="uid://dvb8dqf6yse83" path="res://AssetBundle/Sprites/ForestBackground.png" id="1_iukft"]
+[ext_resource type="PackedScene" uid="uid://c3mfwkdfc74m8" path="res://Scenes/player.tscn" id="2_gl6un"]
+[ext_resource type="PackedScene" uid="uid://cc5vhjwpv2vp7" path="res://Scenes/slime.tscn" id="3_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://br3018dhoki15" path="res://Scenes/Bullet.tscn" id="4_kldst"]
+[ext_resource type="FontFile" uid="uid://560kmlg0l3ka" path="res://AssetBundle/Uranus_Pixel_11Px.ttf" id="6_7lihs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gl6un"]
+normal = Vector2(-0.00643503, -0.999979)
+distance = -0.166542
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "game_over_label")]
+show_behind_parent = true
+top_level = true
+y_sort_enabled = true
+script = ExtResource("1_b2bpf")
+slime_scene = ExtResource("3_j5yw3")
+spawn_timer = NodePath("Timer")
+score_label = NodePath("CanvasLayer/Label")
+game_over_label = NodePath("CanvasLayer/GameOverLabel")
+
+[node name="Background1" type="Sprite2D" parent="."]
+position = Vector2(-118, -3)
+texture = ExtResource("1_iukft")
+metadata/_edit_lock_ = true
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(122, -3)
+texture = ExtResource("1_iukft")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)
+rotation = -1.0472
+zoom = Vector2(2.4, 2.4)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_gl6un")]
+position = Vector2(-182, 83)
+
+[node name="Boundary" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundary"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(1.47879, 133.311)
+rotation = -0.0205725
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundary"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D2"]
+position = Vector2(-1, 17)
+rotation = 3.08918
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundary"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D3"]
+position = Vector2(-239, -2.28882e-05)
+rotation = 1.55928
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundary"]
+rotation = -1.5187
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D4"]
+position = Vector2(8.6368, 233.841)
+rotation = -0.0205725
+shape = SubResource("WorldBoundaryShape2D_gl6un")
+
+[node name="Area2D" parent="." instance=ExtResource("3_j5yw3")]
+position = Vector2(193, 76)
+
+[node name="Bullet" parent="." instance=ExtResource("4_kldst")]
+position = Vector2(-168, 80)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -30.0
+offset_right = 158.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.08905, 2.18931)
+theme_override_colors/font_color = Color(0, 0.47451, 0, 1)
+theme_override_constants/outline_size = 60
+theme_override_fonts/font = ExtResource("6_7lihs")
+theme_override_font_sizes/font_size = 120
+text = "GAME OVER!"
+
+[node name="GameOverLabel2" type="Label" parent="CanvasLayer/GameOverLabel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -87.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Game By lx"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 144.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("6_7lihs")
+theme_override_font_sizes/font_size = 48
+text = "Score:0"
+
+[connection signal="timeout" from="Timer" to="." method="_spawn_slime"]

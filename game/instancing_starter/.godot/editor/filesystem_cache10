@@ -1,0 +1,11 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1747123518
+Ball.tscn::PackedScene::8064037037699315273::1747123519::0::1::::<><><>0<>0<><>::uid://dv6rx85s1gy3i::::res://assets/ballBlue_10.png
+icon.svg::CompressedTexture2D/CompressedTexture2D::7951457360396824501::1744386698::1747123501::1::::<><><>0<>0<>875e6c452fa6714a089b8617feb18819<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+Main.gd::GDScript/GDScript::9023169560789535233::1744386698::0::1::::<>Node<><>0<>0<><>::
+Main.tscn::PackedScene::2580185021150866616::1747123519::0::1::::<><><>0<>0<><>::uid://d1s5jwywxvw7r::::res://Main.gd<>uid://dm5jrnxmxnuof::::res://Ball.tscn<>uid://dkq1swbmmxmbq::::res://assets/Bouncy Platform Long.png
+README.md::TextFile/TextFile::-1::1744386698::0::1::::<><><>0<>0<><>::
+::res://assets/::1747123501
+ballBlue_10.png::CompressedTexture2D/CompressedTexture2D::8698298520458212912::1744386698::1747123501::1::::<><><>0<>0<>daba0dde8f1e846ce78ca84f8b6da984<>res://.godot/imported/ballBlue_10.png-a6ac20f1eeff46860499a0f8c7bba4ff.ctex::
+Bouncy Platform Long.png::CompressedTexture2D/CompressedTexture2D::7895792475247486234::1744386698::1747123501::1::::<><><>0<>0<>a991da072f63e0bcd61a9026525f3700<>res://.godot/imported/Bouncy Platform Long.png-9b2628c180785c5ec622adb5c4ee7b17.ctex::
+Bouncy Platform Medium.png::CompressedTexture2D/CompressedTexture2D::3192301516354317244::1744386698::1747123501::1::::<><><>0<>0<>c93e5947c2f13d9ed96c0ccbfdfa5fd7<>res://.godot/imported/Bouncy Platform Medium.png-7896338a5f44da1e83084c154a3c4a9e.ctex::

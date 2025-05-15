@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj5ydwluj4k6f"]
+
+[ext_resource type="Script" uid="uid://dkvsaadvbtvcm" path="res://Main.cs" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://tc07fe14v6ii" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bivifg538k4rk" path="res://hud.tscn" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://dbm8k06hgoixf" path="res://art/House In a Forest Loop.ogg" id="4_lquwl"]
+[ext_resource type="AudioStream" uid="uid://ddrrrpltk46yt" path="res://art/gameover.wav" id="5_7mycd"]
+
+[sub_resource type="Curve2D" id="Curve2D_ig7tw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -50, 0, 0, 0, 0, 480, -50)
+}
+point_count = 2
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0xm2m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.313812, 0.30911, 0, 1)
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(241, 650)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ig7tw")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(0, -50)
+rotation = 0.0
+
+[node name="HUD" parent="." instance=ExtResource("3_h2yge")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lquwl")
+parameters/looping = true
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7mycd")
