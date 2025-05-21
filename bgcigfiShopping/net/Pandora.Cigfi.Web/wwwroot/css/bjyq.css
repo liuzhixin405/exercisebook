@@ -1,0 +1,20 @@
+﻿.bjyqinput {
+    font-size: 14px;
+    padding: 6px 12px;
+    width: 100%;
+}
+
+.input-addon-bjyq {
+    background-color: #fff;
+    border-radius: 1px;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 6px 12px;
+    text-align: center;
+    display: table-cell;
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}

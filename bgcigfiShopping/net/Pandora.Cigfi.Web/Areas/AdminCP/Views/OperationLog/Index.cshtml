@@ -1,0 +1,381 @@
+﻿@using Pandora.Cigfi.Web.Common;
+@using Pandora.Cigfi.Models.Consts;
+@using Pandora.Cigfi.IServices;
+@inject IAdminRightService adminright_Service;
+@{
+    ViewBag.Title = "操作日志列表";
+}
+<style>
+    .bootstrap-table {
+        padding: 0px !important;
+        margin: 8px auto !important;
+    }
+
+    #tb_datalist tbody tr td {
+        line-height: 13px !important;
+        text-align: center !important;
+        padding: 2px !important;
+    }
+</style>
+<div class="wrapper wrapper-content " style="padding: 0px !important; margin: 0px !important;">
+    <div class="ibox float-e-margins">
+        @*<div class="ibox-title">
+                <h5>@ViewBag.Title</h5>
+                <div class="ibox-tools">
+                </div>
+            </div>*@
+        <div class="ibox-content" style="padding: 0px !important; margin: 0px !important;">
+            <div class="panel panel-default" style="padding: 0px !important; margin:2px 0px !important;">
+                <div class="panel-heading">筛选条件<a href="#" id="btn_empty" style="margin-right: 10px;cursor: pointer;font-weight: 900; float: right;">清空</a></div>
+                <div class="panel-body">
+                    <form id="formSearch" class="form-horizontal form-inline">
+                        <div>
+                            <label class="control-label">操作对象code：</label>
+                            <input type="text" id="OperationCode" class="form-control" style="width:110px;">
+                            <label class="control-label">操作对象：</label>
+                            <select id="OperationObject" style="padding:5px;cursor:pointer;margin-right:10px;">
+                                <option value="">全部</option>
+                                <option value="1">虚拟币</option>
+                                <option value="2">交易所</option>
+                                <option value="3">行情</option>
+                            </select>
+                            <label class="control-label">操作员：</label>
+                            <select id="OperationPeople" style="padding:5px;cursor:pointer;margin-right:10px;">
+                                <option value="">全部</option>
+                            </select>
+                            <label class="control-label">操作类型：</label>
+                            <select id="OperationType" style="padding:5px;cursor:pointer;margin-right:10px;">
+                                <option value="">全部</option>
+                                <option value="1">编辑</option>
+                                <option value="2">新增</option>
+                                <option value="3">删除</option>
+                                <option value="4">审核通过</option>
+                                <option value="5">审核不通过</option>
+                                <option value="6">分配</option>
+                            </select>
+
+                            <label class="checkbox-inline i-checks">
+                                <div id="icheckbox" class="icheckbox_square-green" style="position: relative;">
+                                    <input type="checkbox" name="IsAccurate" id="IsAccurate" checked="checked" style="position: absolute; opacity: 0;">
+                                </div>是否精确查找
+                            </label>
+
+                            <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary" data-key="OpTime" data-value="DESC" onclick="doSearch();">查询</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="toolbar" class="btn-group-sm" style="padding: 0px !important; margin: 0px !important;">
+                @if (await adminright_Service.CheckAdminPower(EventKeyConsts.DEL, MenuKeyConsts.OPERATIONLOG))
+                {
+                    <button id="btn_del" type="button" class="btn btn-outline btn-default" onclick="batDel()">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>删除
+                    </button>
+                }
+            </div>
+
+            <table id="tb_datalist" style="word-break:break-all; padding: 0px !important; margin: 0px !important;"></table>
+            <script>
+
+                $(function () {
+
+                    //1.初始化Table
+                    var oTable = new TableInit();
+                    oTable.Init();
+
+                    //2.初始化Button的点击事件
+                    var oButtonInit = new ButtonInit();
+                    oButtonInit.Init();
+
+                });
+
+                var queryParams = function (params) {
+                    var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                        limit: params.limit,   //页面大小
+                        page: (params.offset / params.limit) + 1,  //页码
+                        operationCode: $("#OperationCode").val(),
+                        operationObject: $("#OperationObject").val(),
+                        operationPeople: $("#OperationPeople").val(),
+                        operationType: $("#OperationType").val(),
+                        isAccurate: $("#IsAccurate").get(0).checked,
+                        sortKey: $("#btn_query").attr("data-key"),
+                        sort: $("#btn_query").attr("data-value"),
+
+                    };
+                    return temp;
+                };
+                function doSearch() {
+                    var params = $('#tb_datalist').bootstrapTable('getOptions');
+                    //console.log(params);
+                    params.queryParams = queryParams;
+                    $('#tb_datalist').bootstrapTable('refresh', params);
+                }
+                var TableInit = function () {
+                    var oTableInit = new Object();
+                    //初始化Table
+                    oTableInit.Init = function () {
+                        $('#tb_datalist').bootstrapTable({
+                            url: '/AdminCP/OperationLog/GetPageListAsync', //请求后台的URL（*）
+                            method: 'get', //请求方式（*）
+                            toolbar: '#toolbar', //工具按钮用哪个容器
+                            striped: true, //是否显示行间隔色
+                            cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                            pagination: true, //是否显示分页（*）
+                            sortable: false, //是否启用排序
+                            sortOrder: "asc", //排序方式
+                            queryParams: queryParams, //传递参数（*）
+                            sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+                            pageNumber: 1, //初始化加载第一页，默认第一页
+                            pageSize: 100, //每页的记录行数（*）
+                            pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
+                            search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                            strictSearch: true,
+                            showColumns: false, //是否显示所有的列
+                            showRefresh: true, //是否显示刷新按钮
+                            minimumCountColumns: 2, //最少允许的列数
+                            clickToSelect: true, //是否启用点击选中行
+                            height: 0, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                            uniqueId: "ID", //每一行的唯一标识，一般为主键列
+                            showToggle: false, //是否显示详细视图和列表视图的切换按钮
+                            cardView: false, //是否显示详细视图
+                            detailView: false, //是否显示父子表
+                            columns: [
+                                {
+                                    checkbox: true
+                                }, {
+                                    field: 'ID',
+                                    title: 'ID'
+                                }, {
+                                    field: 'Code',
+                                    title: '操作对象Code',
+                                    formatter:'codeFormatter'
+                                },
+                                {
+                                    field: 'TargetType',
+                                    title: '操作对象',
+                                    formatter:'targetTypeFormatter'
+                                },
+                                {
+                                    field: 'OperateLocation',
+                                    title: '操作页面',
+                                    formatter: 'operateLocationFormatter'
+                                },
+                                {
+                                    field: 'OperationPeople',
+                                    title: '操作员'
+                                },
+                                {
+                                    field: 'OperateType',
+                                    title: '操作类型',
+                                    formatter: 'operateTypeFormatter'
+                                }, {
+                                    field: 'Remark',
+                                    title: '事件说明',
+                                    formatter:'remarkFormation'
+                                },
+                                {
+                                    field: 'OpTime',
+                                    title:
+                                        '<div style="cursor: pointer;"  id="ModifyTimeId" data-number="1"  onclick="ModifyTimeAction()">修改时间<span  class="ModifyTimeDown" >⬇</span><span class="ModifyTimeUp" hidden>⬆</span></div>',
+                                    formatter: 'timeTransformation',
+                                    width: 140
+                                },
+                                {
+                                    field: 'ID',
+                                    title: '操作',
+                                    formatter: 'actionFormatter',
+                                    width: 140
+                                }
+                            ]
+                        });
+                    };
+                    return oTableInit;
+                };
+
+                function actionFormatter(value, row, index) {
+                    var hasEdit =   @(await adminright_Service.CheckAdminPower(EventKeyConsts.EDIT, MenuKeyConsts.BASE_COIN) ?"1":"0")  ;
+                    var hasDel =   @(await adminright_Service.CheckAdminPower(EventKeyConsts.DEL, MenuKeyConsts.BASE_COIN) ? "1" : "0")  ;
+                           return [
+                               hasEdit == "0" ? "" : '<a href="javascript:;" class="btn btn-xs btn-primary" title="查看详情" onclick="top.showDialog(\'eidtads\', \'查看详情\', \'/admincp/OperationLog/look/' + value + '\', 800, 800)"><i class="fa fa-edit"></i> 查看详情</a>',
+                               hasDel == "0" ? "" : '<a href="javascript:;" class="btn btn-xs btn-danger m-l-xs" title="删除" onclick="doDel(\'/admincp/OperationLog/del/\',\'' + value + '\');"><i class="fa fa-close"></i> 删除</a>',
+                               ].join('');
+                }
+
+                function remarkFormation(value, row, index) {
+                    var result = String(value).split('\\n');
+                    return result[0];
+                }
+
+                function codeFormatter(value, row, index) {
+                    if (value.indexOf(",")!=-1) {
+                        return ".....";
+                    }
+                    return value;
+                }
+
+                function operateLocationFormatter(value, row, index) {
+                    switch (value) {
+                        case "Coin":
+                            return "虚拟币列表";
+                            break;
+                        case "CoinNopassed":
+                            return "虚拟币审核";
+                            break;
+                        case "CoinUnNopassed":
+                            return "虚拟币审核未通过";
+                            break;
+                        case "Exchange":
+                            return "交易所列表";
+                            break;
+                        case "ExchangeNopassed":
+                            return "交易所审核";
+                            break;
+                        case "ExchangeUnNopassed":
+                            return "交易所审核未通过";
+                            break;
+
+                    }
+
+                }
+
+                function targetTypeFormatter(value, row, index) {
+                    switch (value) {
+                        case 1:
+                            return "虚拟币";
+                            break;
+                        case 2:
+                            return "交易所";
+                            break;
+                        case 3:
+                            return "行情";
+                            break;
+                    }
+                }
+                function operateTypeFormatter(value, row, index) {
+                    switch (value) {
+                        case 1:
+                            return "编辑";
+                            break;
+                        case 2:
+                            return "新增";
+                            break;
+                        case 3:
+                            return "删除";
+                            break;
+                        case 4:
+                            return "审核通过";
+                            break;
+                        case 5:
+                            return "审核不通过";
+                            break;
+                        case 6:
+                            return "分配";
+                            break;
+                    }
+                }
+
+
+                function timeTransformation(value, row, index) {
+                    if (value === "	0001-01-01T00:00:00") {
+                        value = "-";
+                    } else {
+                        var date = new Date(value);
+                        var year = date.getFullYear(),
+                            month = date.getMonth() + 1,//月份是从0开始的
+                            day = date.getDate(),
+                            hour = date.getHours(),
+                            min = date.getMinutes(),
+                            sec = date.getSeconds();
+                        var newTime = year + '-' +
+                            month + '-' +
+                            day + ' ' +
+                            hour + ':' +
+                            min + ':' +
+                            sec;
+                        value = newTime;
+                    }
+                    return value;
+                }
+                var ButtonInit = function () {
+                    var oInit = new Object();
+                    var postdata = {};
+
+                    oInit.Init = function () {
+                        //初始化页面上面的按钮事件
+                    };
+
+                    return oInit;
+                };
+
+
+                $.ajax({
+                    type: "get",
+                    url: "/admincp/OperationLog/GetAllUserAsync",
+                    success: function (data) {
+                        if (data != null) {
+                            var optionS = "";
+                            data.forEach((a) => {
+                                optionS += "<option value='" + a.id + "'>" + a.realName + "</option>";
+                            })
+                            $("#OperationPeople").append(optionS);
+                        }
+
+                    }
+                })
+
+
+                function batDel() {
+                    var getSelectRows = $("#tb_datalist").bootstrapTable('getSelections');
+
+                    var ids = "";
+                    for (var i = 0; i < getSelectRows.length; i++) {
+                        if (ids.length > 0) {
+                            ids += ",";
+                        }
+                        ids += escape(encodeURIComponent(getSelectRows[i].ID));
+                    }
+                    doDel('/admincp/OperationLog/del', ids);
+                }
+
+                function ModifyTimeAction() {
+                    var number = $("#ModifyTimeId").attr("data-number");
+                    if (number == "1") {
+                        $("#ModifyTimeId .ModifyTimeDown").hide();
+                        $("#ModifyTimeId .ModifyTimeUp").show();
+                        $("#ModifyTimeId").attr("data-number", "0");
+                        $("#btn_query").attr("data-key", "OpTime");
+                        $("#btn_query").attr("data-value", "ASC");
+                    } else {
+                        $("#ModifyTimeId .ModifyTimeDown").show();
+                        $("#ModifyTimeId .ModifyTimeUp").hide();
+                        $("#ModifyTimeId").attr("data-number", "1");
+                        $("#btn_query").attr("data-key", "OpTime");
+                        $("#btn_query").attr("data-value", "DESC");
+                    }
+                    doSearch();
+
+                }
+                $("body").keydown(function () {
+                    if (event.keyCode == "13") {//keyCode=13是回车键
+                        $('#btn_query').click();
+                    }
+                });
+
+                //清空
+                $("#btn_empty").click(function () {
+                    $("#OperationCode").val('');
+                    $("#OperationObject").val('');
+                    $("#OperationPeople").val('');
+                    $("#OperationType").val('');
+
+                    $("#IsAccurate").prop("checked", true);
+                    $("#icheckbox").children(".icheckbox_square-green").addClass("checked", true);
+                    //刷新
+                    doSearch();
+                })
+            </script>
+        </div>
+    </div>
+
+</div>

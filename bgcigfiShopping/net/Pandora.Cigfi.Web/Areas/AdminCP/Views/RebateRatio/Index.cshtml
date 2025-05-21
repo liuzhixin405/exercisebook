@@ -1,0 +1,221 @@
+﻿@using Pandora.Cigfi.IServices
+@using Pandora.Cigfi.Models.Consts
+@inject IAdminRightService adminright_Service;
+@{
+    ViewBag.Title = "返佣比例设置管理";
+}
+<style>
+    .bootstrap-table {
+        padding: 0 !important;
+        margin: 8px auto !important;
+    }
+
+    #tb_datalist tbody tr td {
+        line-height: 20px !important;
+        text-align: center !important;
+        padding: 6px !important;
+    }
+</style>
+<div class="wrapper wrapper-content" style="padding: 0; margin: 0;">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content" style="padding: 0; margin: 0;">
+            <div class="panel panel-default" style="margin: 2px 0;">
+                <div class="panel-heading">
+                    返佣比例设置
+                    @if (await adminright_Service.CheckAdminPower(EventKeyConsts.ADD, MenuKeyConsts.REBATE))
+                    {
+                        <button id="btn_add" class="btn btn-primary btn-sm" style="float:right;" onclick="showEditDialog(0)">新增</button>
+                    }
+                </div>
+            </div>
+
+            <table id="tb_datalist" style="word-break:break-all; margin: 0;"></table>
+
+            <!-- 弹窗容器 -->
+            <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 400px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">编辑返佣比例</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editForm" class="form-horizontal">
+                                <input type="hidden" id="id" />
+                                <div class="form-group">
+                                    <label for="level">返佣等级</label>
+                                    <select id="level" class="form-control" required>
+                                        <option value="1">一级</option>
+                                        <option value="2">二级</option>
+                                        <option value="3">三级</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inviter_level_desc">邀请者等级描述</label>
+                                    <input type="text" id="inviter_level_desc" class="form-control" maxlength="50" placeholder="请输入描述" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="rebate_ratio">返佣比例(%)</label>
+                                    <input type="number" id="rebate_ratio" class="form-control" min="0" max="100" step="0.01" placeholder="例如：30" required />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" onclick="saveRebateRatio()">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                $(function () {
+                    initTable();
+                });
+
+                function initTable() {
+                    $('#tb_datalist').bootstrapTable({
+                        url: '/AdminCP/RebateRatio/GetPageListAsync',
+                        method: 'get',
+                        pagination: true,
+                        pageSize: 20,
+                        pageList: [10, 20, 50],
+                        sidePagination: 'server',
+                        queryParams: function (params) {
+                            return {
+                                limit: params.limit,
+                                page: (params.offset / params.limit) + 1
+                            };
+                        },
+                        columns: [
+                            // { field: 'id', title: 'ID', align: 'center', sortable: true },
+                            {
+                                field: 'level',
+                                title: '返佣等级',
+                                align: 'center',
+                                formatter: function (val) {
+                                    return val === 1 ? '一级' : (val === 2 ? '二级' : '三级');
+                                }
+                            },
+                            {
+                                field: 'inviterLevelDesc',
+                                title: '邀请者等级描述',
+                                align: 'center'
+                            },
+                            {
+                                field: 'rebateRatio',
+                                title: '返佣比例(%)',
+                                align: 'center',
+                                formatter: function (val) {
+                                    return val + '%';
+                                }
+                            },
+                            {
+                                field: 'id',
+                                title: '操作',
+                                align: 'center',
+                                formatter: function (value) {
+                                    var editBtn = '';
+                                    var delBtn = '';
+
+                                    if (@(await adminright_Service.CheckAdminPower(EventKeyConsts.EDIT, MenuKeyConsts.REBATE) ? "true" : "false")) {
+                                        editBtn = '<a href="javascript:;" class="btn btn-xs btn-primary mr-1" onclick="showEditDialog(' + value + ')">编辑</a>';
+                                    }
+
+                                    if (@(await adminright_Service.CheckAdminPower(EventKeyConsts.DEL, MenuKeyConsts.REBATE) ? "true" : "false")) {
+                                        delBtn = '<a href="javascript:;" class="btn btn-xs btn-danger" onclick="deleteRebateRatio(' + value + ')">删除</a>';
+                                    }
+
+                                    return editBtn + delBtn;
+                                }
+                            }
+                        ]
+                    });
+                }
+
+                // 打开编辑弹窗，id=0表示新增
+                function showEditDialog(id) {
+                    if (id === 0) {
+                        $("#editModalLabel").text("新增返佣比例");
+                        $("#id").val(0);
+                        $("#level").val('1');
+                        $("#inviter_level_desc").val('');
+                        $("#rebate_ratio").val('');
+                        $('#editModal').modal('show');
+                    } else {
+                        $.get('/AdminCP/RebateRatio/GetById', { id: id }, function (res) {
+                            if (res.success) {
+                                $("#editModalLabel").text("编辑返佣比例");
+                                $("#id").val(res.data.id);
+                                $("#level").val(res.data.level);
+                                $("#inviter_level_desc").val(res.data.inviterLevelDesc);
+                                $("#rebate_ratio").val(res.data.rebateRatio);
+                                $('#editModal').modal('show');
+                            } else {
+                                alert(res.message || '获取数据失败');
+                            }
+                        });
+                    }
+                }
+
+                // 保存新增/编辑数据
+                function saveRebateRatio() {
+                    var id = $("#id").val();
+                    var level = $("#level").val();
+                    var desc = $("#inviter_level_desc").val().trim();
+                    var ratio = $("#rebate_ratio").val();
+
+                    if (!desc) {
+                        alert("邀请者等级描述不能为空");
+                        return;
+                    }
+                    if (ratio === "" || ratio < 0 || ratio > 100) {
+                        alert("请输入有效的返佣比例，范围0~100");
+                        return;
+                    }
+
+                    var postData = {
+                        Id: id,
+                        Level: level,
+                        InviterLevelDesc: desc,
+                        RebateRatio: ratio
+                    };
+
+                    var url = id == 0 ? '/AdminCP/RebateRatio/Add' : '/AdminCP/RebateRatio/Edit';
+
+                    $.ajax({
+                        url: url,
+                        method: 'post',
+                        data: postData,
+                        success: function (res) {
+                            if (res.success) {
+                                $('#editModal').modal('hide');
+                                $('#tb_datalist').bootstrapTable('refresh');
+                                alert('保存成功');
+                            } else {
+                                alert(res.message || '保存失败');
+                            }
+                        },
+                        error: function () {
+                            alert('服务器错误，请稍后重试');
+                        }
+                    });
+                }
+
+                function deleteRebateRatio(id) {
+                    if (!confirm("确定删除该返佣比例配置吗？")) return;
+                    $.post('/AdminCP/RebateRatio/Delete', { id: id }, function (res) {
+                        if (res.success) {
+                            $('#tb_datalist').bootstrapTable('refresh');
+                            alert('删除成功');
+                        } else {
+                            alert(res.message || '删除失败');
+                        }
+                    });
+                }
+            </script>
+        </div>
+    </div>
+</div>

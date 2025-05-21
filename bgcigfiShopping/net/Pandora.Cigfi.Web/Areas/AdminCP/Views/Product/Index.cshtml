@@ -1,0 +1,107 @@
+@{
+    ViewBag.title = "商品管理";
+}
+<div class="wrapper wrapper-content ">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="panel panel-default">
+                <div class="panel-heading">筛选条件</div>
+                <div class="panel-body">
+                    <form id="formSearch" class="form-horizontal form-inline">
+                        <div>
+                            <label class="control-label">商品名称：</label>
+                            <input type="text" placeholder="商品名称" name="keyword" id="keyword" class="form-control">
+                            <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary" onclick="doSearch();">查询</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="toolbar" class="btn-group">
+                <button id="btn_add" type="button" class="btn btn-outline btn-default" onclick="top.showDialog('addproduct', '新增商品', '/AdminCP/Product/Add', 1000, 600)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </div>
+            <table id="tb_products"></table>
+            <script>
+                $(function () {
+                    var oTable = new TableInit();
+                    oTable.Init();
+                });
+                function doSearch() {
+                    var params = $('#tb_products').bootstrapTable('getOptions');
+                    params.queryParams = function (params) {
+                        var temp = {
+                            limit: params.limit,
+                            page: (params.offset / params.limit) + 1,
+                            keyword: $("#keyword").val()
+                        };
+                        return temp;
+                    }
+                    $('#tb_products').bootstrapTable('refresh', params);
+                }
+                var TableInit = function () {
+                    var oTableInit = new Object();
+                    oTableInit.Init = function () {
+                        $('#tb_products').bootstrapTable({
+                            url: '/AdminCP/Product/GetProducts',
+                            method: 'get',
+                            toolbar: '#toolbar',
+                            striped: false,
+                            cache: false,
+                            pagination: true,
+                            sortable: false,
+                            sortOrder: "asc",
+                            queryParams: oTableInit.queryParams,
+                            sidePagination: "server",
+                            pageNumber: 1,
+                            pageSize: 25,
+                            pageList: [10, 25, 50, 100],
+                            search: false,
+                            strictSearch: true,
+                            showColumns: true,
+                            showRefresh: true,
+                            minimumCountColumns: 2,
+                            clickToSelect: true,
+                            height: 0,
+                            uniqueId: "Id",
+                            showToggle: true,
+                            cardView: false,
+                            detailView: false,
+                            columns: [
+                                { field: 'id', title: 'ID' },
+                                { field: 'imageUrl', title: '主图', formatter: function(value, row, index) {
+                                    if (value) {
+                                        return '<img src="' + (window.ImagePrefix || 'https://img.pandoratech.com') + value + '?x-oss-process=image/resize,w_80,h_80" style="max-width:80px;max-height:80px;" />';
+                                    } else {
+                                        return '<img src="/images/default.JPG" style="max-width:80px;max-height:80px;" />';
+                                    }
+                                } },
+                                { field: 'name', title: '商品名称' },
+                                { field: 'price', title: '价格(CIGFI)' },
+                                { field: 'stock', title: '库存' },
+                                { field: 'soldCount', title: '已售' },
+                                { field: 'categoryId', title: '分类ID' },
+                                { field: 'id', title: '操作', formatter: 'actionFormatter' }
+                            ]
+                        });
+                    };
+                    oTableInit.queryParams = function (params) {
+                        var temp = {
+                            limit: params.limit,
+                            page: (params.offset / params.limit) + 1,
+                            keyword: $("#keyword").val()
+                        };
+                        return temp;
+                    };
+                    return oTableInit;
+                };
+                function actionFormatter(value, row, index) {
+                    return [
+                        '<a href="javascript:;" class="btn btn-xs btn-primary" title="编辑" onclick="top.showDialog(\'editproduct\', \'编辑商品\', \'/AdminCP/Product/Edit/' + value + '\', 1000, 600)"><i class="fa fa-edit"></i> 编辑</a>',
+                        '<a href="javascript:;" class="btn btn-xs btn-danger m-l-xs" title="删除" onclick="doDel(\'/AdminCP/Product/Delete\',' + value + ');"><i class="fa fa-close"></i> 删除</a>'
+                    ].join('');
+                }
+            </script>
+        </div>
+    </div>
+</div>

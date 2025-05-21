@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "操作日志";
+}
+<style>
+    .control-label {
+        margin-bottom: 25px;
+    }
+</style>
+
+<div class="panel-body" style="font-size:14px;">
+    <div class="form-group">
+        <label class="col-sm-6 control-label">操作ID：</label>
+        <label class="col-sm-6 control-label">@(Model.ID == null ? "---" : Model.ID)</label>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-6 control-label">操作对象Code：</label>
+
+        <label class="col-sm-6 control-label">@(Model.Code == null ? "---" : (Model.Code.Contains(',') == true ? "....." : Model.Code))</label>
+
+    </div>
+    <div class="form-group">
+        <label class="col-sm-6 control-label">操作对象：</label>
+        <label class="col-sm-6 control-label">@(Model.TargetType == null ? "---" : (Model.TargetType == 1 ? "虚拟币" : (Model.TargetType == 2 ? "交易所" : "行情")))</label>
+
+    </div>
+    <div class="form-group">
+
+        <label class="col-sm-6 control-label">操作员：</label>
+
+        <label class="col-sm-6 control-label">@(Model.OperationPeople == null ? "---" : Model.OperationPeople)</label>
+
+    </div>
+    <div class="form-group">
+
+        <label class="col-sm-6 control-label">操作类型：</label>
+
+        <label class="col-sm-6 control-label">@(Model.OperateType == null ? "---" : (Model.OperateType == 1 ? "编辑" : (Model.OperateType == 2 ? "新增" : (Model.OperateType == 3 ? "删除" : (Model.OperateType == 4 ? "审核通过" : (Model.OperateType == 5 ? "审核不通过" : (Model.OperateType == 6 ? "分配" : "---")))))))</label>
+
+    </div>
+    <div class="form-group">
+
+        <label class="col-sm-6 control-label">日志详情：</label>
+
+        <label class="col-sm-6 control-label">@(Html.Raw(Model.Remark == null ? "---" : Model.Remark.Replace("\\n", "<br />")))</label>
+
+    </div>
+    <div class="form-group">
+
+        <label class="col-sm-6 control-label">修改时间：</label>
+
+        <label class="col-sm-6 control-label">@(Model.OpTime == null ? "---" : Model.OpTime)</label>
+
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12 col-sm-offset-5" style="margin-top:20px;">
+            <button class="btn btn-default" type="button" onclick="closethisdialog();"><i class="fa fa-close"></i> 关闭</button>
+        </div>
+    </div>
+</div>

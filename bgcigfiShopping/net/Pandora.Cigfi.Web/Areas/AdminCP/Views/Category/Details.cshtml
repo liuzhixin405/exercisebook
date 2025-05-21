@@ -1,0 +1,16 @@
+@model Pandora.Cigfi.Models.Cigfi.Category
+@{
+    ViewBag.title = "分类详情";
+}
+<h2>分类详情</h2>
+<dl class="row">
+    <dt class="col-sm-2">ID</dt>
+    <dd class="col-sm-10">@Model.Id</dd>
+    <dt class="col-sm-2">分类名称</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+    <dt class="col-sm-2">父级ID</dt>
+    <dd class="col-sm-10">@Model.ParentId</dd>
+    <dt class="col-sm-2">排序</dt>
+    <dd class="col-sm-10">@Model.SortOrder</dd>
+</dl>
+<a asp-action="Index" class="btn btn-secondary">返回</a>

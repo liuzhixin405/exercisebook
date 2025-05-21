@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <title>@ViewBag.title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/hplus/css/style.css" rel="stylesheet" />
+    <link href="~/hplus/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/hplus/css/animate.min.css" rel="stylesheet" />
+    <link href="~/hplus/css/login.css" rel="stylesheet" />
+    <link href="~/hplus/js/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
+    <link href="~/hplus/css/plugins/iCheck/custom.css" rel="stylesheet" />
+    <link href="~/js/treegrid/jquery.treegrid.css" rel="stylesheet" />
+    <link href="~/js/webuploader/webuploader.css" rel="stylesheet" />
+    <link href="~/Cropper-3.1.6/cropper.min.css" type="text/css" rel="stylesheet" />
+    <link href="~/Cropper-3.1.6/cropper.main.css" type="text/css" rel="stylesheet" />
+    <link href="~/js/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/validation/jquery.validate.js"></script>
+        <script src="~/js/validation/messages_zh.js"></script>
+        <script src="~/js/layer/layer.js"></script>
+        <script src="~/js/jquery.form.js"></script>
+        <script src="~/js/common.js" asp-append-version="true"></script>
+        <script src="~/js/rtpost.js" asp-append-version="true"></script>
+        <script src="~/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+        <script src="~/hplus/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+        <script src="~/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+        <link href="~/hplus/js/plugins/bootstrap-table/extensions/page-jump-to/bootstrap-table-page-jump-to.min.css" rel="stylesheet" />
+        <script src="~/hplus/js/plugins/bootstrap-table/extensions/page-jump-to/bootstrap-table-page-jump-to.js"></script>
+        <!-- Bootstrap table -->
+        <script src="~/js/treegrid/jquery.treegrid.min.js"></script>
+        <script src="~/js/treegrid/jquery.treegrid.bootstrap3.js"></script>
+        <script src="~/hplus/js/content.js?v=1.0.0"></script>
+        <script src="~/hplus/js/common.js" asp-append-version="true"></script>
+        <script src="~/hplus/js/plugins/iCheck/icheck.min.js"></script>
+        <script src="~/js/webuploader/webuploader.min.js"></script>
+        <script src="~/js/uploader.js"></script>
+        <script src="~/editor/ckeditor/ckeditor.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+        <script src="~/lib/layui/layui.js"></script>
+        <script src="~/Cropper-3.1.6/cropper.min.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/validation/jquery.validate.min.js"></script>
+        <script src="~/js/validation/messages_zh.min.js"></script>
+        <script src="~/js/layer/layer.js"></script>
+        <script src="~/js/jquery.form.min.js"></script>
+        <script src="~/js/rtpost.js" asp-append-version="true"></script>
+        <script src="~/js/common.js" asp-append-version="true"></script>
+        <script src="~/hplus/js/plugins/bootstrap-table/bootstrap-table.min.js?v1"></script>
+        <script src="~/hplus/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js?v1"></script>
+        <script src="~/hplus/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js?v1"></script>
+        <link href="~/hplus/js/plugins/bootstrap-table/extensions/page-jump-to/bootstrap-table-page-jump-to.min.css?v1" rel="stylesheet" />
+        <script src="~/hplus/js/plugins/bootstrap-table/extensions/page-jump-to/bootstrap-table-page-jump-to.min.js?v1"></script>
+        <script src="~/js/treegrid/jquery.treegrid.min.js"></script>
+        <script src="~/js/treegrid/jquery.treegrid.bootstrap3.js"></script>
+        <script src="~/hplus/js/content.js?v=1.0.0"></script>
+        <script src="~/hplus/js/common.js" asp-append-version="true"></script>
+        <script src="~/hplus/js/plugins/iCheck/icheck.min.js"></script>
+        <script src="~/js/webuploader/webuploader.min.js"></script>
+        <script src="~/js/uploader.js"></script>
+        <script src="~/editor/ckeditor/ckeditor.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+        <script src="~/lib/layui/layui.js"></script>
+        <script src="~/Cropper-3.1.6/cropper.min.js" asp-append-version="true"></script>
+    </environment>
+</head>
+<body class="gray-bg">
+    @RenderBody()
+    <script>
+        var index = parent.layer.getFrameIndex(window.name);
+        function closethisdialog() {
+            parent.layer.close(index);
+        }
+        function AddRandomToUrl(url) {
+            var fixChar = '?';
+            if (url.indexOf('?') > 0) {
+                fixChar = '&';
+            }
+            return url.toLowerCase() + fixChar + "rd=" + Math.random(6);
+        }
+        $(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        })
+        $("input").each(function (index, item) {
+            if ($(this).attr("placeholder") && $(this).attr("placeholder") != "") {
+                var tipstr = $(this).attr("placeholder");
+                var id = $(this).attr("id");
+                $(this).on("focusin", function () {
+                    layer.tips(tipstr, '#' + id, {
+                        tips: [1, '#3595CC'] //还可配置颜色
+                    });
+                });
+
+                
+            }
+        })
+    </script>
+</body>
+</html>
