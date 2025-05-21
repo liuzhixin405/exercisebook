@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31521.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandora.Cigfi.Common", "Pandora.Cigfi.Common\Pandora.Cigfi.Common.csproj", "{498DF72D-56B2-8215-8DF0-E9674B599449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandora.Cigfi.Core", "Pandora.Cigfi.Core\Pandora.Cigfi.Core.csproj", "{9CF9303B-F167-8AEF-3F87-6D89A6F2D8F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandora.Cigfi.IServices", "Pandora.Cigfi.IServices\Pandora.Cigfi.IServices.csproj", "{ED134E05-9A80-6127-2670-FDF4C2FDEC29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandora.Cigfi.Models", "Pandora.Cigfi.Models\Pandora.Cigfi.Models.csproj", "{9CF54317-B795-2455-A169-FA75E24EB43A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandora.Cigfi.Services", "Pandora.Cigfi.Services\Pandora.Cigfi.Services.csproj", "{08FA844E-1270-60CA-7A2F-6712E6C6B176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandora.Cigfi.Web", "Pandora.Cigfi.Web\Pandora.Cigfi.Web.csproj", "{3562625C-ECBC-73DA-5BBC-03372F34FEF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{498DF72D-56B2-8215-8DF0-E9674B599449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498DF72D-56B2-8215-8DF0-E9674B599449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498DF72D-56B2-8215-8DF0-E9674B599449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498DF72D-56B2-8215-8DF0-E9674B599449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF9303B-F167-8AEF-3F87-6D89A6F2D8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF9303B-F167-8AEF-3F87-6D89A6F2D8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF9303B-F167-8AEF-3F87-6D89A6F2D8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF9303B-F167-8AEF-3F87-6D89A6F2D8F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED134E05-9A80-6127-2670-FDF4C2FDEC29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED134E05-9A80-6127-2670-FDF4C2FDEC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED134E05-9A80-6127-2670-FDF4C2FDEC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED134E05-9A80-6127-2670-FDF4C2FDEC29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF54317-B795-2455-A169-FA75E24EB43A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF54317-B795-2455-A169-FA75E24EB43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF54317-B795-2455-A169-FA75E24EB43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF54317-B795-2455-A169-FA75E24EB43A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08FA844E-1270-60CA-7A2F-6712E6C6B176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08FA844E-1270-60CA-7A2F-6712E6C6B176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08FA844E-1270-60CA-7A2F-6712E6C6B176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08FA844E-1270-60CA-7A2F-6712E6C6B176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3562625C-ECBC-73DA-5BBC-03372F34FEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3562625C-ECBC-73DA-5BBC-03372F34FEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3562625C-ECBC-73DA-5BBC-03372F34FEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3562625C-ECBC-73DA-5BBC-03372F34FEF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2CD7141-1B22-47D9-B70E-BD70D0C417D2}
+	EndGlobalSection
+EndGlobal
