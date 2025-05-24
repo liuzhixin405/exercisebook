@@ -223,69 +223,140 @@ namespace OllamaContext7Api.Services
             if (string.IsNullOrEmpty(text))
                 return null;
 
-            // 多种模式匹配库ID
+            Console.WriteLine($"开始从文本中提取库ID: {text}");
+
+            // 首先尝试预定义的库映射
+            var libraryMappings = GetLibraryMappings();
+            foreach (var mapping in libraryMappings)
+            {
+                if (text.ToLower().Contains(mapping.Key.ToLower()))
+                {
+                    Console.WriteLine($"通过映射找到库ID: {mapping.Value}");
+                    return mapping.Value;
+                }
+            }
+
+            // 改进的正则表达式模式
             var patterns = new[]
             {
-                @"Library ID:\s*['\""]*([^'\""\\s\\n]+)['\""]*",  // Library ID: 'id' 或 Library ID: id
-                @"Selected library[^:]*:\s*['\""]*([^'\""\\s\\n]+)['\""]*", // Selected library: id
-                @"ID[^:]*:\s*['\""]*([^'\""\\s\\n]+)['\""]*",    // ID: id
-                @"Library[^:]*:\s*['\""]*([^'\""\\s\\n]+)['\""]*", // Library: id
-                @"\\b([a-zA-Z0-9_-]+/[a-zA-Z0-9_.-]+)\\b",      // 匹配 org/repo 格式
-                @"\\b([a-zA-Z0-9_-]+\\.[a-zA-Z0-9_.-]+)\\b"      // 匹配 domain.name 格式
+                // 匹配 "Library ID: xxx" 或 "ID: xxx"
+                @"(?:Library\s+)?ID\s*[:\s]\s*['""]?([a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)['""]?",
+                
+                // 匹配 "Selected library: xxx"
+                @"Selected\s+library\s*[:\s]\s*['""]?([a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)['""]?",
+                
+                // 匹配 org/repo 格式
+                @"\b([a-zA-Z0-9_-]+/[a-zA-Z0-9_.-]+)\b",
+                
+                // 匹配域名格式
+                @"\b([a-zA-Z0-9_-]+\.[a-zA-Z0-9_.-]+)\b",
+                
+                // 匹配带引号的ID
+                @"['""]([a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+)['""]",
+                
+                // 匹配简单的库名
+                @"\b([a-zA-Z0-9_-]{3,})\b"
             };
 
             foreach (var pattern in patterns)
             {
-                var matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
+                var matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase | RegexOptions.Multiline);
                 foreach (Match match in matches)
                 {
                     if (match.Success && match.Groups.Count > 1)
                     {
-                        var id = match.Groups[1].Value.Trim();
-                        // 验证ID格式
-                        if (IsValidLibraryId(id))
+                        var candidateId = match.Groups[1].Value.Trim();
+
+                        // 验证候选ID
+                        if (IsValidLibraryId(candidateId))
                         {
-                            Console.WriteLine($"提取到库ID: {id}");
-                            return id;
+                            Console.WriteLine($"正则匹配到有效库ID: {candidateId}");
+                            return candidateId;
                         }
                     }
                 }
             }
 
-            // 如果没有匹配到，尝试查找常见的库ID
-            var commonMappings = new Dictionary<string, string[]>
+            // 如果还是没有找到，尝试查找任何包含 / 的字符串
+            var slashMatches = Regex.Matches(text, @"([a-zA-Z0-9_-]+/[a-zA-Z0-9_.-]+)");
+            foreach (Match match in slashMatches)
             {
-                ["dotnet"] = new[] { "microsoft/dotnet", "dotnet/docs", "aspnet/docs" },
-                ["react"] = new[] { "facebook/react", "react/docs" },
-                ["vue"] = new[] { "vuejs/vue", "vue/docs" },
-                ["express"] = new[] { "expressjs/express", "express/docs" }
-            };
-
-            // 在文本中查找这些映射
-            foreach (var mapping in commonMappings)
-            {
-                foreach (var id in mapping.Value)
+                var candidateId = match.Groups[1].Value.Trim();
+                if (IsValidLibraryId(candidateId))
                 {
-                    if (text.Contains(id, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine($"通过映射找到库ID: {id}");
-                        return id;
-                    }
+                    Console.WriteLine($"斜杠模式匹配到库ID: {candidateId}");
+                    return candidateId;
                 }
             }
 
-            Console.WriteLine($"无法从文本中提取库ID: {text.Substring(0, Math.Min(200, text.Length))}...");
+            Console.WriteLine($"无法从文本中提取库ID，文本内容: {text.Substring(0, Math.Min(500, text.Length))}");
             return null;
+        }
+
+        private Dictionary<string, string> GetLibraryMappings()
+        {
+            return new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                // .NET 相关
+                ["dotnet"] = "dotnet/docs",
+                [".net"] = "dotnet/docs",
+                ["aspnet"] = "dotnet/AspNetCore.Docs",
+                ["asp.net"] = "dotnet/AspNetCore.Docs",
+                ["entityframework"] = "dotnet/EntityFramework.Docs",
+                ["ef"] = "dotnet/EntityFramework.Docs",
+
+                // JavaScript/Node.js
+                ["react"] = "facebook/react",
+                ["vue"] = "vuejs/vue",
+                ["angular"] = "angular/angular",
+                ["express"] = "expressjs/express",
+                ["nodejs"] = "nodejs/node",
+                ["node"] = "nodejs/node",
+
+                // Python
+                ["python"] = "python/cpython",
+                ["django"] = "django/django",
+                ["flask"] = "pallets/flask",
+                ["fastapi"] = "tiangolo/fastapi",
+
+                // Java
+                ["spring"] = "spring-projects/spring-framework",
+                ["springboot"] = "spring-projects/spring-boot",
+
+                // 其他
+                ["tensorflow"] = "tensorflow/tensorflow",
+                ["pytorch"] = "pytorch/pytorch",
+                ["kubernetes"] = "kubernetes/kubernetes",
+                ["docker"] = "docker/docs"
+            };
         }
 
         private bool IsValidLibraryId(string id)
         {
-            if (string.IsNullOrEmpty(id) || id.Length < 3)
+            if (string.IsNullOrWhiteSpace(id) || id.Length < 3)
                 return false;
 
-            // 基本格式验证
-            return id.Contains('/') || id.Contains('.') ||
-                   Regex.IsMatch(id, @"^[a-zA-Z0-9_-]+$");
+            // 排除一些无效的常见字符串
+            var invalidIds = new[] { "the", "and", "for", "with", "are", "this", "that", "from", "they", "have", "been", "said", "each", "which", "what", "where", "when", "how", "why", "can", "will", "would", "could", "should", "may", "might" };
+            if (invalidIds.Contains(id.ToLower()))
+                return false;
+
+            // 验证格式：应该包含 / 或 . 或者是纯字母数字
+            if (id.Contains('/'))
+            {
+                var parts = id.Split('/');
+                return parts.Length == 2 &&
+                       parts.All(p => !string.IsNullOrWhiteSpace(p) && p.Length > 0 &&
+                                     Regex.IsMatch(p, @"^[a-zA-Z0-9_.-]+$"));
+            }
+
+            if (id.Contains('.'))
+            {
+                return Regex.IsMatch(id, @"^[a-zA-Z0-9_.-]+$") && id.Length >= 5;
+            }
+
+            // 纯字母数字的情况，长度至少要4个字符
+            return Regex.IsMatch(id, @"^[a-zA-Z0-9_-]+$") && id.Length >= 4;
         }
 
         private string ExtractDocsFromResponse(string jsonResponse)
