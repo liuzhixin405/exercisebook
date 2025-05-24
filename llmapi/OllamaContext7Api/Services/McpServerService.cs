@@ -1,26 +1,26 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace OllamaContext7Api.Services
 {
-
-
-
     public class McpServerService
     {
         private Process _process;
         private StreamWriter _inputWriter;
         private StreamReader _outputReader;
+        private int _requestId = 1;
+        private bool _initialized = false;
 
-        public void StartMcpServer()
+        public async Task StartMcpServerAsync()
         {
             if (_process != null && !_process.HasExited)
                 return;
 
             var psi = new ProcessStartInfo
             {
-                FileName = "cmd.exe",
+                FileName = "cmd",
                 Arguments = "/c npx -y @upstash/context7-mcp@latest",
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
@@ -34,138 +34,351 @@ namespace OllamaContext7Api.Services
 
             _inputWriter = _process.StandardInput;
             _outputReader = _process.StandardOutput;
+
+            // 等待服务器启动
+            await Task.Delay(3000);
+
+            // 初始化MCP连接
+            if (!_initialized)
+            {
+                await InitializeMcpAsync();
+                _initialized = true;
+            }
         }
 
+        private async Task InitializeMcpAsync()
+        {
+            try
+            {
+                // 发送初始化请求
+                var initRequest = new
+                {
+                    jsonrpc = "2.0",
+                    id = _requestId++,
+                    method = "initialize",
+                    @params = new
+                    {
+                        protocolVersion = "2024-11-05",
+                        capabilities = new { },
+                        clientInfo = new
+                        {
+                            name = "OllamaContext7Api",
+                            version = "1.0.0"
+                        }
+                    }
+                };
+
+                await SendRequestAsync(initRequest);
+                var initResponse = await ReadResponseAsync();
+                Console.WriteLine($"MCP初始化响应: {initResponse}");
+
+                // 发送initialized通知
+                var initializedNotification = new
+                {
+                    jsonrpc = "2.0",
+                    method = "notifications/initialized"
+                };
+
+                await SendRequestAsync(initializedNotification);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"MCP初始化失败: {ex.Message}");
+                throw new InvalidOperationException("MCP服务器初始化失败", ex);
+            }
+        }
 
         public async Task<string> GetLibraryDocsAsync(string libraryName, string topic = null)
         {
-            if (_process == null || _process.HasExited)
-                throw new InvalidOperationException("MCP Server not running.");
+            try
+            {
+                if (_process == null || _process.HasExited)
+                {
+                    await StartMcpServerAsync();
+                }
 
-            // 1. 解析库ID
-            var resolveRequest = new {
+                Console.WriteLine($"开始查询库: {libraryName}, 主题: {topic}");
+
+                // 第一步：解析库ID
+                var libraryId = await ResolveLibraryIdAsync(libraryName);
+                if (string.IsNullOrEmpty(libraryId))
+                {
+                    throw new InvalidOperationException($"无法解析库 '{libraryName}' 的ID");
+                }
+
+                Console.WriteLine($"解析到库ID: {libraryId}");
+
+                // 第二步：获取文档
+                var docs = await GetDocsAsync(libraryId, topic);
+                return docs;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"获取文档失败: {ex.Message}");
+                throw new InvalidOperationException($"获取 {libraryName} 文档失败", ex);
+            }
+        }
+
+        private async Task<string> ResolveLibraryIdAsync(string libraryName)
+        {
+            var request = new
+            {
                 jsonrpc = "2.0",
-                id = 1,
+                id = _requestId++,
                 method = "tools/call",
-                @params = new {
+                @params = new
+                {
                     name = "resolve-library-id",
                     arguments = new { libraryName = libraryName }
                 }
             };
 
-            await _inputWriter.WriteLineAsync(JsonSerializer.Serialize(resolveRequest));
-            await _inputWriter.FlushAsync();
+            await SendRequestAsync(request);
+            var response = await ReadResponseAsync();
 
-            var resolveResponse = await ReadWithTimeoutAsync(_outputReader, new CancellationTokenSource(5000).Token);
-            var libraryId = ExtractLibraryId(resolveResponse);
+            Console.WriteLine($"Resolve响应: {response}");
 
-            // 2. 获取文档
-            var docsRequest = new {
+            return ExtractLibraryIdFromResponse(response);
+        }
+
+        private async Task<string> GetDocsAsync(string libraryId, string topic)
+        {
+            var request = new
+            {
                 jsonrpc = "2.0",
-                id = 2,
+                id = _requestId++,
                 method = "tools/call",
-                @params = new {
+                @params = new
+                {
                     name = "get-library-docs",
-                    arguments = new { 
+                    arguments = new
+                    {
                         context7CompatibleLibraryID = libraryId,
-                        topic = topic,
-                        tokens = 10000 
+                        topic = topic ?? "",
+                        tokens = 8000
                     }
                 }
             };
 
-            await _inputWriter.WriteLineAsync(JsonSerializer.Serialize(docsRequest));
-            await _inputWriter.FlushAsync();
+            await SendRequestAsync(request);
+            var response = await ReadResponseAsync();
 
-            var docsResponse = await ReadWithTimeoutAsync(_outputReader, new CancellationTokenSource(5000).Token);
-            return docsResponse;
+            Console.WriteLine($"文档响应: {response}");
+
+            return ExtractDocsFromResponse(response);
         }
 
-        private string ExtractLibraryId(string jsonResponse)
+        private string ExtractLibraryIdFromResponse(string jsonResponse)
         {
             try
             {
                 using var doc = JsonDocument.Parse(jsonResponse);
                 var root = doc.RootElement;
-                
-                // 检查错误响应
+
+                // 检查错误
                 if (root.TryGetProperty("error", out var error))
                 {
-                    Console.WriteLine($"MCP错误: {error}");
-                    throw new InvalidOperationException($"MCP服务错误: {error}");
+                    Console.WriteLine($"Resolve错误: {error}");
+                    return null;
                 }
 
-                // 尝试从标准响应中提取库ID
+                // 检查结果
                 if (root.TryGetProperty("result", out var result))
                 {
-                    // 检查直接返回库ID的情况
-                    if (result.ValueKind == JsonValueKind.String)
-                        return result.GetString();
-
-                    // 检查包含content数组的情况
-                    if (result.TryGetProperty("content", out var content) && 
+                    // 检查content数组
+                    if (result.TryGetProperty("content", out var content) &&
                         content.ValueKind == JsonValueKind.Array)
                     {
                         foreach (var item in content.EnumerateArray())
                         {
-                            // 检查文本内容中的库ID
-                            if (item.TryGetProperty("text", out var text))
+                            if (item.TryGetProperty("type", out var type) &&
+                                type.GetString() == "text" &&
+                                item.TryGetProperty("text", out var text))
                             {
-                                var textValue = text.GetString();
-                                var patterns = new[] {
-                                    @"Library ID:\s*([^\s]+)",
-                                    @"Selected library:\s*([^\s]+)",
-                                    @"ID:\s*([^\s]+)"
-                                };
+                                var textContent = text.GetString();
+                                Console.WriteLine($"解析文本内容: {textContent}");
 
-                                foreach (var pattern in patterns)
+                                var libraryId = ExtractLibraryIdFromText(textContent);
+                                if (!string.IsNullOrEmpty(libraryId))
                                 {
-                                    var match = System.Text.RegularExpressions.Regex.Match(
-                                        textValue, pattern);
-                                    if (match.Success)
-                                    {
-                                        return match.Groups[1].Value;
-                                    }
+                                    return libraryId;
                                 }
                             }
-
-                            // 检查直接包含库ID的情况
-                            if (item.TryGetProperty("libraryId", out var libId))
-                                return libId.GetString();
                         }
                     }
                 }
 
-                throw new InvalidOperationException("无法从MCP响应中解析库ID");
+                Console.WriteLine("未能从响应中提取库ID");
+                return null;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"解析库ID失败: {ex.Message}");
-                throw new InvalidOperationException("解析MCP响应时出错", ex);
+                Console.WriteLine($"解析库ID响应失败: {ex.Message}");
+                return null;
             }
         }
 
-        private async Task<string> ReadWithTimeoutAsync(StreamReader reader, CancellationToken token)
+        private string ExtractLibraryIdFromText(string text)
         {
-            var sb = new StringBuilder();
-            while (!token.IsCancellationRequested)
-            {
-                var line = await reader.ReadLineAsync();
-                if (!string.IsNullOrWhiteSpace(line))
-                {
-                    sb.AppendLine(line);
+            if (string.IsNullOrEmpty(text))
+                return null;
 
-                    // 🚩可加逻辑判断回答是否结束，如匹配 JSON 结尾、某标识符等
-                    if (line.EndsWith("```") || line.EndsWith("}"))
-                        break;
-                }
-                else
+            // 多种模式匹配库ID
+            var patterns = new[]
+            {
+                @"Library ID:\s*['\""]*([^'\""\\s\\n]+)['\""]*",  // Library ID: 'id' 或 Library ID: id
+                @"Selected library[^:]*:\s*['\""]*([^'\""\\s\\n]+)['\""]*", // Selected library: id
+                @"ID[^:]*:\s*['\""]*([^'\""\\s\\n]+)['\""]*",    // ID: id
+                @"Library[^:]*:\s*['\""]*([^'\""\\s\\n]+)['\""]*", // Library: id
+                @"\\b([a-zA-Z0-9_-]+/[a-zA-Z0-9_.-]+)\\b",      // 匹配 org/repo 格式
+                @"\\b([a-zA-Z0-9_-]+\\.[a-zA-Z0-9_.-]+)\\b"      // 匹配 domain.name 格式
+            };
+
+            foreach (var pattern in patterns)
+            {
+                var matches = Regex.Matches(text, pattern, RegexOptions.IgnoreCase);
+                foreach (Match match in matches)
                 {
-                    await Task.Delay(100, token); // 避免 busy wait
+                    if (match.Success && match.Groups.Count > 1)
+                    {
+                        var id = match.Groups[1].Value.Trim();
+                        // 验证ID格式
+                        if (IsValidLibraryId(id))
+                        {
+                            Console.WriteLine($"提取到库ID: {id}");
+                            return id;
+                        }
+                    }
                 }
             }
-            return sb.ToString().Trim();
+
+            // 如果没有匹配到，尝试查找常见的库ID
+            var commonMappings = new Dictionary<string, string[]>
+            {
+                ["dotnet"] = new[] { "microsoft/dotnet", "dotnet/docs", "aspnet/docs" },
+                ["react"] = new[] { "facebook/react", "react/docs" },
+                ["vue"] = new[] { "vuejs/vue", "vue/docs" },
+                ["express"] = new[] { "expressjs/express", "express/docs" }
+            };
+
+            // 在文本中查找这些映射
+            foreach (var mapping in commonMappings)
+            {
+                foreach (var id in mapping.Value)
+                {
+                    if (text.Contains(id, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine($"通过映射找到库ID: {id}");
+                        return id;
+                    }
+                }
+            }
+
+            Console.WriteLine($"无法从文本中提取库ID: {text.Substring(0, Math.Min(200, text.Length))}...");
+            return null;
         }
 
+        private bool IsValidLibraryId(string id)
+        {
+            if (string.IsNullOrEmpty(id) || id.Length < 3)
+                return false;
+
+            // 基本格式验证
+            return id.Contains('/') || id.Contains('.') ||
+                   Regex.IsMatch(id, @"^[a-zA-Z0-9_-]+$");
+        }
+
+        private string ExtractDocsFromResponse(string jsonResponse)
+        {
+            try
+            {
+                using var doc = JsonDocument.Parse(jsonResponse);
+                var root = doc.RootElement;
+
+                // 检查错误
+                if (root.TryGetProperty("error", out var error))
+                {
+                    var errorMsg = error.GetProperty("message").GetString();
+                    Console.WriteLine($"获取文档错误: {errorMsg}");
+                    return $"获取文档失败: {errorMsg}";
+                }
+
+                // 提取文档内容
+                if (root.TryGetProperty("result", out var result))
+                {
+                    if (result.TryGetProperty("content", out var content) &&
+                        content.ValueKind == JsonValueKind.Array)
+                    {
+                        var docs = new StringBuilder();
+                        foreach (var item in content.EnumerateArray())
+                        {
+                            if (item.TryGetProperty("type", out var type) &&
+                                type.GetString() == "text" &&
+                                item.TryGetProperty("text", out var text))
+                            {
+                                docs.AppendLine(text.GetString());
+                            }
+                        }
+
+                        var docsContent = docs.ToString().Trim();
+                        Console.WriteLine($"提取到文档内容长度: {docsContent.Length}");
+                        return docsContent;
+                    }
+                }
+
+                return "未找到文档内容";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"解析文档响应失败: {ex.Message}");
+                return $"解析文档失败: {ex.Message}";
+            }
+        }
+
+        private async Task SendRequestAsync(object request)
+        {
+            var json = JsonSerializer.Serialize(request);
+            Console.WriteLine($"发送请求: {json}");
+
+            await _inputWriter.WriteLineAsync(json);
+            await _inputWriter.FlushAsync();
+        }
+
+        private async Task<string> ReadResponseAsync()
+        {
+            try
+            {
+                var response = await _outputReader.ReadLineAsync();
+                if (string.IsNullOrEmpty(response))
+                {
+                    // 等待并重试
+                    await Task.Delay(1000);
+                    response = await _outputReader.ReadLineAsync();
+                }
+
+                Console.WriteLine($"收到响应: {response}");
+                return response ?? "";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"读取响应失败: {ex.Message}");
+                throw new InvalidOperationException("读取MCP响应失败", ex);
+            }
+        }
+
+        public void Dispose()
+        {
+            try
+            {
+                _inputWriter?.Close();
+                _outputReader?.Close();
+                _process?.Kill();
+                _process?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"释放MCP服务资源时出错: {ex.Message}");
+            }
+        }
     }
 }
