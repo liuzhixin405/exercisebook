@@ -96,45 +96,7 @@ namespace OllamaContext7Api.Services
             }
         }
 
-        public async Task<string> GetLibraryDocsAsync(string libraryName, string topic = null)
-        {
-            try
-            {
-                if (_process == null || _process.HasExited)
-                {
-                    await StartMcpServerAsync();
-                }
-
-                _logger.LogInformation($"开始查询库: {libraryName}, 主题: {topic}");
-
-                // 优化：根据问题类型调整获取策略
-                var optimizedTopic = OptimizeTopic(topic);
-                var tokenLimit = DetermineTokenLimit(topic);
-
-                // 第一步：解析库ID
-                var libraryId = await ResolveLibraryIdAsync(libraryName);
-                if (string.IsNullOrEmpty(libraryId))
-                {
-                    throw new InvalidOperationException($"无法解析库 '{libraryName}' 的ID");
-                }
-
-                _logger.LogInformation($"解析到库ID: {libraryId}");
-
-                // 第二步：获取优化的文档
-                var docs = await GetOptimizedDocsAsync(libraryId, optimizedTopic, tokenLimit);
-
-                // 第三步：后处理文档
-                var processedDocs = PostProcessDocs(docs, topic);
-
-                _logger.LogInformation($"最终文档长度: {processedDocs.Length}");
-                return processedDocs;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"获取文档失败: {ex.Message}");
-                throw new InvalidOperationException($"获取 {libraryName} 文档失败", ex);
-            }
-        }
+       
 
         private string OptimizeTopic(string topic)
         {
@@ -182,7 +144,66 @@ namespace OllamaContext7Api.Services
 
             return keywords.Distinct().ToList();
         }
+        // 修改 GetLibraryDocsAsync 方法签名，添加 userQuery 参数
+        public async Task<string> GetLibraryDocsAsync(string libraryName, string topic = null, string userQuery = null)
+        {
+            try
+            {
+                if (_process == null || _process.HasExited)
+                {
+                    await StartMcpServerAsync();
+                }
 
+                Console.WriteLine($"开始查询库: {libraryName}, 主题: {topic}, 用户查询: {userQuery}");
+
+                // 第一步：解析库ID
+                var libraryId = await ResolveLibraryIdAsync(libraryName);
+                if (string.IsNullOrEmpty(libraryId))
+                {
+                    throw new InvalidOperationException($"无法解析库 '{libraryName}' 的ID");
+                }
+
+                Console.WriteLine($"解析到库ID: {libraryId}");
+
+                // 第二步：获取文档
+                var docs = await GetDocsAsync(libraryId, topic, userQuery);
+                return docs;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"获取文档失败: {ex.Message}");
+                throw new InvalidOperationException($"获取 {libraryName} 文档失败", ex);
+            }
+        }
+
+        // 修改 GetDocsAsync 方法，添加 userQuery 参数
+        private async Task<string> GetDocsAsync(string libraryId, string topic, string userQuery)
+        {
+            var request = new
+            {
+                jsonrpc = "2.0",
+                id = _requestId++,
+                method = "tools/call",
+                @params = new
+                {
+                    name = "get-library-docs",
+                    arguments = new
+                    {
+                        context7CompatibleLibraryID = libraryId,
+                        topic = topic ?? "",
+                        userQuery = userQuery ?? (string.IsNullOrWhiteSpace(topic) ? "documentation" : topic), // 如果没有提供 userQuery，使用 topic 或默认值
+                        tokens = 8000
+                    }
+                }
+            };
+
+            await SendRequestAsync(request);
+            var response = await ReadResponseAsync();
+
+            Console.WriteLine($"文档响应: {response}");
+
+            return ExtractDocsFromResponse(response);
+        }
         private bool IsStopWord(string word)
         {
             var stopWords = new HashSet<string>

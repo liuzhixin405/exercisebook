@@ -44,7 +44,7 @@ namespace OllamaContext7Api.Controllers
                 string docs = "";
                 try
                 {
-                    docs = await _mcpService.GetLibraryDocsAsync(libraryName, request.Question);
+                    docs = await _mcpService.GetLibraryDocsAsync(libraryName, request.Question,request.Question);
                     _logger.LogInformation($"获取到文档，长度: {docs?.Length ?? 0}");
                 }
                 catch (Exception ex)
@@ -82,7 +82,7 @@ namespace OllamaContext7Api.Controllers
             try
             {
                 await _mcpService.StartMcpServerAsync();
-                var docs = await _mcpService.GetLibraryDocsAsync(library, "getting started");
+                var docs = await _mcpService.GetLibraryDocsAsync(library, "getting started","dotnet");
 
                 return Ok(new
                 {
