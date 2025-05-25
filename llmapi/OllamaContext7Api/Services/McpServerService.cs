@@ -12,6 +12,16 @@ namespace OllamaContext7Api.Services
         private StreamReader _outputReader;
         private int _requestId = 1;
         private bool _initialized = false;
+        private readonly ILogger<McpServerService> _logger;
+
+        // 优化配置
+        private const int MaxDocumentTokens = 3000; // 减少获取的文档token数量
+        private const int MaxDocumentLength = 8000; // 最大文档长度限制
+
+        public McpServerService(ILogger<McpServerService> logger)
+        {
+            _logger = logger;
+        }
 
         public async Task StartMcpServerAsync()
         {
@@ -50,7 +60,6 @@ namespace OllamaContext7Api.Services
         {
             try
             {
-                // 发送初始化请求
                 var initRequest = new
                 {
                     jsonrpc = "2.0",
@@ -70,9 +79,8 @@ namespace OllamaContext7Api.Services
 
                 await SendRequestAsync(initRequest);
                 var initResponse = await ReadResponseAsync();
-                Console.WriteLine($"MCP初始化响应: {initResponse}");
+                _logger.LogInformation($"MCP初始化响应: {initResponse}");
 
-                // 发送initialized通知
                 var initializedNotification = new
                 {
                     jsonrpc = "2.0",
@@ -83,7 +91,7 @@ namespace OllamaContext7Api.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"MCP初始化失败: {ex.Message}");
+                _logger.LogError(ex, "MCP初始化失败");
                 throw new InvalidOperationException("MCP服务器初始化失败", ex);
             }
         }
@@ -97,7 +105,11 @@ namespace OllamaContext7Api.Services
                     await StartMcpServerAsync();
                 }
 
-                Console.WriteLine($"开始查询库: {libraryName}, 主题: {topic}");
+                _logger.LogInformation($"开始查询库: {libraryName}, 主题: {topic}");
+
+                // 优化：根据问题类型调整获取策略
+                var optimizedTopic = OptimizeTopic(topic);
+                var tokenLimit = DetermineTokenLimit(topic);
 
                 // 第一步：解析库ID
                 var libraryId = await ResolveLibraryIdAsync(libraryName);
@@ -106,17 +118,108 @@ namespace OllamaContext7Api.Services
                     throw new InvalidOperationException($"无法解析库 '{libraryName}' 的ID");
                 }
 
-                Console.WriteLine($"解析到库ID: {libraryId}");
+                _logger.LogInformation($"解析到库ID: {libraryId}");
 
-                // 第二步：获取文档
-                var docs = await GetDocsAsync(libraryId, topic);
-                return docs;
+                // 第二步：获取优化的文档
+                var docs = await GetOptimizedDocsAsync(libraryId, optimizedTopic, tokenLimit);
+
+                // 第三步：后处理文档
+                var processedDocs = PostProcessDocs(docs, topic);
+
+                _logger.LogInformation($"最终文档长度: {processedDocs.Length}");
+                return processedDocs;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"获取文档失败: {ex.Message}");
+                _logger.LogError(ex, $"获取文档失败: {ex.Message}");
                 throw new InvalidOperationException($"获取 {libraryName} 文档失败", ex);
             }
+        }
+
+        private string OptimizeTopic(string topic)
+        {
+            if (string.IsNullOrEmpty(topic))
+                return "";
+
+            // 提取关键词，移除冗余描述
+            var keywords = ExtractTopicKeywords(topic);
+            var optimizedTopic = string.Join(" ", keywords.Take(5)); // 限制关键词数量
+
+            _logger.LogInformation($"原话题: {topic}");
+            _logger.LogInformation($"优化话题: {optimizedTopic}");
+
+            return optimizedTopic;
+        }
+
+        private List<string> ExtractTopicKeywords(string topic)
+        {
+            var keywords = new List<string>();
+
+            // 技术关键词权重更高
+            var techKeywords = new[]
+            {
+                "api", "controller", "service", "model", "entity", "repository",
+                "authentication", "authorization", "middleware", "configuration",
+                "dependency injection", "logging", "testing", "database", "ef",
+                "async", "await", "http", "json", "xml", "cors", "jwt"
+            };
+
+            var topicLower = topic.ToLower();
+
+            // 优先添加技术关键词
+            keywords.AddRange(techKeywords.Where(k => topicLower.Contains(k)));
+
+            // 添加其他重要词汇
+            var words = Regex.Matches(topic, @"\b\w{3,}\b")
+                .Cast<Match>()
+                .Select(m => m.Value.ToLower())
+                .Where(w => !IsStopWord(w))
+                .Distinct()
+                .Take(8)
+                .ToList();
+
+            keywords.AddRange(words);
+
+            return keywords.Distinct().ToList();
+        }
+
+        private bool IsStopWord(string word)
+        {
+            var stopWords = new HashSet<string>
+            {
+                "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for",
+                "of", "with", "by", "from", "as", "is", "are", "was", "were", "be",
+                "have", "has", "had", "do", "does", "did", "will", "would", "could",
+                "should", "may", "might", "can", "how", "what", "when", "where", "why",
+                "this", "that", "these", "those", "请", "帮", "我", "想", "需要", "如何"
+            };
+
+            return stopWords.Contains(word.ToLower());
+        }
+
+        private int DetermineTokenLimit(string topic)
+        {
+            if (string.IsNullOrEmpty(topic))
+                return MaxDocumentTokens;
+
+            var topicLower = topic.ToLower();
+
+            // 简单问题用更少token
+            if (topicLower.Contains("简单") || topicLower.Contains("快速") ||
+                topicLower.Contains("基础") || topicLower.Contains("入门"))
+            {
+                return Math.Min(MaxDocumentTokens, 2000);
+            }
+
+            // 复杂架构问题可能需要更多context
+            if (topicLower.Contains("架构") || topicLower.Contains("设计模式") ||
+                topicLower.Contains("最佳实践") || topicLower.Contains("复杂"))
+            {
+                return MaxDocumentTokens;
+            }
+
+            // 默认中等大小
+            return Math.Min(MaxDocumentTokens, 2500);
         }
 
         private async Task<string> ResolveLibraryIdAsync(string libraryName)
@@ -136,12 +239,12 @@ namespace OllamaContext7Api.Services
             await SendRequestAsync(request);
             var response = await ReadResponseAsync();
 
-            Console.WriteLine($"Resolve响应: {response}");
+            _logger.LogInformation($"Resolve响应: {response}");
 
             return ExtractLibraryIdFromResponse(response);
         }
 
-        private async Task<string> GetDocsAsync(string libraryId, string topic)
+        private async Task<string> GetOptimizedDocsAsync(string libraryId, string topic, int tokenLimit)
         {
             var request = new
             {
@@ -155,7 +258,7 @@ namespace OllamaContext7Api.Services
                     {
                         context7CompatibleLibraryID = libraryId,
                         topic = topic ?? "",
-                        tokens = 8000
+                        tokens = tokenLimit // 使用动态token限制
                     }
                 }
             };
@@ -163,9 +266,117 @@ namespace OllamaContext7Api.Services
             await SendRequestAsync(request);
             var response = await ReadResponseAsync();
 
-            Console.WriteLine($"文档响应: {response}");
+            _logger.LogInformation($"文档响应长度: {response?.Length ?? 0}");
 
             return ExtractDocsFromResponse(response);
+        }
+
+        private string PostProcessDocs(string docs, string originalTopic)
+        {
+            if (string.IsNullOrEmpty(docs) || docs.Length <= MaxDocumentLength)
+                return docs;
+
+            _logger.LogInformation($"文档过长({docs.Length}字符)，进行后处理");
+
+            // 1. 移除重复内容
+            docs = RemoveDuplicateContent(docs);
+
+            // 2. 如果仍然太长，按相关性截取
+            if (docs.Length > MaxDocumentLength)
+            {
+                docs = TruncateByRelevance(docs, originalTopic, MaxDocumentLength);
+            }
+
+            _logger.LogInformation($"后处理完成，最终长度: {docs.Length}");
+            return docs;
+        }
+
+        private string RemoveDuplicateContent(string docs)
+        {
+            var lines = docs.Split('\n');
+            var uniqueLines = new List<string>();
+            var seenLines = new HashSet<string>();
+
+            foreach (var line in lines)
+            {
+                var normalizedLine = line.Trim();
+                if (normalizedLine.Length > 10 && !seenLines.Contains(normalizedLine))
+                {
+                    seenLines.Add(normalizedLine);
+                    uniqueLines.Add(line);
+                }
+                else if (normalizedLine.Length <= 10)
+                {
+                    uniqueLines.Add(line); // 保留短行（可能是格式）
+                }
+            }
+
+            return string.Join('\n', uniqueLines);
+        }
+
+        private string TruncateByRelevance(string docs, string topic, int maxLength)
+        {
+            if (string.IsNullOrEmpty(topic))
+            {
+                // 没有主题时，简单截取前部分
+                return docs.Length > maxLength ? docs.Substring(0, maxLength) + "\n..." : docs;
+            }
+
+            var paragraphs = docs.Split(new[] { "\n\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var keywords = ExtractTopicKeywords(topic);
+
+            var scoredParagraphs = paragraphs
+                .Select(p => new
+                {
+                    Content = p,
+                    Score = CalculateParagraphRelevance(p, keywords)
+                })
+                .OrderByDescending(p => p.Score)
+                .ToList();
+
+            var result = new StringBuilder();
+            var currentLength = 0;
+
+            foreach (var paragraph in scoredParagraphs)
+            {
+                if (currentLength + paragraph.Content.Length > maxLength)
+                    break;
+
+                result.AppendLine(paragraph.Content);
+                result.AppendLine(); // 添加段落间距
+                currentLength += paragraph.Content.Length + 2;
+            }
+
+            return result.ToString().Trim();
+        }
+
+        private double CalculateParagraphRelevance(string paragraph, List<string> keywords)
+        {
+            var score = 0.0;
+            var paragraphLower = paragraph.ToLower();
+
+            foreach (var keyword in keywords)
+            {
+                var keywordLower = keyword.ToLower();
+                if (paragraphLower.Contains(keywordLower))
+                {
+                    score += keyword.Length > 5 ? 2.0 : 1.0; // 长关键词权重更高
+                }
+            }
+
+            // 代码块奖励
+            if (paragraph.Contains("```") || paragraph.Contains("class ") || paragraph.Contains("public "))
+            {
+                score += 1.5;
+            }
+
+            // 标题奖励
+            if (paragraph.StartsWith("#") || paragraph.Contains("**"))
+            {
+                score += 1.0;
+            }
+
+            return score;
         }
 
         private string ExtractLibraryIdFromResponse(string jsonResponse)
