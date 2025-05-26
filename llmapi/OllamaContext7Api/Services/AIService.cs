@@ -11,7 +11,7 @@ namespace OllamaContext7Api.Services
         private readonly ILogger<AIService> _logger;
 
         private const string OllamaUrl = "http://localhost:11434/api/generate";
-        private const string ModelName = "qwen2.5-coder:14b";
+        private const string ModelName = "codellama:7b-code"; //"qwen2.5-coder:14b";
 
         // 模型上下文限制配置
         private const int MaxTokens = 6000; // 为14B模型预留的安全token数量
