@@ -1,29 +1,22 @@
 using OllamaContext7Api.Services;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 配置日志
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-builder.Logging.SetMinimumLevel(LogLevel.Information);
-
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Ollama Context7 API",
-        Version = "v1",
-        Description = "结合Context7文档检索的AI问答API"
-    });
-});
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// 注册HTTP客户端
+builder.Services.AddHttpClient<IAIService, AIService>();
+
+// 注册服务
+builder.Services.AddScoped<IAIService, AIService>();
 
 // 配置CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", policy =>
+    options.AddDefaultPolicy(policy =>
     {
         policy.AllowAnyOrigin()
               .AllowAnyMethod()
@@ -31,15 +24,13 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add Services
-builder.Services.AddHttpClient<Context7Client>(client =>
+// 配置日志
+builder.Services.AddLogging(logging =>
 {
-    client.BaseAddress = new Uri("http://localhost:11434");
-    client.Timeout = TimeSpan.FromMinutes(2); // 增加超时时间
+    logging.ClearProviders();
+    logging.AddConsole();
+    logging.SetMinimumLevel(LogLevel.Information);
 });
-
-builder.Services.AddScoped<IAIService, AIService>();
-builder.Services.AddSingleton<McpServerService>(); // 单例确保MCP服务器只启动一次
 
 var app = builder.Build();
 
@@ -47,21 +38,26 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ollama Context7 API v1");
-        c.RoutePrefix = string.Empty; // 让Swagger UI在根路径可用
-    });
+    app.UseSwaggerUI();
 }
 
-app.UseCors("AllowAll");
-app.UseHttpsRedirection();
+// 启用CORS
+app.UseCors();
+
 app.UseAuthorization();
+
 app.MapControllers();
 
-// 启动时记录信息
-var logger = app.Services.GetRequiredService<ILogger<Program>>();
-logger.LogInformation("Ollama Context7 API 启动完成");
-logger.LogInformation("Swagger UI 可在 http://localhost:5031 访问");
+// 添加健康检查端点
+app.MapGet("/health", async (IAIService aiService) =>
+{
+    var isHealthy = await aiService.CheckHealthAsync();
+    return Results.Ok(new
+    {
+        status = isHealthy ? "healthy" : "unhealthy",
+        timestamp = DateTime.UtcNow,
+        service = "OllamaContext7Api"
+    });
+});
 
 app.Run();
