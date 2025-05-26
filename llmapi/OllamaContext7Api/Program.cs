@@ -44,8 +44,13 @@ if (app.Environment.IsDevelopment())
 // 启用CORS
 app.UseCors();
 
-app.UseAuthorization();
+// 添加静态文件支持 - 新增这行
+app.UseStaticFiles();
 
+// 添加默认文件支持（可选，让 / 路径自动访问 index.html）
+app.UseDefaultFiles();
+
+app.UseAuthorization();
 app.MapControllers();
 
 // 添加健康检查端点
@@ -59,5 +64,8 @@ app.MapGet("/health", async (IAIService aiService) =>
         service = "OllamaContext7Api"
     });
 });
+
+// 添加根路径重定向到首页（可选）
+app.MapGet("/", () => Results.Redirect("/index.html"));
 
 app.Run();

@@ -128,6 +128,8 @@
             color: #333;
             white-space: pre-wrap;
             word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .loading {
@@ -354,16 +356,6 @@
             showStatus('开始流式处理...', 'info');
 
             try {
-                currentEventSource = new EventSource(`${API_BASE_URL}/question/ask-stream`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ question: question })
-                });
-
-                // 实际上，EventSource不支持POST请求体，我们需要用fetch
-                currentEventSource.close();
                 streamWithFetch(question);
             } catch (error) {
                 displayResponse(`流式请求错误: ${error.message}`);
@@ -481,11 +473,11 @@
 
             if (loading) {
                 responseEl.innerHTML = `
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        <div>正在思考中...</div>
-                    </div>
-                `;
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <div>正在思考中...</div>
+                        </div>
+                    `;
                 askBtn.disabled = true;
             } else {
                 askBtn.disabled = false;
@@ -499,4 +491,33 @@
             document.getElementById('stopBtn').disabled = false;
 
             // 显示输入指示器
-            const response
+            const responseEl = document.getElementById('responseContent');
+            responseEl.innerHTML = `
+                    <div class="loading">
+                        <div class="typing-indicator"></div>
+                        <div>AI正在回复中...</div>
+                    </div>
+                `;
+        }
+
+        function stopStreaming() {
+            isStreaming = false;
+            document.getElementById('streamBtn').disabled = false;
+            document.getElementById('askBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+        }
+
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.className = `status ${type}`;
+            statusEl.style.display = 'block';
+
+            // 3秒后隐藏状态消息
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
