@@ -77,7 +77,7 @@ namespace OllamaContext7Api.Controllers
                 await SendSseEvent("start", new { question = request.Question });
 
                 // 使用流式AI服务处理问题
-                await foreach (var chunk in _aiService.GetAnswerStreamAsync(request.Question))
+                await foreach (var chunk in _aiService.GetAnswerStreamAsync(request.Question,CancellationToken.None))
                 {
                     if (!string.IsNullOrEmpty(chunk))
                     {

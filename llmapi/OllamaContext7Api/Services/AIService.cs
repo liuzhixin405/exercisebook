@@ -11,7 +11,7 @@ namespace OllamaContext7Api.Services
         private readonly ILogger<AIService> _logger;
 
         private const string OllamaUrl = "http://localhost:11434/api/generate";
-        private const string ModelName = "codellama:7b-code";
+        private const string ModelName = "qwen2.5-coder:7b";
 
         public AIService(HttpClient httpClient, ILogger<AIService> logger)
         {
@@ -47,7 +47,7 @@ namespace OllamaContext7Api.Services
 
             var prompt = BuildPrompt(question);
 
-            await foreach (var chunk in GetOllamaStreamAsync(prompt, cancellationToken))
+            await foreach (var chunk in GetOllamaStreamAsyncInternal(prompt, cancellationToken))
             {
                 if (cancellationToken.IsCancellationRequested)
                     yield break;
@@ -119,7 +119,7 @@ namespace OllamaContext7Api.Services
             return answer;
         }
 
-        private async IAsyncEnumerable<string> GetOllamaStreamAsync(string prompt,
+        private async IAsyncEnumerable<string> GetOllamaStreamAsyncInternal(string prompt,
             [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
             var request = new
@@ -138,6 +138,50 @@ namespace OllamaContext7Api.Services
 
             _logger.LogInformation($"发送Ollama流式请求，提示词长度: {prompt.Length}");
 
+            // 使用单独的方法来处理可能抛出异常的操作
+            var streamResult = await CreateStreamConnectionAsync(request, cancellationToken);
+
+            if (!streamResult.Success)
+            {
+                yield return $"流式处理失败: {streamResult.ErrorMessage}";
+                yield break;
+            }
+
+            using var reader = streamResult.Reader;
+
+            string line;
+            while ((line = await reader.ReadLineAsync()) != null)
+            {
+                if (cancellationToken.IsCancellationRequested)
+                    yield break;
+
+                if (string.IsNullOrWhiteSpace(line))
+                    continue;
+
+                var parseSuccess = TryParseStreamResponse(line, out var streamResponse);
+
+                if (!parseSuccess)
+                {
+                    _logger.LogWarning($"解析流响应失败: {line}");
+                    continue;
+                }
+
+                if (streamResponse?.Response != null)
+                {
+                    yield return streamResponse.Response;
+                }
+
+                // 检查是否完成
+                if (streamResponse?.Done == true)
+                {
+                    _logger.LogInformation("流式响应完成");
+                    break;
+                }
+            }
+        }
+
+        private async Task<StreamConnectionResult> CreateStreamConnectionAsync(object request, CancellationToken cancellationToken)
+        {
             try
             {
                 var httpRequest = new HttpRequestMessage(HttpMethod.Post, OllamaUrl)
@@ -145,52 +189,58 @@ namespace OllamaContext7Api.Services
                     Content = JsonContent.Create(request)
                 };
 
-                using var response = await _httpClient.SendAsync(httpRequest,
+                var response = await _httpClient.SendAsync(httpRequest,
                     HttpCompletionOption.ResponseHeadersRead, cancellationToken);
 
                 response.EnsureSuccessStatusCode();
 
-                using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
-                using var reader = new StreamReader(stream);
+                var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+                var reader = new StreamReader(stream);
 
-                string line;
-                while ((line = await reader.ReadLineAsync()) != null)
+                return new StreamConnectionResult
                 {
-                    if (cancellationToken.IsCancellationRequested)
-                        yield break;
-
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
-
-                    OllamaStreamResponse streamResponse;
-                    try
-                    {
-                        streamResponse = JsonSerializer.Deserialize<OllamaStreamResponse>(line);
-                    }
-                    catch (JsonException ex)
-                    {
-                        _logger.LogWarning(ex, $"解析流响应失败: {line}");
-                        continue;
-                    }
-
-                    if (streamResponse?.Response != null)
-                    {
-                        yield return streamResponse.Response;
-                    }
-
-                    // 检查是否完成
-                    if (streamResponse?.Done == true)
-                    {
-                        _logger.LogInformation("流式响应完成");
-                        break;
-                    }
-                }
+                    Success = true,
+                    Reader = reader,
+                    Response = response
+                };
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "流式请求处理失败");
-                yield return $"流式处理失败: {ex.Message}";
+                _logger.LogError(ex, "创建流式连接失败");
+                return new StreamConnectionResult
+                {
+                    Success = false,
+                    ErrorMessage = ex.Message
+                };
             }
+        }
+
+        private bool TryParseStreamResponse(string json, out OllamaStreamResponse streamResponse)
+        {
+            streamResponse = null;
+            try
+            {
+                streamResponse = JsonSerializer.Deserialize<OllamaStreamResponse>(json);
+                return true;
+            }
+            catch (JsonException)
+            {
+                return false;
+            }
+        }
+
+        private async IAsyncEnumerable<string> GetErrorStreamAsync(string errorMessage)
+        {
+            yield return errorMessage;
+            await Task.CompletedTask; // 避免编译器警告
+        }
+
+        private class StreamConnectionResult
+        {
+            public bool Success { get; set; }
+            public string ErrorMessage { get; set; } = "";
+            public StreamReader? Reader { get; set; }
+            public HttpResponseMessage? Response { get; set; }
         }
     }
 
