@@ -7,13 +7,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// ×¢²áHTTP¿Í»§¶Ë
+// é…ç½®AIServiceOptions
+builder.Services.Configure<AIServiceOptions>(
+    builder.Configuration.GetSection(AIServiceOptions.SectionName));
+
+// æ³¨å†ŒHTTPå®¢æˆ·ç«¯
 builder.Services.AddHttpClient<IAIService, AIService>();
 
-// ×¢²á·şÎñ
+// æ³¨å†ŒæœåŠ¡
 builder.Services.AddScoped<IAIService, AIService>();
 
-// ÅäÖÃCORS
+// é…ç½®CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -24,7 +28,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-// ÅäÖÃÈÕÖ¾
+// é…ç½®æ—¥å¿—
 builder.Services.AddLogging(logging =>
 {
     logging.ClearProviders();
@@ -41,19 +45,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// ÆôÓÃCORS
+// å¯ç”¨CORS
 app.UseCors();
 
-// Ìí¼Ó¾²Ì¬ÎÄ¼şÖ§³Ö - ĞÂÔöÕâĞĞ
+// æ·»åŠ é™æ€æ–‡ä»¶æ”¯æŒ - æ–°å¢è¿™è¡Œ
 app.UseStaticFiles();
 
-// Ìí¼ÓÄ¬ÈÏÎÄ¼şÖ§³Ö£¨¿ÉÑ¡£¬ÈÃ / Â·¾¶×Ô¶¯·ÃÎÊ index.html£©
+// æ·»åŠ é»˜è®¤æ–‡ä»¶æ”¯æŒï¼ˆå¯é€‰ï¼Œè®© / è·¯å¾„è‡ªåŠ¨è®¿é—® index.htmlï¼‰
 app.UseDefaultFiles();
 
 app.UseAuthorization();
 app.MapControllers();
 
-// Ìí¼Ó½¡¿µ¼ì²é¶Ëµã
+// æ·»åŠ å¥åº·æ£€æŸ¥ç«¯ç‚¹
 app.MapGet("/health", async (IAIService aiService) =>
 {
     var isHealthy = await aiService.CheckHealthAsync();
@@ -65,7 +69,7 @@ app.MapGet("/health", async (IAIService aiService) =>
     });
 });
 
-// Ìí¼Ó¸ùÂ·¾¶ÖØ¶¨Ïòµ½Ê×Ò³£¨¿ÉÑ¡£©
+// æ·»åŠ æ ¹è·¯å¾„é‡å®šå‘åˆ°é¦–é¡µï¼ˆå¯é€‰ï¼‰
 app.MapGet("/", () => Results.Redirect("/index.html"));
 
 app.Run();
