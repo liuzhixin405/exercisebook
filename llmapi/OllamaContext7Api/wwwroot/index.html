@@ -289,6 +289,7 @@
         const API_BASE_URL = 'http://localhost:5031/api';
         let currentEventSource = null;
         let isStreaming = false;
+        let abortController = null;
 
         // 页面加载时检查健康状态
         window.addEventListener('load', () => {
@@ -365,13 +366,17 @@
         }
 
         async function streamWithFetch(question) {
+            abortController = new AbortController();
+            const signal = abortController.signal;
+
             try {
                 const response = await fetch(`${API_BASE_URL}/question/ask-stream`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ question: question })
+                    body: JSON.stringify({ question: question }),
+                    signal: signal
                 });
 
                 if (!response.ok) {
@@ -426,13 +431,30 @@
             }
         }
 
-        function stopStream() {
-            if (currentEventSource) {
-                currentEventSource.close();
-                currentEventSource = null;
+        async function stopStream() {
+            if (abortController) {
+                abortController.abort();
+                abortController = null;
             }
             stopStreaming();
-            showStatus('已停止流式处理', 'info');
+            showStatus('正在停止流式处理...', 'info');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/question/stop-stream`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                showStatus('已停止流式处理', 'info');
+            } catch (error) {
+                showStatus(`停止流式处理失败: ${error.message}`, 'error');
+            }
         }
 
         function clearResponse() {

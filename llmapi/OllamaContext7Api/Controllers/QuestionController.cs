@@ -10,6 +10,7 @@ namespace OllamaContext7Api.Controllers
     {
         private readonly IAIService _aiService;
         private readonly ILogger<QuestionController> _logger;
+        private static CancellationTokenSource _cts = new CancellationTokenSource();
 
         public QuestionController(
             IAIService aiService,
@@ -56,6 +57,7 @@ namespace OllamaContext7Api.Controllers
         [HttpPost("ask-stream")]
         public async Task AskQuestionStream([FromBody] QuestionRequest request)
         {
+            CancellationToken ct = default;
             try
             {
                 if (string.IsNullOrWhiteSpace(request?.Question))
@@ -67,6 +69,10 @@ namespace OllamaContext7Api.Controllers
 
                 _logger.LogInformation($"收到流式问题: {request.Question}");
 
+                // Reset the CancellationTokenSource
+                _cts = new CancellationTokenSource();
+                ct = _cts.Token;
+
                 // 设置SSE响应头
                 Response.ContentType = "text/event-stream";
                 Response.Headers.Add("Cache-Control", "no-cache");
@@ -77,7 +83,7 @@ namespace OllamaContext7Api.Controllers
                 await SendSseEvent("start", new { question = request.Question });
 
                 // 使用流式AI服务处理问题
-                await foreach (var chunk in _aiService.GetAnswerStreamAsync(request.Question,CancellationToken.None))
+                await foreach (var chunk in _aiService.GetAnswerStreamAsync(request.Question, ct))
                 {
                     if (!string.IsNullOrEmpty(chunk))
                     {
@@ -92,12 +98,19 @@ namespace OllamaContext7Api.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"流式处理问题时出错: {request?.Question}");
-                await SendSseEvent("error", new
+                if (!ct.IsCancellationRequested)
                 {
-                    error = "处理问题时出错",
-                    message = ex.Message,
-                    timestamp = DateTime.UtcNow
-                });
+                    await SendSseEvent("error", new
+                    {
+                        error = "处理问题时出错",
+                        message = ex.Message,
+                        timestamp = DateTime.UtcNow
+                    });
+                }
+                else
+                {
+                    _logger.LogInformation($"流式处理已取消: {request?.Question}");
+                }
             }
         }
 
@@ -124,6 +137,18 @@ namespace OllamaContext7Api.Controllers
                     timestamp = DateTime.UtcNow
                 });
             }
+        }
+
+        [HttpPost("stop-stream")]
+        public IActionResult StopStream()
+        {
+            _cts.Cancel();
+            _logger.LogInformation("流式处理已停止");
+            return Ok(new
+            {
+                status = "stopped",
+                timestamp = DateTime.UtcNow
+            });
         }
 
         private async Task SendSseEvent(string eventType, object data)
