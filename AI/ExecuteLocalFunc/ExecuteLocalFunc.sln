@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecuteLocalFunc", "ExecuteLocalFunc.csproj", "{AC0E3724-3BDD-6208-73F3-6C78E17F75F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC0E3724-3BDD-6208-73F3-6C78E17F75F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0E3724-3BDD-6208-73F3-6C78E17F75F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0E3724-3BDD-6208-73F3-6C78E17F75F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0E3724-3BDD-6208-73F3-6C78E17F75F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D0E3C02-E93F-4A5D-850C-F2008E52C2A4}
+	EndGlobalSection
+EndGlobal
