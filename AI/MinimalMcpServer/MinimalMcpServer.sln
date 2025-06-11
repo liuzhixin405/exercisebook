@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36121.58 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalMcpServer", "MinimalMcpServer.csproj", "{3D1EDD86-736E-A7C9-F844-518838D041C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCPHostApp", "..\MCPHostApp\MCPHostApp.csproj", "{16BAAFD4-486A-4147-AD4B-EA84AE807517}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D1EDD86-736E-A7C9-F844-518838D041C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1EDD86-736E-A7C9-F844-518838D041C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1EDD86-736E-A7C9-F844-518838D041C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1EDD86-736E-A7C9-F844-518838D041C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16BAAFD4-486A-4147-AD4B-EA84AE807517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16BAAFD4-486A-4147-AD4B-EA84AE807517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16BAAFD4-486A-4147-AD4B-EA84AE807517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16BAAFD4-486A-4147-AD4B-EA84AE807517}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26548559-1883-49EB-AEE8-2C20B5F1B670}
+	EndGlobalSection
+EndGlobal

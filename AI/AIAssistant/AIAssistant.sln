@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36121.58 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIAssistant", "AIAssistant.csproj", "{BDA0A279-504E-20C9-50B1-BE3518A478A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ainew", "..\ainew\ainew.csproj", "{121EA9C2-FFE9-4418-A973-22F7D90B3520}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDA0A279-504E-20C9-50B1-BE3518A478A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA0A279-504E-20C9-50B1-BE3518A478A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA0A279-504E-20C9-50B1-BE3518A478A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA0A279-504E-20C9-50B1-BE3518A478A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{121EA9C2-FFE9-4418-A973-22F7D90B3520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121EA9C2-FFE9-4418-A973-22F7D90B3520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121EA9C2-FFE9-4418-A973-22F7D90B3520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121EA9C2-FFE9-4418-A973-22F7D90B3520}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10549776-CDC7-4CB6-AE28-C93D8DCB5915}
+	EndGlobalSection
+EndGlobal
