@@ -1,6 +1,12 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using OllamaContext7Api.Services;
+using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace OllamaContext7Api.Controllers
 {
@@ -20,40 +26,6 @@ namespace OllamaContext7Api.Controllers
             _logger = logger;
         }
 
-        [HttpPost("ask")]
-        public async Task<IActionResult> AskQuestion([FromBody] QuestionRequest request)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(request?.Question))
-                {
-                    return BadRequest("问题不能为空");
-                }
-
-                _logger.LogInformation($"收到问题: {request.Question}");
-
-                // 直接使用AI服务处理问题，不使用Context7
-                var answer = await _aiService.GetAnswerAsync(request.Question);
-
-                return Ok(new QuestionResponse
-                {
-                    Question = request.Question,
-                    Answer = answer,
-                    Timestamp = DateTime.UtcNow
-                });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"处理问题时出错: {request?.Question}");
-                return StatusCode(500, new
-                {
-                    error = "处理问题时出错",
-                    message = ex.Message,
-                    timestamp = DateTime.UtcNow
-                });
-            }
-        }
-
         [HttpPost("ask-stream")]
         public async Task AskQuestionStream([FromBody] QuestionRequest request)
         {
@@ -67,7 +39,7 @@ namespace OllamaContext7Api.Controllers
                     return;
                 }
 
-                _logger.LogInformation($"收到流式问题: {request.Question}");
+                _logger.LogInformation($"收到问题: {request.Question}");
 
                 // Reset the CancellationTokenSource
                 _cts = new CancellationTokenSource();
@@ -83,7 +55,7 @@ namespace OllamaContext7Api.Controllers
                 await SendSseEvent("start", new { question = request.Question });
 
                 // 使用流式AI服务处理问题
-                await foreach (var chunk in _aiService.GetAnswerStreamAsync(request.Question, ct))
+                await foreach (var chunk in _aiService.GetAnswerStreamAsync(request.Question, ct, request.RelatedFiles, request.IsDeepMode))
                 {
                     if (!string.IsNullOrEmpty(chunk))
                     {
@@ -97,7 +69,7 @@ namespace OllamaContext7Api.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"流式处理问题时出错: {request?.Question}");
+                _logger.LogError(ex, $"处理问题时出错: {request?.Question}");
                 if (!ct.IsCancellationRequested)
                 {
                     await SendSseEvent("error", new
@@ -109,7 +81,7 @@ namespace OllamaContext7Api.Controllers
                 }
                 else
                 {
-                    _logger.LogInformation($"流式处理已取消: {request?.Question}");
+                    _logger.LogInformation($"处理已取消: {request?.Question}");
                 }
             }
         }
@@ -143,7 +115,7 @@ namespace OllamaContext7Api.Controllers
         public IActionResult StopStream()
         {
             _cts.Cancel();
-            _logger.LogInformation("流式处理已停止");
+            _logger.LogInformation("处理已停止");
             return Ok(new
             {
                 status = "stopped",
@@ -163,6 +135,8 @@ namespace OllamaContext7Api.Controllers
     public class QuestionRequest
     {
         public string Question { get; set; } = "";
+        public List<string>? RelatedFiles { get; set; }
+        public bool IsDeepMode { get; set; }
     }
 
     public class QuestionResponse

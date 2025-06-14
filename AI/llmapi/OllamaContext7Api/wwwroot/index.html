@@ -3,543 +3,649 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> AI 助手测试</title>
+    <title>AI 助手</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f4f4f4;
         }
-
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 800px;
+        #file-management-container {
+            width: 30%; /* 30% width for file management */
+            padding: 15px;
+            border-right: 1px solid #ccc;
+            background-color: #fff;
+            overflow-y: auto; /* Scroll for file list */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
         }
-
-        h1 {
-            text-align: center;
+        #chat-container {
+            flex-grow: 1; /* Takes remaining width */
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            background-color: #e9e9e9;
+        }
+        h2, h3 {
             color: #333;
-            margin-bottom: 30px;
-            font-size: 2rem;
-            font-weight: 600;
+            margin-top: 0;
         }
-
-        .input-section {
-            margin-bottom: 30px;
+        #response {
+            flex-grow: 1;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            overflow-y: auto;
+            background-color: #fff;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
         }
-
         .input-group {
             display: flex;
+            margin-bottom: 10px;
+        }
+        #questionInput {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 70px; /* Minimum height for 3 lines of text */
+            box-sizing: border-box;
+        }
+        .button-group {
+            display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-top: 10px;
         }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 15px 20px;
-            border: 2px solid #e1e5e9;
-            border-radius: 25px;
-            font-size: 16px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-            input[type="text"]:focus {
-                border-color: #667eea;
-                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-            }
-
         button {
-            padding: 15px 30px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 14px;
         }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        button:hover {
+            background-color: #0056b3;
         }
-
-            .btn-primary:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-            }
-
-        .btn-secondary {
-            background: #f8f9fa;
-            color: #6c757d;
-            border: 2px solid #e9ecef;
-        }
-
-            .btn-secondary:hover {
-                background: #e9ecef;
-                color: #495057;
-            }
-
-        .btn-danger {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: white;
-        }
-
-            .btn-danger:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-            }
-
         button:disabled {
-            opacity: 0.6;
+            background-color: #cccccc;
             cursor: not-allowed;
-            transform: none !important;
         }
-
-        .response-section {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            min-height: 200px;
-            position: relative;
-            overflow: hidden;
+        #loading {
+            margin-top: 10px;
+            color: #007bff;
+            display: none;
         }
-
-        .response-content {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #333;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            max-height: 400px;
-            overflow-y: auto;
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border: 1px solid #eee;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
         }
-
-        .loading {
+        .file-item.selected {
+            background-color: #d0e7ff;
+            border-color: #007bff;
+        }
+        .file-item button {
+            padding: 5px 10px;
+            background-color: #dc3545;
+            font-size: 12px;
+        }
+        .file-item button:hover {
+            background-color: #c82333;
+        }
+        #file-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            flex-grow: 1; /* Allow file list to expand */
+            overflow-y: auto; /* Scroll for file list */
+        }
+        .file-list-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            height: 150px;
-            flex-direction: column;
-            gap: 15px;
+            padding: 5px 0;
+            cursor: pointer;
         }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #e1e5e9;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .file-list-item.selected {
+            background-color: #e0e0e0;
         }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        .file-list-item input[type="checkbox"] {
+            margin-right: 5px;
         }
-
-        .typing-indicator {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            position: relative;
+        .file-list-item .folder-icon {
+            margin-right: 5px;
+            color: #ffc107; /* Folder icon color */
         }
-
-            .typing-indicator::after {
-                content: '';
-                position: absolute;
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                background: #667eea;
-                animation: typing 1.4s infinite ease-in-out;
-            }
-
-        @keyframes typing {
-            0%, 80%, 100% {
-                transform: scale(0);
-                opacity: 0.5;
-            }
-
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .file-list-item .file-icon {
+            margin-right: 5px;
+            color: #6c757d; /* File icon color */
         }
-
-        .status {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 500;
+        #project-info {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
         }
-
-            .status.success {
-                background: rgba(40, 167, 69, 0.1);
-                color: #28a745;
-                border: 1px solid rgba(40, 167, 69, 0.2);
-            }
-
-            .status.error {
-                background: rgba(220, 53, 69, 0.1);
-                color: #dc3545;
-                border: 1px solid rgba(220, 53, 69, 0.2);
-            }
-
-            .status.info {
-                background: rgba(102, 126, 234, 0.1);
-                color: #667eea;
-                border: 1px solid rgba(102, 126, 234, 0.2);
-            }
-
-        .controls {
+        #project-path {
+            font-weight: bold;
+            word-break: break-all;
+        }
+        .file-actions {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .folder-navigation {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        #goUpBtn {
+            padding: 5px 10px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #goUpBtn:hover {
+            background-color: #5a6268;
+        }
+        .upload-button-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                margin: 10px;
-            }
-
-            .input-group {
-                flex-direction: column;
-            }
-
-            .controls {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
-        }
-
-        .stream-content {
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .upload-button-wrapper input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🤖 AI 助手</h1>
-
-        <div class="input-section">
-            <div class="input-group">
-                <input type="text" id="questionInput" placeholder="请输入您的问题..." />
-                <button id="askBtn" class="btn-primary" onclick="askQuestion()">提问</button>
-            </div>
-
-            <div class="controls">
-                <button id="streamBtn" class="btn-primary" onclick="askQuestionStream()">流式提问</button>
-                <button id="stopBtn" class="btn-danger" onclick="stopStream()" disabled>停止</button>
-                <button id="clearBtn" class="btn-secondary" onclick="clearResponse()">清空</button>
-                <button id="healthBtn" class="btn-secondary" onclick="checkHealth()">健康检查</button>
-            </div>
+    <div id="file-management-container">
+        <h2>文件管理</h2>
+        <div id="project-info">
+            当前项目路径: <span id="project-path"></span>
         </div>
-
-        <div class="response-section">
-            <div id="responseContent" class="response-content">
-                准备就绪，请输入问题开始对话...
-            </div>
+        <div class="folder-navigation">
+            <button id="goUpBtn">返回上级</button>
+            <button onclick="createNewFolder()">新建文件夹</button>
         </div>
-
-        <div id="status" class="status" style="display: none;"></div>
+        <div class="file-actions">
+            <button onclick="createNewProject()">新建项目</button>
+            <div class="upload-button-wrapper">
+                <button>选择文件夹</button>
+                <input type="file" id="fileInput" webkitdirectory directory multiple onchange="handleFileSelection(event)">
+            </div>
+            <button onclick="uploadFiles()">上传到当前项目</button>
+        </div>
+        <ul id="file-list"></ul>
+        <button onclick="deleteAllFiles()">移除当前项目所有文件</button>
+    </div>
+    <div id="chat-container">
+        <h2>AI 聊天</h2>
+        <div id="response">等待提问...</div>
+        <div id="loading">思考中...</div>
+        <div class="input-group">
+            <textarea id="questionInput" placeholder="请输入你的问题..."></textarea>
+        </div>
+        <div class="button-group">
+            <button id="askBtn">提问</button>
+            <button id="stopBtn">停止</button>
+            <button id="clearBtn">清空</button>
+            <button id="healthBtn">健康检查</button>
+            <input type="checkbox" id="deepModeCheckbox"> <label for="deepModeCheckbox">深度模式</label>
+        </div>
     </div>
 
     <script>
-        const API_BASE_URL = 'http://localhost:5031/api';
-        let currentEventSource = null;
+        console.log("Script loaded and starting initialization."); // Added a very early log
+
+        let eventSource = null; // No longer used for main streaming, but kept for clarity if needed elsewhere
         let isStreaming = false;
-        let abortController = null;
+        let selectedFiles = new Set(); // Stores full paths of selected files
+        let currentProjectPath = ''; // Stores the current project path, relative to the backend's base path
+        let globalFileTree = {}; // Stores the entire file tree for the current project
+        let currentReader = null; // Store the reader to abort it on stopStream
 
-        // 页面加载时检查健康状态
-        window.addEventListener('load', () => {
-            checkHealth();
-
-            // 为输入框添加回车键支持
-            document.getElementById('questionInput').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    if (!isStreaming) {
-                        askQuestionStream();
+        async function createNewProject() {
+            console.log("createNewProject called");
+            const projectName = prompt("请输入新项目的名称:");
+            if (projectName) {
+                try {
+                    const response = await fetch(`/api/file/create-folder`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ folderName: projectName })
+                    });
+                    if (response.ok) {
+                        alert(`项目 \"${projectName}\" 创建成功！`);
+                        currentProjectPath = projectName; // Set current project to the newly created one
+                        await listFiles(currentProjectPath); // List files in the new project
+                    } else {
+                        const errorText = await response.text();
+                        alert(`创建项目失败: ${errorText}`);
                     }
+                } catch (error) {
+                    console.error('创建项目时出错:', error);
+                    alert('创建项目时发生网络错误。');
                 }
+            }
+        }
+
+        async function createNewFolder() {
+            console.log("createNewFolder called");
+            const folderName = prompt("请输入新文件夹的名称:");
+            if (folderName) {
+                const fullPath = currentProjectPath ? `${currentProjectPath}/${folderName}` : folderName;
+                try {
+                    const response = await fetch(`/api/file/create-folder`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ folderName: fullPath })
+                    });
+                    if (response.ok) {
+                        alert(`文件夹 \"${fullPath}\" 创建成功！`);
+                        await listFiles(currentProjectPath); // Refresh current directory
+                    } else {
+                        const errorText = await response.text();
+                        alert(`创建文件夹失败: ${errorText}`);
+                    }
+                } catch (error) {
+                    console.error('创建文件夹时出错:', error);
+                    alert('创建文件夹时发生网络错误。');
+                }
+            }
+        }
+
+        function handleFileSelection(event) {
+            console.log("handleFileSelection called");
+            const files = event.target.files;
+            if (files.length > 0) {
+                console.log("Selected files:", files);
+                // No need to display files here, they will be uploaded
+            }
+        }
+
+        async function uploadFiles() {
+            console.log("uploadFiles called");
+            const fileInput = document.getElementById('fileInput');
+            const files = fileInput.files;
+
+            if (files.length === 0) {
+                alert('请选择要上传的文件或文件夹。');
+                return;
+            }
+
+            const formData = new FormData();
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                // Calculate relative path for each file within the selected folder structure
+                const relativePath = file.webkitRelativePath || file.name;
+                const uploadPath = currentProjectPath ? `${currentProjectPath}/${relativePath}` : relativePath;
+                formData.append('files', file, uploadPath);
+            }
+
+            try {
+                const response = await fetch('/api/file/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('文件上传成功！');
+                    fileInput.value = ''; // Clear selected files
+                    await listFiles(currentProjectPath); // Refresh file list
+                } else {
+                    const errorText = await response.text();
+                    alert(`文件上传失败: ${errorText}`);
+                }
+            } catch (error) {
+                console.error('上传文件时出错:', error);
+                alert('上传文件时发生网络错误。');
+            }
+        }
+
+        async function listFiles(path = '') {
+            console.log("listFiles called with path:", path);
+            document.getElementById('project-path').textContent = path || '根目录';
+            currentProjectPath = path;
+
+            try {
+                const response = await fetch(`/api/file/list?path=${encodeURIComponent(path)}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                globalFileTree = await response.json(); // Store the entire tree (which is now a FileExplorerItem)
+                renderFileTree(globalFileTree, document.getElementById('file-list'), path);
+
+                const goUpBtn = document.getElementById('goUpBtn');
+                if (goUpBtn) { // Add null check
+                    goUpBtn.disabled = !path; // Disable if at root
+                } else {
+                    console.warn("goUpBtn not found."); // Log if button not found
+                }
+
+            } catch (error) {
+                console.error('加载文件失败:', error);
+                alert('加载文件失败: ' + error.message);
+            }
+        }
+
+        function renderFileTree(tree, parentElement, currentPath) {
+            console.log("renderFileTree called");
+            parentElement.innerHTML = '';
+            // Ensure tree.children is an array before sorting and iterating
+            if (!tree || !Array.isArray(tree.children)) {
+                console.warn("Invalid file tree structure or empty children.", tree);
+                return; // Exit if children is not an array
+            }
+            tree.children.sort((a, b) => {
+                if (a.type === 'directory' && b.type !== 'directory') return -1;
+                if (a.type !== 'directory' && b.type === 'directory') return 1;
+                return a.name.localeCompare(b.name);
+            }).forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'file-list-item';
+                const fullPath = currentPath ? `${currentPath}/${item.name}` : item.name;
+
+                if (item.type === 'directory') {
+                    li.innerHTML = `<span class=\"folder-icon\">&#128193;</span> ${item.name}`;
+                    li.onclick = () => listFiles(fullPath); // Navigate into folder
+                } else {
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = selectedFiles.has(fullPath);
+                    checkbox.onchange = (e) => {
+                        e.stopPropagation(); // Prevent li click from interfering
+                        toggleFileSelection(fullPath, checkbox.checked);
+                    };
+                    li.appendChild(checkbox);
+                    li.innerHTML += `<span class=\"file-icon\">&#128196;</span> ${item.name}`;
+                    li.onclick = () => toggleFileSelection(fullPath, !checkbox.checked);
+                    li.insertBefore(checkbox, li.firstChild); // Ensure checkbox is first child
+                }
+                parentElement.appendChild(li);
             });
-        });
+        }
 
-        async function askQuestion() {
-            const question = document.getElementById('questionInput').value.trim();
-            if (!question) {
-                showStatus('请输入问题', 'error');
+        function toggleFileSelection(filePath, isSelected) {
+            console.log("toggleFileSelection called");
+            if (isSelected) {
+                selectedFiles.add(filePath);
+            } else {
+                selectedFiles.delete(filePath);
+            }
+            // Re-render the file tree to update checkbox states
+            renderFileTree(globalFileTree, document.getElementById('file-list'), currentProjectPath);
+            console.log("Selected files:", Array.from(selectedFiles));
+        }
+
+        async function deleteAllFiles() {
+            console.log("deleteAllFiles called");
+            if (!confirm(`确定要移除当前项目 \"${currentProjectPath || '根目录'}\" 下的所有文件吗？这将不可逆！`)) {
                 return;
             }
 
+            try {
+                const response = await fetch(`/api/file/delete-all?path=${encodeURIComponent(currentProjectPath)}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    alert('所有文件已移除！');
+                    selectedFiles.clear(); // Clear selected files
+                    await listFiles(currentProjectPath); // Refresh file list
+                } else {
+                    const errorText = await response.text();
+                    alert(`移除文件失败: ${errorText}`);
+                }
+            } catch (error) {
+                console.error('移除文件时出错:', error);
+                alert('移除文件时发生网络错误。');
+            }
+        }
+
+        async function askQuestionStream() {
+            console.log("askQuestionStream called");
+            if (isStreaming) return;
+
+            const question = document.getElementById('questionInput').value;
+            const deepMode = document.getElementById('deepModeCheckbox').checked;
+            const responseDiv = document.getElementById('response');
             setLoading(true);
-            showStatus('正在处理问题...', 'info');
+            responseDiv.textContent = ''; // Clear previous response
 
             try {
-                const response = await fetch(`${API_BASE_URL}/question/ask`, {
+                const relatedFiles = Array.from(selectedFiles); // Get full paths of selected files
+
+                const response = await fetch('/api/question/ask-stream', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ question: question })
+                    body: JSON.stringify({
+                        question: question,
+                        relatedFiles: relatedFiles,
+                        isDeepMode: deepMode
+                    })
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText}`);
                 }
 
-                const data = await response.json();
-                displayResponse(data.answer);
-                showStatus('问题处理完成', 'success');
-            } catch (error) {
-                displayResponse(`错误: ${error.message}`);
-                showStatus(`请求失败: ${error.message}`, 'error');
-            } finally {
-                setLoading(false);
-            }
-        }
+                isStreaming = true;
+                setButtonStates(true);
 
-        function askQuestionStream() {
-            const question = document.getElementById('questionInput').value.trim();
-            if (!question) {
-                showStatus('请输入问题', 'error');
-                return;
-            }
-
-            if (isStreaming) {
-                showStatus('正在处理中，请稍等或停止当前请求', 'info');
-                return;
-            }
-
-            startStreaming();
-            clearResponse();
-            showStatus('开始流式处理...', 'info');
-
-            try {
-                streamWithFetch(question);
-            } catch (error) {
-                displayResponse(`流式请求错误: ${error.message}`);
-                showStatus(`流式请求失败: ${error.message}`, 'error');
-                stopStreaming();
-            }
-        }
-
-        async function streamWithFetch(question) {
-            abortController = new AbortController();
-            const signal = abortController.signal;
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/question/ask-stream`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ question: question }),
-                    signal: signal
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                currentReader = response.body?.getReader();
+                if (!currentReader) {
+                    throw new Error("无法获取响应流。");
                 }
-
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder();
+                const decoder = new TextDecoder('utf-8');
                 let buffer = '';
 
                 while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
+                    const { done, value } = await currentReader.read();
+                    if (done) {
+                        console.log("Stream complete.");
+                        break;
+                    }
 
                     buffer += decoder.decode(value, { stream: true });
-                    const lines = buffer.split('\n');
-                    buffer = lines.pop() || '';
 
-                    for (const line of lines) {
-                        if (line.startsWith('data: ')) {
-                            try {
-                                const data = JSON.parse(line.slice(6));
-                                handleStreamData(data);
-                            } catch (e) {
-                                console.warn('解析SSE数据失败:', line);
+                    // Process complete SSE messages
+                    let newlineIndex;
+                    while ((newlineIndex = buffer.indexOf('\n\n')) !== -1) {
+                        const message = buffer.substring(0, newlineIndex);
+                        buffer = buffer.substring(newlineIndex + 2);
+
+                        if (message.startsWith('event:')) {
+                            const eventTypeMatch = message.match(/^event: (.*)/m);
+                            const dataMatch = message.match(/^data: (.*)/m);
+
+                            if (eventTypeMatch && dataMatch) {
+                                const eventType = eventTypeMatch[1].trim();
+                                const jsonData = dataMatch[1].trim();
+
+                                try {
+                                    const parsedData = JSON.parse(jsonData);
+                                    if (eventType === 'data' && parsedData.content) {
+                                        responseDiv.textContent += parsedData.content;
+                                        responseDiv.scrollTop = responseDiv.scrollHeight; // Auto-scroll to bottom
+                                    } else if (eventType === 'error' && parsedData.error) {
+                                        console.error("Server-side error:", parsedData.error, parsedData.message);
+                                        responseDiv.textContent += `\n\n[服务器错误: ${parsedData.message || parsedData.error}]`;
+                                        stopStreaming();
+                                    } else if (eventType === 'end') {
+                                        console.log("Received end event.");
+                                        stopStreaming();
+                                        return; // Exit after end event
+                                    }
+                                } catch (jsonParseError) {
+                                    console.error("Error parsing SSE data JSON:", jsonParseError, jsonData);
+                                }
                             }
-                        } else if (line.startsWith('event: ')) {
-                            const eventType = line.slice(7);
-                            console.log('SSE事件:', eventType);
                         }
                     }
                 }
 
-                stopStreaming();
-                showStatus('流式处理完成', 'success');
             } catch (error) {
-                displayResponse(`流式处理错误: ${error.message}`);
-                showStatus(`流式处理失败: ${error.message}`, 'error');
+                console.error('发起流式提问时出错:', error);
+                responseDiv.textContent = `\n\n[连接中断或发生错误: ${error.message}]`;
                 stopStreaming();
             }
         }
 
-        function handleStreamData(data) {
-            if (data.content) {
-                appendResponse(data.content);
-            } else if (data.question) {
-                showStatus(`开始处理问题: ${data.question}`, 'info');
-            } else if (data.error) {
-                displayResponse(`错误: ${data.error}`);
-                showStatus(`处理失败: ${data.error}`, 'error');
-                stopStreaming();
+        function stopStream() {
+            console.log("stopStream called");
+            if (currentReader) {
+                currentReader.cancel("User stopped stream").catch(error => console.warn("Failed to cancel reader:", error));
+                currentReader = null;
             }
-        }
-
-        async function stopStream() {
-            if (abortController) {
-                abortController.abort();
-                abortController = null;
-            }
-            stopStreaming();
-            showStatus('正在停止流式处理...', 'info');
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/question/stop-stream`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+            fetch('/api/question/stop-stream', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('流式传输停止请求已发送。');
+                    } else {
+                        console.error('停止流式传输失败。');
+                    }
+                })
+                .catch(error => {
+                    console.error('停止流式传输时出错:', error);
                 });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                }
-
-                showStatus('已停止流式处理', 'info');
-            } catch (error) {
-                showStatus(`停止流式处理失败: ${error.message}`, 'error');
-            }
-        }
-
-        function clearResponse() {
-            document.getElementById('responseContent').innerHTML = '';
-        }
-
-        async function checkHealth() {
-            try {
-                const response = await fetch(`${API_BASE_URL}/question/health`);
-                const data = await response.json();
-
-                if (data.status === 'healthy') {
-                    showStatus('服务状态正常', 'success');
-                } else {
-                    showStatus('服务状态异常', 'error');
-                }
-            } catch (error) {
-                showStatus('无法连接到服务', 'error');
-            }
-        }
-
-        function displayResponse(content) {
-            const responseEl = document.getElementById('responseContent');
-            responseEl.innerHTML = content;
-            responseEl.className = 'response-content stream-content';
-        }
-
-        function appendResponse(content) {
-            const responseEl = document.getElementById('responseContent');
-            responseEl.innerHTML += content;
-            responseEl.className = 'response-content stream-content';
-            responseEl.scrollTop = responseEl.scrollHeight;
-        }
-
-        function setLoading(loading) {
-            const responseEl = document.getElementById('responseContent');
-            const askBtn = document.getElementById('askBtn');
-
-            if (loading) {
-                responseEl.innerHTML = `
-                        <div class="loading">
-                            <div class="spinner"></div>
-                            <div>正在思考中...</div>
-                        </div>
-                    `;
-                askBtn.disabled = true;
-            } else {
-                askBtn.disabled = false;
-            }
-        }
-
-        function startStreaming() {
-            isStreaming = true;
-            document.getElementById('streamBtn').disabled = true;
-            document.getElementById('askBtn').disabled = true;
-            document.getElementById('stopBtn').disabled = false;
-
-            // 显示输入指示器
-            const responseEl = document.getElementById('responseContent');
-            responseEl.innerHTML = `
-                    <div class="loading">
-                        <div class="typing-indicator"></div>
-                        <div>AI正在回复中...</div>
-                    </div>
-                `;
+            stopStreaming(); // Also call stopStreaming to update UI and internal state
         }
 
         function stopStreaming() {
+            console.log("stopStreaming called");
+            // No eventSource.close() anymore, rely on reader.cancel()
             isStreaming = false;
-            document.getElementById('streamBtn').disabled = false;
-            document.getElementById('askBtn').disabled = false;
-            document.getElementById('stopBtn').disabled = true;
+            setLoading(false);
+            setButtonStates(false);
         }
 
-        function showStatus(message, type) {
-            const statusEl = document.getElementById('status');
-            statusEl.textContent = message;
-            statusEl.className = `status ${type}`;
-            statusEl.style.display = 'block';
-
-            // 3秒后隐藏状态消息
-            setTimeout(() => {
-                statusEl.style.display = 'none';
-            }, 3000);
+        function clearResponse() {
+            console.log("clearResponse called");
+            document.getElementById('response').textContent = '等待提问...';
         }
+
+        async function checkHealth() {
+            console.log("checkHealth called");
+            try {
+                const deepMode = document.getElementById('deepModeCheckbox').checked;
+                const response = await fetch(`/api/question/health?isDeepMode=${deepMode}`);
+                const data = await response.text();
+                alert('健康检查结果: ' + data);
+            } catch (error) {
+                console.error('健康检查失败:', error);
+                alert('健康检查失败: 无法连接到后端服务或服务异常。');
+            }
+        }
+
+        function setLoading(isLoading) {
+            console.log("setLoading called with", isLoading);
+            document.getElementById('loading').style.display = isLoading ? 'block' : 'none';
+        }
+
+        function setButtonStates(streaming) {
+            console.log("setButtonStates called with", streaming);
+            document.getElementById('askBtn').disabled = streaming;
+            document.getElementById('stopBtn').disabled = !streaming;
+            document.getElementById('clearBtn').disabled = streaming;
+            document.getElementById('healthBtn').disabled = streaming;
+        }
+
+        document.getElementById('goUpBtn').addEventListener('click', () => {
+            console.log("goUpBtn clicked");
+            const pathParts = currentProjectPath.split('/');
+            if (pathParts.length > 1) {
+                pathParts.pop();
+                listFiles(pathParts.join('/'));
+            } else {
+                listFiles(''); // Go to root
+            }
+        });
+
+        window.addEventListener('load', async () => {
+            console.log("Window loaded. Initializing..."); // This is the early log
+            setButtonStates(false); // Initialize button states
+            
+            // Assigning onclick handlers to buttons
+            const askBtn = document.getElementById('askBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const healthBtn = document.getElementById('healthBtn');
+
+            if (askBtn) askBtn.onclick = askQuestionStream;
+            else console.error("askBtn not found!");
+            
+            if (stopBtn) stopBtn.onclick = stopStream;
+            else console.error("stopBtn not found!");
+
+            if (clearBtn) clearBtn.onclick = clearResponse;
+            else console.error("clearBtn not found!");
+
+            if (healthBtn) healthBtn.onclick = checkHealth;
+            else console.error("healthBtn not found!");
+
+            // Ensure deepModeCheckbox is unchecked by default
+            const deepModeCheckbox = document.getElementById('deepModeCheckbox');
+            if (deepModeCheckbox) {
+                deepModeCheckbox.checked = false;
+            } else {
+                console.error("deepModeCheckbox not found!");
+            }
+
+            // Attempt to create 'document' directory if currentProjectPath is empty
+            if (!currentProjectPath) {
+                try {
+                    const response = await fetch('/api/file/create-folder', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ folderName: 'document' })
+                    });
+                    if (response.ok) {
+                        console.log("默认目录 'document' 已创建或已存在。");
+                        await listFiles('document');
+                    } else {
+                        const errorText = await response.text();
+                        console.warn(`创建默认目录 'document' 失败: ${errorText}`);
+                        await listFiles(''); // Fallback to root if creation fails
+                    }
+                } catch (error) {
+                    console.error('尝试创建默认目录时出错:', error);
+                    await listFiles(''); // Fallback to root on network error
+                }
+            }
+        });
     </script>
 </body>
 </html>

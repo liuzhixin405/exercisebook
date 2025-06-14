@@ -5,6 +5,8 @@ namespace OllamaContext7Api.Services
         public const string SectionName = "AIService";
         
         public string Provider { get; set; } = "Ollama";
+        public bool EnableMemory { get; set; } = false;
+        public string EmbeddingModelName { get; set; } = "nomic-embed-text";
         
         public OllamaOptions Ollama { get; set; } = new();
         public LMStudioOptions LMStudio { get; set; } = new();

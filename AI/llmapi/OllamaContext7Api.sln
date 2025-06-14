@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OllamaContext7Api", "OllamaContext7Api\OllamaContext7Api.csproj", "{B273EB84-B41C-FB5E-AAEE-DC3E4B1E4F03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B273EB84-B41C-FB5E-AAEE-DC3E4B1E4F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B273EB84-B41C-FB5E-AAEE-DC3E4B1E4F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B273EB84-B41C-FB5E-AAEE-DC3E4B1E4F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B273EB84-B41C-FB5E-AAEE-DC3E4B1E4F03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92A88C9D-8F7C-43D0-A45E-5588C0C846C2}
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,10 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using OllamaContext7Api.Services;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +22,7 @@ builder.Services.AddHttpClient<IAIService, AIService>();
 
 // 注册服务
 builder.Services.AddScoped<IAIService, AIService>();
+builder.Services.AddScoped<IFileService, FileService>();
 
 // 配置CORS
 builder.Services.AddCors(options =>
