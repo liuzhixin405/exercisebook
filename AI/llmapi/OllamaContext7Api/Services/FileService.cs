@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,13 +23,24 @@ namespace OllamaContext7Api.Services
         private readonly string _fileCacheDirectory;
         private readonly ILogger<FileService> _logger;
 
-        public FileService(ILogger<FileService> logger)
+        public FileService(ILogger<FileService> logger, IOptions<FileServiceOptions> options)
         {
-            _fileCacheDirectory = "D:/aproject";
             _logger = logger;
+            _fileCacheDirectory = options.Value.FileCacheDirectory;
+
+            if (string.IsNullOrEmpty(_fileCacheDirectory))
+            {
+                throw new ArgumentNullException("FileCacheDirectory", "File cache directory is not configured in appsettings.");
+            }
+            
             if (!Directory.Exists(_fileCacheDirectory))
             {
                 Directory.CreateDirectory(_fileCacheDirectory);
+                _logger.LogInformation($"创建文件缓存目录: {_fileCacheDirectory}");
+            }
+            else
+            {
+                _logger.LogInformation($"文件缓存目录已存在: {_fileCacheDirectory}");
             }
         }
 
@@ -67,6 +79,25 @@ namespace OllamaContext7Api.Services
 
             _logger.LogInformation($"文件 '{fileNameToReturn}' 已保存到缓存。");
             return fileNameToReturn;
+        }
+
+        public async Task SaveFileContentAsync(string path, string content)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentException("文件路径不能为空。", nameof(path));
+            }
+
+            var fullPath = Path.Combine(_fileCacheDirectory, path);
+            var directory = Path.GetDirectoryName(fullPath);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            _logger.LogInformation($"正在保存文件内容到: {path}");
+            await File.WriteAllTextAsync(fullPath, content);
+            _logger.LogInformation($"文件内容已成功保存到: {path}");
         }
 
         public async Task<string> ReadFileContentAsync(string fileName)

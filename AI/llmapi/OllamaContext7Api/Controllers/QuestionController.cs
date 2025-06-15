@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using OllamaContext7Api.Models;
 
 namespace OllamaContext7Api.Controllers
 {
@@ -42,7 +43,7 @@ namespace OllamaContext7Api.Controllers
                 _logger.LogInformation($"收到问题: {request.Question}");
 
                 // Reset the CancellationTokenSource
-                _cts = new CancellationTokenSource();
+
                 ct = _cts.Token;
 
                 // 设置SSE响应头
@@ -130,19 +131,5 @@ namespace OllamaContext7Api.Controllers
             var bytes = Encoding.UTF8.GetBytes(sseData);
             await Response.Body.WriteAsync(bytes, 0, bytes.Length);
         }
-    }
-
-    public class QuestionRequest
-    {
-        public string Question { get; set; } = "";
-        public List<string>? RelatedFiles { get; set; }
-        public bool IsDeepMode { get; set; }
-    }
-
-    public class QuestionResponse
-    {
-        public string Question { get; set; } = "";
-        public string Answer { get; set; } = "";
-        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
     }
 }

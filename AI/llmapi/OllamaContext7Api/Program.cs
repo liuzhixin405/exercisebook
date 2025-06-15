@@ -17,6 +17,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<AIServiceOptions>(
     builder.Configuration.GetSection(AIServiceOptions.SectionName));
 
+// 配置FileServiceOptions
+builder.Services.Configure<FileServiceOptions>(
+    builder.Configuration.GetSection("FileServiceOptions"));
+
 // 注册HTTP客户端
 builder.Services.AddHttpClient<IAIService, AIService>();
 

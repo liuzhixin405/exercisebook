@@ -12,5 +12,6 @@ namespace OllamaContext7Api.Services
         Task<bool> DeleteFileAsync(string fileName);
         Task<bool> DeleteAllFilesAsync(string? path = null);
         Task<bool> CreateFolderAsync(string folderName);
+        Task SaveFileContentAsync(string path, string content);
     }
 } 

@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
+using OllamaContext7Api.Models;
 
 namespace OllamaContext7Api.Services
 {
@@ -26,6 +27,55 @@ namespace OllamaContext7Api.Services
         private readonly ConcurrentDictionary<string, List<float>> _fileContentEmbeddings = new ConcurrentDictionary<string, List<float>>();
         private readonly ConcurrentDictionary<string, string> _fileContents = new ConcurrentDictionary<string, string>();
         private const int MAX_CHAT_MEMORY_SIZE = 5;
+        private const string SYSTEM_PROMPT_AGENT = """
+            You are an autonomous agent capable of executing file system operations.
+            Your task is to interpret user commands related to file management and respond with a JSON object detailing the intended operation and its parameters.
+            If the user's request is not a file operation, respond with "{\"operation\": \"chat\", \"reasoning\": \"The user's query is a general question and not a file operation.\"}"
+            
+            Supported operations:
+            - "create": To create a new file or directory.
+                - Path: The full path to the file or directory.
+                - Content: (Optional) The content for the file. Not applicable for directories.
+            - "read": To read the content of a file or list the contents of a directory.
+                - Path: The full path to the file or directory.
+            - "update": To update the content of an existing file.
+                - Path: The full path to the file.
+                - Content: The new content for the file.
+            - "delete": To delete a file or directory.
+                - Path: The full path to the file or directory.
+            - "list": To list files and directories within a given path.
+                - Path: The directory path to list.
+
+            Your response MUST be a JSON object conforming to the following structure:
+            {
+              "operation": "create" | "read" | "update" | "delete" | "list" | "chat" | "unknown",
+              "path": "path/to/file_or_directory",
+              "content": "file_content_if_applicable",
+              "reasoning": "Explanation if operation is unknown or chat"
+            }
+
+            Examples:
+            User: "创建一个名为 my_document.txt 的文件，内容是 'Hello World'"
+            Response: {"operation": "create", "path": "my_document.txt", "content": "Hello World"}
+
+            User: "读取 services/AIService.cs 的内容"
+            Response: {"operation": "read", "path": "services/AIService.cs"}
+
+            User: "删除 temporary_data 文件夹"
+            Response: {"operation": "delete", "path": "temporary_data"}
+
+            User: "列出当前目录下的所有文件"
+            Response: {"operation": "list", "path": "."}
+            
+            User: "创建一个名为 MyDotNetProject 的项目"
+            Response: {"operation": "create", "path": "MyDotNetProject"}
+
+            User: "什么是大语言模型？"
+            Response: {"operation": "chat", "reasoning": "The user's query is a general question and not a file operation."}
+
+            User: "我不知道该做什么"
+            Response: {"operation": "unknown", "reasoning": "The user's intent is unclear."}
+            """;
 
         public AIService(
             HttpClient httpClient,
@@ -47,171 +97,370 @@ namespace OllamaContext7Api.Services
         {
             _logger.LogInformation($"开始处理问题: {question}");
 
-            // 处理相关文件并生成嵌入
-            if (relatedFiles != null && relatedFiles.Any())
+            // Step 1: Attempt to interpret the question as a file operation command using LLM
+            _logger.LogInformation("尝试将问题解释为文件操作命令...");
+            AgentCommand agentCommand = null;
+            string llmInitialResponse = "";
+
+            try
             {
-                foreach (var fileName in relatedFiles)
+                var systemPromptContent = SYSTEM_PROMPT_AGENT;
+                var userPromptContent = $"用户命令: {question}";
+
+                _logger.LogInformation($"发送给LLM的系统提示: {{systemPromptContent}}");
+                _logger.LogInformation($"发送给LLM的用户命令: {{userPromptContent}}");
+
+                // For LMStudio, we use the chat completions API, which accepts a list of messages.
+                // For Ollama, we send a single prompt with the system and user content combined.
+                if (_options.Provider == "LMStudio")
                 {
-                    if (!_fileContents.ContainsKey(fileName))
+                    await foreach (var chunk in GetLMStudioStreamAsyncInternal(userPromptContent, cancellationToken, systemPromptContent))
                     {
-                        try
-                        {
-                            var content = await _fileService.ReadFileContentAsync(fileName);
-                            _fileContents[fileName] = content;
-                            if (_options.EnableMemory && !string.IsNullOrEmpty(_options.EmbeddingModelName))
-                            {
-                                var fileEmbedding = await VectorOperations.GetEmbeddingAsync(
-                                    _httpClient,
-                                    content,
-                                    _options.Ollama.Url.Replace("/api/generate", "/api/embeddings"),
-                                    _options.EmbeddingModelName);
-                                _fileContentEmbeddings[fileName] = fileEmbedding;
-                                _logger.LogInformation($"文件 '{fileName}' 内容及其嵌入已缓存。");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            _logger.LogWarning(ex, $"处理文件 '{fileName}' 失败，将不包含其内容。");
-                        }
+                        llmInitialResponse += chunk;
                     }
                 }
+                else // Ollama
+                {
+                    var combinedPrompt = $"{systemPromptContent}\n\n{userPromptContent}";
+                    await foreach (var chunk in GetOllamaStreamAsyncInternal(combinedPrompt, cancellationToken))
+                    {
+                        llmInitialResponse += chunk;
+                    }
+                }
+
+                _logger.LogInformation($"LLM 初始响应 (原始): {llmInitialResponse}");
+
+                // Attempt to parse the LLM's response as an AgentCommand
+                // We need to be careful with partial JSON responses from streaming.
+                // For now, we assume the initial response contains a complete JSON.
+                // In a real-world scenario, you might need a more robust JSON streaming parser.
+
+                // Find the first and last curly brace to extract a potential JSON
+                var firstBrace = llmInitialResponse.IndexOf('{');
+                var lastBrace = llmInitialResponse.LastIndexOf('}');
+
+                if (firstBrace != -1 && lastBrace != -1 && lastBrace > firstBrace)
+                {
+                    var jsonCandidate = llmInitialResponse.Substring(firstBrace, lastBrace - firstBrace + 1);
+                    _logger.LogInformation($"尝试解析的JSON候选: {jsonCandidate}");
+                    try
+                    {
+                        agentCommand = JsonSerializer.Deserialize<AgentCommand>(jsonCandidate, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                        _logger.LogInformation($"成功解析为 AgentCommand: Operation={(agentCommand?.OperationType)}, Path={(agentCommand?.Path ?? "N/A")}, Content={(agentCommand?.Content ?? "N/A")}, Reasoning={(agentCommand?.Reasoning ?? "N/A")}");
+                    }
+                    catch (JsonException ex)
+                    {
+                        _logger.LogWarning(ex, "解析LLM响应为AgentCommand失败，可能是非JSON格式或不完整JSON。回退到聊天模式。");
+                        // Fallback to chat if JSON parsing fails
+                        agentCommand = null;
+                    }
+                }
+                else
+                {
+                    _logger.LogInformation("LLM响应不包含完整的JSON结构，回退到聊天模式。");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "在尝试解释为文件操作命令时发生错误。回退到聊天模式。");
+                agentCommand = null; // Ensure fallback to chat
             }
 
-            var currentQuestionEmbedding = new List<float>();
-            if (_options.EnableMemory && !string.IsNullOrEmpty(_options.EmbeddingModelName))
+            if (agentCommand != null && agentCommand.OperationType != "chat" && agentCommand.OperationType != "unknown")
             {
+                _logger.LogInformation($"检测到文件操作命令: {agentCommand.OperationType} (Path: {agentCommand.Path ?? "N/A"})");
+                string resultMessage = "";
                 try
                 {
-                    currentQuestionEmbedding = await VectorOperations.GetEmbeddingAsync(
-                        _httpClient,
-                        question,
-                        _options.Ollama.Url.Replace("/api/generate", "/api/embeddings"), // Assuming embeddings endpoint is /api/embeddings
-                        _options.EmbeddingModelName);
-                    _logger.LogInformation($"问题嵌入生成成功，维度: {currentQuestionEmbedding.Count}");
+                    switch (agentCommand.OperationType.ToLowerInvariant())
+                    {
+                        case "create":
+                            if (!string.IsNullOrEmpty(agentCommand.Path))
+                            {
+                                if (agentCommand.Path.Contains(".")) // Heuristic for file vs directory
+                                {
+                                    await _fileService.SaveFileContentAsync(agentCommand.Path, agentCommand.Content ?? "");
+                                    resultMessage = $"文件 '{agentCommand.Path}' 已成功创建。";
+                                }
+                                else
+                                {
+                                    await _fileService.CreateFolderAsync(agentCommand.Path);
+                                    resultMessage = $"文件夹 '{agentCommand.Path}' 已成功创建。";
+                                }
+                            }
+                            else
+                            {
+                                resultMessage = "创建文件/文件夹失败：未提供路径。";
+                            }
+                            break;
+                        case "read":
+                            if (!string.IsNullOrEmpty(agentCommand.Path))
+                            {
+                                // Check if it's a directory
+                                var items = await _fileService.ListCachedFilesAsync(Path.GetDirectoryName(agentCommand.Path) ?? ".");
+                                var isDirectory = items.Children?.Any(f => f.Type == "directory" && f.Name.Equals(Path.GetFileName(agentCommand.Path), StringComparison.OrdinalIgnoreCase)) ?? false;
+
+                                if (isDirectory)
+                                {
+                                    // It's a directory, list its contents
+                                    var dirItems = await _fileService.ListCachedFilesAsync(agentCommand.Path);
+                                    if (dirItems.Children?.Any() ?? false)
+                                    {
+                                        var fileList = string.Join("\n", dirItems.Children.Select(i => i.Type == "directory" ? $"[DIR] {i.Name}" : $"[FILE] {i.Name}"));
+                                        resultMessage = $"目录 '{agentCommand.Path}' 的内容:\n{fileList}";
+                                    }
+                                    else
+                                    {
+                                        resultMessage = $"目录 '{agentCommand.Path}' 为空。";
+                                    }
+                                }
+                                else
+                                {
+                                    // Assume it's a file, read content
+                                    var content = await _fileService.ReadFileContentAsync(agentCommand.Path);
+                                    resultMessage = $"文件 '{agentCommand.Path}' 的内容:\n{content}";
+                                }
+                            }
+                            else
+                            {
+                                resultMessage = "读取文件/目录失败：未提供路径。";
+                            }
+                            break;
+                        case "update":
+                            if (!string.IsNullOrEmpty(agentCommand.Path) && agentCommand.Content != null)
+                            {
+                                // Assuming update only applies to files for now
+                                await _fileService.SaveFileContentAsync(agentCommand.Path, agentCommand.Content); // SaveFileContentAsync overwrites
+                                resultMessage = $"文件 '{agentCommand.Path}' 已成功更新。";
+                            }
+                            else
+                            {
+                                resultMessage = "更新文件失败：未提供路径或内容。";
+                            }
+                            break;
+                        case "delete":
+                            if (!string.IsNullOrEmpty(agentCommand.Path))
+                            {
+                                await _fileService.DeleteFileAsync(agentCommand.Path);
+                                resultMessage = $"文件/文件夹 '{agentCommand.Path}' 已成功删除。";
+                            }
+                            else
+                            {
+                                resultMessage = "删除文件/文件夹失败：未提供路径。";
+                            }
+                            break;
+                        case "list":
+                            if (!string.IsNullOrEmpty(agentCommand.Path))
+                            {
+                                var items = await _fileService.ListCachedFilesAsync(agentCommand.Path);
+                                if (items.Children?.Any() ?? false)
+                                {
+                                    var fileList = string.Join("\n", items.Children.Select(i => i.Type == "directory" ? $"[DIR] {i.Name}" : $"[FILE] {i.Name}"));
+                                    resultMessage = $"目录 '{agentCommand.Path}' 的内容:\n{fileList}";
+                                }
+                                else
+                                {
+                                    resultMessage = $"目录 '{agentCommand.Path}' 为空或不存在。";
+                                }
+                            }
+                            else
+                            {
+                                // Default to listing current directory if no path provided
+                                var items = await _fileService.ListCachedFilesAsync(".");
+                                if (items.Children?.Any() ?? false)
+                                {
+                                    var fileList = string.Join("\n", items.Children.Select(i => i.Type == "directory" ? $"[DIR] {i.Name}" : $"[FILE] {i.Name}"));
+                                    resultMessage = $"当前目录内容:\n{fileList}";
+                                }
+                                else
+                                {
+                                    resultMessage = "当前目录为空。";
+                                }
+                            }
+                            break;
+                        default:
+                            resultMessage = $"未知文件操作类型: {agentCommand.OperationType}";
+                            break;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogWarning(ex, "生成问题嵌入失败，将不使用记忆功能。");
-                    currentQuestionEmbedding = new List<float>(); // Clear embedding if failed
+                    _logger.LogError(ex, $"执行文件操作 '{(agentCommand.OperationType)}' 失败。");
+                    resultMessage = $"执行操作失败：{ex.Message}";
                 }
+                yield return resultMessage; // Yield the result of the file operation
+                yield break; // Stop further processing as command is handled
             }
-
-            var retrievedContext = "";
-            if (currentQuestionEmbedding.Any()) 
+            else // Fallback to existing chat logic if no command or "chat" or "unknown"
             {
-                var contextBuilder = new StringBuilder();
+                _logger.LogInformation($"LLM响应未被识别为文件操作命令 (操作类型: {(agentCommand?.OperationType ?? "N/A")})，或LLM指示进行聊天，执行常规问答模式。");
 
-                // Retrieve relevant chat memories
-                if (_chatMemory.Any())
+                // 处理相关文件并生成嵌入
+                if (relatedFiles != null && relatedFiles.Any())
                 {
-                    var relevantMemories = _chatMemory
-                        .OrderByDescending(entry => VectorOperations.CosineSimilarity(currentQuestionEmbedding, entry.QuestionEmbedding))
-                        .Take(2) // Get top 2 relevant memories
-                        .ToList();
-
-                    if (relevantMemories.Any())
+                    foreach (var fileName in relatedFiles)
                     {
-                        _logger.LogInformation($"找到 {relevantMemories.Count} 条相关历史记忆。");
-                        foreach (var memory in relevantMemories)
+                        if (!_fileContents.ContainsKey(fileName))
                         {
-                            contextBuilder.AppendLine($"历史问题: {memory.Question}");
-                            contextBuilder.AppendLine($"历史回答: {memory.Answer}");
+                            try
+                            {
+                                var content = await _fileService.ReadFileContentAsync(fileName);
+                                _fileContents[fileName] = content;
+                                if (_options.EnableMemory && !string.IsNullOrEmpty(_options.EmbeddingModelName))
+                                {
+                                    var fileEmbedding = await VectorOperations.GetEmbeddingAsync(
+                                        _httpClient,
+                                        content,
+                                        _options.Ollama.Url.Replace("/api/generate", "/api/embeddings"),
+                                        _options.EmbeddingModelName);
+                                    _fileContentEmbeddings[fileName] = fileEmbedding;
+                                    _logger.LogInformation($"文件 '{fileName}' 内容及其嵌入已缓存。");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogWarning(ex, $"处理文件 '{fileName}' 失败，将不包含其内容。");
+                            }
                         }
                     }
                 }
 
-                // Retrieve relevant file contents (if any)
+                var currentQuestionEmbedding = new List<float>();
                 if (_options.EnableMemory && !string.IsNullOrEmpty(_options.EmbeddingModelName))
                 {
-                    if (relatedFiles != null && relatedFiles.Any())
+                    try
                     {
-                        // 如果提供了特定相关文件，则使用所有这些文件的内容
-                        foreach (var fileName in relatedFiles)
-                        {
-                            if (_fileContents.TryGetValue(fileName, out var fileContent))
-                            {
-                                _logger.LogInformation($"使用指定相关文件内容: {fileName}");
-                                contextBuilder.AppendLine($"相关文件: {fileName}");
-                                contextBuilder.AppendLine($"文件内容: {fileContent}");
-                            }
-                        }
+                        currentQuestionEmbedding = await VectorOperations.GetEmbeddingAsync(
+                            _httpClient,
+                            question,
+                            _options.Ollama.Url.Replace("/api/generate", "/api/embeddings"), // Assuming embeddings endpoint is /api/embeddings
+                            _options.EmbeddingModelName);
+                        _logger.LogInformation($"问题嵌入生成成功，维度: {currentQuestionEmbedding.Count}");
                     }
-                    else if (_fileContentEmbeddings.Any()) // 如果没有指定相关文件，则回退到对所有缓存文件进行相似度搜索
+                    catch (Exception ex)
                     {
-                        var relevantFileEntries = _fileContentEmbeddings
-                            .Select(kvp => new { FileName = kvp.Key, Embedding = kvp.Value })
-                            .OrderByDescending(entry => VectorOperations.CosineSimilarity(currentQuestionEmbedding, entry.Embedding))
-                            .Take(1) // 在没有指定相关文件时，保留顶部1个相关文件
+                        _logger.LogWarning(ex, "生成问题嵌入失败，将不使用记忆功能。");
+                        currentQuestionEmbedding = new List<float>(); // Clear embedding if failed
+                    }
+                }
+
+                var retrievedContext = "";
+                if (currentQuestionEmbedding.Any()) 
+                {
+                    var contextBuilder = new StringBuilder();
+
+                    // Retrieve relevant chat memories
+                    if (_chatMemory.Any())
+                    {
+                        var relevantMemories = _chatMemory
+                            .OrderByDescending(entry => VectorOperations.CosineSimilarity(currentQuestionEmbedding, entry.QuestionEmbedding))
+                            .Take(2) // Get top 2 relevant memories
                             .ToList();
 
-                        foreach (var fileEntry in relevantFileEntries)
+                        if (relevantMemories.Any())
                         {
-                            if (_fileContents.TryGetValue(fileEntry.FileName, out var fileContent))
+                            _logger.LogInformation($"找到 {relevantMemories.Count} 条相关历史记忆。");
+                            foreach (var memory in relevantMemories)
                             {
-                                _logger.LogInformation($"找到相关文件内容: {fileEntry.FileName}");
-                                contextBuilder.AppendLine($"相关文件: {fileEntry.FileName}");
-                                contextBuilder.AppendLine($"文件内容: {fileContent}");
+                                contextBuilder.AppendLine($"历史问题: {memory.Question}");
+                                contextBuilder.AppendLine($"历史回答: {memory.Answer}");
                             }
                         }
                     }
+
+                    // Retrieve relevant file contents (if any)
+                    if (_options.EnableMemory && !string.IsNullOrEmpty(_options.EmbeddingModelName))
+                    {
+                        if (relatedFiles != null && relatedFiles.Any())
+                        {
+                            // 如果提供了特定相关文件，则使用所有这些文件的内容
+                            foreach (var fileName in relatedFiles)
+                            {
+                                if (_fileContents.TryGetValue(fileName, out var fileContent))
+                                {
+                                    _logger.LogInformation($"使用指定相关文件内容: {fileName}");
+                                    contextBuilder.AppendLine($"相关文件: {fileName}");
+                                    contextBuilder.AppendLine($"文件内容: {fileContent}");
+                                }
+                            }
+                        }
+                        else if (_fileContentEmbeddings.Any()) // 如果没有指定相关文件，则回退到对所有缓存文件进行相似度搜索
+                        {
+                            var relevantFileEntries = _fileContentEmbeddings
+                                .Select(kvp => new { FileName = kvp.Key, Embedding = kvp.Value })
+                                .OrderByDescending(entry => VectorOperations.CosineSimilarity(currentQuestionEmbedding, entry.Embedding))
+                                .Take(1) // 在没有指定相关文件时，保留顶部1个相关文件
+                                .ToList();
+
+                            foreach (var fileEntry in relevantFileEntries)
+                            {
+                                if (_fileContents.TryGetValue(fileEntry.FileName, out var fileContent))
+                                {
+                                    _logger.LogInformation($"找到相关文件内容: {fileEntry.FileName}");
+                                    contextBuilder.AppendLine($"相关文件: {fileEntry.FileName}");
+                                    contextBuilder.AppendLine($"文件内容: {fileContent}");
+                                }
+                            }
+                        }
+                    }
+
+                    retrievedContext = contextBuilder.ToString();
+                    _logger.LogInformation($"Retrieved Context for RAG: {retrievedContext}");
                 }
 
-                retrievedContext = contextBuilder.ToString();
-                _logger.LogInformation($"Retrieved Context for RAG: {retrievedContext}");
-            }
+                var prompt = await BuildOptimizedPromptAsync(question, cancellationToken, retrievedContext);
 
-            var prompt = await BuildOptimizedPromptAsync(question, cancellationToken, retrievedContext);
-
-            string fullAnswer = "";
-            if (isDeepMode)
-            {
-                    _logger.LogInformation("深度模式启用：使用LMStudio模型");
-                    await foreach (var chunk in GetLMStudioStreamAsyncInternal(prompt, cancellationToken))
-                    {
-                        fullAnswer += chunk;
-                        yield return chunk;
-                    }    
-            }
-            else
-            {
-                    _logger.LogInformation("非深度模式：使用Ollama模型");
-                    await foreach (var chunk in GetOllamaStreamAsyncInternal(prompt, cancellationToken))
-                    {
-                        fullAnswer += chunk;
-                        yield return chunk;
-                    }
-            }
-
-            // Store in memory cache
-            if (_options.EnableMemory && !string.IsNullOrEmpty(_options.EmbeddingModelName) && !string.IsNullOrEmpty(fullAnswer))
-            {
-                try
+                string fullAnswer = "";
+                if (isDeepMode)
                 {
-                    var answerEmbedding = await VectorOperations.GetEmbeddingAsync(
-                        _httpClient,
-                        fullAnswer,
-                        _options.Ollama.Url.Replace("/api/generate", "/api/embeddings"),
-                        _options.EmbeddingModelName);
-
-                    var newMemoryEntry = new ChatMemoryEntry
-                    {
-                        Question = question,
-                        Answer = fullAnswer,
-                        QuestionEmbedding = currentQuestionEmbedding,
-                        AnswerEmbedding = answerEmbedding,
-                        Timestamp = DateTime.UtcNow
-                    };
-
-                    _chatMemory.Enqueue(newMemoryEntry);
-                    while (_chatMemory.Count > MAX_CHAT_MEMORY_SIZE)
-                    {
-                        _chatMemory.TryDequeue(out _); // Remove oldest entry if exceeding size
-                    }
-                    _logger.LogInformation($"新对话已添加到记忆，当前记忆大小: {_chatMemory.Count}");
+                        _logger.LogInformation("深度模式启用：使用LMStudio模型");
+                        await foreach (var chunk in GetLMStudioStreamAsyncInternal(prompt, cancellationToken))
+                        {
+                            fullAnswer += chunk;
+                            yield return chunk;
+                        }    
                 }
-                catch (Exception ex)
+                else
                 {
-                    _logger.LogWarning(ex, "生成回答嵌入或存储记忆失败。");
+                        _logger.LogInformation("非深度模式：使用Ollama模型");
+                        await foreach (var chunk in GetOllamaStreamAsyncInternal(prompt, cancellationToken))
+                        {
+                            fullAnswer += chunk;
+                            yield return chunk;
+                        }
+                }
+
+                // Store in memory cache
+                if (_options.EnableMemory && !string.IsNullOrEmpty(_options.EmbeddingModelName) && !string.IsNullOrEmpty(fullAnswer))
+                {
+                    try
+                    {
+                        var answerEmbedding = await VectorOperations.GetEmbeddingAsync(
+                            _httpClient,
+                            fullAnswer,
+                            _options.Ollama.Url.Replace("/api/generate", "/api/embeddings"),
+                            _options.EmbeddingModelName);
+
+                        var newMemoryEntry = new ChatMemoryEntry
+                        {
+                            Question = question,
+                            Answer = fullAnswer,
+                            QuestionEmbedding = currentQuestionEmbedding,
+                            AnswerEmbedding = answerEmbedding,
+                            Timestamp = DateTime.UtcNow
+                        };
+
+                        _chatMemory.Enqueue(newMemoryEntry);
+                        while (_chatMemory.Count > MAX_CHAT_MEMORY_SIZE)
+                        {
+                            _chatMemory.TryDequeue(out _); // Remove oldest entry if exceeding size
+                        }
+                        _logger.LogInformation($"新对话已添加到记忆，当前记忆大小: {_chatMemory.Count}");
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogWarning(ex, "生成回答嵌入或存储记忆失败。");
+                    }
                 }
             }
         }
@@ -310,35 +559,35 @@ namespace OllamaContext7Api.Services
                 yield break;
             }
 
-            using var reader = streamResult.Reader;
-
-            string line;
-            while ((line = await reader.ReadLineAsync()) != null)
+            using (var response = streamResult.HttpResponse)
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var reader = new StreamReader(stream))
             {
-                if (cancellationToken.IsCancellationRequested)
-                    yield break;
-
-                if (string.IsNullOrWhiteSpace(line))
-                    continue;
-
-                var parseSuccess = TryParseStreamResponse(line, out var streamResponse);
-
-                if (!parseSuccess)
+                while (!reader.EndOfStream && !cancellationToken.IsCancellationRequested)
                 {
-                    _logger.LogWarning($"解析响应失败: {line}");
-                    continue;
-                }
+                    var line = await reader.ReadLineAsync();
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
 
-                if (streamResponse?.Response != null)
-                {
-                    yield return streamResponse.Response;
-                }
+                    var parseSuccess = TryParseStreamResponse(line, out var streamResponse);
 
-                // 检查是否完成
-                if (streamResponse?.Done == true)
-                {
-                    _logger.LogInformation("响应完成");
-                    break;
+                    if (!parseSuccess)
+                    {
+                        _logger.LogWarning($"解析响应失败: {line}");
+                        continue;
+                    }
+
+                    if (streamResponse?.Response != null)
+                    {
+                        yield return streamResponse.Response;
+                    }
+
+                    // 检查是否完成
+                    if (streamResponse?.Done == true)
+                    {
+                        _logger.LogInformation("响应完成");
+                        break;
+                    }
                 }
             }
         }
@@ -368,7 +617,7 @@ namespace OllamaContext7Api.Services
                 {
                     Success = true,
                     Reader = reader,
-                    Response = response
+                    HttpResponse = response
                 };
             }
             catch (Exception ex)
@@ -433,155 +682,48 @@ namespace OllamaContext7Api.Services
         }
 
         private async IAsyncEnumerable<string> GetLMStudioStreamAsyncInternal(string prompt,
-            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            [EnumeratorCancellation] CancellationToken cancellationToken = default, string systemPrompt = null)
         {
+            _logger.LogInformation($"向LMStudio发送请求... 模型: {_options.LMStudio.Model}");
+
+            var messages = new List<object>();
+
+            if (!string.IsNullOrEmpty(systemPrompt))
+            {
+                messages.Add(new { role = "system", content = systemPrompt });
+            }
+
+            messages.Add(new { role = "user", content = prompt });
+
             var request = new
             {
+                type = "lmstudio",
                 model = _options.LMStudio.Model,
-                messages = new[] { new { role = "user", content = prompt } },
-                stream = true,
-                temperature = 0.7,
-                max_tokens = 1000
+                messages = messages,
+                stream = true
             };
-
-            _logger.LogInformation($"发送LM Studio请求，提示词长度: {prompt.Length}");
 
             var streamResult = await CreateStreamConnectionAsync(request, cancellationToken);
-
-            if (!streamResult.Success)
+            using (var response = streamResult.HttpResponse)
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var reader = new StreamReader(stream))
             {
-                yield return $"处理失败: {streamResult.ErrorMessage}";
-                yield break;
-            }
-
-            using var reader = streamResult.Reader;
-
-            string line;
-            while ((line = await reader.ReadLineAsync()) != null)
-            {
-                if (cancellationToken.IsCancellationRequested)
-                    yield break;
-
-                if (string.IsNullOrWhiteSpace(line) || line == "data: [DONE]")
-                    continue;
-
-                var parseSuccess = TryParseLMStudioStreamResponse(line, out var streamResponse);
-
-                if (!parseSuccess)
+                while (!reader.EndOfStream && !cancellationToken.IsCancellationRequested)
                 {
-                    _logger.LogWarning($"解析LM Studio响应失败: {line}");
-                    continue;
-                }
+                    var line = await reader.ReadLineAsync();
+                    if (string.IsNullOrWhiteSpace(line)) continue;
 
-                if (streamResponse?.Choices?.FirstOrDefault()?.Delta?.Content != null)
-                {
-                    yield return streamResponse.Choices[0].Delta.Content;
-                }
-
-                // 检查是否完成
-                if (streamResponse?.Choices?.FirstOrDefault()?.FinishReason != null)
-                {
-                    _logger.LogInformation("LM Studio响应完成");
-                    break;
+                    // LMStudio uses SSE format, data: {json}
+                    if (line.StartsWith("data:"))
+                    {
+                        var json = line.Substring("data:".Length).Trim();
+                        if (TryParseLMStudioStreamResponse(json, out var streamResponse))
+                        {
+                            yield return streamResponse.Choices[0].Delta.Content;
+                        }
+                    }
                 }
             }
         }
-
-        public class OllamaStreamResponse
-        {
-            public string Response { get; set; } = "";
-            public bool Done { get; set; }
-            public string Model { get; set; } = "";
-            public DateTime CreatedAt { get; set; }
-        }
-
-        public class LMStudioStreamResponse
-        {
-            public string Id { get; set; } = "";
-            public string Object { get; set; } = "";
-            public long Created { get; set; }
-            public string Model { get; set; } = "";
-            public List<LMStudioChoice> Choices { get; set; } = new();
-        }
-
-        public class LMStudioChoice
-        {
-            public int Index { get; set; }
-            public LMStudioDelta Delta { get; set; } = new();
-            public object? FinishReason { get; set; }
-        }
-
-        public class LMStudioDelta
-        {
-            public string Content { get; set; } = "";
-        }
-
-        public class ChatMemoryEntry
-        {
-            public string Question { get; set; }
-            public string Answer { get; set; }
-            public List<float> QuestionEmbedding { get; set; }
-            public List<float> AnswerEmbedding { get; set; }
-            public DateTime Timestamp { get; set; }
-        }
-
-        private class StreamConnectionResult
-        {
-            public bool Success { get; set; }
-            public string ErrorMessage { get; set; } = "";
-            public StreamReader? Reader { get; set; }
-            public HttpResponseMessage? Response { get; set; }
-        }
-    }
-
-    public static class VectorOperations
-    {
-        public static async Task<List<float>> GetEmbeddingAsync(HttpClient httpClient, string text, string modelUrl, string embeddingModelName)
-        {
-            var request = new
-            {
-                model = embeddingModelName,
-                prompt = text
-            };
-            var response = await httpClient.PostAsJsonAsync(modelUrl, request);
-            response.EnsureSuccessStatusCode();
-
-            var embeddingResponse = await response.Content.ReadFromJsonAsync<OllamaEmbeddingResponse>();
-            return embeddingResponse?.Embedding ?? new List<float>();
-        }
-
-        public static double CosineSimilarity(List<float> vector1, List<float> vector2)
-        {
-            if (vector1 == null || vector2 == null || vector1.Count == 0 || vector1.Count != vector2.Count)
-            {
-                return 0.0;
-            }
-
-            double dotProduct = 0.0;
-            double magnitude1 = 0.0;
-            double magnitude2 = 0.0;
-
-            for (int i = 0; i < vector1.Count; i++)
-            {
-                dotProduct += vector1[i] * vector2[i];
-                magnitude1 += Math.Pow(vector1[i], 2);
-                magnitude2 += Math.Pow(vector2[i], 2);
-            }
-
-            magnitude1 = Math.Sqrt(magnitude1);
-            magnitude2 = Math.Sqrt(magnitude2);
-
-            if (magnitude1 == 0 || magnitude2 == 0)
-            {
-                return 0.0;
-            }
-
-            return dotProduct / (magnitude1 * magnitude2);
-        }
-    }
-
-    public class OllamaEmbeddingResponse
-    {
-        public List<float> Embedding { get; set; } = new List<float>();
     }
 }
