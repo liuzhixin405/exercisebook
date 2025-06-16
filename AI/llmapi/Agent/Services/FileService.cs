@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OllamaContext7Api.Services
+namespace AiAgent.Services
 {
     // 新增：用于表示文件或文件夹的结构
     public class FileExplorerItem

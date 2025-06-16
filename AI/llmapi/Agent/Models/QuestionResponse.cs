@@ -1,6 +1,6 @@
 using System;
 
-namespace OllamaContext7Api.Models
+namespace AiAgent.Models
 {
     public class QuestionResponse
     {

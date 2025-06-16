@@ -1,7 +1,7 @@
 using System.IO;
 using System.Net.Http;
 
-namespace OllamaContext7Api.Models
+namespace AiAgent.Models
 {
     public class StreamConnectionResult
     {

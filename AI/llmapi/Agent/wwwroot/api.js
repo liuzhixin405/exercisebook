@@ -1,4 +1,4 @@
-// OllamaContext7Api/wwwroot/api.js
+// AiAgent/wwwroot/api.js
 
 const backendBaseUrl = ''; // If your backend is at a different origin, specify it here.
 

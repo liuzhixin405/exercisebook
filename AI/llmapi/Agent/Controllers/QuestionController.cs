@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OllamaContext7Api.Services;
+using AiAgent.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using OllamaContext7Api.Models;
+using AiAgent.Models;
 
-namespace OllamaContext7Api.Controllers
+namespace AiAgent.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -30,7 +30,9 @@ namespace OllamaContext7Api.Controllers
         [HttpPost("ask-stream")]
         public async Task AskQuestionStream([FromBody] QuestionRequest request)
         {
-            CancellationToken ct = default;
+            // Reset the CancellationTokenSource
+
+            var ct = _cts.Token;
             try
             {
                 if (string.IsNullOrWhiteSpace(request?.Question))
@@ -42,9 +44,7 @@ namespace OllamaContext7Api.Controllers
 
                 _logger.LogInformation($"收到问题: {request.Question}");
 
-                // Reset the CancellationTokenSource
 
-                ct = _cts.Token;
 
                 // 设置SSE响应头
                 Response.ContentType = "text/event-stream";
@@ -97,7 +97,7 @@ namespace OllamaContext7Api.Controllers
                 {
                     status = isHealthy ? "healthy" : "unhealthy",
                     timestamp = DateTime.UtcNow,
-                    service = "OllamaContext7Api"
+                    service = "AiAgent"
                 });
             }
             catch (Exception ex)

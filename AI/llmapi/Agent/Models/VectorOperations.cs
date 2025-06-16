@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace OllamaContext7Api.Models
+namespace AiAgent.Models
 {
     public static class VectorOperations
     {

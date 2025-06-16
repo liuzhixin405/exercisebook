@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace OllamaContext7Api.Services
+namespace AiAgent.Services
 {
     public interface IFileService
     {

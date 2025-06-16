@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace OllamaContext7Api.Models
+namespace AiAgent.Models
 {
     public class LMStudioStreamResponse
     {

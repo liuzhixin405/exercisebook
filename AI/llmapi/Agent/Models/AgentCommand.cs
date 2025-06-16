@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace OllamaContext7Api.Models
+namespace AiAgent.Models
 {
     public class AgentCommand
     {

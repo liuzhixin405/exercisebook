@@ -1,4 +1,4 @@
-namespace OllamaContext7Api.Services
+namespace AiAgent.Services
 {
     public class AIServiceOptions
     {

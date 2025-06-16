@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OllamaContext7Api.Services;
+using AiAgent.Services;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -76,7 +76,7 @@ app.MapGet("/health", async (IAIService aiService) =>
     {
         status = isHealthy ? "healthy" : "unhealthy",
         timestamp = DateTime.UtcNow,
-        service = "OllamaContext7Api"
+        service = "AiAgent"
     });
 });
 

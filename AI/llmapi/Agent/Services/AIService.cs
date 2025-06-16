@@ -13,9 +13,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using OllamaContext7Api.Models;
+using AiAgent.Models;
 
-namespace OllamaContext7Api.Services
+namespace AiAgent.Services
 {
     public class AIService : IAIService
     {

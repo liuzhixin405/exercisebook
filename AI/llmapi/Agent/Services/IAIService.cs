@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OllamaContext7Api.Services
+namespace AiAgent.Services
 {
     public interface IAIService
     {

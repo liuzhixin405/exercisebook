@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OllamaContext7Api.Services;
+using AiAgent.Services;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace OllamaContext7Api.Controllers
+namespace AiAgent.Controllers
 {
     [ApiController]
     [Route("api/file")]
