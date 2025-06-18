@@ -14,34 +14,34 @@ namespace VSAIPluginNew.AI
         // Ollama模型列表
         public static readonly List<string> OllamaModels = new List<string>
         {
-            "qwen2.5-coder-14b",  // 大模型，处理复杂任务
-            "deepseek-coder"      // 小模型，处理简单任务
+            "qwen2.5-coder-7b",  // 大模型，处理复杂任务
+            "qwen/qwen3-8b"        // 小模型，全部用KMStudio的qwen/qwen3-8b
         };
 
         // 模型端口映射
         public static readonly Dictionary<string, int> ModelPorts = new Dictionary<string, int>
         {
-            ["qwen2.5-coder-14b"] = 11434,
-            ["deepseek-coder"] = 11438
+            ["qwen2.5-coder-7b"] = 11434,
+            ["qwen/qwen3-8b"] = 1234 // 假设KMStudio端口为1234，如有不同请调整
         };
 
         // Ollama模型实际名称映射
         public static readonly Dictionary<string, string> ModelNames = new Dictionary<string, string>
         {
-            ["qwen2.5-coder-14b"] = "qwen2.5-coder:14b",
-            ["deepseek-coder"] = "deepseek-coder:1.3b"
+            ["qwen2.5-coder-7b"] = "qwen2.5-coder:7b",
+            ["qwen/qwen3-8b"] = "qwen/qwen3-8b"
         };
 
         // 模型任务分配映射
         public static readonly Dictionary<string, string> TaskModelMapping = new Dictionary<string, string>
         {
-            ["代码分析"] = "deepseek-coder",        // 简单的代码分析任务
-            ["代码生成"] = "deepseek-coder",        // 简单的代码生成任务
-            ["文本总结"] = "deepseek-coder",        // 简单的文本处理任务
-            ["复杂分析"] = "qwen2.5-coder-14b",     // 复杂的代码分析任务
-            ["多文件处理"] = "qwen2.5-coder-14b",   // 涉及多个文件的任务
-            ["架构设计"] = "qwen2.5-coder-14b",     // 系统架构相关任务
-            ["综合任务"] = "qwen2.5-coder-14b"      // 默认使用大模型
+            ["代码分析"] = "qwen/qwen3-8b",        // 简单的代码分析任务
+            ["代码生成"] = "qwen/qwen3-8b",        // 简单的代码生成任务
+            ["文本总结"] = "qwen/qwen3-8b",        // 简单的文本处理任务
+            ["复杂分析"] = "qwen2.5-coder-7b",     // 复杂的代码分析任务
+            ["多文件处理"] = "qwen2.5-coder-7b",   // 涉及多个文件的任务
+            ["架构设计"] = "qwen2.5-coder-7b",     // 系统架构相关任务
+            ["综合任务"] = "qwen2.5-coder-7b"      // 默认使用大模型
         };
         
         // 定义一组预设的系统消息模板
@@ -161,7 +161,7 @@ namespace VSAIPluginNew.AI
         {
             try
             {
-                var modelName = "qwen2.5-coder-14b"; // 默认使用大模型
+                var modelName = "qwen2.5-coder-7b"; // 默认使用大模型
                 if (TaskModelMapping.ContainsKey(taskType))
                 {
                     modelName = TaskModelMapping[taskType];
@@ -173,7 +173,7 @@ namespace VSAIPluginNew.AI
                 if (!await manager.IsModelAvailableAsync(modelName))
                 {
                     // 如果指定模型不可用，尝试使用另一个模型
-                    var fallbackModel = modelName == "qwen2.5-coder-14b" ? "deepseek-coder" : "qwen2.5-coder-14b";
+                    var fallbackModel = modelName == "qwen2.5-coder-7b" ? "qwen/qwen3-8b" : "qwen2.5-coder-7b";
                     if (await manager.IsModelAvailableAsync(fallbackModel))
                     {
                         modelName = fallbackModel;
@@ -198,7 +198,7 @@ namespace VSAIPluginNew.AI
             {
                 var manager = GetMultiAgentManager();
                 // 多文件处理默认使用大模型
-                const string modelName = "qwen2.5-coder-14b";
+                const string modelName = "qwen2.5-coder-7b";
                 
                 if (!await manager.IsModelAvailableAsync(modelName))
                 {

@@ -2,22 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text;
+using System.Linq;
 
 namespace VSAIPluginNew.AI
 {
     public sealed class MultiAgentManager
     {
         private readonly Dictionary<string, OllamaAgent> _ollamaAgents;
+        private readonly Dictionary<string, LMStudioAgent> _lmstudioAgents;
         private static readonly object _lock = new object();
         private static volatile MultiAgentManager? _instance;
 
         private MultiAgentManager()
         {
             _ollamaAgents = new Dictionary<string, OllamaAgent>();
+            _lmstudioAgents = new Dictionary<string, LMStudioAgent>();
             
             // 初始化本地Ollama模型
-            InitializeOllamaModel("deepseek-coder", "你是一个专注于代码分析和生成的AI助手", 11438);
-            InitializeOllamaModel("qwen2.5-coder-14b", "你是一个专注于复杂代码分析和生成的AI助手", 11434);
+            InitializeOllamaModel("qwen2.5-coder-7b", "你是一个专注于复杂代码分析和生成的AI助手", 11434);
+            // 初始化LMStudio模型
+            InitializeLMStudioModel("qwen/qwen3-8b", "你是一个专注于代码分析和生成的AI助手", 1234);
         }
 
         private void InitializeOllamaModel(string modelName, string systemMessage, int port)
@@ -32,6 +36,21 @@ namespace VSAIPluginNew.AI
             catch (Exception ex)
             {
                 Console.WriteLine($"初始化模型 {modelName} 失败: {ex.Message}");
+            }
+        }
+
+        private void InitializeLMStudioModel(string modelName, string systemMessage, int port)
+        {
+            try
+            {
+                if (!_lmstudioAgents.ContainsKey(modelName))
+                {
+                    _lmstudioAgents[modelName] = new LMStudioAgent(modelName, systemMessage, port);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"初始化LMStudio模型 {modelName} 失败: {ex.Message}");
             }
         }
 
@@ -57,35 +76,26 @@ namespace VSAIPluginNew.AI
                 // 根据任务类型选择合适的模型
                 var modelName = taskType switch
                 {
-                    "代码分析" or "代码生成" or "文本总结" => "deepseek-coder",
-                    _ => "qwen2.5-coder-14b" // 默认使用大模型
+                    "代码分析" or "代码生成" or "文本总结" => "qwen/qwen3-8b",
+                    _ => "qwen2.5-coder-7b" // 默认使用大模型
                 };
 
-                // 尝试获取模型实例
-                if (!_ollamaAgents.TryGetValue(modelName, out var agent))
+                if (modelName == "qwen/qwen3-8b")
                 {
-                    // 如果主选模型不可用，尝试使用另一个模型
-                    var fallbackModel = modelName == "qwen2.5-coder-14b" ? "deepseek-coder" : "qwen2.5-coder-14b";
-                    if (_ollamaAgents.TryGetValue(fallbackModel, out var backupAgent))
+                    if (!_lmstudioAgents.TryGetValue(modelName, out var agent))
                     {
-                        return await backupAgent.GenerateReplyAsync($"[以 {taskType} 模式回答] {query}");
+                        return $"错误：没有可用的LMStudio模型来处理该请求";
                     }
-                    return $"错误：没有可用的模型来处理该请求";
+                    return await agent.GenerateReplyAsync(query);
                 }
-
-                // 检查模型是否可用
-                if (!await IsModelAvailableAsync(modelName))
+                else
                 {
-                    // 如果主选模型不可用，尝试使用另一个模型
-                    var fallbackModel = modelName == "qwen2.5-coder-14b" ? "deepseek-coder" : "qwen2.5-coder-14b";
-                    if (await IsModelAvailableAsync(fallbackModel))
+                    if (!_ollamaAgents.TryGetValue(modelName, out var agent))
                     {
-                        return await _ollamaAgents[fallbackModel].GenerateReplyAsync($"[以 {taskType} 模式回答] {query}");
+                        return $"错误：没有可用的Ollama模型来处理该请求";
                     }
-                    return $"错误：所有模型都不可用，请检查Ollama服务是否正常运行";
+                    return await agent.GenerateReplyAsync(query);
                 }
-
-                return await agent.GenerateReplyAsync(query);
             }
             catch (Exception ex)
             {
@@ -95,21 +105,15 @@ namespace VSAIPluginNew.AI
 
         public async Task<string> ProcessComplexQueryAsync(string query)
         {
-            try 
+            try
             {
                 // 对于复杂查询，优先使用大模型
-                const string modelName = "qwen2.5-coder-14b";
-                if (!await IsModelAvailableAsync(modelName))
+                const string modelName = "qwen2.5-coder-7b";
+                if (!_ollamaAgents.TryGetValue(modelName, out var agent))
                 {
-                    // 如果大模型不可用，尝试使用小模型
-                    if (await IsModelAvailableAsync("deepseek-coder"))
-                    {
-                        return await _ollamaAgents["deepseek-coder"].GenerateReplyAsync(query);
-                    }
-                    return "错误：没有可用的模型来处理复杂查询";
+                    return "错误：没有可用的Ollama大模型来处理复杂查询";
                 }
-
-                return await _ollamaAgents[modelName].GenerateReplyAsync(query);
+                return await agent.GenerateReplyAsync(query);
             }
             catch (Exception ex)
             {
@@ -122,13 +126,11 @@ namespace VSAIPluginNew.AI
             try
             {
                 // 多文件处理默认使用大模型
-                const string modelName = "qwen2.5-coder-14b";
-                if (!await IsModelAvailableAsync(modelName))
+                const string modelName = "qwen2.5-coder-7b";
+                if (!_ollamaAgents.TryGetValue(modelName, out var agent))
                 {
                     throw new Exception("大模型不可用，多文件分析任务需要使用大模型进行处理。");
                 }
-                
-                var agent = _ollamaAgents[modelName];
                 var prompt = $"分析以下文件并回答问题：\n\n文件内容：\n{string.Join("\n\n", filesContent)}\n\n问题：{query}";
                 return await agent.GenerateReplyAsync(prompt);
             }

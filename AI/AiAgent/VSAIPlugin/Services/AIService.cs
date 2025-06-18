@@ -4,12 +4,42 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using VSAIPluginNew.AI;
-
+using System.Collections.Concurrent;
+using VSAIPluginNew.Services;
 
 namespace VSAIPluginNew.Services
 {
     public class AIService : IAIService
     {
+        // 聊天历史缓存
+        private static readonly ConcurrentQueue<ChatMemoryEntry> _chatHistory = new ConcurrentQueue<ChatMemoryEntry>();
+        private const int MaxChatHistory = 20;
+        private const double SimilarityThreshold = 0.85; // 可调整
+
+        private static readonly string[] ProjectKeywords = new[]
+        {
+            "代码", "类", "函数", "方法", "接口", "文件", "目录", "controller", "model", "service", "分析", "生成", "实现", "bug", "报错", "异常", "项目", "solution", "namespace"
+        };
+
+        private bool IsProjectRelated(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query)) return false;
+            return ProjectKeywords.Any(k => query.IndexOf(k, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        // 计算简单相似度（可后续替换为更智能的算法）
+        private double CalculateSimilarity(string a, string b)
+        {
+            if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b)) return 0;
+            a = a.Trim(); b = b.Trim();
+            if (a == b) return 1.0;
+            int minLen = Math.Min(a.Length, b.Length);
+            int same = 0;
+            for (int i = 0; i < minLen; i++)
+                if (a[i] == b[i]) same++;
+            return (double)same / Math.Max(a.Length, b.Length);
+        }
+
         public async Task<string> GenerateReplyAsync(string prompt, CancellationToken cancellationToken = default)
         {
             try
@@ -37,7 +67,24 @@ namespace VSAIPluginNew.Services
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                // 统计文件内容的总大小
+                // 0. 判断是否与项目有关
+                if (!IsProjectRelated(query))
+                {
+                    // 直接用AI对话，不查项目
+                    return await AgentFactory.ProcessComplexQueryAsync(query, "聊天");
+                }
+
+                // 1. 聊天历史缓存检索
+                var mostSimilar = _chatHistory
+                    .OrderByDescending(e => CalculateSimilarity(e.Question, query))
+                    .FirstOrDefault();
+                if (mostSimilar != null && CalculateSimilarity(mostSimilar.Question, query) > SimilarityThreshold)
+                {
+                    // 命中历史缓存，直接返回历史答案
+                    return $"[历史缓存命中] {mostSimilar.Answer}";
+                }
+
+                // 2. 统计文件内容的总大小
                 if (contextFiles != null && contextFiles.Count > 0)
                 {
                     int totalSize = 0;
@@ -50,14 +97,24 @@ namespace VSAIPluginNew.Services
                     const int MAX_TOTAL_SIZE = 300 * 1024;
                     if (totalSize > MAX_TOTAL_SIZE)
                     {
-                        return await ProcessLargeContextQueryAsync(query, taskType, contextFiles, MAX_TOTAL_SIZE);
+                        var result = await ProcessLargeContextQueryAsync(query, taskType, contextFiles, MAX_TOTAL_SIZE);
+                        // 存入历史
+                        _chatHistory.Enqueue(new ChatMemoryEntry { Question = query, Answer = result, Timestamp = DateTime.Now });
+                        while (_chatHistory.Count > MaxChatHistory) _chatHistory.TryDequeue(out _);
+                        return result;
                     }
 
-                    return await AgentFactory.ProcessFilesAsync(query, contextFiles);
+                    var result2 = await AgentFactory.ProcessFilesAsync(query, contextFiles);
+                    _chatHistory.Enqueue(new ChatMemoryEntry { Question = query, Answer = result2, Timestamp = DateTime.Now });
+                    while (_chatHistory.Count > MaxChatHistory) _chatHistory.TryDequeue(out _);
+                    return result2;
                 }
 
                 // 否则使用普通的复杂查询处理
-                return await AgentFactory.ProcessComplexQueryAsync(query, taskType);
+                var result3 = await AgentFactory.ProcessComplexQueryAsync(query, taskType);
+                _chatHistory.Enqueue(new ChatMemoryEntry { Question = query, Answer = result3, Timestamp = DateTime.Now });
+                while (_chatHistory.Count > MaxChatHistory) _chatHistory.TryDequeue(out _);
+                return result3;
             }
             catch (OperationCanceledException)
             {

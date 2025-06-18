@@ -7,6 +7,7 @@ using EnvDTE;
 using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using System.Diagnostics;
+using System.Collections.Concurrent;
 
 namespace VSAIPluginNew.Services
 {
@@ -15,6 +16,9 @@ namespace VSAIPluginNew.Services
         private readonly DTE2 _dte;
         private readonly string _baseDirectory;
         private Dictionary<string, string> _openedFiles;
+        // 全局代码文件内容缓存
+        private static readonly ConcurrentDictionary<string, string> _fileContentCache = new ConcurrentDictionary<string, string>();
+        private const int MaxFileCache = 100;
 
         public FileService(DTE2 dte, string baseDirectory = null)
         {
@@ -25,22 +29,25 @@ namespace VSAIPluginNew.Services
 
         public async Task<string> ReadFromFileAsync(string path)
         {
-            try
+            // 优先查缓存
+            if (_fileContentCache.TryGetValue(path, out var cachedContent))
             {
-                string fullPath = GetFullPath(path);
-                if (!File.Exists(fullPath))
-                {
-                    Debug.WriteLine($"文件不存在: {fullPath}");
-                    return null;
-                }
-
-                return await Task.Run(() => File.ReadAllText(fullPath));
+                return cachedContent;
             }
-            catch (Exception ex)
+            // 原有逻辑
+            if (!File.Exists(path))
             {
-                Debug.WriteLine($"读取文件错误: {ex.Message}");
-                throw;
+                throw new FileNotFoundException($"文件 '{path}' 不存在。");
             }
+            var content =  File.ReadAllText(path);
+            // 写入缓存
+            _fileContentCache[path] = content;
+            while (_fileContentCache.Count > MaxFileCache)
+            {
+                var oldest = _fileContentCache.Keys.FirstOrDefault();
+                if (oldest != null) _fileContentCache.TryRemove(oldest, out _);
+            }
+            return content;
         }
 
         public async Task<bool> WriteToFileAsync(string path, string content)

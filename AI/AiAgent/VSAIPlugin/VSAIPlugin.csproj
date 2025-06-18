@@ -70,6 +70,7 @@
     <Compile Include="Services\FileWriteService.cs" />
     <Compile Include="Services\Interfaces.cs" />
     <Compile Include="Services\MCPService.cs" />
+    <Compile Include="Services\ChatMemoryEntry.cs" />
     <Compile Include="UI\AIAssistantForm.cs">
       <SubType>Form</SubType>
     </Compile>
