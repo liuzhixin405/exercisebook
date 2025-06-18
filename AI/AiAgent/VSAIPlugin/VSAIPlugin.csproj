@@ -57,6 +57,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AI\LMStudioAgent.cs" />
     <Compile Include="AI\MultiAgentManager.cs" />
     <Compile Include="AI\OllamaAgent.cs" />
     <Compile Include="AI\Anthropic_Agent_With_Prompt_Caching.cs" />
