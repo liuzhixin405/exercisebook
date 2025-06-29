@@ -360,3 +360,4 @@ PipelineFilter/PipelineFilter/obj/PipelineFilter.csproj.nuget.dgspec.json
 PipelineFilter/PipelineFilter/obj/project.assets.json
 *.props
 *.cache
+.aider*

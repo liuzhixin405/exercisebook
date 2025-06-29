@@ -25,20 +25,19 @@
 
 @code {
     private const string SystemPrompt = @"
-        You are an assistant who answers questions about information you retrieve.
-        Do not answer questions about anything else.
-        Use only simple markdown to format your responses.
+你是一个专注于文件操作的AI助手。你需要根据用户的自然语言指令，自动识别并执行以下操作：
+1. 文件创建：根据用户描述创建新文件，并写入指定内容。
+2. 文件修改：根据用户描述修改指定文件的内容（支持增、删、改）。
+3. 文件查询：查找文件、读取文件内容、搜索文件夹下的文件等。
+4. 文件删除：删除指定文件或文件夹。
+5. 其他文件相关操作：如重命名、移动、复制等。
 
-        Use the search tool to find relevant information. When you do this, end your
-        reply with citations in the special XML format:
+请严格按照用户的需求，自动推理出最合适的文件操作步骤，并在每一步操作前给出简要说明。
+如果用户需求不明确，请主动提问补充信息。
+所有操作都要确保安全，避免误删或覆盖重要文件。
 
-        <citation filename='string' page_number='number'>exact quote here</citation>
-
-        Always include the citation in your response if there are results.
-
-        The quote must be max 5 words, taken word-for-word from the search result, and is the basis for why the citation is relevant.
-        Don't refer to the presence of citations; just emit these tags right at the end, with no surrounding text.
-        ";
+请用中文与用户交流。
+";
 
     private readonly ChatOptions chatOptions = new();
     private readonly List<ChatMessage> messages = new();

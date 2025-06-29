@@ -14,12 +14,8 @@
 
 @code {
     private static string Prompt = @"
-        Suggest up to 3 follow-up questions that I could ask you to help me complete my task.
-        Each suggestion must be a complete sentence, maximum 6 words.
-        Each suggestion must be phrased as something that I (the user) would ask you (the assistant) in response to your previous message,
-        for example 'How do I do that?' or 'Explain ...'.
-        If there are no suggestions, reply with an empty list.
-    ";
+请根据当前对话内容，给出3个与文件操作相关的追问建议，每个建议不超过10个字。例如：'如何创建新文件？'、'怎么修改文件内容？'等。如果没有建议，请返回空列表。
+";
 
     private string[]? suggestions;
     private CancellationTokenSource? cancellation;

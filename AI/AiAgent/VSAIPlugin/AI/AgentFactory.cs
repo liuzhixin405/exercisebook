@@ -35,13 +35,13 @@ namespace VSAIPluginNew.AI
         // 模型任务分配映射
         public static readonly Dictionary<string, string> TaskModelMapping = new Dictionary<string, string>
         {
-            ["代码分析"] = "qwen/qwen3-8b",        // 简单的代码分析任务
-            ["代码生成"] = "qwen/qwen3-8b",        // 简单的代码生成任务
-            ["文本总结"] = "qwen/qwen3-8b",        // 简单的文本处理任务
-            ["复杂分析"] = "qwen2.5-coder-7b",     // 复杂的代码分析任务
-            ["多文件处理"] = "qwen2.5-coder-7b",   // 涉及多个文件的任务
-            ["架构设计"] = "qwen2.5-coder-7b",     // 系统架构相关任务
-            ["综合任务"] = "qwen2.5-coder-7b"      // 默认使用大模型
+            ["代码分析"] = "qwen/qwen3-8b",
+            ["代码生成"] = "qwen/qwen3-8b",
+            ["文本总结"] = "qwen/qwen3-8b",
+            ["复杂分析"] = "qwen2.5-coder-7b",
+            ["多文件处理"] = "qwen2.5-coder-7b",
+            ["架构设计"] = "qwen2.5-coder-7b",
+            ["综合任务"] = "qwen2.5-coder-7b"
         };
         
         // 定义一组预设的系统消息模板
