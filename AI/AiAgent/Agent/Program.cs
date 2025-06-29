@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 using AiAgent.Services;
 using System;
 
+// 注册编码提供器，支持GB2312等
+System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

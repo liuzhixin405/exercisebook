@@ -165,7 +165,11 @@ export async function readFileContent(filePath, showLoadingFunc) {
     }
 }
 
-export async function askQuestionStream(question, selectedFiles, isDeepMode, showLoadingFunc, isStreamingRef, currentReaderRef, askBtn, stopBtn, questionInput) {
+export async function askQuestionStream(
+    question, selectedFiles, isDeepMode, showLoadingFunc, isStreamingRef, currentReaderRef,
+    askBtn, stopBtn, questionInput,
+    listFilesFunc, globalFileTreeRef, currentProjectPathRef, updateProjectPathDisplayFunc, renderFileListFunc
+) {
     console.log(`askQuestionStream called with isDeepMode: ${isDeepMode}`);
     if (!question) {
         alert('请输入你的问题！');
@@ -263,6 +267,17 @@ export async function askQuestionStream(question, selectedFiles, isDeepMode, sho
         questionInput.disabled = false;
         showLoadingFunc(false);
         currentReaderRef.value = null;
+        // 自动刷新文件列表
+        if (typeof listFilesFunc === 'function') {
+            await listFilesFunc(
+                currentProjectPathRef.value,
+                showLoadingFunc,
+                globalFileTreeRef,
+                currentProjectPathRef,
+                updateProjectPathDisplayFunc,
+                renderFileListFunc
+            );
+        }
     }
 }
 

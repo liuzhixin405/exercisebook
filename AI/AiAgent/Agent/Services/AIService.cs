@@ -27,55 +27,50 @@ namespace AiAgent.Services
         private readonly ConcurrentDictionary<string, List<float>> _fileContentEmbeddings = new ConcurrentDictionary<string, List<float>>();
         private readonly ConcurrentDictionary<string, string> _fileContents = new ConcurrentDictionary<string, string>();
         private const int MAX_CHAT_MEMORY_SIZE = 5;
-        private const string SYSTEM_PROMPT_AGENT = """
-            You are an autonomous agent capable of executing file system operations.
-            Your task is to interpret user commands related to file management and respond with a JSON object detailing the intended operation and its parameters.
-            If the user's request is not a file operation, respond with "{\"operation\": \"chat\", \"reasoning\": \"The user's query is a general question and not a file operation.\"}"
-            
-            Supported operations:
-            - "create": To create a new file or directory.
-                - Path: The full path to the file or directory.
-                - Content: (Optional) The content for the file. Not applicable for directories.
-            - "read": To read the content of a file or list the contents of a directory.
-                - Path: The full path to the file or directory.
-            - "update": To update the content of an existing file.
-                - Path: The full path to the file.
-                - Content: The new content for the file.
-            - "delete": To delete a file or directory.
-                - Path: The full path to the file or directory.
-            - "list": To list files and directories within a given path.
-                - Path: The directory path to list.
-
-            Your response MUST be a JSON object conforming to the following structure:
-            {
-              "operation": "create" | "read" | "update" | "delete" | "list" | "chat" | "unknown",
-              "path": "path/to/file_or_directory",
-              "content": "file_content_if_applicable",
-              "reasoning": "Explanation if operation is unknown or chat"
-            }
-
-            Examples:
-            User: "创建一个名为 my_document.txt 的文件，内容是 'Hello World'"
-            Response: {"operation": "create", "path": "my_document.txt", "content": "Hello World"}
-
-            User: "读取 services/AIService.cs 的内容"
-            Response: {"operation": "read", "path": "services/AIService.cs"}
-
-            User: "删除 temporary_data 文件夹"
-            Response: {"operation": "delete", "path": "temporary_data"}
-
-            User: "列出当前目录下的所有文件"
-            Response: {"operation": "list", "path": "."}
-            
-            User: "创建一个名为 MyDotNetProject 的项目"
-            Response: {"operation": "create", "path": "MyDotNetProject"}
-
-            User: "什么是大语言模型？"
-            Response: {"operation": "chat", "reasoning": "The user's query is a general question and not a file operation."}
-
-            User: "我不知道该做什么"
-            Response: {"operation": "unknown", "reasoning": "The user's intent is unclear."}
-            """;
+        private const string SYSTEM_PROMPT_AGENT =
+            "你是一个项目管理智能体，能够理解并执行用户的文件和目录操作指令。\n" +
+            "你的任务是将用户的自然语言命令解析为结构化的JSON对象，明确操作类型和参数。\n" +
+            "【支持的操作类型】\n" +
+            "- create: 创建新文件、文件夹或项目。\n" +
+            "  - path: 文件、文件夹或项目的完整路径。\n" +
+            "  - content: （可选）文件内容，或项目类型/脚手架命令（如需创建特定类型项目时填写）。\n" +
+            "- read: 读取文件内容或列出文件夹内容。\n" +
+            "  - path: 文件或文件夹的完整路径。\n" +
+            "- update: 更新已有文件的内容。\n" +
+            "  - path: 文件的完整路径。\n" +
+            "  - content: 新的文件内容。\n" +
+            "- delete: 删除文件或文件夹。\n" +
+            "  - path: 文件或文件夹的完整路径。\n" +
+            "- list: 列出指定目录下的所有文件和文件夹。\n" +
+            "  - path: 要列出的目录路径。\n" +
+            "【返回格式要求】\n" +
+            "你的回复必须是一个JSON对象，包含如下字段: \n" +
+            "- operation: 操作类型（如 create、read、update、delete、list、chat、unknown）\n" +
+            "- path: 文件或目录路径\n" +
+            "- content: 文件内容、项目类型或脚手架命令（如适用）\n" +
+            "- reasoning: 如为chat或unknown时，说明原因\n" +
+            "只返回JSON，不要有多余的自然语言。\n" +
+            "【操作示例】\n" +
+            "用户：创建一个名为 my_document.txt 的文件，内容写\"你好世界\"\n" +
+            "回复：{\"operation\": \"create\", \"path\": \"my_document.txt\", \"content\": \"你好世界\"}\n" +
+            "用户：创建一个netcore控制台程序，项目名为MyConsoleApp\n" +
+            "回复：{\"operation\": \"create\", \"path\": \"MyConsoleApp\", \"content\": \"dotnet new console\"}\n" +
+            "用户：创建一个netcore webapi项目，项目名为MyApi\n" +
+            "回复：{\"operation\": \"create\", \"path\": \"MyApi\", \"content\": \"dotnet new webapi\"}\n" +
+            "用户：读取 services/AIService.cs 的内容\n" +
+            "回复：{\"operation\": \"read\", \"path\": \"services/AIService.cs\"}\n" +
+            "用户：删除 temporary_data 文件夹\n" +
+            "回复：{\"operation\": \"delete\", \"path\": \"temporary_data\"}\n" +
+            "用户：列出当前目录下的所有文件\n" +
+            "回复：{\"operation\": \"list\", \"path\": \".\"}\n" +
+            "用户：什么是大语言模型？\n" +
+            "回复：{\"operation\": \"chat\", \"reasoning\": \"用户的问题是一般性提问，不涉及文件操作。\"}\n" +
+            "用户：我不知道该做什么\n" +
+            "回复：{\"operation\": \"unknown\", \"reasoning\": \"用户意图不明确。\"}\n" +
+            "【注意】\n" +
+            "- 优先使用中文理解和处理。\n" +
+            "- 只返回JSON对象，不要有多余的解释或自然语言。\n" +
+            "- 如遇不明确指令，operation请用unknown，并在reasoning中说明原因。";
 
         public AIService(
             HttpClient httpClient,
@@ -110,22 +105,11 @@ namespace AiAgent.Services
                 _logger.LogInformation($"发送给LLM的系统提示: {{systemPromptContent}}");
                 _logger.LogInformation($"发送给LLM的用户命令: {{userPromptContent}}");
 
-                // For LMStudio, we use the chat completions API, which accepts a list of messages.
-                // For Ollama, we send a single prompt with the system and user content combined.
-                if (_options.Provider == "LMStudio")
+                // 只保留Ollama模型推理逻辑，去除LMStudio相关判断
+                var combinedPrompt = $"{systemPromptContent}\n\n{userPromptContent}";
+                await foreach (var chunk in GetOllamaStreamAsyncInternal(combinedPrompt, cancellationToken))
                 {
-                    await foreach (var chunk in GetLMStudioStreamAsyncInternal(userPromptContent, cancellationToken, systemPromptContent))
-                    {
-                        llmInitialResponse += chunk;
-                    }
-                }
-                else // Ollama
-                {
-                    var combinedPrompt = $"{systemPromptContent}\n\n{userPromptContent}";
-                    await foreach (var chunk in GetOllamaStreamAsyncInternal(combinedPrompt, cancellationToken))
-                    {
-                        llmInitialResponse += chunk;
-                    }
+                    llmInitialResponse += chunk;
                 }
 
                 _logger.LogInformation($"LLM 初始响应 (原始): {llmInitialResponse}");
@@ -177,7 +161,51 @@ namespace AiAgent.Services
                         case "create":
                             if (!string.IsNullOrEmpty(agentCommand.Path))
                             {
-                                if (agentCommand.Path.Contains(".")) // Heuristic for file vs directory
+                                // 检查是否为dotnet new项目命令
+                                if (!string.IsNullOrEmpty(agentCommand.Content) && agentCommand.Content.Trim().StartsWith("dotnet new"))
+                                {
+                                    // 仅允许白名单命令
+                                    var allowedTemplates = new[] { "dotnet new console", "dotnet new webapi" };
+                                    var contentTrimmed = agentCommand.Content.Trim();
+                                    if (allowedTemplates.Any(t => contentTrimmed.StartsWith(t)))
+                                    {
+                                        // 自动适配编码
+                                        var encoding = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows)
+                                            ? System.Text.Encoding.GetEncoding(936) // GBK
+                                            : System.Text.Encoding.UTF8;
+                                        // 构造命令，自动加--force
+                                        var psi = new System.Diagnostics.ProcessStartInfo
+                                        {
+                                            FileName = "dotnet",
+                                            Arguments = $"{contentTrimmed.Substring("dotnet ".Length)} -o \"{agentCommand.Path}\" --force",
+                                            RedirectStandardOutput = true,
+                                            RedirectStandardError = true,
+                                            UseShellExecute = false,
+                                            CreateNoWindow = true,
+                                            StandardOutputEncoding = encoding,
+                                            StandardErrorEncoding = encoding
+                                        };
+                                        using (var process = System.Diagnostics.Process.Start(psi))
+                                        {
+                                            string output = await process.StandardOutput.ReadToEndAsync();
+                                            string error = await process.StandardError.ReadToEndAsync();
+                                            await process.WaitForExitAsync();
+                                            if (process.ExitCode == 0)
+                                            {
+                                                resultMessage = $"项目 '{agentCommand.Path}' 已成功创建。\n{output}";
+                                            }
+                                            else
+                                            {
+                                                resultMessage = $"项目创建失败: {error}";
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        resultMessage = "不支持的项目模板类型，仅支持dotnet new console和dotnet new webapi。";
+                                    }
+                                }
+                                else if (agentCommand.Path.Contains(".")) // Heuristic for file vs directory
                                 {
                                     await _fileService.SaveFileContentAsync(agentCommand.Path, agentCommand.Content ?? "");
                                     resultMessage = $"文件 '{agentCommand.Path}' 已成功创建。";

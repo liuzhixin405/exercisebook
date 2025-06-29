@@ -177,7 +177,22 @@ function toggleFileSelection(filePath, isDirectory, isSelected) {
 // Event Listeners
 document.addEventListener('DOMContentLoaded', async () => {
     // Buttons
-    askBtn.onclick = () => apiAskQuestionStream(questionInput.value.trim(), selectedFiles, deepModeCheckbox.checked, showLoading, {value: isStreaming}, {value: currentReader}, askBtn, stopBtn, questionInput);
+    askBtn.onclick = () => apiAskQuestionStream(
+        questionInput.value.trim(),
+        selectedFiles,
+        deepModeCheckbox.checked,
+        showLoading,
+        {value: isStreaming},
+        {value: currentReader},
+        askBtn,
+        stopBtn,
+        questionInput,
+        apiListFiles,
+        {value: globalFileTree},
+        {value: currentProjectPath},
+        updateProjectPathDisplay,
+        renderFileList
+    );
     stopBtn.onclick = () => {
         if (currentReader) {
             currentReader.cancel();
