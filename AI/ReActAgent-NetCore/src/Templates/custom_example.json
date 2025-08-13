@@ -1,0 +1,21 @@
+{
+  "Name": "Custom Project Template",
+  "Description": "自定义项目模板示例",
+  "Directories": [
+    "src",
+    "docs",
+    "tests"
+  ],
+  "Files": [
+    {
+      "Path": "README.md",
+      "Content": "# Custom Project\n\n## 项目说明\n\n这是一个自定义项目模板的示例。",
+      "Description": "项目说明文件"
+    },
+    {
+      "Path": "src/main.py",
+      "Content": "# 自定义项目主文件\n\ndef main():\n    print(\"Hello, Custom Project!\")\n\nif __name__ == \"__main__\":\n    main()",
+      "Description": "Python主文件"
+    }
+  ]
+}
