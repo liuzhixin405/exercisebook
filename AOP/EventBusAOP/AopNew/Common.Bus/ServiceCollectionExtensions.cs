@@ -1,0 +1,179 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Common.Bus
+{
+    public static class ServiceCollectionExtensions
+    {
+        /// <summary>
+        /// 添加标准的CommandBus实现
+        /// </summary>
+        public static IServiceCollection AddCommandBus(this IServiceCollection services)
+        {
+            // 使用单例模式以提高性能，因为CommandBus本身是无状态的（除了缓存）
+            services.AddSingleton<ICommandBus, CommandBus>();
+            return services;
+        }
+
+        /// <summary>
+        /// 添加基于TPL数据流的高性能CommandBus实现
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="maxConcurrency">最大并发数，默认为处理器核心数的2倍</param>
+        public static IServiceCollection AddDataflowCommandBus(this IServiceCollection services, int? maxConcurrency = null)
+        {
+            services.AddSingleton<ICommandBus>(provider =>
+            {
+                var logger = provider.GetService<ILogger<DataflowCommandBus>>();
+                var concurrency = maxConcurrency ?? Environment.ProcessorCount * 2;
+                return new DataflowCommandBus(provider, logger, concurrency);
+            });
+            return services;
+        }
+
+        /// <summary>
+        /// 添加强类型的TPL数据流CommandBus实现（推荐）
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="maxConcurrency">最大并发数，默认为处理器核心数的2倍</param>
+        public static IServiceCollection AddTypedDataflowCommandBus(this IServiceCollection services, int? maxConcurrency = null)
+        {
+            services.AddSingleton<ICommandBus>(provider =>
+            {
+                var logger = provider.GetService<ILogger<TypedDataflowCommandBus>>();
+                var concurrency = maxConcurrency ?? Environment.ProcessorCount * 2;
+                return new TypedDataflowCommandBus(provider, logger, concurrency);
+            });
+            return services;
+        }
+
+        /// <summary>
+        /// 添加实时监控支持
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="collectionInterval">指标收集间隔，默认1秒</param>
+        public static IServiceCollection AddMetricsCollector(this IServiceCollection services, TimeSpan? collectionInterval = null)
+        {
+            services.AddSingleton<IMetricsCollector>(provider =>
+            {
+                var commandBus = provider.GetRequiredService<ICommandBus>();
+                var logger = provider.GetService<ILogger<MetricsCollector>>();
+                return new MetricsCollector(commandBus, logger, collectionInterval);
+            });
+            return services;
+        }
+
+        /// <summary>
+        /// 添加支持批处理的高性能CommandBus实现
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="batchSize">批处理大小，默认为10</param>
+        /// <param name="batchTimeout">批处理超时时间，默认为100毫秒</param>
+        /// <param name="maxConcurrency">最大并发数，默认为处理器核心数</param>
+        public static IServiceCollection AddBatchDataflowCommandBus(this IServiceCollection services, 
+            int batchSize = 10, TimeSpan? batchTimeout = null, int? maxConcurrency = null)
+        {
+            services.AddSingleton<ICommandBus>(provider =>
+            {
+                var logger = provider.GetService<ILogger<BatchDataflowCommandBus>>();
+                var concurrency = maxConcurrency ?? Environment.ProcessorCount;
+                return new BatchDataflowCommandBus(provider, logger, batchSize, batchTimeout, concurrency);
+            });
+            return services;
+        }
+
+        /// <summary>
+        /// 添加支持监控的CommandBus实现
+        /// </summary>
+        public static IServiceCollection AddMonitoredCommandBus(this IServiceCollection services, 
+            CommandBusType busType = CommandBusType.Dataflow, int? maxConcurrency = null)
+        {
+            switch (busType)
+            {
+                case CommandBusType.Standard:
+                    services.AddSingleton<IMonitoredCommandBus, MonitoredCommandBus>();
+                    break;
+                case CommandBusType.Dataflow:
+                    services.AddSingleton<IMonitoredCommandBus>(provider =>
+                    {
+                        var logger = provider.GetService<ILogger<DataflowCommandBus>>();
+                        var concurrency = maxConcurrency ?? Environment.ProcessorCount * 2;
+                        return new MonitoredDataflowCommandBus(provider, logger, concurrency);
+                    });
+                    break;
+                case CommandBusType.BatchDataflow:
+                    services.AddSingleton<IMonitoredCommandBus>(provider =>
+                    {
+                        var logger = provider.GetService<ILogger<BatchDataflowCommandBus>>();
+                        var concurrency = maxConcurrency ?? Environment.ProcessorCount;
+                        return new MonitoredBatchDataflowCommandBus(provider, logger, 10, TimeSpan.FromMilliseconds(100), concurrency);
+                    });
+                    break;
+            }
+            return services;
+        }
+
+        public static IServiceCollection AddCommandBehaviorOpenGeneric<TBehavior>(this IServiceCollection services)
+            where TBehavior :class
+        {
+            services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(TBehavior));
+            return services;
+        }
+
+        /// <summary>
+        /// 自动注册所有CommandHandler和CommandProcessor
+        /// </summary>
+        public static IServiceCollection AddCommandHandlers(this IServiceCollection services)
+        {
+            // 注册所有ICommandHandler实现
+            services.Scan(scan => scan
+                .FromCallingAssembly()
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<,>)))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+
+            // 注册所有ICommandProcessor实现
+            services.Scan(scan => scan
+                .FromCallingAssembly()
+                .AddClasses(classes => classes.AssignableTo(typeof(ICommandProcessor)))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+
+            return services;
+        }
+
+        // 添加性能监控扩展方法
+        public static IServiceCollection AddCommandBusWithMetrics(this IServiceCollection services)
+        {
+            services.AddSingleton<ICommandBus, CommandBus>();
+            // 可以在这里添加性能监控相关的服务
+            return services;
+        }
+    }
+
+    /// <summary>
+    /// CommandBus类型枚举
+    /// </summary>
+    public enum CommandBusType
+    {
+        /// <summary>
+        /// 标准CommandBus
+        /// </summary>
+        Standard,
+        
+        /// <summary>
+        /// 数据流CommandBus
+        /// </summary>
+        Dataflow,
+        
+        /// <summary>
+        /// 批处理数据流CommandBus
+        /// </summary>
+        BatchDataflow
+    }
+}
