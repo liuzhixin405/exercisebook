@@ -32,6 +32,7 @@ namespace WebApp.Controllers
             })
             .ToArray();
         }
+
     }
 
     public record CreateOrderCommand(string Product, int Quantity) : ICommand<string>;
