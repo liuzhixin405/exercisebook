@@ -15,11 +15,9 @@ namespace WebApp
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            // 使用基于时间戳的优化CommandBus（推荐）
-            builder.Services.AddTimeBasedCommandBus(
-                maxConcurrency: Environment.ProcessorCount * 2,
-                enableBatchProcessing: true,
-                batchWindowSize: TimeSpan.FromMilliseconds(50)
+            // 使用基于委托的泛型优化CommandBus（推荐）
+            builder.Services.AddDelegateBasedCommandBus(
+                maxConcurrency: Environment.ProcessorCount * 2
             );
             
             // 注册管道行为
@@ -27,8 +25,9 @@ namespace WebApp
             builder.Services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             builder.Services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
-            // 注册时间基础命令处理器
-            builder.Services.AddScoped<ICommandHandler<TimeBasedOrderCommand, TimeBasedOrderResult>, TimeBasedOrderHandler>();
+            // 注册委托基础命令处理器
+            builder.Services.AddScoped<ICommandHandler<DelegateBasedOrderCommand, DelegateBasedOrderResult>, DelegateBasedOrderHandler>();
+            builder.Services.AddScoped<ICommandHandler<DelegateBasedPaymentCommand, DelegateBasedPaymentResult>, DelegateBasedPaymentHandler>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

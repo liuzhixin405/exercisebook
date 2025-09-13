@@ -12,24 +12,23 @@ namespace Common.Bus
     {
 
         /// <summary>
-        /// 添加基于时间戳的优化CommandBus实现（推荐）
+        /// 添加基于委托的泛型优化CommandBus实现（推荐）
+        /// 通过委托简化泛型打包，保持类型安全
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="maxConcurrency">最大并发数，默认为处理器核心数的2倍</param>
-        /// <param name="enableBatchProcessing">是否启用批处理，默认为true</param>
-        /// <param name="batchWindowSize">批处理时间窗口大小，默认为50毫秒</param>
-        public static IServiceCollection AddTimeBasedCommandBus(this IServiceCollection services,
-            int? maxConcurrency = null, bool enableBatchProcessing = true, TimeSpan? batchWindowSize = null)
+        public static IServiceCollection AddDelegateBasedCommandBus(this IServiceCollection services,
+            int? maxConcurrency = null)
         {
             services.AddSingleton<ICommandBus>(provider =>
             {
-                var logger = provider.GetService<ILogger<TimeBasedCommandBus>>();
+                var logger = provider.GetService<ILogger<DelegateBasedCommandBus>>();
                 var concurrency = maxConcurrency ?? Environment.ProcessorCount * 2;
-                var windowSize = batchWindowSize ?? TimeSpan.FromMilliseconds(50);
-                return new TimeBasedCommandBus(provider, logger, concurrency, enableBatchProcessing, windowSize);
+                return new DelegateBasedCommandBus(provider, logger, concurrency);
             });
             return services;
         }
+
 
 
         public static IServiceCollection AddCommandBehaviorOpenGeneric<TBehavior>(this IServiceCollection services)
