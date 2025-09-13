@@ -2,6 +2,7 @@ using Common.Bus.Core;
 using Common.Bus.Implementations;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebApp.Handlers.Commands;
 
 namespace WebApp.Controllers
 {

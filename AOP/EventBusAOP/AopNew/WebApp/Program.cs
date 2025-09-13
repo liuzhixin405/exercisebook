@@ -2,6 +2,8 @@ using Common.Bus.Core;
 using Common.Bus.Extensions;
 using WebApp.Controllers;
 using WebApp.Filters;
+using WebApp.Handlers;
+using WebApp.Handlers.Commands;
 namespace WebApp
 {
     public class Program
