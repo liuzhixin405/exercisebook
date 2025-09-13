@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Common.Bus.Core;
+using Common.Bus.Monitoring;
 
-namespace Common.Bus
+namespace Common.Bus.Implementations
 {
     /// <summary>
     /// 支持批处理的高性能数据流CommandBus实现
@@ -335,24 +337,4 @@ namespace Common.Bus
         }
     }
 
-    public class BatchDataflowMetrics
-    {
-        public long ProcessedBatches { get; set; }
-        public long ProcessedCommands { get; set; }
-        public long FailedCommands { get; set; }
-        public TimeSpan TotalProcessingTime { get; set; }
-        public TimeSpan AverageProcessingTime { get; set; }
-        public double AverageBatchSize { get; set; }
-        public int BatchSize { get; set; }
-        public TimeSpan BatchTimeout { get; set; }
-        public int InputQueueSize { get; set; }
-        public int AvailableConcurrency { get; set; } = 0;
-        public int MaxConcurrency { get; set; } = 0;
-        public double SuccessRate => ProcessedCommands + FailedCommands > 0 
-            ? (double)ProcessedCommands / (ProcessedCommands + FailedCommands) * 100 
-            : 0;
-        public double Throughput => TotalProcessingTime.TotalSeconds > 0 
-            ? ProcessedCommands / TotalProcessingTime.TotalSeconds 
-            : 0;
-    }
 }

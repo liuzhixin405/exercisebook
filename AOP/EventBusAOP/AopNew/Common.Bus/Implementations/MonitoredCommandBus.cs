@@ -6,8 +6,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Common.Bus.Core;
+using Common.Bus.Monitoring;
 
-namespace Common.Bus
+namespace Common.Bus.Implementations
 {
     /// <summary>
     /// 支持监控的标准CommandBus包装器

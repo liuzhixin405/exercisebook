@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace Common.Bus
+namespace Common.Bus.Core
 {
     /// <summary>
     /// 强类型的命令处理器接口

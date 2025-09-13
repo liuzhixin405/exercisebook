@@ -1,4 +1,5 @@
-using Common.Bus;
+using Common.Bus.Core;
+using Common.Bus.Extensions;
 using WebApp.Controllers;
 using WebApp.Filters;
 namespace WebApp

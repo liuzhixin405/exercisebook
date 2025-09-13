@@ -1,4 +1,4 @@
-﻿using Common.Bus;
+﻿using Common.Bus.Core;
 
 namespace WebApp.Filters
 {

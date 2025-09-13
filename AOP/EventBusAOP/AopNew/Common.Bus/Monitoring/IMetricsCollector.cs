@@ -2,8 +2,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Common.Bus.Core;
+using Common.Bus.Monitoring;
+using Common.Bus.Implementations;
 
-namespace Common.Bus
+namespace Common.Bus.Monitoring
 {
     /// <summary>
     /// 实时指标收集器接口

@@ -1,6 +1,7 @@
 using System;
+using Common.Bus.Core;
 
-namespace Common.Bus
+namespace Common.Bus.Monitoring
 {
     /// <summary>
     /// 数据流监控指标接口

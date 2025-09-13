@@ -1,4 +1,4 @@
-using Common.Bus;
+using Common.Bus.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers

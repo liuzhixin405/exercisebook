@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Bus
+namespace Common.Bus.Core
 {
     public interface ICommandBus
     {

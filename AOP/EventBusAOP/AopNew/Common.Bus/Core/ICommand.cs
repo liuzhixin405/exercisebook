@@ -1,4 +1,4 @@
-﻿namespace Common.Bus
+﻿namespace Common.Bus.Core
 {
     public interface ICommand<TResult>
     {

@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Common.Bus
+namespace Common.Bus.Core
 {
     /// <summary>
     /// 强类型的命令请求接口

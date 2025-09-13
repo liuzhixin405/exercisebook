@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Common.Bus.Core;
+using Common.Bus.Implementations;
+using Common.Bus.Monitoring;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -6,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Bus
+namespace Common.Bus.Extensions
 {
     public static class ServiceCollectionExtensions
     {
