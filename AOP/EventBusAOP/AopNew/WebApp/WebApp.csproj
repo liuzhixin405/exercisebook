@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Common.Bus\Common.Bus.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
