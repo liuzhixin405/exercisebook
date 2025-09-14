@@ -105,67 +105,64 @@ builder.Services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(Transacti
 
 ### 2. 在控制器中使用
 
-通过`CommandBusServiceLocator`根据枚举获取具体的CommandBus实现：
+每个控制器直接注入对应的CommandBus实现：
 
 ```csharp
-public class MyController : ControllerBase
+public class StandardCommandBusController : ControllerBase
 {
-    private readonly CommandBusServiceLocator _serviceLocator;
+    private readonly CommandBus _commandBus;
 
-    public MyController(CommandBusServiceLocator serviceLocator)
+    public StandardCommandBusController(CommandBus commandBus)
     {
-        _serviceLocator = serviceLocator;
+        _commandBus = commandBus;
     }
 
-    [HttpPost("process-order/{busType}")]
-    public async Task<IActionResult> ProcessOrder(
-        [FromRoute] CommandBusType busType,
-        [FromBody] ProcessOrderCommand command)
+    [HttpPost("process-order")]
+    public async Task<IActionResult> ProcessOrder([FromBody] ProcessOrderCommand command)
     {
-        // 根据枚举获取对应的CommandBus实现
-        var commandBus = _serviceLocator.GetCommandBus(busType);
-        var result = await commandBus.SendAsync<ProcessOrderCommand, string>(command);
+        var result = await _commandBus.SendAsync<ProcessOrderCommand, string>(command);
         
         return Ok(new { 
             Success = true, 
             Result = result, 
-            BusType = busType.ToString()
+            BusType = "Standard"
         });
     }
 }
 ```
 
-### 3. 统一演示控制器
+### 3. 专用控制器端点
 
-使用`CommandBusDemoController`可以通过URL参数选择不同的CommandBus实现：
+每个CommandBus实现都有专门的控制器端点：
 
 ```bash
-# 使用标准CommandBus处理订单
-POST /api/CommandBusDemo/process-order/Standard
+# 标准CommandBus
+POST /api/StandardCommandBus/process-order
+POST /api/StandardCommandBus/create-user
+POST /api/StandardCommandBus/send-email
 
-# 使用Dataflow CommandBus处理订单
-POST /api/CommandBusDemo/process-order/Dataflow
+# Dataflow CommandBus
+POST /api/DataflowCommandBus/process-order
+POST /api/DataflowCommandBus/create-user
+POST /api/DataflowCommandBus/send-email
 
-# 使用批处理Dataflow CommandBus处理订单
-POST /api/CommandBusDemo/process-order/BatchDataflow
+# 批处理Dataflow CommandBus
+POST /api/BatchDataflowCommandBus/process-order
+POST /api/BatchDataflowCommandBus/create-user
+POST /api/BatchDataflowCommandBus/send-email
 
-# 使用类型安全Dataflow CommandBus处理订单
-POST /api/CommandBusDemo/process-order/TypedDataflow
+# 类型安全Dataflow CommandBus
+POST /api/TypedDataflowCommandBus/process-order
+POST /api/TypedDataflowCommandBus/create-user
+POST /api/TypedDataflowCommandBus/send-email
 
-# 使用带监控的CommandBus处理订单
-POST /api/CommandBusDemo/process-order/Monitored
+# 带监控的CommandBus
+POST /api/MonitoredCommandBus/process-order
+POST /api/MonitoredCommandBus/create-user
+POST /api/MonitoredCommandBus/send-email
 ```
 
 ## API端点
-
-### 统一演示端点
-
-- `POST /api/CommandBusDemo/process-order/{busType}` - 处理订单
-- `POST /api/CommandBusDemo/create-user/{busType}` - 创建用户
-- `POST /api/CommandBusDemo/send-email/{busType}` - 发送邮件
-- `POST /api/CommandBusDemo/concurrent-process-orders/{busType}` - 并发处理订单
-- `GET /api/CommandBusDemo/metrics/{busType}` - 获取指标
-- `GET /api/CommandBusDemo/available-types` - 获取可用类型
 
 ### 专用控制器端点
 
@@ -188,7 +185,7 @@ POST /api/CommandBusDemo/process-order/Monitored
 ### 处理订单
 
 ```json
-POST /api/CommandBusDemo/process-order/Dataflow
+POST /api/TypedDataflowCommandBus/process-order
 Content-Type: application/json
 
 {
@@ -201,7 +198,7 @@ Content-Type: application/json
 ### 创建用户
 
 ```json
-POST /api/CommandBusDemo/create-user/TypedDataflow
+POST /api/TypedDataflowCommandBus/create-user
 Content-Type: application/json
 
 {
@@ -214,7 +211,7 @@ Content-Type: application/json
 ### 发送邮件
 
 ```json
-POST /api/CommandBusDemo/send-email/Monitored
+POST /api/MonitoredCommandBus/send-email
 Content-Type: application/json
 
 {
@@ -222,31 +219,6 @@ Content-Type: application/json
     "subject": "测试邮件",
     "body": "这是一封测试邮件"
 }
-```
-
-### 并发处理订单
-
-```json
-POST /api/CommandBusDemo/concurrent-process-orders/BatchDataflow
-Content-Type: application/json
-
-[
-    {
-        "product": "手机",
-        "quantity": 1,
-        "priority": 2
-    },
-    {
-        "product": "平板电脑",
-        "quantity": 1,
-        "priority": 1
-    },
-    {
-        "product": "耳机",
-        "quantity": 2,
-        "priority": 3
-    }
-]
 ```
 
 ## 运行项目
@@ -275,11 +247,9 @@ Content-Type: application/json
 
 ### 添加新的CommandBus实现
 
-1. 在`CommandBusType`枚举中添加新类型
-2. 实现`ICommandBus`接口
-3. 在`ServiceCollectionExtensions.AddAllCommandBusImplementations`中注册
-4. 在`CommandBusServiceLocator.GetCommandBus`中添加case分支
-5. 创建对应的控制器（可选）
+1. 实现`ICommandBus`接口
+2. 在`ServiceCollectionExtensions.AddAllCommandBusImplementations`中注册
+3. 创建对应的控制器
 
 ### 添加新的管道行为
 
