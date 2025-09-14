@@ -1,9 +1,9 @@
 using Common.Bus.Core;
 using Common.Bus.Extensions;
 using WebApp.Controllers;
-using WebApp.Filters;
+using WebApp.Behaviors;
 using WebApp.Handlers;
-using WebApp.Handlers.Commands;
+using WebApp.Commands;
 namespace WebApp
 {
     public class Program
@@ -18,8 +18,11 @@ namespace WebApp
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            // 使用强类型数据流CommandBus以获得更好的性能和类型安全
-            builder.Services.AddTypedDataflowCommandBus(maxConcurrency: Environment.ProcessorCount * 2);
+            // 一次性注册所有CommandBus实现
+            builder.Services.AddAllCommandBusImplementations();
+            
+            // 注册CommandHandlers和CommandProcessors
+            builder.Services.AddCommandHandlers();
             
             // 添加实时监控支持
             builder.Services.AddMetricsCollector(TimeSpan.FromSeconds(1));
@@ -30,12 +33,9 @@ namespace WebApp
             builder.Services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
             // 注册命令处理器
-            builder.Services.AddScoped<ICommandHandler<CreateOrderCommand, string>, CreateOrderHandler>();
             builder.Services.AddScoped<ICommandHandler<ProcessOrderCommand, string>, ProcessOrderHandler>();
-            
-            // 注册强类型命令处理器
-            builder.Services.AddScoped<CommandProcessor<CreateOrderCommand, string>>();
-            builder.Services.AddScoped<CommandProcessor<ProcessOrderCommand, string>>();
+            builder.Services.AddScoped<ICommandHandler<CreateUserCommand, int>, CreateUserHandler>();
+            builder.Services.AddScoped<ICommandHandler<SendEmailCommand, bool>, SendEmailHandler>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

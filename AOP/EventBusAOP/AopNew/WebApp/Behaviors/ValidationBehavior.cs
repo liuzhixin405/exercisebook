@@ -1,7 +1,7 @@
 ﻿using Common.Bus.Core;
-using WebApp.Controllers;
+using WebApp.Commands;
 
-namespace WebApp.Filters
+namespace WebApp.Behaviors
 {
     public class ValidationBehavior<TCommand, TResult> : ICommandPipelineBehavior<TCommand, TResult>
      where TCommand : ICommand<TResult>
@@ -12,7 +12,7 @@ namespace WebApp.Filters
 
             //validation
 
-            if (command is CreateOrderCommand co && co.Quantity <= 0)
+            if (command is ProcessOrderCommand po && po.Quantity <= 0)
                 throw new ArgumentException("Order quantity must be greater than zero!");
             return await next();
         }

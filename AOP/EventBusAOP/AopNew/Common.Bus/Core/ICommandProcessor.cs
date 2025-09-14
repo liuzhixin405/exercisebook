@@ -64,7 +64,7 @@ namespace Common.Bus.Core
                 var result = await pipeline();
                 
                 // 设置结果
-                typedRequest.SetResult(result);
+                typedRequest.SetResult(result!);
                 
                 _logger?.LogDebug("Command {CommandType} processed successfully", typeof(TCommand).Name);
             }

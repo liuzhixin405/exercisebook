@@ -12,8 +12,8 @@ namespace Common.Bus.Implementations
     public class CommandBus : ICommandBus
     {
         private readonly IServiceProvider _provider;
-        private readonly ConcurrentDictionary<Type, object> _handlerCache = new();
-        private readonly ConcurrentDictionary<Type, object[]> _behaviorsCache = new();
+        private readonly ConcurrentDictionary<Type, Func<object>> _handlerCache = new();
+        private readonly ConcurrentDictionary<Type, Func<object[]>> _behaviorsCache = new();
         private readonly ConcurrentDictionary<Type, Func<object, object, CancellationToken, Task<object>>> _pipelineCache = new();
 
         public CommandBus(IServiceProvider serviceProvider)
@@ -46,22 +46,32 @@ namespace Common.Bus.Implementations
 
         private ICommandHandler<TCommand, TResult> GetCachedHandler<TCommand, TResult>(Type commandType) where TCommand : ICommand<TResult>
         {
-            return (ICommandHandler<TCommand, TResult>)_handlerCache.GetOrAdd(commandType, _ =>
+            var handlerFactory = (Func<object>)_handlerCache.GetOrAdd(commandType, _ =>
             {
-                var handler = _provider.GetService(typeof(ICommandHandler<TCommand, TResult>));
-                if (handler == null)
-                    throw new InvalidOperationException($"No handler registered for {commandType.Name}");
-                return handler;
+                return new Func<object>(() =>
+                {
+                    using var scope = _provider.CreateScope();
+                    var handler = scope.ServiceProvider.GetService(typeof(ICommandHandler<TCommand, TResult>));
+                    if (handler == null)
+                        throw new InvalidOperationException($"No handler registered for {commandType.Name}");
+                    return handler;
+                });
             });
+            return (ICommandHandler<TCommand, TResult>)handlerFactory();
         }
 
         private ICommandPipelineBehavior<TCommand, TResult>[] GetCachedBehaviors<TCommand, TResult>(Type commandType) where TCommand : ICommand<TResult>
         {
-            return (ICommandPipelineBehavior<TCommand, TResult>[])_behaviorsCache.GetOrAdd(commandType, _ =>
+            var behaviorsFactory = (Func<object[]>)_behaviorsCache.GetOrAdd(commandType, _ =>
             {
-                var behaviors = _provider.GetServices<ICommandPipelineBehavior<TCommand, TResult>>().ToArray();
-                return behaviors;
+                return new Func<object[]>(() =>
+                {
+                    using var scope = _provider.CreateScope();
+                    var behaviors = scope.ServiceProvider.GetServices<ICommandPipelineBehavior<TCommand, TResult>>().ToArray();
+                    return behaviors.Cast<object>().ToArray();
+                });
             });
+            return behaviorsFactory().Cast<ICommandPipelineBehavior<TCommand, TResult>>().ToArray();
         }
 
         private Func<object, object, CancellationToken, Task<object>> GetCachedPipeline<TCommand, TResult>(Type commandType) where TCommand : ICommand<TResult>
@@ -82,11 +92,13 @@ namespace Common.Bus.Implementations
                     // 如果没有behaviors，直接调用handler
                     if (behaviors.Length == 0)
                     {
-                        return (object)await typedHandler.HandleAsync(typedCommand, ct);
+                        var result = await typedHandler.HandleAsync(typedCommand, ct);
+                        return (object)result!;
                     }
 
                     // 使用递归方式构建pipeline，减少委托创建
-                    return (object)await ExecutePipeline(typedHandler, typedCommand, behaviors, 0, ct);
+                    var pipelineResult = await ExecutePipeline(typedHandler, typedCommand, behaviors, 0, ct);
+                    return (object)pipelineResult!;
                 };
             });
         }

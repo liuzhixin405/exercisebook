@@ -75,11 +75,11 @@ namespace WebApp.Controllers
         [HttpGet("stream")]
         public async Task StreamMetrics()
         {
-            Response.Headers.Add("Content-Type", "text/event-stream");
-            Response.Headers.Add("Cache-Control", "no-cache");
-            Response.Headers.Add("Connection", "keep-alive");
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            Response.Headers.Add("Access-Control-Allow-Headers", "Cache-Control");
+            Response.Headers["Content-Type"] = "text/event-stream";
+            Response.Headers["Cache-Control"] = "no-cache";
+            Response.Headers["Connection"] = "keep-alive";
+            Response.Headers["Access-Control-Allow-Origin"] = "*";
+            Response.Headers["Access-Control-Allow-Headers"] = "Cache-Control";
 
             var clientId = Guid.NewGuid().ToString();
             _logger.LogInformation("SSE client {ClientId} connected", clientId);

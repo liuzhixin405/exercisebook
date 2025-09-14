@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
@@ -92,7 +93,7 @@ namespace Common.Bus.Implementations
             var requestId = Guid.NewGuid();
             var tcs = new TaskCompletionSource<object>();
             
-            var request = new DataflowCommandRequest(requestId, commandType, command, tcs);
+            var request = new DataflowCommandRequest(requestId, commandType, typeof(TResult), command, tcs);
             
             // 发送到数据流网络
             if (!_commandProcessor.Post(request))
@@ -114,53 +115,93 @@ namespace Common.Bus.Implementations
 
         private async Task<object> ProcessCommandPipeline(DataflowCommandRequest request)
         {
-            // 获取处理器和管道行为的工厂函数
-            var handlerFactory = GetCachedHandler(request.CommandType);
-            var behaviorsFactory = GetCachedBehaviors(request.CommandType);
+            // 使用反射调用泛型方法
+            var method = typeof(DataflowCommandBus).GetMethod(nameof(ProcessCommandPipelineGeneric), BindingFlags.NonPublic | BindingFlags.Instance);
+            var genericMethod = method!.MakeGenericMethod(request.CommandType, request.ResultType);
+            
+            var task = (Task)genericMethod.Invoke(this, new object[] { request })!;
+            await task;
+            
+            var resultProperty = task.GetType().GetProperty("Result");
+            return resultProperty?.GetValue(task) ?? throw new InvalidOperationException("Failed to get result from task");
+        }
+
+        private async Task<TResult> ProcessCommandPipelineGeneric<TCommand, TResult>(DataflowCommandRequest request) 
+            where TCommand : ICommand<TResult>
+        {
+            // 获取处理器和行为的工厂函数
+            var handlerFactory = GetCachedHandler<TCommand, TResult>(request.CommandType);
+            var behaviorsFactory = GetCachedBehaviors<TCommand, TResult>(request.CommandType);
             
             // 创建处理器和行为的实例
             var handler = handlerFactory();
             var behaviors = behaviorsFactory();
             
             // 构建处理管道
-            Func<Task<object>> pipeline = () => ExecuteHandler(handler, request.Command);
+            Func<Task<TResult>> pipeline = () => ExecuteHandler<TCommand, TResult>(handler, (TCommand)request.Command);
             
             // 按顺序应用管道行为
             foreach (var behavior in behaviors.Reverse())
             {
                 var currentBehavior = behavior;
                 var currentPipeline = pipeline;
-                pipeline = () => ExecuteBehavior(currentBehavior, request.Command, currentPipeline);
+                pipeline = async () => (TResult)await ExecuteBehavior(currentBehavior, (TCommand)request.Command, currentPipeline);
             }
             
             return await pipeline();
         }
 
-        private async Task<object> ExecuteBehavior(object behavior, object command, Func<Task<object>> next)
+        private async Task<object> ExecuteBehavior<TCommand, TResult>(
+            ICommandPipelineBehavior<TCommand, TResult> behavior, 
+            TCommand command, 
+            Func<Task<TResult>> next) 
+            where TCommand : ICommand<TResult>
         {
-            var behaviorType = behavior.GetType();
-            var handleMethod = behaviorType.GetMethod("Handle");
-            
-            if (handleMethod == null)
-                throw new InvalidOperationException($"Behavior {behaviorType.Name} does not have Handle method");
-
-            // 使用动态类型来避免泛型类型转换问题
-            dynamic dynamicBehavior = behavior;
-            dynamic dynamicCommand = command;
-            
-            // 创建一个包装的next函数，返回object类型
-            Func<Task<object>> wrappedNext = async () => await next();
-            
             try
             {
-                // 使用动态调用，让运行时处理类型转换
-                var result = await dynamicBehavior.Handle(dynamicCommand, wrappedNext, CancellationToken.None);
-                return result;
+                var result = await behavior.Handle(command, next, CancellationToken.None);
+                return result!;
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Error executing behavior {behaviorType.Name}: {ex.Message}", ex);
+                throw new InvalidOperationException($"Error executing behavior {behavior.GetType().Name}: {ex.Message}", ex);
             }
+        }
+
+        private Func<ICommandHandler<TCommand, TResult>> GetCachedHandler<TCommand, TResult>(Type commandType) 
+            where TCommand : ICommand<TResult>
+        {
+            return (Func<ICommandHandler<TCommand, TResult>>)_handlerCache.GetOrAdd(commandType, _ =>
+            {
+                return new Func<ICommandHandler<TCommand, TResult>>(() =>
+                {
+                    using var scope = _provider.CreateScope();
+                    var handler = scope.ServiceProvider.GetService<ICommandHandler<TCommand, TResult>>();
+                    if (handler == null)
+                        throw new InvalidOperationException($"No handler registered for {commandType.Name}");
+                    return handler;
+                });
+            });
+        }
+
+        private Func<ICommandPipelineBehavior<TCommand, TResult>[]> GetCachedBehaviors<TCommand, TResult>(Type commandType) 
+            where TCommand : ICommand<TResult>
+        {
+            return (Func<ICommandPipelineBehavior<TCommand, TResult>[]>)_behaviorsCache.GetOrAdd(commandType, _ =>
+            {
+                return new Func<ICommandPipelineBehavior<TCommand, TResult>[]>(() =>
+                {
+                    using var scope = _provider.CreateScope();
+                    var behaviors = scope.ServiceProvider.GetServices<ICommandPipelineBehavior<TCommand, TResult>>().ToArray();
+                    return behaviors;
+                });
+            });
+        }
+
+        private async Task<TResult> ExecuteHandler<TCommand, TResult>(ICommandHandler<TCommand, TResult> handler, TCommand command) 
+            where TCommand : ICommand<TResult>
+        {
+            return await handler.HandleAsync(command, CancellationToken.None);
         }
 
         private async Task<object> ExecuteHandler(object handler, object command)
@@ -171,11 +212,11 @@ namespace Common.Bus.Implementations
             if (handleMethod == null)
                 throw new InvalidOperationException($"Handler {handlerType.Name} does not have HandleAsync method");
 
-            var task = (Task)handleMethod.Invoke(handler, new object[] { command, CancellationToken.None });
+            var task = (Task)handleMethod.Invoke(handler, new object[] { command, CancellationToken.None })!;
             await task;
             
             var resultProperty = task.GetType().GetProperty("Result");
-            return resultProperty?.GetValue(task);
+            return resultProperty?.GetValue(task) ?? throw new InvalidOperationException("Failed to get result from task");
         }
 
         private Func<object> GetCachedHandler(Type commandType)
@@ -263,13 +304,15 @@ namespace Common.Bus.Implementations
     {
         public Guid Id { get; }
         public Type CommandType { get; }
+        public Type ResultType { get; }
         public object Command { get; }
         public TaskCompletionSource<object> TaskCompletionSource { get; }
 
-        public DataflowCommandRequest(Guid id, Type commandType, object command, TaskCompletionSource<object> tcs)
+        public DataflowCommandRequest(Guid id, Type commandType, Type resultType, object command, TaskCompletionSource<object> tcs)
         {
             Id = id;
             CommandType = commandType;
+            ResultType = resultType;
             Command = command;
             TaskCompletionSource = tcs;
         }

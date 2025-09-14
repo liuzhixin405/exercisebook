@@ -1,6 +1,6 @@
 ﻿using Common.Bus.Core;
 
-namespace WebApp.Filters
+namespace WebApp.Behaviors
 {
     public class LoggingBehavior<TCommand, TResult> : ICommandPipelineBehavior<TCommand, TResult>
     where TCommand : ICommand<TResult>

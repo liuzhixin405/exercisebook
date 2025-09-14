@@ -147,6 +147,9 @@ namespace Common.Bus.Extensions
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());
 
+            // 注册泛型CommandProcessor<TCommand, TResult>
+            services.AddScoped(typeof(CommandProcessor<,>));
+
             return services;
         }
 
@@ -157,26 +160,47 @@ namespace Common.Bus.Extensions
             // 可以在这里添加性能监控相关的服务
             return services;
         }
-    }
 
-    /// <summary>
-    /// CommandBus类型枚举
-    /// </summary>
-    public enum CommandBusType
-    {
         /// <summary>
-        /// 标准CommandBus
+        /// 一次性注册所有CommandBus实现
         /// </summary>
-        Standard,
-        
-        /// <summary>
-        /// 数据流CommandBus
-        /// </summary>
-        Dataflow,
-        
-        /// <summary>
-        /// 批处理数据流CommandBus
-        /// </summary>
-        BatchDataflow
+        public static IServiceCollection AddAllCommandBusImplementations(this IServiceCollection services)
+        {
+            // 注册标准CommandBus
+            services.AddSingleton<CommandBus>();
+            
+            // 注册DataflowCommandBus
+            services.AddSingleton<DataflowCommandBus>(provider =>
+            {
+                var logger = provider.GetRequiredService<ILogger<DataflowCommandBus>>();
+                return new DataflowCommandBus(provider, logger, Environment.ProcessorCount * 2);
+            });
+            
+            // 注册BatchDataflowCommandBus
+            services.AddSingleton<BatchDataflowCommandBus>(provider =>
+            {
+                var logger = provider.GetRequiredService<ILogger<BatchDataflowCommandBus>>();
+                return new BatchDataflowCommandBus(provider, logger, 1, TimeSpan.FromMilliseconds(10), Environment.ProcessorCount * 2);
+            });
+            
+            // 注册TypedDataflowCommandBus
+            services.AddSingleton<TypedDataflowCommandBus>(provider =>
+            {
+                var logger = provider.GetRequiredService<ILogger<TypedDataflowCommandBus>>();
+                return new TypedDataflowCommandBus(provider, logger, Environment.ProcessorCount * 2);
+            });
+            
+            // 注册MonitoredCommandBus
+            services.AddSingleton<MonitoredCommandBus>(provider =>
+            {
+                var logger = provider.GetRequiredService<ILogger<MonitoredCommandBus>>();
+                return new MonitoredCommandBus(provider, logger);
+            });
+            
+            // 注册服务定位器
+            services.AddScoped<CommandBusServiceLocator>();
+            
+            return services;
+        }
     }
 }
