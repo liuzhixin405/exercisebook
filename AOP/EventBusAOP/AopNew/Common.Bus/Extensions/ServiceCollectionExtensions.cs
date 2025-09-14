@@ -166,7 +166,8 @@ namespace Common.Bus.Extensions
         /// </summary>
         public static IServiceCollection AddAllCommandBusImplementations(this IServiceCollection services)
         {
-            // 注册标准CommandBus
+            // 注册标准CommandBus作为默认的ICommandBus实现
+            services.AddSingleton<ICommandBus, CommandBus>();
             services.AddSingleton<CommandBus>();
             
             // 注册DataflowCommandBus

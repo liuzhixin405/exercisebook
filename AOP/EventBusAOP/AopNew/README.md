@@ -21,7 +21,6 @@ AopNew/
 │   │   ├── BatchDataflowCommandBus.cs # 批处理Dataflow CommandBus
 │   │   ├── TypedDataflowCommandBus.cs # 类型安全Dataflow CommandBus
 │   │   ├── MonitoredCommandBus.cs # 带监控的CommandBus
-│   │   ├── CommandBusFactory.cs  # CommandBus工厂（已废弃）
 │   │   └── CommandBusServiceLocator.cs # 服务定位器
 │   ├── Monitoring/               # 监控相关
 │   │   ├── IDataflowMetrics.cs   # 数据流指标接口
@@ -49,10 +48,10 @@ AopNew/
     │   ├── BatchDataflowCommandBusController.cs
     │   ├── TypedDataflowCommandBusController.cs
     │   ├── MonitoredCommandBusController.cs
-    │   ├── CommandBusDemoController.cs
     │   └── MonitoringController.cs
-    └── Models/                   # 数据模型
-        └── WeatherForecast.cs
+    ├── Program.cs                # 应用程序入口
+    ├── WebApp.csproj            # 项目文件
+    └── WebApp.http              # HTTP测试文件
 ```
 
 ## CommandBus实现类型
@@ -164,7 +163,7 @@ POST /api/MonitoredCommandBus/send-email
 
 ## API端点
 
-### 专用控制器端点
+### CommandBus专用控制器
 
 每个CommandBus实现都有专门的控制器：
 
@@ -174,11 +173,12 @@ POST /api/MonitoredCommandBus/send-email
 - `TypedDataflowCommandBusController` - 类型安全Dataflow CommandBus演示
 - `MonitoredCommandBusController` - 带监控的CommandBus演示
 
-### 监控端点
+### 监控控制器
 
-- `GET /api/Monitoring/dashboard` - 监控面板
-- `GET /api/Monitoring/stream` - SSE实时数据流
-- `GET /api/Monitoring/metrics` - 获取当前指标
+- `MonitoringController` - 实时监控和SSE数据流
+  - `GET /api/Monitoring/dashboard` - 监控面板
+  - `GET /api/Monitoring/stream` - SSE实时数据流
+  - `GET /api/Monitoring/metrics` - 获取当前指标
 
 ## 示例请求
 
