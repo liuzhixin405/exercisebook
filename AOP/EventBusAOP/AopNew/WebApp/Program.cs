@@ -27,7 +27,10 @@ namespace WebApp
             // 添加实时监控支持
             builder.Services.AddMetricsCollector(TimeSpan.FromSeconds(1));
             
-            // 注册管道行为
+            // 注册增强的AOP行为
+            builder.Services.AddEnhancedBehaviors();
+            
+            // 注册传统管道行为
             builder.Services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             builder.Services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             builder.Services.AddScoped(typeof(ICommandPipelineBehavior<,>), typeof(TransactionBehavior<,>));

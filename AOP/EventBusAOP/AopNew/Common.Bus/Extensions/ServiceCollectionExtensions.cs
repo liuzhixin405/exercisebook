@@ -198,8 +198,41 @@ namespace Common.Bus.Extensions
                 return new MonitoredCommandBus(provider, logger);
             });
             
+            // 注册增强的CommandBus
+            services.AddSingleton<EnhancedCommandBus>(provider =>
+            {
+                var logger = provider.GetRequiredService<ILogger<EnhancedCommandBus>>();
+                return new EnhancedCommandBus(provider, provider.GetRequiredService<EnhancedPipelineExecutor>(), logger);
+            });
+            
+            // 注册增强的管道执行器
+            services.AddSingleton<EnhancedPipelineExecutor>();
+            
             // 注册服务定位器
             services.AddScoped<CommandBusServiceLocator>();
+            
+            return services;
+        }
+
+        /// <summary>
+        /// 注册增强的AOP行为
+        /// </summary>
+        public static IServiceCollection AddEnhancedBehaviors(this IServiceCollection services)
+        {
+            // 注册参数贯穿行为
+            services.AddScoped(typeof(IParameterInterceptionBehavior<,>), typeof(WebApp.Behaviors.ParameterValidationBehavior<,>));
+            
+            // 注册方法执行前行为
+            services.AddScoped(typeof(IPreExecutionBehavior<,>), typeof(WebApp.Behaviors.PreExecutionLoggingBehavior<,>));
+            
+            // 注册方法执行后行为
+            services.AddScoped(typeof(IPostExecutionBehavior<,>), typeof(WebApp.Behaviors.PostExecutionLoggingBehavior<,>));
+            
+            // 注册返回值贯穿行为
+            services.AddScoped(typeof(IReturnValueInterceptionBehavior<,>), typeof(WebApp.Behaviors.ReturnValueEnhancementBehavior<,>));
+            
+            // 注册异常处理行为
+            services.AddScoped(typeof(IExceptionHandlingBehavior<,>), typeof(WebApp.Behaviors.ExceptionHandlingBehavior<,>));
             
             return services;
         }
