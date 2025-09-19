@@ -107,15 +107,6 @@ public class ApplicationFramework : IApplicationFramework
                 {
                     services.Add(service);
                 }
-            })
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.Configure(app =>
-                {
-                    // 配置中间件管道
-                    var pipeline = app.ApplicationServices.GetRequiredService<IMiddlewarePipeline>();
-                    app.Use(pipeline.Build());
-                });
             });
 
         return _hostBuilder;

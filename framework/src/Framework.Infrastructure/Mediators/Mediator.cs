@@ -69,7 +69,8 @@ public class Mediator : IMediator
             throw new ArgumentNullException(nameof(handler));
 
         var messageType = typeof(TMessage);
-        _handlers.AddOrUpdate(messageType, handler, (key, existing) => handler);
+        var wrapper = new MessageHandlerWrapper<TMessage>(handler);
+        _handlers.AddOrUpdate(messageType, wrapper, (key, existing) => wrapper);
         return this;
     }
 
@@ -80,7 +81,8 @@ public class Mediator : IMediator
             throw new ArgumentNullException(nameof(handler));
 
         var messageType = typeof(TMessage);
-        _handlers.AddOrUpdate(messageType, handler, (key, existing) => handler);
+        var wrapper = new MessageHandlerWrapper<TMessage, TResult>(handler);
+        _handlers.AddOrUpdate(messageType, wrapper, (key, existing) => wrapper);
         return this;
     }
 
@@ -113,4 +115,65 @@ internal interface IMessageHandler
     int Priority { get; }
     Task HandleAsync(object message);
     bool ShouldHandle(object message);
+}
+
+/// <summary>
+/// 消息处理器包装器
+/// </summary>
+/// <typeparam name="TMessage">消息类型</typeparam>
+internal class MessageHandlerWrapper<TMessage> : IMessageHandler where TMessage : class
+{
+    private readonly IMessageHandler<TMessage> _handler;
+
+    public MessageHandlerWrapper(IMessageHandler<TMessage> handler)
+    {
+        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+    }
+
+    public string Name => _handler.Name;
+    public int Priority => _handler.Priority;
+
+    public async Task HandleAsync(object message)
+    {
+        if (message is TMessage typedMessage)
+        {
+            await _handler.HandleAsync(typedMessage);
+        }
+    }
+
+    public bool ShouldHandle(object message)
+    {
+        return message is TMessage typedMessage && _handler.ShouldHandle(typedMessage);
+    }
+}
+
+/// <summary>
+/// 消息处理器包装器（带结果）
+/// </summary>
+/// <typeparam name="TMessage">消息类型</typeparam>
+/// <typeparam name="TResult">结果类型</typeparam>
+internal class MessageHandlerWrapper<TMessage, TResult> : IMessageHandler where TMessage : class
+{
+    private readonly IMessageHandler<TMessage, TResult> _handler;
+
+    public MessageHandlerWrapper(IMessageHandler<TMessage, TResult> handler)
+    {
+        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+    }
+
+    public string Name => _handler.Name;
+    public int Priority => _handler.Priority;
+
+    public async Task HandleAsync(object message)
+    {
+        if (message is TMessage typedMessage)
+        {
+            await _handler.HandleAsync(typedMessage);
+        }
+    }
+
+    public bool ShouldHandle(object message)
+    {
+        return message is TMessage typedMessage && _handler.ShouldHandle(typedMessage);
+    }
 }

@@ -1,6 +1,7 @@
 using Framework.Core.Abstractions.Middleware;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using FrameworkMiddleware = Framework.Core.Abstractions.Middleware.IMiddleware;
 
 namespace Framework.Infrastructure.Decorators;
 
@@ -8,7 +9,7 @@ namespace Framework.Infrastructure.Decorators;
 /// 异常处理中间件 - 装饰器模式
 /// 为中间件添加异常处理功能
 /// </summary>
-public class ExceptionHandlingMiddleware : IMiddleware
+public class ExceptionHandlingMiddleware : FrameworkMiddleware
 {
     private readonly IExceptionHandler _exceptionHandler;
 

@@ -5,7 +5,7 @@ namespace Framework.Samples.Strategies;
 /// <summary>
 /// 密码验证策略
 /// </summary>
-public class PasswordValidationStrategy : IStrategy<bool>
+public class PasswordValidationStrategy : IStrategy
 {
     /// <inheritdoc />
     public string Name => "PasswordValidationStrategy";
@@ -17,7 +17,7 @@ public class PasswordValidationStrategy : IStrategy<bool>
     public int Priority => 100;
 
     /// <inheritdoc />
-    public async Task<bool> ExecuteAsync(params object[] parameters)
+    public async Task<object?> ExecuteAsync(params object[] parameters)
     {
         if (parameters.Length == 0 || parameters[0] is not string password)
         {

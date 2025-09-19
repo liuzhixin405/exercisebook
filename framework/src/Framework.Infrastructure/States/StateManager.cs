@@ -9,8 +9,8 @@ namespace Framework.Infrastructure.States;
 /// </summary>
 public class StateManager : IStateManager
 {
-    private readonly ConcurrentDictionary<Type, IState> _currentStates;
-    private readonly ConcurrentDictionary<Type, List<IStateTransitionHandler>> _transitionHandlers;
+    private readonly ConcurrentDictionary<string, IState> _currentStates;
+    private readonly ConcurrentDictionary<string, List<IStateTransitionHandler>> _transitionHandlers;
     private readonly List<IState> _stateHistory;
     private readonly object _lockObject = new object();
 
@@ -19,15 +19,15 @@ public class StateManager : IStateManager
     /// </summary>
     public StateManager()
     {
-        _currentStates = new ConcurrentDictionary<Type, IState>();
-        _transitionHandlers = new ConcurrentDictionary<Type, List<IStateTransitionHandler>>();
+        _currentStates = new ConcurrentDictionary<string, IState>();
+        _transitionHandlers = new ConcurrentDictionary<string, List<IStateTransitionHandler>>();
         _stateHistory = new List<IState>();
     }
 
     /// <inheritdoc />
     public TState? GetCurrentState<TState>() where TState : class, IState
     {
-        var stateType = typeof(TState);
+        var stateType = typeof(TState).FullName ?? typeof(TState).Name;
         if (_currentStates.TryGetValue(stateType, out var state))
         {
             return state as TState;
@@ -41,7 +41,7 @@ public class StateManager : IStateManager
         if (state == null)
             throw new ArgumentNullException(nameof(state));
 
-        var stateType = typeof(TState);
+        var stateType = typeof(TState).FullName ?? typeof(TState).Name;
         var previousState = _currentStates.GetValueOrDefault(stateType);
 
         _currentStates.AddOrUpdate(stateType, state, (key, existing) => state);
@@ -62,7 +62,7 @@ public class StateManager : IStateManager
         if (state == null)
             throw new ArgumentNullException(nameof(state));
 
-        var stateType = typeof(TState);
+        var stateType = typeof(TState).FullName ?? typeof(TState).Name;
         var currentState = _currentStates.GetValueOrDefault(stateType);
 
         // 检查是否可以转换
@@ -72,7 +72,7 @@ public class StateManager : IStateManager
         }
 
         // 执行转换处理器
-        var transitionHandlers = GetTransitionHandlers(currentState?.GetType(), stateType);
+        var transitionHandlers = GetTransitionHandlers(currentState?.GetType(), state.GetType());
         foreach (var handler in transitionHandlers)
         {
             if (!await handler.HandleTransitionAsync(currentState, state, CreateStateContext()))
@@ -103,7 +103,7 @@ public class StateManager : IStateManager
         if (handler == null)
             throw new ArgumentNullException(nameof(handler));
 
-        var key = new TypePair(typeof(TFromState), typeof(TToState));
+        var key = $"{typeof(TFromState).FullName ?? typeof(TFromState).Name}->{typeof(TToState).FullName ?? typeof(TToState).Name}";
         var wrapper = new StateTransitionHandlerWrapper<TFromState, TToState>(handler);
 
         _transitionHandlers.AddOrUpdate(
@@ -145,7 +145,7 @@ public class StateManager : IStateManager
     /// <returns>转换处理器列表</returns>
     private IEnumerable<IStateTransitionHandler> GetTransitionHandlers(Type? fromStateType, Type toStateType)
     {
-        var key = new TypePair(fromStateType, toStateType);
+        var key = $"{fromStateType?.FullName ?? fromStateType?.Name ?? "null"}->{toStateType.FullName ?? toStateType.Name}";
         if (_transitionHandlers.TryGetValue(key, out var handlers))
         {
             return handlers.OrderBy(h => h.Priority);
@@ -221,11 +221,6 @@ public class StateContext : IStateContext
         _data.Clear();
     }
 }
-
-/// <summary>
-/// 类型对
-/// </summary>
-internal record TypePair(Type? From, Type To);
 
 /// <summary>
 /// 状态转换处理器基类

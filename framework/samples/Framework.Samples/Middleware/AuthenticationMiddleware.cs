@@ -1,12 +1,13 @@
 using Framework.Core.Abstractions.Middleware;
 using Microsoft.AspNetCore.Http;
+using FrameworkMiddleware = Framework.Core.Abstractions.Middleware.IMiddleware;
 
 namespace Framework.Samples.Middleware;
 
 /// <summary>
 /// 认证中间件
 /// </summary>
-public class AuthenticationMiddleware : IMiddleware
+public class AuthenticationMiddleware : FrameworkMiddleware
 {
     /// <inheritdoc />
     public string Name => "AuthenticationMiddleware";

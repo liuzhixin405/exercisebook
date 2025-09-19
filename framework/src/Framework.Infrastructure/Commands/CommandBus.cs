@@ -75,7 +75,8 @@ public class CommandBus : ICommandBus
             throw new ArgumentNullException(nameof(handler));
 
         var commandType = typeof(TCommand);
-        _handlers.AddOrUpdate(commandType, handler, (key, existing) => handler);
+        var wrapper = new CommandHandlerWrapper<TCommand>(handler);
+        _handlers.AddOrUpdate(commandType, wrapper, (key, existing) => wrapper);
         return this;
     }
 
@@ -87,7 +88,8 @@ public class CommandBus : ICommandBus
             throw new ArgumentNullException(nameof(handler));
 
         var commandType = typeof(TCommand);
-        _handlers.AddOrUpdate(commandType, handler, (key, existing) => handler);
+        var wrapper = new CommandHandlerWrapper<TCommand, TResult>(handler);
+        _handlers.AddOrUpdate(commandType, wrapper, (key, existing) => wrapper);
         return this;
     }
 
@@ -127,4 +129,65 @@ internal interface ICommandHandler
     int Priority { get; }
     Task HandleAsync(object command);
     bool ShouldHandle(object command);
+}
+
+/// <summary>
+/// 命令处理器包装器
+/// </summary>
+/// <typeparam name="TCommand">命令类型</typeparam>
+internal class CommandHandlerWrapper<TCommand> : ICommandHandler where TCommand : class, ICommand
+{
+    private readonly ICommandHandler<TCommand> _handler;
+
+    public CommandHandlerWrapper(ICommandHandler<TCommand> handler)
+    {
+        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+    }
+
+    public string Name => _handler.Name;
+    public int Priority => _handler.Priority;
+
+    public async Task HandleAsync(object command)
+    {
+        if (command is TCommand typedCommand)
+        {
+            await _handler.HandleAsync(typedCommand);
+        }
+    }
+
+    public bool ShouldHandle(object command)
+    {
+        return command is TCommand typedCommand && _handler.ShouldHandle(typedCommand);
+    }
+}
+
+/// <summary>
+/// 命令处理器包装器（带结果）
+/// </summary>
+/// <typeparam name="TCommand">命令类型</typeparam>
+/// <typeparam name="TResult">结果类型</typeparam>
+internal class CommandHandlerWrapper<TCommand, TResult> : ICommandHandler where TCommand : class, ICommand<TResult>
+{
+    private readonly ICommandHandler<TCommand, TResult> _handler;
+
+    public CommandHandlerWrapper(ICommandHandler<TCommand, TResult> handler)
+    {
+        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+    }
+
+    public string Name => _handler.Name;
+    public int Priority => _handler.Priority;
+
+    public async Task HandleAsync(object command)
+    {
+        if (command is TCommand typedCommand)
+        {
+            await _handler.HandleAsync(typedCommand);
+        }
+    }
+
+    public bool ShouldHandle(object command)
+    {
+        return command is TCommand typedCommand && _handler.ShouldHandle(typedCommand);
+    }
 }

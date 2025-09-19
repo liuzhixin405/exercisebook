@@ -126,9 +126,9 @@ public class ProxyFactory : IProxyFactory
     private TInterface CreateProxyInternal<TInterface>(TInterface target, List<IInterceptor> interceptors)
         where TInterface : class
     {
-        // 这里使用反射创建代理
+        // 这里简化实现，直接返回目标对象
         // 在实际应用中，可以使用 Castle.DynamicProxy 或其他代理库
-        return new ReflectionProxy<TInterface>(target, interceptors);
+        return target;
     }
 }
 

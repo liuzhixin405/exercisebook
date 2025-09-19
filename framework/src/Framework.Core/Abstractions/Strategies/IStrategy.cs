@@ -40,7 +40,7 @@ public interface IStrategy
 /// 带结果的策略接口 - 策略模式
 /// </summary>
 /// <typeparam name="TResult">结果类型</typeparam>
-public interface IStrategy<out TResult> : IStrategy
+public interface IStrategy<TResult> : IStrategy
 {
     /// <summary>
     /// 执行策略并返回结果

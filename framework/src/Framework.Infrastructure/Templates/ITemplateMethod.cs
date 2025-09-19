@@ -25,21 +25,21 @@ public interface ITemplateMethod<TContext, TResult>
     /// </summary>
     /// <param name="context">上下文</param>
     /// <returns>任务</returns>
-    protected Task InitializeAsync(TContext context);
+    Task InitializeAsync(TContext context);
 
     /// <summary>
     /// 验证（钩子方法）
     /// </summary>
     /// <param name="context">上下文</param>
     /// <returns>是否有效</returns>
-    protected Task<bool> ValidateAsync(TContext context);
+    Task<bool> ValidateAsync(TContext context);
 
     /// <summary>
     /// 处理（抽象方法）
     /// </summary>
     /// <param name="context">上下文</param>
     /// <returns>结果</returns>
-    protected Task<TResult> ProcessAsync(TContext context);
+    Task<TResult> ProcessAsync(TContext context);
 
     /// <summary>
     /// 清理（钩子方法）
@@ -47,7 +47,7 @@ public interface ITemplateMethod<TContext, TResult>
     /// <param name="context">上下文</param>
     /// <param name="result">结果</param>
     /// <returns>任务</returns>
-    protected Task CleanupAsync(TContext context, TResult result);
+    Task CleanupAsync(TContext context, TResult result);
 }
 
 /// <summary>
@@ -90,22 +90,22 @@ public abstract class TemplateMethodBase<TContext, TResult> : ITemplateMethod<TC
     }
 
     /// <inheritdoc />
-    protected virtual Task InitializeAsync(TContext context)
+    public virtual Task InitializeAsync(TContext context)
     {
         return Task.CompletedTask;
     }
 
     /// <inheritdoc />
-    protected virtual Task<bool> ValidateAsync(TContext context)
+    public virtual Task<bool> ValidateAsync(TContext context)
     {
         return Task.FromResult(true);
     }
 
     /// <inheritdoc />
-    protected abstract Task<TResult> ProcessAsync(TContext context);
+    public abstract Task<TResult> ProcessAsync(TContext context);
 
     /// <inheritdoc />
-    protected virtual Task CleanupAsync(TContext context, TResult result)
+    public virtual Task CleanupAsync(TContext context, TResult result)
     {
         return Task.CompletedTask;
     }

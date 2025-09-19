@@ -5,7 +5,7 @@ namespace Framework.Samples.Strategies;
 /// <summary>
 /// 邮箱验证策略
 /// </summary>
-public class EmailValidationStrategy : IStrategy<bool>
+public class EmailValidationStrategy : IStrategy
 {
     /// <inheritdoc />
     public string Name => "EmailValidationStrategy";
@@ -17,7 +17,7 @@ public class EmailValidationStrategy : IStrategy<bool>
     public int Priority => 100;
 
     /// <inheritdoc />
-    public async Task<bool> ExecuteAsync(params object[] parameters)
+    public async Task<object?> ExecuteAsync(params object[] parameters)
     {
         if (parameters.Length == 0 || parameters[0] is not string email)
         {

@@ -31,6 +31,6 @@ public class UserAuditVisitor : IVisitor<User>
     /// <inheritdoc />
     public bool ShouldVisit(User visitable)
     {
-        return visitable != null && visitable.Id != Guid.Empty;
+        return visitable != null && visitable.UserId != Guid.Empty;
     }
 }

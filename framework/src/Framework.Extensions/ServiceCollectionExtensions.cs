@@ -52,14 +52,14 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IMediator, Mediator>();
         services.AddSingleton<IMementoManager, MementoManager>();
 
-        // 注册框架主入口
+        // 注册框架主入�?
         services.AddSingleton<IApplicationFramework, ApplicationFramework>();
 
         return services;
     }
 
     /// <summary>
-    /// 添加框架服务（带配置）
+    /// 添加框架服务（带配置�?
     /// </summary>
     /// <param name="services">服务集合</param>
     /// <param name="configureFramework">框架配置委托</param>
@@ -78,9 +78,9 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// 添加中间件
+    /// 添加中间�?
     /// </summary>
-    /// <typeparam name="TMiddleware">中间件类型</typeparam>
+    /// <typeparam name="TMiddleware">中间件类�?/typeparam>
     /// <param name="services">服务集合</param>
     /// <returns>服务集合</returns>
     public static IServiceCollection AddMiddleware<TMiddleware>(this IServiceCollection services)
@@ -91,10 +91,10 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// 添加事件处理器
+    /// 添加事件处理�?
     /// </summary>
     /// <typeparam name="TEvent">事件类型</typeparam>
-    /// <typeparam name="THandler">处理器类型</typeparam>
+    /// <typeparam name="THandler">处理器类�?/typeparam>
     /// <param name="services">服务集合</param>
     /// <returns>服务集合</returns>
     public static IServiceCollection AddEventHandler<TEvent, THandler>(this IServiceCollection services)
@@ -106,10 +106,10 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// 添加命令处理器
+    /// 添加命令处理�?
     /// </summary>
     /// <typeparam name="TCommand">命令类型</typeparam>
-    /// <typeparam name="THandler">处理器类型</typeparam>
+    /// <typeparam name="THandler">处理器类�?/typeparam>
     /// <param name="services">服务集合</param>
     /// <returns>服务集合</returns>
     public static IServiceCollection AddCommandHandler<TCommand, THandler>(this IServiceCollection services)
@@ -125,7 +125,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <typeparam name="TCommand">命令类型</typeparam>
     /// <typeparam name="TResult">结果类型</typeparam>
-    /// <typeparam name="THandler">处理器类型</typeparam>
+    /// <typeparam name="THandler">处理器类�?/typeparam>
     /// <param name="services">服务集合</param>
     /// <returns>服务集合</returns>
     public static IServiceCollection AddCommandHandler<TCommand, TResult, THandler>(this IServiceCollection services)
@@ -150,9 +150,9 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// 添加状态
+    /// 添加状�?
     /// </summary>
-    /// <typeparam name="TState">状态类型</typeparam>
+    /// <typeparam name="TState">状态类�?/typeparam>
     /// <param name="services">服务集合</param>
     /// <returns>服务集合</returns>
     public static IServiceCollection AddState<TState>(this IServiceCollection services)
@@ -163,24 +163,24 @@ public static class ServiceCollectionExtensions
     }
 
     /// <summary>
-    /// 添加访问者
+    /// 添加访问�?
     /// </summary>
-    /// <typeparam name="TVisitable">可访问类型</typeparam>
-    /// <typeparam name="TVisitor">访问者类型</typeparam>
+    /// <typeparam name="TVisitable">可访问类�?/typeparam>
+    /// <typeparam name="TVisitor">访问者类�?/typeparam>
     /// <param name="services">服务集合</param>
     /// <returns>服务集合</returns>
     public static IServiceCollection AddVisitor<TVisitable, TVisitor>(this IServiceCollection services)
         where TVisitable : class, IVisitable
-        where TVisitor : class, IVisitor<TVisiTable>
+        where TVisitor : class, IVisitor<TVisitable>
     {
-        services.AddTransient<IVisitor<TVisiTable>, TVisitor>();
+        services.AddTransient<IVisitor<TVisitable>, TVisitor>();
         return services;
     }
 
     /// <summary>
-    /// 添加拦截器
+    /// 添加拦截�?
     /// </summary>
-    /// <typeparam name="TInterceptor">拦截器类型</typeparam>
+    /// <typeparam name="TInterceptor">拦截器类�?/typeparam>
     /// <param name="services">服务集合</param>
     /// <returns>服务集合</returns>
     public static IServiceCollection AddInterceptor<TInterceptor>(this IServiceCollection services)

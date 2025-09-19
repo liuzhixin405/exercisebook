@@ -1,5 +1,7 @@
 using Framework.Core.Abstractions.Configuration;
 using Microsoft.Extensions.Configuration;
+using FrameworkConfigurationBuilder = Framework.Core.Abstractions.Configuration.IConfigurationBuilder;
+using MicrosoftConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
 namespace Framework.Infrastructure.Configuration;
 
@@ -7,9 +9,9 @@ namespace Framework.Infrastructure.Configuration;
 /// 配置构建器实现 - 建造者模式
 /// 提供构建配置的实现
 /// </summary>
-public class ConfigurationBuilder : IConfigurationBuilder
+public class ConfigurationBuilder : FrameworkConfigurationBuilder
 {
-    private readonly Microsoft.Extensions.Configuration.ConfigurationBuilder _builder;
+    private readonly MicrosoftConfigurationBuilder _builder;
     private readonly List<IConfigurationAdapter> _adapters;
 
     /// <summary>
@@ -17,26 +19,26 @@ public class ConfigurationBuilder : IConfigurationBuilder
     /// </summary>
     public ConfigurationBuilder()
     {
-        _builder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
+        _builder = new MicrosoftConfigurationBuilder();
         _adapters = new List<IConfigurationAdapter>();
     }
 
     /// <inheritdoc />
-    public IConfigurationBuilder AddSource(IConfigurationSource source)
+    public FrameworkConfigurationBuilder AddSource(IConfigurationSource source)
     {
         _builder.Add(source);
         return this;
     }
 
     /// <inheritdoc />
-    public IConfigurationBuilder AddJsonFile(string path, bool optional = false, bool reloadOnChange = false)
+    public FrameworkConfigurationBuilder AddJsonFile(string path, bool optional = false, bool reloadOnChange = false)
     {
         _builder.AddJsonFile(path, optional, reloadOnChange);
         return this;
     }
 
     /// <inheritdoc />
-    public IConfigurationBuilder AddEnvironmentVariables(string? prefix = null)
+    public FrameworkConfigurationBuilder AddEnvironmentVariables(string? prefix = null)
     {
         if (string.IsNullOrEmpty(prefix))
         {
@@ -50,21 +52,21 @@ public class ConfigurationBuilder : IConfigurationBuilder
     }
 
     /// <inheritdoc />
-    public IConfigurationBuilder AddCommandLine(string[] args)
+    public FrameworkConfigurationBuilder AddCommandLine(string[] args)
     {
         _builder.AddCommandLine(args);
         return this;
     }
 
     /// <inheritdoc />
-    public IConfigurationBuilder AddInMemoryCollection(IEnumerable<KeyValuePair<string, string?>>? initialData = null)
+    public FrameworkConfigurationBuilder AddInMemoryCollection(IEnumerable<KeyValuePair<string, string?>>? initialData = null)
     {
         _builder.AddInMemoryCollection(initialData);
         return this;
     }
 
     /// <inheritdoc />
-    public IConfigurationBuilder AddAdapter(IConfigurationAdapter adapter)
+    public FrameworkConfigurationBuilder AddAdapter(IConfigurationAdapter adapter)
     {
         if (adapter == null)
             throw new ArgumentNullException(nameof(adapter));
@@ -81,7 +83,11 @@ public class ConfigurationBuilder : IConfigurationBuilder
         // 应用所有适配器
         foreach (var adapter in _adapters)
         {
-            configuration = adapter.Adapt(configuration);
+            var adaptedConfig = adapter.Adapt(configuration);
+            if (adaptedConfig is IConfigurationRoot adaptedRoot)
+            {
+                configuration = adaptedRoot;
+            }
         }
 
         return configuration;

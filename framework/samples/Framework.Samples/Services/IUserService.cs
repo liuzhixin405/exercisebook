@@ -41,12 +41,12 @@ public interface IUserService
 /// <summary>
 /// 用户信息
 /// </summary>
-public class User
+public class User : Framework.Core.Abstractions.Visitors.IVisitable
 {
     /// <summary>
     /// 用户ID
     /// </summary>
-    public Guid Id { get; set; }
+    public Guid UserId { get; set; }
 
     /// <summary>
     /// 用户名
@@ -67,4 +67,16 @@ public class User
     /// 更新时间
     /// </summary>
     public DateTime UpdatedAt { get; set; }
+
+    /// <inheritdoc />
+    public string Id => UserId.ToString();
+
+    /// <inheritdoc />
+    public string Type => "User";
+
+    /// <inheritdoc />
+    public async Task AcceptAsync(Framework.Core.Abstractions.Visitors.IVisitor<Framework.Core.Abstractions.Visitors.IVisitable> visitor)
+    {
+        await visitor.VisitAsync(this);
+    }
 }

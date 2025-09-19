@@ -1,12 +1,13 @@
 using Framework.Core.Abstractions.Middleware;
 using Microsoft.AspNetCore.Http;
+using FrameworkMiddleware = Framework.Core.Abstractions.Middleware.IMiddleware;
 
 namespace Framework.Samples.Middleware;
 
 /// <summary>
 /// 日志中间件
 /// </summary>
-public class LoggingMiddleware : IMiddleware
+public class LoggingMiddleware : FrameworkMiddleware
 {
     /// <inheritdoc />
     public string Name => "LoggingMiddleware";

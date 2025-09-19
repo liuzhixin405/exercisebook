@@ -26,19 +26,19 @@ public class UserService : IUserService
     {
         var user = new User
         {
-            Id = Guid.NewGuid(),
+            UserId = Guid.NewGuid(),
             Name = userName,
             Email = email,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
         };
 
-        _users[user.Id] = user;
+        _users[user.UserId] = user;
 
         // 发布用户创建事件
         var userCreatedEvent = new UserCreatedEvent
         {
-            UserId = user.Id,
+            UserId = user.UserId,
             UserName = user.Name,
             Email = user.Email
         };
@@ -46,7 +46,7 @@ public class UserService : IUserService
         await _eventBus.PublishAsync(userCreatedEvent);
 
         Console.WriteLine($"用户创建成功: {user.Name} ({user.Email})");
-        return user.Id;
+        return user.UserId;
     }
 
     /// <inheritdoc />
@@ -67,7 +67,7 @@ public class UserService : IUserService
         // 发布用户更新事件
         var userUpdatedEvent = new UserUpdatedEvent
         {
-            UserId = user.Id,
+            UserId = user.UserId,
             OldName = oldName,
             NewName = user.Name,
             OldEmail = oldEmail,
