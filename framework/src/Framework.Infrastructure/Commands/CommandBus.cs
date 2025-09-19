@@ -1,5 +1,6 @@
 using Framework.Core.Abstractions.Commands;
 using System.Collections.Concurrent;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Framework.Infrastructure.Commands;
 
@@ -20,6 +21,101 @@ public class CommandBus : ICommandBus
     {
         _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         _handlers = new ConcurrentDictionary<Type, ICommandHandler>();
+        
+        // 在构造时立即注册所有命令处理器
+        AutoRegisterHandlers();
+    }
+
+    /// <summary>
+    /// 自动发现并注册命令处理器
+    /// </summary>
+    private void AutoRegisterHandlers()
+    {
+        try
+        {
+            Console.WriteLine("开始自动注册命令处理器...");
+            
+            // 通过反射查找所有已注册的 ICommandHandler 服务
+            var allServices = new List<object>();
+            
+            // 获取所有程序集中实现了 ICommandHandler 接口的类型
+            var allTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
+                .SelectMany(a => 
+                {
+                    try { return a.GetTypes(); }
+                    catch { return new Type[0]; }
+                })
+                .Where(t => t.IsClass && !t.IsAbstract)
+                .Where(t => t.GetInterfaces().Any(i => 
+                    i.IsGenericType && 
+                    (i.GetGenericTypeDefinition() == typeof(ICommandHandler<>) ||
+                     i.GetGenericTypeDefinition() == typeof(ICommandHandler<,>))))
+                .ToList();
+
+            Console.WriteLine($"找到 {allTypes.Count} 个命令处理器类型");
+
+            foreach (var type in allTypes)
+            {
+                try
+                {
+                    // 尝试通过泛型接口获取服务
+                    var interfaces = type.GetInterfaces()
+                        .Where(i => i.IsGenericType && 
+                                   (i.GetGenericTypeDefinition() == typeof(ICommandHandler<>) ||
+                                    i.GetGenericTypeDefinition() == typeof(ICommandHandler<,>)))
+                        .ToList();
+
+                    foreach (var interfaceType in interfaces)
+                    {
+                        try
+                        {
+                            var service = _serviceProvider.GetService(interfaceType);
+                            if (service != null)
+                            {
+                                allServices.Add(service);
+                                Console.WriteLine($"通过泛型接口找到服务: {type.Name} -> {interfaceType.Name}");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"通过泛型接口获取服务 {type.Name} 时出错: {ex.Message}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"处理类型 {type.Name} 时出错: {ex.Message}");
+                }
+            }
+
+            Console.WriteLine($"总共发现 {allServices.Count} 个命令处理器");
+
+            foreach (var handler in allServices)
+            {
+                var handlerType = handler.GetType();
+                Console.WriteLine($"处理命令处理器: {handlerType.Name}");
+                
+                var interfaces = handlerType.GetInterfaces()
+                    .Where(i => i.IsGenericType && 
+                               (i.GetGenericTypeDefinition() == typeof(ICommandHandler<>) ||
+                                i.GetGenericTypeDefinition() == typeof(ICommandHandler<,>)))
+                    .ToList();
+
+                foreach (var interfaceType in interfaces)
+                {
+                    var commandType = interfaceType.GetGenericArguments()[0];
+                    Console.WriteLine($"注册命令类型: {commandType.Name} -> 处理器: {handlerType.Name}");
+                    var wrapper = new CommandHandlerWrapper(handler, commandType);
+                    _handlers.AddOrUpdate(commandType, wrapper, (key, existing) => wrapper);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"自动注册命令处理器时出错: {ex.Message}");
+            Console.WriteLine($"堆栈跟踪: {ex.StackTrace}");
+        }
     }
 
     /// <inheritdoc />
@@ -29,17 +125,31 @@ public class CommandBus : ICommandBus
             throw new ArgumentNullException(nameof(command));
 
         var commandType = typeof(TCommand);
+        
         if (!_handlers.TryGetValue(commandType, out var handler))
         {
-            throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
+            var registeredTypes = string.Join(", ", _handlers.Keys.Select(t => t.Name));
+            throw new InvalidOperationException(
+                $"No handler registered for command type '{commandType.Name}'. " +
+                $"Registered command types: [{registeredTypes}]. " +
+                $"Please ensure the command handler is registered using AddCommandHandler<{commandType.Name}, {commandType.Name}Handler>()");
         }
 
-        if (handler is ICommandHandler<TCommand> typedHandler)
+        try
         {
-            if (typedHandler.ShouldHandle(command))
+            if (handler.ShouldHandle(command))
             {
-                await typedHandler.HandleAsync(command);
+                await handler.HandleAsync(command);
             }
+            else
+            {
+                Console.WriteLine($"Command handler '{handler.Name}' determined it should not handle command '{commandType.Name}'");
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException(
+                $"Error executing command '{commandType.Name}' with handler '{handler.Name}': {ex.Message}", ex);
         }
     }
 
@@ -189,5 +299,63 @@ internal class CommandHandlerWrapper<TCommand, TResult> : ICommandHandler where 
     public bool ShouldHandle(object command)
     {
         return command is TCommand typedCommand && _handler.ShouldHandle(typedCommand);
+    }
+}
+
+/// <summary>
+/// 通用命令处理器包装器
+/// </summary>
+internal class CommandHandlerWrapper : ICommandHandler
+{
+    private readonly object _handler;
+    private readonly Type _commandType;
+
+    public CommandHandlerWrapper(object handler, Type commandType)
+    {
+        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+        _commandType = commandType ?? throw new ArgumentNullException(nameof(commandType));
+    }
+
+    public string Name => GetPropertyValue<string>("Name");
+    public int Priority => GetPropertyValue<int>("Priority");
+
+    public async Task HandleAsync(object command)
+    {
+        if (command?.GetType() == _commandType)
+        {
+            var handleMethod = _handler.GetType().GetMethod("HandleAsync", new[] { _commandType });
+            if (handleMethod != null)
+            {
+                var task = (Task)handleMethod.Invoke(_handler, new[] { command });
+                if (task != null)
+                {
+                    await task;
+                }
+            }
+        }
+    }
+
+    public bool ShouldHandle(object command)
+    {
+        if (command?.GetType() != _commandType)
+            return false;
+
+        var shouldHandleMethod = _handler.GetType().GetMethod("ShouldHandle", new[] { _commandType });
+        if (shouldHandleMethod != null)
+        {
+            return (bool)shouldHandleMethod.Invoke(_handler, new[] { command });
+        }
+
+        return true;
+    }
+
+    private T GetPropertyValue<T>(string propertyName)
+    {
+        var property = _handler.GetType().GetProperty(propertyName);
+        if (property != null)
+        {
+            return (T)property.GetValue(_handler);
+        }
+        return default(T);
     }
 }

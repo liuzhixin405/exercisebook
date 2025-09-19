@@ -22,7 +22,11 @@ public static class ApplicationBuilderExtensions
         
         app.Use(async (context, next) =>
         {
+            // 执行框架中间件
             await pipeline.Build()(context);
+            
+            // 继续执行ASP.NET Core的默认管道
+            await next();
         });
 
         return app;

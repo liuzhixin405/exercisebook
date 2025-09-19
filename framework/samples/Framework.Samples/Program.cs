@@ -29,7 +29,7 @@ builder.Services.AddFramework(framework =>
     });
 });
 
-// 添加示例服务
+// 添加示例服务到ASP.NET Core DI容器
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
@@ -108,8 +108,8 @@ var app = builder.Build();
 //app.UseHttpsRedirection();
 app.UseAuthorization();
 
-// 使用框架
-app.UseFramework();
+// 使用框架（暂时注释掉以测试基本功能）
+// app.UseFramework();
 
 app.MapControllers();
 
