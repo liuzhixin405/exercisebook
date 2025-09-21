@@ -116,7 +116,7 @@ namespace Common.Bus.Implementations
             }
 
             var behavior = behaviors[behaviorIndex];
-            return await behavior.Handle(command, () => ExecutePipeline(handler, command, behaviors, behaviorIndex + 1, ct), ct);
+            return await behavior.Handle(command, cmd => ExecutePipeline(handler, command, behaviors, behaviorIndex + 1, ct), ct);
         }
     }
 }

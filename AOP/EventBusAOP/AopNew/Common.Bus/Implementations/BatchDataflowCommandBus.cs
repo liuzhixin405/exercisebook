@@ -238,7 +238,7 @@ namespace Common.Bus.Implementations
         {
             try
             {
-                var result = await behavior.Handle(command, next, CancellationToken.None);
+                var result = await behavior.Handle(command, cmd => next(), CancellationToken.None);
                 return result!;
             }
             catch (Exception ex)

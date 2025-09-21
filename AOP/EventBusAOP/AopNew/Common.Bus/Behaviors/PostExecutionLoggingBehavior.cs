@@ -1,9 +1,10 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Common.Bus.Core;
 using Microsoft.Extensions.Logging;
 
-namespace WebApp.Behaviors
+namespace Common.Bus.Behaviors
 {
     /// <summary>
     /// 方法执行后日志行为

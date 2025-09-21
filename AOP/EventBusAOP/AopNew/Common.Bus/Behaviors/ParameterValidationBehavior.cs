@@ -1,11 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Common.Bus.Core;
 using Microsoft.Extensions.Logging;
 
-namespace WebApp.Behaviors
+namespace Common.Bus.Behaviors
 {
     /// <summary>
     /// 参数验证行为 - 参数贯穿处理
@@ -26,7 +28,7 @@ namespace WebApp.Behaviors
             _logger.LogInformation("🔍 参数验证开始: {CommandType}", typeof(TCommand).Name);
 
             // 使用反射进行数据注解验证
-            var validationContext = new ValidationContext(command);
+            var validationContext = new ValidationContext(command!);
             var validationResults = new List<ValidationResult>();
             
             if (!Validator.TryValidateObject(command, validationContext, validationResults, true))
@@ -37,6 +39,7 @@ namespace WebApp.Behaviors
             }
 
             _logger.LogInformation("✅ 参数验证通过: {CommandType}", typeof(TCommand).Name);
+            await Task.CompletedTask;
             return command;
         }
     }

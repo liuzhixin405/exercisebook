@@ -181,7 +181,7 @@ namespace Common.Bus.Core
             
             // 如果没有异常处理器能够处理，重新抛出原始异常
             _logger?.LogError(exception, "No exception handler could process the exception");
-            throw;
+            throw exception;
         }
     }
 }

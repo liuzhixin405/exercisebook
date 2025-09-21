@@ -57,7 +57,7 @@ namespace Common.Bus.Core
                 {
                     var currentBehavior = behavior;
                     var currentPipeline = pipeline;
-                    pipeline = () => currentBehavior.Handle(typedRequest.Command, currentPipeline, cancellationToken);
+                    pipeline = () => currentBehavior.Handle(typedRequest.Command, cmd => currentPipeline(), cancellationToken);
                 }
                 
                 // 执行管道

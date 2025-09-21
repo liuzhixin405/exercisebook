@@ -220,19 +220,19 @@ namespace Common.Bus.Extensions
         public static IServiceCollection AddEnhancedBehaviors(this IServiceCollection services)
         {
             // 注册参数贯穿行为
-            services.AddScoped(typeof(IParameterInterceptionBehavior<,>), typeof(WebApp.Behaviors.ParameterValidationBehavior<,>));
+            services.AddScoped(typeof(IParameterInterceptionBehavior<,>), typeof(Common.Bus.Behaviors.ParameterValidationBehavior<,>));
             
             // 注册方法执行前行为
-            services.AddScoped(typeof(IPreExecutionBehavior<,>), typeof(WebApp.Behaviors.PreExecutionLoggingBehavior<,>));
+            services.AddScoped(typeof(IPreExecutionBehavior<,>), typeof(Common.Bus.Behaviors.PreExecutionLoggingBehavior<,>));
             
             // 注册方法执行后行为
-            services.AddScoped(typeof(IPostExecutionBehavior<,>), typeof(WebApp.Behaviors.PostExecutionLoggingBehavior<,>));
+            services.AddScoped(typeof(IPostExecutionBehavior<,>), typeof(Common.Bus.Behaviors.PostExecutionLoggingBehavior<,>));
             
             // 注册返回值贯穿行为
-            services.AddScoped(typeof(IReturnValueInterceptionBehavior<,>), typeof(WebApp.Behaviors.ReturnValueEnhancementBehavior<,>));
+            services.AddScoped(typeof(IReturnValueInterceptionBehavior<,>), typeof(Common.Bus.Behaviors.ReturnValueEnhancementBehavior<,>));
             
             // 注册异常处理行为
-            services.AddScoped(typeof(IExceptionHandlingBehavior<,>), typeof(WebApp.Behaviors.ExceptionHandlingBehavior<,>));
+            services.AddScoped(typeof(IExceptionHandlingBehavior<,>), typeof(Common.Bus.Behaviors.ExceptionHandlingBehavior<,>));
             
             return services;
         }

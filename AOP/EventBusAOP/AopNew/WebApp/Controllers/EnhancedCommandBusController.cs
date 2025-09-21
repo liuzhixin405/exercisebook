@@ -49,7 +49,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                var result = await _commandBus.SendAsync<CreateUserCommand, string>(command);
+                var result = await _commandBus.SendAsync<CreateUserCommand, int>(command);
                 return Ok(new { message = "用户创建成功", result });
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                var result = await _commandBus.SendAsync<SendEmailCommand, string>(command);
+                var result = await _commandBus.SendAsync<SendEmailCommand, bool>(command);
                 return Ok(new { message = "邮件发送成功", result });
             }
             catch (Exception ex)

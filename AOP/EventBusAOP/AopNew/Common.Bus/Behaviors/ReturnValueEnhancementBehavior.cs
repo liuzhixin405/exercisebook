@@ -1,9 +1,10 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Common.Bus.Core;
 using Microsoft.Extensions.Logging;
 
-namespace WebApp.Behaviors
+namespace Common.Bus.Behaviors
 {
     /// <summary>
     /// 返回值增强行为 - 返回值贯穿处理
@@ -29,6 +30,7 @@ namespace WebApp.Behaviors
                 // 为字符串结果添加时间戳
                 var enhancedResult = $"[{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss}] {stringResult}";
                 _logger.LogDebug("📝 字符串结果增强: {Original} -> {Enhanced}", stringResult, enhancedResult);
+                await Task.CompletedTask;
                 return (TResult)(object)enhancedResult;
             }
             else if (result is int intResult)
@@ -36,11 +38,13 @@ namespace WebApp.Behaviors
                 // 为整数结果添加处理标识
                 var enhancedResult = intResult * 1000; // 示例：放大1000倍
                 _logger.LogDebug("📝 整数结果增强: {Original} -> {Enhanced}", intResult, enhancedResult);
+                await Task.CompletedTask;
                 return (TResult)(object)enhancedResult;
             }
             
             // 其他类型直接返回
             _logger.LogDebug("📝 结果类型无需增强: {ResultType}", typeof(TResult).Name);
+            await Task.CompletedTask;
             return result;
         }
     }

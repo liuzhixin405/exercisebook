@@ -1,9 +1,10 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Common.Bus.Core;
 using Microsoft.Extensions.Logging;
 
-namespace WebApp.Behaviors
+namespace Common.Bus.Behaviors
 {
     /// <summary>
     /// 异常处理行为
@@ -31,27 +32,32 @@ namespace WebApp.Behaviors
             {
                 case ArgumentException argEx:
                     _logger.LogWarning("⚠️ 参数异常，返回默认值");
+                    await Task.CompletedTask;
                     return GetDefaultResult<TResult>();
                     
                 case InvalidOperationException opEx:
                     _logger.LogWarning("⚠️ 操作异常，返回错误信息");
                     if (typeof(TResult) == typeof(string))
                     {
+                        await Task.CompletedTask;
                         return (TResult)(object)$"操作失败: {opEx.Message}";
                     }
+                    await Task.CompletedTask;
                     return GetDefaultResult<TResult>();
                     
                 case TimeoutException timeoutEx:
                     _logger.LogWarning("⚠️ 超时异常，返回超时信息");
                     if (typeof(TResult) == typeof(string))
                     {
+                        await Task.CompletedTask;
                         return (TResult)(object)"操作超时，请稍后重试";
                     }
+                    await Task.CompletedTask;
                     return GetDefaultResult<TResult>();
                     
                 default:
                     _logger.LogError("❌ 未处理的异常类型: {ExceptionType}", exceptionType);
-                    throw; // 重新抛出未处理的异常
+                    throw exception; // 重新抛出未处理的异常
             }
         }
         
