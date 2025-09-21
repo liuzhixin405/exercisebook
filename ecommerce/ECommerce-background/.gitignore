@@ -1,0 +1,16 @@
+# Re-include documentation files within this project even if parent .gitignore ignores them
+!*.md
+!**/*.md
+!**/docs/**
+!**/documentation/**
+!**/Documents/**
+
+# Keep common build artifacts ignored if any future patterns are added here
+bin/
+obj/
+.vs/
+.idea/
+*.user
+*.suo
+*.cache
+
