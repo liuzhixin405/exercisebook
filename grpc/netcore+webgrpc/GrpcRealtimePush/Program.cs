@@ -4,7 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
-
+// 添加gRPC反射服务
+builder.Services.AddGrpcReflection();
 // Configure CORS policy for gRPC-Web
 builder.Services.AddCors(options =>
 {
@@ -32,7 +33,8 @@ app.UseHttpsRedirection();
 
 // Map gRPC services with gRPC-Web support
 app.MapGrpcService<ChatService>().EnableGrpcWeb();
-
+// 启用gRPC反射服务
+app.MapGrpcReflectionService();
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
 app.Run();
