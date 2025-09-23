@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gRPC-Web Chat Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .chat-container {
+            border: 1px solid #ccc;
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .system {
+            background-color: #fff3e0;
+            text-align: center;
+            font-style: italic;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            text-align: center;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+        #messageInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #sendButton {
+            padding: 10px 20px;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #sendButton:hover:not(:disabled) {
+            background-color: #1976d2;
+        }
+        #streamButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        #streamButton:hover:not(:disabled) {
+            background-color: #388e3c;
+        }
+        .status {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .connected {
+            background-color: #c8e6c9;
+            color: #2e7d32;
+        }
+        .disconnected {
+            background-color: #ffcdd2;
+            color: #c62828;
+        }
+        .realtime {
+            background-color: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            animation: fadeIn 0.3s ease-in;
+        }
+        .realtime-header {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 5px;
+        }
+        .realtime-content {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #1b5e20;
+        }
+        .stream-stats {
+            background-color: #f3e5f5;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #4a148c;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #stopStreamButton:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>gRPC-Web 实时数据推送</h1>
+    
+    <div id="status" class="status disconnected">
+        状态: 未连接
+    </div>
+    
+    <div id="chatContainer" class="chat-container">
+        <!-- Messages will be displayed here -->
+    </div>
+    
+    <div class="input-container">
+        <button id="streamButton" style="background-color: #4caf50;">🚀 启动实时推送</button>
+        <button id="stopStreamButton" style="background-color: #f44336; display: none;">⏹️ 停止推送</button>
+        <button id="clearButton" style="background-color: #757575;">清空</button>
+    </div>
+
+    <!-- Include dependencies from CDN -->
+    <script src="https://unpkg.com/google-protobuf@3.21.2/google-protobuf.js"></script>
+    
+    <!-- Local gRPC-Web shim (fallback if CDN fails) -->
+    <script src="./grpc-web-shim.js"></script>
+    
+    <!-- Browser-compatible gRPC-Web files -->
+    <script src="./generated/chat_pb_browser.js"></script>
+    <script src="./generated/chat_grpc_web_pb_browser.js"></script>
+    
+
+    
+    <!-- Main client script -->
+    <script src="./client.js"></script>
+</body>
+</html>

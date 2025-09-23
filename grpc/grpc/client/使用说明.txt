@@ -1,0 +1,186 @@
+gRPC-Web 实时数据推送客户端使用说明
+=====================================
+
+## 文件结构说明
+
+### 核心文件
+- index.html          - 用户界面，包含HTML结构和CSS样式
+- client.js           - 主要业务逻辑，包含实时推送功能
+- grpc-web-shim.js    - gRPC-Web协议兼容层，处理底层通信
+
+### 生成的代码文件 (generated/)
+- chat_pb_browser.js           - Protocol Buffers 消息类定义
+- chat_grpc_web_pb_browser.js  - gRPC 服务客户端代码
+
+### 各文件详细说明
+
+1. **index.html**
+   - 用户界面文件
+   - 包含页面布局、样式定义
+   - 引用所有必需的JavaScript文件
+   - 提供按钮和消息显示区域
+
+2. **client.js**
+   - 主要业务逻辑文件
+   - RealtimePushClient 类：管理整个客户端生命周期
+   - 功能包括：
+     * 连接管理和初始化
+     * 实时推送的启动和停止
+     * 消息显示和UI更新
+     * 错误处理和状态管理
+
+3. **grpc-web-shim.js**
+   - gRPC-Web协议兼容层
+   - 实现浏览器与gRPC服务的通信桥梁
+   - 功能包括：
+     * HTTP/gRPC协议转换
+     * 二进制数据帧处理
+     * 流式数据解析
+     * Base64编码/解码处理
+
+4. **chat_pb_browser.js**
+   - Protocol Buffers 消息类定义
+   - 包含数据结构：
+     * RealtimePushRequest：推送请求消息
+     * RealtimePushResponse：推送响应消息
+   - 提供序列化/反序列化方法
+
+5. **chat_grpc_web_pb_browser.js**
+   - gRPC 服务客户端代码
+   - 包含 ChatServiceClient 类
+   - 提供 startRealtimePush 方法调用服务端
+
+## 使用步骤
+
+1. **启动服务端**
+   ```bash
+   cd GrpcRealtimePush
+   dotnet run
+   ```
+   等待显示 "Now listening on: https://localhost:5201"
+
+2. **打开客户端**
+   - 方式1：直接双击 index.html 文件
+   - 方式2：使用本地服务器
+     ```bash
+     cd client
+     python -m http.server 8080
+     # 然后访问 http://localhost:8080
+     ```
+
+3. **测试实时推送**
+   - 点击 "🚀 启动实时推送" 按钮
+   - 观察实时数据流显示
+   - 点击 "⏹️ 停止推送" 停止数据流
+   - 点击 "清空" 清除历史消息
+
+## 功能说明
+
+- **自动连接**：页面加载时自动连接到服务端
+- **实时推送**：包含5种类型的模拟数据（系统状态、用户活动、数据更新、通知消息、性能指标）
+- **推送频率**：每2秒推送一条数据
+- **自动停止**：推送100条数据后自动停止
+- **消息管理**：自动清理超过100条的历史消息
+- **统计信息**：显示接收消息数量、运行时间、平均速率
+
+## 故障排除
+
+1. **连接失败**
+   - 检查服务端是否正常运行
+   - 确认端口5201未被占用
+   - 查看浏览器控制台错误信息
+
+2. **数据解析错误**
+   - 确保所有JS文件都正确加载
+   - 检查网络连接是否稳定
+   - 重新刷新页面重试
+
+3. **CORS错误**
+   - 使用HTTPS访问 (https://localhost:5201)
+   - 或使用本地HTTP服务器提供客户端文件
+
+## 代码生成说明
+
+### 生成的代码文件来源
+
+1. **Protocol Buffers 定义**
+   - 位置：GrpcRealtimePush/Protos/chat.proto
+   - 定义了服务接口和数据结构
+
+2. **自动生成过程**
+   - 使用 protoc 编译器生成 JavaScript 代码
+   - 命令：protoc --js_out=... --grpc-web_out=... chat.proto
+   - 生成 CommonJS 格式的代码
+
+3. **浏览器适配**
+   - 原生成的代码是 Node.js 格式
+   - 需要手动适配为浏览器兼容格式
+   - 添加全局命名空间和浏览器 API
+
+### 如果后端更新了推送服务
+
+1. **获取新的 proto 文件**
+   - 从后端开发获取更新的 chat.proto
+   - 了解新增或修改的字段和方法
+
+2. **重新生成代码**
+   ```bash
+   # 运行生成脚本
+   .\generate-client.ps1
+   ```
+
+3. **更新浏览器适配代码**
+   - 检查 chat_pb_browser.js 是否需要更新
+   - 检查 chat_grpc_web_pb_browser.js 是否需要更新
+   - 添加新字段的 getter/setter 方法
+
+4. **更新业务逻辑**
+   - 修改 client.js 中的相关代码
+   - 处理新的数据字段
+   - 更新 UI 显示逻辑
+
+### 前端开发接入新的推送服务
+
+1. **分析 proto 定义**
+   - 了解服务名称和方法名
+   - 了解请求和响应消息结构
+   - 确认是否为流式推送
+
+2. **生成客户端代码**
+   - 使用 protoc 生成基础代码
+   - 适配浏览器环境
+
+3. **实现客户端逻辑**
+   - 创建服务客户端实例
+   - 构造请求消息
+   - 处理流式响应
+   - 实现错误处理
+
+4. **集成到现有项目**
+   - 引入必要的 JavaScript 文件
+   - 更新 HTML 页面
+   - 测试功能
+
+## 开发调试
+
+- 打开浏览器开发者工具 (F12)
+- 查看Console标签页获取详细日志
+- 查看Network标签页监控网络请求
+- 所有关键操作都有详细的控制台输出
+
+## 扩展开发
+
+### 添加新的推送类型
+1. 后端修改 proto 定义
+2. 重新生成客户端代码
+3. 更新前端处理逻辑
+
+### 自定义 UI 样式
+- 修改 index.html 中的 CSS
+- 更新消息显示格式
+- 添加新的交互元素
+
+### 集成到现有项目
+- 复制必要的 JavaScript 文件
+- 引入到现有的 HTML 页面
+- 调用 RealtimePushClient 类

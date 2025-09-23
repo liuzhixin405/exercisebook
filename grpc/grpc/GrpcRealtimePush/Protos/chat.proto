@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package chat;
+
+option csharp_namespace = "GrpcRealtimePush";
+
+service ChatService {
+  rpc StartRealtimePush(RealtimePushRequest) returns (stream RealtimePushResponse);
+}
+
+message RealtimePushRequest {
+  string client_id = 1;
+  int64 timestamp = 2;
+}
+
+message RealtimePushResponse {
+  string data = 1;
+  int64 timestamp = 2;
+  string data_type = 3;
+}
