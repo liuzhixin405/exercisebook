@@ -18,7 +18,7 @@ namespace spot.Infrastructure.Persistence
         {
             try
             {
-                return await _dbContext.SaveChangesAsync() > 0;
+                return await _dbContext.SaveChangesAsync(cancellationToken) > 0;
             }
             catch
             {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace spot.Infrastructure.Persistence.Repositories
 {
     public class TradeRepository : GenericRepository<Trade>, ITradeRepository
-    {
+    { 
         private readonly ApplicationDbContext _dbContext;
 
         public TradeRepository(ApplicationDbContext dbContext) : base(dbContext)

@@ -3,6 +3,7 @@ using spot.Domain.Accounts.Entities;
 using spot.Domain.Orders.Entities;
 using spot.Domain.Products.Entities;
 using spot.Domain.Trades.Entities;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace spot.Infrastructure.Persistence.Contexts
@@ -43,9 +44,9 @@ namespace spot.Infrastructure.Persistence.Contexts
             base.OnModelCreating(modelBuilder);
         }
 
-        public async Task<int> SaveChangesAsync()
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            return await base.SaveChangesAsync();
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }

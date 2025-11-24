@@ -12,11 +12,9 @@ namespace spot.Infrastructure.Persistence
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistenceInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersistenceInfrastructure(this IServiceCollection services, IConfiguration configuration, bool useInMemoryDatabase = false)
         {
             // Register DbContext
-            bool useInMemoryDatabase = configuration.GetValue<bool>("UseInMemoryDatabase");
-            
             if (useInMemoryDatabase)
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
