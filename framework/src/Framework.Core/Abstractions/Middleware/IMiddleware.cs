@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Http;
 namespace Framework.Core.Abstractions.Middleware;
 
 /// <summary>
-/// 中间件接口 - 责任链模式
+/// 框架中间件接口 - 责任链模式
 /// 提供中间件处理的抽象
 /// </summary>
-public interface IMiddleware
+public interface IFrameworkMiddleware
 {
     /// <summary>
     /// 中间件名称

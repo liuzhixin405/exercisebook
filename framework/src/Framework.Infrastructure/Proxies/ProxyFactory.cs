@@ -126,75 +126,49 @@ public class ProxyFactory : IProxyFactory
     private TInterface CreateProxyInternal<TInterface>(TInterface target, List<IInterceptor> interceptors)
         where TInterface : class
     {
-        // 这里简化实现，直接返回目标对象
-        // 在实际应用中，可以使用 Castle.DynamicProxy 或其他代理库
-        return target;
+        // Use DispatchProxy to create a proxy implementing TInterface
+        var proxy = DispatchProxy.Create<TInterface, DispatchProxyHandler<TInterface>>();
+        var handler = (DispatchProxyHandler<TInterface>)(object)proxy!;
+        handler.SetParameters(target!, interceptors);
+        return proxy as TInterface ?? target;
     }
 }
 
-/// <summary>
-/// 反射代理实现
-/// </summary>
-/// <typeparam name="TInterface">接口类型</typeparam>
-internal class ReflectionProxy<TInterface> where TInterface : class
+internal class DispatchProxyHandler<TInterface> : DispatchProxy where TInterface : class
 {
     private TInterface? _target;
     private List<IInterceptor>? _interceptors;
 
-    /// <summary>
-    /// 构造函数
-    /// </summary>
-    /// <param name="target">目标对象</param>
-    /// <param name="interceptors">拦截器列表</param>
-    public ReflectionProxy(TInterface target, List<IInterceptor> interceptors)
+    public void SetParameters(TInterface target, List<IInterceptor> interceptors)
     {
-        _target = target ?? throw new ArgumentNullException(nameof(target));
-        _interceptors = interceptors ?? throw new ArgumentNullException(nameof(interceptors));
+        _target = target;
+        _interceptors = interceptors;
     }
 
-    /// <summary>
-    /// 调用方法
-    /// </summary>
-    /// <param name="methodName">方法名</param>
-    /// <param name="args">参数</param>
-    /// <returns>返回值</returns>
-    public object? Invoke(string methodName, object[] args)
+    protected override object? Invoke(MethodInfo? targetMethod, object?[]? args)
     {
-        if (_target == null || _interceptors == null)
-        {
-            return null;
-        }
+        if (targetMethod == null || _target == null)
+            throw new InvalidOperationException("Invalid proxy invocation");
 
-        var method = typeof(TInterface).GetMethod(methodName);
-        if (method == null)
-        {
-            return null;
-        }
+        var invocation = new Invocation(_target, targetMethod, args ?? Array.Empty<object>());
 
-        var invocation = new Invocation(_target, method, args);
-        
-        // 执行拦截器链
-        return ExecuteInterceptorsAsync(invocation).GetAwaiter().GetResult();
+        // Synchronous path: run interceptors synchronously by awaiting tasks
+        var task = ExecuteInterceptorsAsync(invocation);
+        return task.GetAwaiter().GetResult();
     }
 
-    /// <summary>
-    /// 执行拦截器链
-    /// </summary>
-    /// <param name="invocation">方法调用信息</param>
-    /// <returns>执行结果</returns>
     private async Task<object?> ExecuteInterceptorsAsync(Invocation invocation)
     {
         var interceptorIndex = 0;
 
         async Task<object?> Next()
         {
-            if (interceptorIndex >= _interceptors!.Count)
+            if (interceptorIndex >= (_interceptors?.Count ?? 0))
             {
-                // 执行目标方法
                 return invocation.Method.Invoke(invocation.Target, invocation.Arguments);
             }
 
-            var interceptor = _interceptors[interceptorIndex++];
+            var interceptor = _interceptors![interceptorIndex++];
             if (interceptor.ShouldIntercept(invocation))
             {
                 await interceptor.InterceptAsync(invocation);
@@ -212,53 +186,38 @@ internal class ReflectionProxy<TInterface> where TInterface : class
     }
 }
 
-/// <summary>
-/// 方法调用信息实现
-/// </summary>
-internal class Invocation : IInvocation
+internal class Invocation : Framework.Core.Abstractions.Proxies.IInvocation
 {
     private readonly Dictionary<string, object> _context;
 
-    /// <summary>
-    /// 构造函数
-    /// </summary>
-    /// <param name="target">目标对象</param>
-    /// <param name="method">方法信息</param>
-    /// <param name="arguments">参数</param>
     public Invocation(object target, MethodInfo method, object[] arguments)
     {
         Target = target ?? throw new ArgumentNullException(nameof(target));
         Method = method ?? throw new ArgumentNullException(nameof(method));
-        Arguments = arguments ?? throw new ArgumentNullException(nameof(arguments));
+        Arguments = arguments ?? Array.Empty<object>();
         _context = new Dictionary<string, object>();
     }
 
-    /// <inheritdoc />
     public object Target { get; }
 
-    /// <inheritdoc />
     public MethodInfo Method { get; }
 
-    /// <inheritdoc />
     public object[] Arguments { get; }
 
-    /// <inheritdoc />
     public object? ReturnValue { get; set; }
 
-    /// <inheritdoc />
     public bool IsHandled { get; set; }
 
-    /// <inheritdoc />
     public IDictionary<string, object> Context => _context;
 
-    /// <inheritdoc />
     public Task ProceedAsync()
     {
-        // 这个方法在拦截器链中处理
+        // invocation proceeds by calling the target method synchronously when there are no more interceptors
+        var result = Method.Invoke(Target, Arguments);
+        ReturnValue = result;
         return Task.CompletedTask;
     }
 
-    /// <inheritdoc />
     public T GetArgument<T>(int index)
     {
         if (index < 0 || index >= Arguments.Length)
@@ -274,7 +233,6 @@ internal class Invocation : IInvocation
         throw new InvalidCastException($"Argument at index {index} cannot be cast to {typeof(T).Name}");
     }
 
-    /// <inheritdoc />
     public void SetArgument<T>(int index, T value)
     {
         if (index < 0 || index >= Arguments.Length)

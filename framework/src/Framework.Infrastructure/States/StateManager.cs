@@ -9,8 +9,8 @@ namespace Framework.Infrastructure.States;
 /// </summary>
 public class StateManager : IStateManager
 {
-    private readonly ConcurrentDictionary<string, IState> _currentStates;
-    private readonly ConcurrentDictionary<string, List<IStateTransitionHandler>> _transitionHandlers;
+    private readonly ConcurrentDictionary<Type, IState> _currentStates;
+    private readonly ConcurrentDictionary<TypePair, List<IStateTransitionHandler>> _transitionHandlers;
     private readonly List<IState> _stateHistory;
     private readonly object _lockObject = new object();
 
@@ -19,15 +19,15 @@ public class StateManager : IStateManager
     /// </summary>
     public StateManager()
     {
-        _currentStates = new ConcurrentDictionary<string, IState>();
-        _transitionHandlers = new ConcurrentDictionary<string, List<IStateTransitionHandler>>();
+        _currentStates = new ConcurrentDictionary<Type, IState>();
+        _transitionHandlers = new ConcurrentDictionary<TypePair, List<IStateTransitionHandler>>();
         _stateHistory = new List<IState>();
     }
 
     /// <inheritdoc />
     public TState? GetCurrentState<TState>() where TState : class, IState
     {
-        var stateType = typeof(TState).FullName ?? typeof(TState).Name;
+        var stateType = typeof(TState);
         if (_currentStates.TryGetValue(stateType, out var state))
         {
             return state as TState;
@@ -41,7 +41,7 @@ public class StateManager : IStateManager
         if (state == null)
             throw new ArgumentNullException(nameof(state));
 
-        var stateType = typeof(TState).FullName ?? typeof(TState).Name;
+        var stateType = typeof(TState);
         var previousState = _currentStates.GetValueOrDefault(stateType);
 
         _currentStates.AddOrUpdate(stateType, state, (key, existing) => state);
@@ -62,7 +62,7 @@ public class StateManager : IStateManager
         if (state == null)
             throw new ArgumentNullException(nameof(state));
 
-        var stateType = typeof(TState).FullName ?? typeof(TState).Name;
+        var stateType = typeof(TState);
         var currentState = _currentStates.GetValueOrDefault(stateType);
 
         // 检查是否可以转换
@@ -72,7 +72,7 @@ public class StateManager : IStateManager
         }
 
         // 执行转换处理器
-        var transitionHandlers = GetTransitionHandlers(currentState?.GetType(), state.GetType());
+        var transitionHandlers = GetTransitionHandlers(currentState?.GetType(), stateType);
         foreach (var handler in transitionHandlers)
         {
             if (!await handler.HandleTransitionAsync(currentState, state, CreateStateContext()))
@@ -103,7 +103,7 @@ public class StateManager : IStateManager
         if (handler == null)
             throw new ArgumentNullException(nameof(handler));
 
-        var key = $"{typeof(TFromState).FullName ?? typeof(TFromState).Name}->{typeof(TToState).FullName ?? typeof(TToState).Name}";
+        var key = new TypePair(typeof(TFromState), typeof(TToState));
         var wrapper = new StateTransitionHandlerWrapper<TFromState, TToState>(handler);
 
         _transitionHandlers.AddOrUpdate(
@@ -145,7 +145,7 @@ public class StateManager : IStateManager
     /// <returns>转换处理器列表</returns>
     private IEnumerable<IStateTransitionHandler> GetTransitionHandlers(Type? fromStateType, Type toStateType)
     {
-        var key = $"{fromStateType?.FullName ?? fromStateType?.Name ?? "null"}->{toStateType.FullName ?? toStateType.Name}";
+        var key = new TypePair(fromStateType, toStateType);
         if (_transitionHandlers.TryGetValue(key, out var handlers))
         {
             return handlers.OrderBy(h => h.Priority);
@@ -223,13 +223,18 @@ public class StateContext : IStateContext
 }
 
 /// <summary>
-/// 状态转换处理器基类
+/// 类型对
 /// </summary>
-internal abstract class IStateTransitionHandler
+internal record TypePair(Type? From, Type To);
+
+/// <summary>
+/// 非泛型内部状态转换处理器接口（用于内部存储）
+/// </summary>
+internal interface IStateTransitionHandler
 {
-    public abstract string Name { get; }
-    public abstract int Priority { get; }
-    public abstract Task<bool> HandleTransitionAsync(IState? fromState, IState toState, IStateContext context);
+    string Name { get; }
+    int Priority { get; }
+    Task<bool> HandleTransitionAsync(IState? fromState, IState toState, IStateContext context);
 }
 
 /// <summary>
@@ -241,18 +246,18 @@ internal class StateTransitionHandlerWrapper<TFromState, TToState> : IStateTrans
     where TFromState : class, IState
     where TToState : class, IState
 {
-    private readonly IStateTransitionHandler<TFromState, TToState> _handler;
+    private readonly Framework.Core.Abstractions.States.IStateTransitionHandler<TFromState, TToState> _handler;
 
-    public StateTransitionHandlerWrapper(IStateTransitionHandler<TFromState, TToState> handler)
+    public StateTransitionHandlerWrapper(Framework.Core.Abstractions.States.IStateTransitionHandler<TFromState, TToState> handler)
     {
         _handler = handler ?? throw new ArgumentNullException(nameof(handler));
     }
 
-    public override string Name => _handler.Name;
+    public string Name => _handler.Name;
 
-    public override int Priority => _handler.Priority;
+    public int Priority => _handler.Priority;
 
-    public override async Task<bool> HandleTransitionAsync(IState? fromState, IState toState, IStateContext context)
+    public async Task<bool> HandleTransitionAsync(IState? fromState, IState toState, IStateContext context)
     {
         if (fromState is TFromState typedFromState && toState is TToState typedToState)
         {

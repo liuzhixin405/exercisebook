@@ -8,14 +8,14 @@ namespace Framework.Infrastructure.Mediators;
 /// </summary>
 public class Mediator : IMediator
 {
-    private readonly ConcurrentDictionary<Type, IMessageHandler> _handlers;
+    private readonly ConcurrentDictionary<Type, IInternalMessageHandler> _handlers;
 
     /// <summary>
     /// 构造函数
     /// </summary>
     public Mediator()
     {
-        _handlers = new ConcurrentDictionary<Type, IMessageHandler>();
+        _handlers = new ConcurrentDictionary<Type, IInternalMessageHandler>();
     }
 
     /// <inheritdoc />
@@ -30,12 +30,9 @@ public class Mediator : IMediator
             throw new InvalidOperationException($"No handler registered for message type {messageType.Name}");
         }
 
-        if (handler is IMessageHandler<TMessage> typedHandler)
+        if (handler.ShouldHandle(message))
         {
-            if (typedHandler.ShouldHandle(message))
-            {
-                await typedHandler.HandleAsync(message);
-            }
+            await handler.HandleAsync(message);
         }
     }
 
@@ -51,12 +48,12 @@ public class Mediator : IMediator
             throw new InvalidOperationException($"No handler registered for message type {messageType.Name}");
         }
 
-        if (handler is IMessageHandler<TMessage, TResult> typedHandler)
+        if (handler.ShouldHandle(message))
         {
-            if (typedHandler.ShouldHandle(message))
-            {
-                return await typedHandler.HandleAsync(message);
-            }
+            var resultObj = await handler.HandleAsync(message);
+            if (resultObj is TResult result)
+                return result;
+            return default!;
         }
 
         throw new InvalidOperationException($"Handler for message type {messageType.Name} does not support result type {typeof(TResult).Name}");
@@ -69,8 +66,8 @@ public class Mediator : IMediator
             throw new ArgumentNullException(nameof(handler));
 
         var messageType = typeof(TMessage);
-        var wrapper = new MessageHandlerWrapper<TMessage>(handler);
-        _handlers.AddOrUpdate(messageType, wrapper, (key, existing) => wrapper);
+        var adapter = new MessageHandlerAdapter<TMessage>(handler);
+        _handlers.AddOrUpdate(messageType, adapter, (key, existing) => adapter);
         return this;
     }
 
@@ -81,8 +78,8 @@ public class Mediator : IMediator
             throw new ArgumentNullException(nameof(handler));
 
         var messageType = typeof(TMessage);
-        var wrapper = new MessageHandlerWrapper<TMessage, TResult>(handler);
-        _handlers.AddOrUpdate(messageType, wrapper, (key, existing) => wrapper);
+        var adapter = new MessageHandlerWithResultAdapter<TMessage, TResult>(handler);
+        _handlers.AddOrUpdate(messageType, adapter, (key, existing) => adapter);
         return this;
     }
 
@@ -95,85 +92,66 @@ public class Mediator : IMediator
     }
 }
 
-/// <summary>
-/// 消息处理器基类
-/// </summary>
-internal abstract class MessageHandler
+internal interface IInternalMessageHandler
 {
-    public abstract string Name { get; }
-    public abstract int Priority { get; }
-    public abstract Task HandleAsync(object message);
-    public abstract bool ShouldHandle(object message);
-}
-
-/// <summary>
-/// 消息处理器接口（非泛型）
-/// </summary>
-internal interface IMessageHandler
-{
-    string Name { get; }
-    int Priority { get; }
-    Task HandleAsync(object message);
+    Task<object?> HandleAsync(object message);
     bool ShouldHandle(object message);
 }
 
-/// <summary>
-/// 消息处理器包装器
-/// </summary>
-/// <typeparam name="TMessage">消息类型</typeparam>
-internal class MessageHandlerWrapper<TMessage> : IMessageHandler where TMessage : class
+internal class MessageHandlerAdapter<TMessage> : IInternalMessageHandler where TMessage : class
 {
-    private readonly IMessageHandler<TMessage> _handler;
+    private readonly IMessageHandler<TMessage> _inner;
 
-    public MessageHandlerWrapper(IMessageHandler<TMessage> handler)
+    public MessageHandlerAdapter(IMessageHandler<TMessage> inner)
     {
-        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+        _inner = inner ?? throw new ArgumentNullException(nameof(inner));
     }
 
-    public string Name => _handler.Name;
-    public int Priority => _handler.Priority;
-
-    public async Task HandleAsync(object message)
+    public async Task<object?> HandleAsync(object message)
     {
-        if (message is TMessage typedMessage)
+        if (message is TMessage typed)
         {
-            await _handler.HandleAsync(typedMessage);
+            await _inner.HandleAsync(typed);
+            return null;
         }
+        throw new InvalidOperationException($"Message type mismatch. Expected {typeof(TMessage).Name}");
     }
 
     public bool ShouldHandle(object message)
     {
-        return message is TMessage typedMessage && _handler.ShouldHandle(typedMessage);
+        if (message is TMessage typed)
+        {
+            return _inner.ShouldHandle(typed);
+        }
+        return false;
     }
 }
 
-/// <summary>
-/// 消息处理器包装器（带结果）
-/// </summary>
-/// <typeparam name="TMessage">消息类型</typeparam>
-/// <typeparam name="TResult">结果类型</typeparam>
-internal class MessageHandlerWrapper<TMessage, TResult> : IMessageHandler where TMessage : class
+internal class MessageHandlerWithResultAdapter<TMessage, TResult> : IInternalMessageHandler where TMessage : class
 {
-    private readonly IMessageHandler<TMessage, TResult> _handler;
+    private readonly IMessageHandler<TMessage, TResult> _inner;
 
-    public MessageHandlerWrapper(IMessageHandler<TMessage, TResult> handler)
+    public MessageHandlerWithResultAdapter(IMessageHandler<TMessage, TResult> inner)
     {
-        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+        _inner = inner ?? throw new ArgumentNullException(nameof(inner));
     }
 
-    public string Name => _handler.Name;
-    public int Priority => _handler.Priority;
-
-    public async Task HandleAsync(object message)
+    public async Task<object?> HandleAsync(object message)
     {
-        if (message is TMessage typedMessage)
+        if (message is TMessage typed)
         {
-            await _handler.HandleAsync(typedMessage);
+            var result = await _inner.HandleAsync(typed);
+            return (object?)result;
         }
+        throw new InvalidOperationException($"Message type mismatch. Expected {typeof(TMessage).Name}");
     }
 
     public bool ShouldHandle(object message)
     {
-        return message is TMessage typedMessage && _handler.ShouldHandle(typedMessage);
+        if (message is TMessage typed)
+        {
+            return _inner.ShouldHandle(typed);
+        }
+        return false;
     }
 }

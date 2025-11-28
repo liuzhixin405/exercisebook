@@ -1,6 +1,6 @@
 using Framework.Core.Abstractions.Middleware;
 using Microsoft.AspNetCore.Http;
-using FrameworkMiddleware = Framework.Core.Abstractions.Middleware.IMiddleware;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Framework.Infrastructure.Middleware;
 
@@ -10,7 +10,7 @@ namespace Framework.Infrastructure.Middleware;
 /// </summary>
 public class MiddlewarePipeline : IMiddlewarePipeline
 {
-    private readonly List<FrameworkMiddleware> _middlewares;
+    private readonly List<IFrameworkMiddleware> _middlewares;
     private readonly IServiceProvider _serviceProvider;
 
     /// <summary>
@@ -20,11 +20,11 @@ public class MiddlewarePipeline : IMiddlewarePipeline
     public MiddlewarePipeline(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
-        _middlewares = new List<FrameworkMiddleware>();
+        _middlewares = new List<IFrameworkMiddleware>();
     }
 
     /// <inheritdoc />
-    public IMiddlewarePipeline Use(FrameworkMiddleware middleware)
+    public IMiddlewarePipeline Use(IFrameworkMiddleware middleware)
     {
         if (middleware == null)
             throw new ArgumentNullException(nameof(middleware));
@@ -34,15 +34,15 @@ public class MiddlewarePipeline : IMiddlewarePipeline
     }
 
     /// <inheritdoc />
-    public IMiddlewarePipeline Use<TMiddleware>() where TMiddleware : class, FrameworkMiddleware
+    public IMiddlewarePipeline Use<TMiddleware>() where TMiddleware : class, IFrameworkMiddleware
     {
-        var middleware = _serviceProvider.GetService(typeof(TMiddleware)) as TMiddleware;
+        var middleware = _serviceProvider.GetService<TMiddleware>();
         if (middleware == null)
         {
             throw new InvalidOperationException($"Middleware of type {typeof(TMiddleware)} is not registered.");
         }
 
-        return Use((FrameworkMiddleware)middleware);
+        return Use(middleware);
     }
 
     /// <inheritdoc />
@@ -56,7 +56,7 @@ public class MiddlewarePipeline : IMiddlewarePipeline
     }
 
     /// <inheritdoc />
-    public IMiddlewarePipeline Use(FrameworkMiddleware middleware, params object[] args)
+    public IMiddlewarePipeline Use(IFrameworkMiddleware middleware, params object[] args)
     {
         if (middleware == null)
             throw new ArgumentNullException(nameof(middleware));
@@ -101,7 +101,7 @@ public class MiddlewarePipeline : IMiddlewarePipeline
     /// <param name="middlewares">中间件列表</param>
     /// <param name="index">当前索引</param>
     /// <returns>请求委托</returns>
-    private RequestDelegate BuildChain(List<FrameworkMiddleware> middlewares, int index)
+    private RequestDelegate BuildChain(List<IFrameworkMiddleware> middlewares, int index)
     {
         if (index >= middlewares.Count)
         {
@@ -128,7 +128,7 @@ public class MiddlewarePipeline : IMiddlewarePipeline
 /// <summary>
 /// 委托中间件包装器
 /// </summary>
-internal class DelegateMiddleware : FrameworkMiddleware
+internal class DelegateMiddleware : IFrameworkMiddleware
 {
     private readonly Func<HttpContext, Func<Task>, Task> _middleware;
 

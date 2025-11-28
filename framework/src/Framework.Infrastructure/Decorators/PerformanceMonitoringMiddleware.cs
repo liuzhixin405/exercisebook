@@ -1,7 +1,6 @@
 using Framework.Core.Abstractions.Middleware;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using FrameworkMiddleware = Framework.Core.Abstractions.Middleware.IMiddleware;
 
 namespace Framework.Infrastructure.Decorators;
 
@@ -9,7 +8,7 @@ namespace Framework.Infrastructure.Decorators;
 /// 性能监控中间件 - 装饰器模式
 /// 为中间件添加性能监控功能
 /// </summary>
-public class PerformanceMonitoringMiddleware : FrameworkMiddleware
+public class PerformanceMonitoringMiddleware : IFrameworkMiddleware
 {
     private readonly IPerformanceMonitor _performanceMonitor;
 

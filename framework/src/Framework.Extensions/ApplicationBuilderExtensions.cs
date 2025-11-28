@@ -20,14 +20,8 @@ public static class ApplicationBuilderExtensions
         var framework = app.ApplicationServices.GetRequiredService<IApplicationFramework>();
         var pipeline = framework.MiddlewarePipeline;
         
-        app.Use(async (context, next) =>
-        {
-            // 执行框架中间件
-            await pipeline.Build()(context);
-            
-            // 继续执行ASP.NET Core的默认管道
-            await next();
-        });
+        // Use overload ambiguity resolved by returning a RequestDelegate-producing delegate
+        app.Use(_ => pipeline.Build());
 
         return app;
     }
@@ -53,7 +47,7 @@ public static class ApplicationBuilderExtensions
     /// <param name="app">应用程序构建器</param>
     /// <returns>应用程序构建器</returns>
     public static IApplicationBuilder UseFrameworkMiddleware<TMiddleware>(this IApplicationBuilder app)
-        where TMiddleware : class, IMiddleware
+        where TMiddleware : class, IFrameworkMiddleware
     {
         return app.UseFrameworkMiddleware(pipeline => pipeline.Use<TMiddleware>());
     }

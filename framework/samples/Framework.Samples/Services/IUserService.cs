@@ -1,3 +1,5 @@
+using Framework.Core.Abstractions.Visitors;
+
 namespace Framework.Samples.Services;
 
 /// <summary>
@@ -41,12 +43,12 @@ public interface IUserService
 /// <summary>
 /// 用户信息
 /// </summary>
-public class User : Framework.Core.Abstractions.Visitors.IVisitable
+public class User : IVisitable
 {
     /// <summary>
     /// 用户ID
     /// </summary>
-    public Guid UserId { get; set; }
+    public Guid Id { get; set; }
 
     /// <summary>
     /// 用户名
@@ -61,22 +63,34 @@ public class User : Framework.Core.Abstractions.Visitors.IVisitable
     /// <summary>
     /// 创建时间
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     /// <summary>
     /// 更新时间
     /// </summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
-    /// <inheritdoc />
-    public string Id => UserId.ToString();
+    // IVisitable implementation
 
-    /// <inheritdoc />
-    public string Type => "User";
+    string IVisitable.Type => "User";
 
-    /// <inheritdoc />
-    public async Task AcceptAsync(Framework.Core.Abstractions.Visitors.IVisitor<Framework.Core.Abstractions.Visitors.IVisitable> visitor)
+    // Explicit implementation to keep Guid Id while satisfying IVisitable.Id (string)
+    string IVisitable.Id => Id.ToString();
+
+    public async Task AcceptAsync(IVisitor<IVisitable> visitor)
     {
-        await visitor.VisitAsync(this);
+        if (visitor is IVisitor<User> typedVisitor)
+        {
+            await typedVisitor.VisitAsync(this);
+            return;
+        }
+
+        var visitMethod = visitor.GetType().GetMethod("VisitAsync");
+        if (visitMethod != null)
+        {
+            var task = (Task?)visitMethod.Invoke(visitor, new object[] { this });
+            if (task != null)
+                await task;
+        }
     }
 }

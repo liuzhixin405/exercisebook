@@ -5,7 +5,7 @@ namespace Framework.Samples.Strategies;
 /// <summary>
 /// 邮箱验证策略
 /// </summary>
-public class EmailValidationStrategy : IStrategy
+public class EmailValidationStrategy : IStrategy<bool>
 {
     /// <inheritdoc />
     public string Name => "EmailValidationStrategy";
@@ -17,7 +17,7 @@ public class EmailValidationStrategy : IStrategy
     public int Priority => 100;
 
     /// <inheritdoc />
-    public async Task<object?> ExecuteAsync(params object[] parameters)
+    public async Task<bool> ExecuteAsync(params object[] parameters)
     {
         if (parameters.Length == 0 || parameters[0] is not string email)
         {
@@ -29,6 +29,13 @@ public class EmailValidationStrategy : IStrategy
 
         // 简单的邮箱验证
         return IsValidEmail(email);
+    }
+
+    // Explicit non-generic interface implementation
+    async Task<object?> Framework.Core.Abstractions.Strategies.IStrategy.ExecuteAsync(params object[] parameters)
+    {
+        var result = await ExecuteAsync(parameters);
+        return (object?)result;
     }
 
     /// <inheritdoc />

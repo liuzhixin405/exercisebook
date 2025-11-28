@@ -8,17 +8,20 @@ using Framework.Core.Abstractions.Proxies;
 using Framework.Core.Abstractions.States;
 using Framework.Core.Abstractions.Strategies;
 using Framework.Core.Abstractions.Visitors;
-using Framework.Infrastructure.Commands;
 using Framework.Infrastructure.Configuration;
 using Framework.Infrastructure.Container;
 using Framework.Infrastructure.Events;
 using Framework.Infrastructure.Middleware;
-using Framework.Infrastructure.Proxies;
+using Framework.Infrastructure.Visitors;
+using Framework.Infrastructure.Commands;
 using Framework.Infrastructure.States;
 using Framework.Infrastructure.Strategies;
-using Framework.Infrastructure.Visitors;
+using Framework.Infrastructure.Proxies;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using System.Reflection;
 
 namespace Framework.Infrastructure;
 
@@ -29,15 +32,27 @@ namespace Framework.Infrastructure;
 public class ApplicationFramework : IApplicationFramework
 {
     private readonly IServiceCollection _services;
-    private IHostBuilder? _hostBuilder;
+    private readonly IServiceProvider _rootProvider;
+    private IHostBuilder? _host_builder;
 
     /// <summary>
     /// 构造函数
     /// </summary>
-    public ApplicationFramework()
+    public ApplicationFramework(IServiceProvider rootProvider)
     {
+        _rootProvider = rootProvider ?? throw new ArgumentNullException(nameof(rootProvider));
         _services = new ServiceCollection();
         InitializeServices();
+
+        // Register any ICommandHandler<T> already registered in the root provider into our CommandBus
+        try
+        {
+            RegisterHandlersFromRootProvider();
+        }
+        catch
+        {
+            // ignore registration failures
+        }
     }
 
     /// <inheritdoc />
@@ -88,7 +103,7 @@ public class ApplicationFramework : IApplicationFramework
         var serviceProvider = ServiceContainer.BuildServiceProvider();
 
         // 创建主机构建器
-        _hostBuilder = Host.CreateDefaultBuilder()
+        _host_builder = Host.CreateDefaultBuilder()
             .ConfigureServices((context, services) =>
             {
                 // 添加框架服务
@@ -107,20 +122,30 @@ public class ApplicationFramework : IApplicationFramework
                 {
                     services.Add(service);
                 }
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.Configure(app =>
+                {
+                    // 配置中间件管道
+                    var pipeline = app.ApplicationServices.GetRequiredService<IMiddlewarePipeline>();
+                    // Use overload ambiguity resolved by using Func<RequestDelegate, RequestDelegate>
+                    app.Use(_ => pipeline.Build());
+                });
             });
 
-        return _hostBuilder;
+        return _host_builder!;
     }
 
     /// <inheritdoc />
     public async Task RunAsync(CancellationToken cancellationToken = default)
     {
-        if (_hostBuilder == null)
+        if (_host_builder == null)
         {
             throw new InvalidOperationException("Framework must be built before running. Call Build() first.");
         }
 
-        using var host = _hostBuilder.Build();
+        using var host = _host_builder.Build();
         await host.RunAsync(cancellationToken);
     }
 
@@ -143,7 +168,8 @@ public class ApplicationFramework : IApplicationFramework
         EventBus = new EventBus(tempServiceProvider);
 
         // 创建命令总线
-        CommandBus = new CommandBus(tempServiceProvider);
+        // Prefer CommandBus from the root provider so handlers registered via DI are present
+        CommandBus = _rootProvider?.GetService<ICommandBus>() ?? new CommandBus(tempServiceProvider);
 
         // 创建状态管理器
         StateManager = new StateManager();
@@ -159,6 +185,44 @@ public class ApplicationFramework : IApplicationFramework
 
         // 注册核心服务
         RegisterCoreServices();
+    }
+
+    /// <summary>
+    /// 从根服务提供者注册命令处理器
+    /// </summary>
+    private void RegisterHandlersFromRootProvider()
+    {
+        if (_rootProvider == null) return;
+
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        var handlerEntries = assemblies
+            .SelectMany(a =>
+            {
+                try { return a.GetTypes(); } catch { return Array.Empty<Type>(); }
+            })
+            .Where(t => !t.IsAbstract && !t.IsInterface)
+            .SelectMany(t => t.GetInterfaces().Select(i => new { Impl = t, Interface = i }))
+            .Where(x => x.Interface.IsGenericType && x.Interface.GetGenericTypeDefinition() == typeof(ICommandHandler<>))
+            .ToList();
+
+        foreach (var entry in handlerEntries)
+        {
+            try
+            {
+                var service = _rootProvider.GetService(entry.Interface);
+                if (service == null)
+                    continue;
+
+                var commandType = entry.Interface.GetGenericArguments()[0];
+                var registerMethod = typeof(ICommandBus).GetMethods().First(m => m.Name == "RegisterHandler" && m.IsGenericMethodDefinition && m.GetGenericArguments().Length == 1);
+                var genericRegister = registerMethod.MakeGenericMethod(commandType);
+                genericRegister.Invoke(CommandBus, new[] { service });
+            }
+            catch
+            {
+                // ignore
+            }
+        }
     }
 
     /// <summary>

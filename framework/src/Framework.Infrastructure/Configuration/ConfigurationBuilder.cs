@@ -1,7 +1,9 @@
 using Framework.Core.Abstractions.Configuration;
 using Microsoft.Extensions.Configuration;
-using FrameworkConfigurationBuilder = Framework.Core.Abstractions.Configuration.IConfigurationBuilder;
-using MicrosoftConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
+using Microsoft.Extensions.Configuration.Json;
+using Microsoft.Extensions.Configuration.EnvironmentVariables;
+using Microsoft.Extensions.Configuration.CommandLine;
+using Microsoft.Extensions.Configuration.Memory;
 
 namespace Framework.Infrastructure.Configuration;
 
@@ -9,9 +11,9 @@ namespace Framework.Infrastructure.Configuration;
 /// 配置构建器实现 - 建造者模式
 /// 提供构建配置的实现
 /// </summary>
-public class ConfigurationBuilder : FrameworkConfigurationBuilder
+public class ConfigurationBuilder : Framework.Core.Abstractions.Configuration.IConfigurationBuilder
 {
-    private readonly MicrosoftConfigurationBuilder _builder;
+    private readonly Microsoft.Extensions.Configuration.ConfigurationBuilder _builder;
     private readonly List<IConfigurationAdapter> _adapters;
 
     /// <summary>
@@ -19,26 +21,26 @@ public class ConfigurationBuilder : FrameworkConfigurationBuilder
     /// </summary>
     public ConfigurationBuilder()
     {
-        _builder = new MicrosoftConfigurationBuilder();
+        _builder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
         _adapters = new List<IConfigurationAdapter>();
     }
 
     /// <inheritdoc />
-    public FrameworkConfigurationBuilder AddSource(IConfigurationSource source)
+    public Framework.Core.Abstractions.Configuration.IConfigurationBuilder AddSource(Microsoft.Extensions.Configuration.IConfigurationSource source)
     {
         _builder.Add(source);
         return this;
     }
 
     /// <inheritdoc />
-    public FrameworkConfigurationBuilder AddJsonFile(string path, bool optional = false, bool reloadOnChange = false)
+    public Framework.Core.Abstractions.Configuration.IConfigurationBuilder AddJsonFile(string path, bool optional = false, bool reloadOnChange = false)
     {
         _builder.AddJsonFile(path, optional, reloadOnChange);
         return this;
     }
 
     /// <inheritdoc />
-    public FrameworkConfigurationBuilder AddEnvironmentVariables(string? prefix = null)
+    public Framework.Core.Abstractions.Configuration.IConfigurationBuilder AddEnvironmentVariables(string? prefix = null)
     {
         if (string.IsNullOrEmpty(prefix))
         {
@@ -52,21 +54,21 @@ public class ConfigurationBuilder : FrameworkConfigurationBuilder
     }
 
     /// <inheritdoc />
-    public FrameworkConfigurationBuilder AddCommandLine(string[] args)
+    public Framework.Core.Abstractions.Configuration.IConfigurationBuilder AddCommandLine(string[] args)
     {
         _builder.AddCommandLine(args);
         return this;
     }
 
     /// <inheritdoc />
-    public FrameworkConfigurationBuilder AddInMemoryCollection(IEnumerable<KeyValuePair<string, string?>>? initialData = null)
+    public Framework.Core.Abstractions.Configuration.IConfigurationBuilder AddInMemoryCollection(IEnumerable<KeyValuePair<string, string?>>? initialData = null)
     {
         _builder.AddInMemoryCollection(initialData);
         return this;
     }
 
     /// <inheritdoc />
-    public FrameworkConfigurationBuilder AddAdapter(IConfigurationAdapter adapter)
+    public Framework.Core.Abstractions.Configuration.IConfigurationBuilder AddAdapter(IConfigurationAdapter adapter)
     {
         if (adapter == null)
             throw new ArgumentNullException(nameof(adapter));
@@ -76,18 +78,14 @@ public class ConfigurationBuilder : FrameworkConfigurationBuilder
     }
 
     /// <inheritdoc />
-    public IConfigurationRoot Build()
+    public Microsoft.Extensions.Configuration.IConfiguration Build()
     {
-        var configuration = _builder.Build();
+        Microsoft.Extensions.Configuration.IConfiguration configuration = _builder.Build();
 
         // 应用所有适配器
         foreach (var adapter in _adapters)
         {
-            var adaptedConfig = adapter.Adapt(configuration);
-            if (adaptedConfig is IConfigurationRoot adaptedRoot)
-            {
-                configuration = adaptedRoot;
-            }
+            configuration = adapter.Adapt(configuration);
         }
 
         return configuration;

@@ -4,15 +4,15 @@ using System.Collections.Concurrent;
 namespace Framework.Infrastructure.Visitors;
 
 /// <summary>
-/// 访问者注册器实现 - 访问者模�?
-/// 提供访问者注册和管理的实�?
+/// 访问者注册器实现 - 访问者模式
+/// 提供访问者注册和管理的实现
 /// </summary>
 public class VisitorRegistry : IVisitorRegistry
 {
     private readonly ConcurrentDictionary<Type, List<IVisitor<IVisitable>>> _visitors;
 
     /// <summary>
-    /// 构造函�?
+    /// 构造函数
     /// </summary>
     public VisitorRegistry()
     {
@@ -46,8 +46,8 @@ public class VisitorRegistry : IVisitorRegistry
         where TVisitable : class, IVisitable
         where TVisitor : class, IVisitor<TVisitable>
     {
-        // 这里需要服务提供者来创建访问者实�?
-        // 暂时抛出异常，提示需要服务提供�?
+        // 这里需要服务提供者来创建访问者实例
+        // 暂时抛出异常，提示需要服务提供者
         throw new InvalidOperationException("This method requires a service provider. Use the overload with service provider parameter.");
     }
 
@@ -61,7 +61,7 @@ public class VisitorRegistry : IVisitorRegistry
         var visitableType = typeof(TVisitable);
         if (_visitors.TryGetValue(visitableType, out var visitors))
         {
-            var wrapperToRemove = visitors.FirstOrDefault(v => v is VisitorWrapper<TVisitable> wrapper && wrapper.WrappedVisitor == visitor);
+            var wrapperToRemove = visitors.FirstOrDefault(v => v is VisitorWrapper<TVisitable> wrapper && wrapper.WrappedVisitorEquals(visitor));
             if (wrapperToRemove != null)
             {
                 visitors.Remove(wrapperToRemove);
@@ -76,15 +76,16 @@ public class VisitorRegistry : IVisitorRegistry
     }
 
     /// <inheritdoc />
-    public IEnumerable<IVisitor<IVisitable>> GetVisitors<TVisitable>()
+    public IEnumerable<IVisitor<TVisitable>> GetVisitors<TVisitable>()
         where TVisitable : class, IVisitable
     {
         var visitableType = typeof(TVisitable);
         if (_visitors.TryGetValue(visitableType, out var visitors))
         {
-            return visitors.OrderBy(v => v.Priority);
+            // Return adapters that implement IVisitor<TVisitable>
+            return visitors.Select(v => new VisitorAdapter<TVisitable>(v)).OrderBy(v => v.Priority);
         }
-        return Enumerable.Empty<IVisitor<IVisitable>>();
+        return Enumerable.Empty<IVisitor<TVisitable>>();
     }
 
     /// <inheritdoc />
@@ -113,49 +114,70 @@ public class VisitorRegistry : IVisitorRegistry
 }
 
 /// <summary>
-/// 访问者包装器
+/// 访问者包装器，只实现非泛型接口 IVisitor<IVisitable>
+/// 将具体的 IVisitor<TVisitable> 包装为 IVisitor<IVisitable>
 /// </summary>
-/// <typeparam name="TVisitable">可访问类�?/typeparam>
 internal class VisitorWrapper<TVisitable> : IVisitor<IVisitable> where TVisitable : class, IVisitable
 {
     private readonly IVisitor<TVisitable> _wrappedVisitor;
 
-    /// <summary>
-    /// 构造函�?
-    /// </summary>
-    /// <param name="wrappedVisitor">被包装的访问�?/param>
     public VisitorWrapper(IVisitor<TVisitable> wrappedVisitor)
     {
         _wrappedVisitor = wrappedVisitor ?? throw new ArgumentNullException(nameof(wrappedVisitor));
     }
 
-    /// <summary>
-    /// 获取被包装的访问�?
-    /// </summary>
     public IVisitor<TVisitable> WrappedVisitor => _wrappedVisitor;
 
-    /// <inheritdoc />
+    public bool WrappedVisitorEquals(IVisitor<TVisitable> other)
+    {
+        return ReferenceEquals(_wrappedVisitor, other);
+    }
+
     public string Name => _wrappedVisitor.Name;
 
-    /// <inheritdoc />
     public int Priority => _wrappedVisitor.Priority;
 
-    /// <inheritdoc />
     public async Task VisitAsync(IVisitable visitable)
     {
-        if (visitable is TVisitable typedVisitable)
+        if (visitable is TVisitable typed)
         {
-            await _wrappedVisitor.VisitAsync(typedVisitable);
+            await _wrappedVisitor.VisitAsync(typed);
         }
     }
 
-    /// <inheritdoc />
     public bool ShouldVisit(IVisitable visitable)
     {
-        if (visitable is TVisitable typedVisitable)
+        if (visitable is TVisitable typed)
         {
-            return _wrappedVisitor.ShouldVisit(typedVisitable);
+            return _wrappedVisitor.ShouldVisit(typed);
         }
         return false;
+    }
+}
+
+/// <summary>
+/// 适配器：将 IVisitor<IVisitable> 适配为 IVisitor<TVisitable>
+/// </summary>
+internal class VisitorAdapter<TVisitable> : IVisitor<TVisitable> where TVisitable : class, IVisitable
+{
+    private readonly IVisitor<IVisitable> _inner;
+
+    public VisitorAdapter(IVisitor<IVisitable> inner)
+    {
+        _inner = inner ?? throw new ArgumentNullException(nameof(inner));
+    }
+
+    public string Name => _inner.Name;
+
+    public int Priority => _inner.Priority;
+
+    public Task VisitAsync(TVisitable visitable)
+    {
+        return _inner.VisitAsync(visitable);
+    }
+
+    public bool ShouldVisit(TVisitable visitable)
+    {
+        return _inner.ShouldVisit(visitable);
     }
 }

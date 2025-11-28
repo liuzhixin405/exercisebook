@@ -13,14 +13,14 @@ public interface IMiddlewarePipeline
     /// </summary>
     /// <param name="middleware">中间件</param>
     /// <returns>中间件管道</returns>
-    IMiddlewarePipeline Use(IMiddleware middleware);
+    IMiddlewarePipeline Use(IFrameworkMiddleware middleware);
 
     /// <summary>
     /// 添加中间件（泛型）
     /// </summary>
     /// <typeparam name="TMiddleware">中间件类型</typeparam>
     /// <returns>中间件管道</returns>
-    IMiddlewarePipeline Use<TMiddleware>() where TMiddleware : class, IMiddleware;
+    IMiddlewarePipeline Use<TMiddleware>() where TMiddleware : class, IFrameworkMiddleware;
 
     /// <summary>
     /// 添加中间件（委托）
@@ -35,7 +35,7 @@ public interface IMiddlewarePipeline
     /// <param name="middleware">中间件</param>
     /// <param name="args">参数</param>
     /// <returns>中间件管道</returns>
-    IMiddlewarePipeline Use(IMiddleware middleware, params object[] args);
+    IMiddlewarePipeline Use(IFrameworkMiddleware middleware, params object[] args);
 
     /// <summary>
     /// 构建中间件管道

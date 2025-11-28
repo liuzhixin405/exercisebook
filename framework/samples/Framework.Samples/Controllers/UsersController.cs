@@ -4,17 +4,15 @@ using Framework.Samples.Commands;
 using Framework.Samples.Events;
 using Framework.Samples.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Framework.Samples.Controllers;
 
 /// <summary>
 /// 用户控制器
-/// 演示框架的各种设计模式
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-[Produces("application/json")]
 public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
@@ -38,12 +36,8 @@ public class UsersController : ControllerBase
     /// 创建用户
     /// </summary>
     /// <param name="request">创建用户请求</param>
-    /// <returns>新创建的用户ID</returns>
-    /// <response code="200">用户创建成功</response>
-    /// <response code="400">请求参数无效</response>
+    /// <returns>用户ID</returns>
     [HttpPost]
-    [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Guid>> CreateUser([FromBody] CreateUserRequest request)
     {
         var command = new CreateUserCommand
@@ -56,11 +50,11 @@ public class UsersController : ControllerBase
         await _commandBus.SendAsync(command);
 
         // 通过服务获取创建的用户ID（这里简化处理）
-        var usersResult = await GetAllUsers();
-        var users = usersResult.Value ?? new List<User>();
+        var actionResult = await GetAllUsers();
+        var users = actionResult.Value?.ToList() ?? new List<User>();
         var user = users.FirstOrDefault(u => u.Name == request.UserName && u.Email == request.Email);
         
-        return Ok(user?.UserId ?? Guid.NewGuid());
+        return Ok(user?.Id ?? Guid.NewGuid());
     }
 
     /// <summary>
@@ -104,17 +98,12 @@ public class UsersController : ControllerBase
     /// 获取所有用户
     /// </summary>
     /// <returns>用户列表</returns>
-    /// <response code="200">成功获取用户列表</response>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<User>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
     {
         // 这里简化处理，实际应该从数据库获取
-        var users = new List<User>
-        {
-            new User { UserId = Guid.NewGuid(), Name = "测试用户1", Email = "test1@example.com", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new User { UserId = Guid.NewGuid(), Name = "测试用户2", Email = "test2@example.com", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
-        };
+        var users = new List<User>();
+        await Task.CompletedTask;
         return Ok(users);
     }
 
@@ -157,22 +146,16 @@ public class CreateUserRequest
     /// <summary>
     /// 用户名
     /// </summary>
-    [Required(ErrorMessage = "用户名不能为空")]
-    [StringLength(50, MinimumLength = 2, ErrorMessage = "用户名长度必须在2-50个字符之间")]
     public string UserName { get; set; } = string.Empty;
 
     /// <summary>
     /// 邮箱
     /// </summary>
-    [Required(ErrorMessage = "邮箱不能为空")]
-    [EmailAddress(ErrorMessage = "邮箱格式不正确")]
     public string Email { get; set; } = string.Empty;
 
     /// <summary>
     /// 密码
     /// </summary>
-    [Required(ErrorMessage = "密码不能为空")]
-    [StringLength(100, MinimumLength = 6, ErrorMessage = "密码长度必须在6-100个字符之间")]
     public string Password { get; set; } = string.Empty;
 }
 

@@ -29,7 +29,7 @@ builder.Services.AddFramework(framework =>
     });
 });
 
-// 添加示例服务到ASP.NET Core DI容器
+// 添加示例服务
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 
@@ -55,68 +55,44 @@ builder.Services.AddState<UserRegistrationState>();
 builder.Services.AddState<UserActiveState>();
 
 // 添加访问者
-builder.Services.AddTransient<Framework.Core.Abstractions.Visitors.IVisitor<User>, UserAuditVisitor>();
+builder.Services.AddVisitor<User, UserAuditVisitor>();
 
 // 添加拦截器
-builder.Services.AddTransient<Framework.Core.Abstractions.Proxies.IInterceptor, LoggingInterceptor>();
-builder.Services.AddTransient<Framework.Core.Abstractions.Proxies.IInterceptor, CachingInterceptor>();
+builder.Services.AddInterceptor<LoggingInterceptor>();
+builder.Services.AddInterceptor<CachingInterceptor>();
 
 // 添加控制器
 builder.Services.AddControllers();
 
 // 添加Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-    {
-        Title = "Framework Samples API",
-        Version = "v1",
-        Description = "ASP.NET Core Framework Samples API with Design Patterns",
-        Contact = new Microsoft.OpenApi.Models.OpenApiContact
-        {
-            Name = "Framework Team",
-            Email = "framework@example.com"
-        }
-    });
-    
-    // 包含XML注释
-    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    if (File.Exists(xmlPath))
-    {
-        c.IncludeXmlComments(xmlPath);
-    }
-    
-    // 启用注解（需要Swashbuckle.AspNetCore.Annotations包）
-    // c.EnableAnnotations();
-});
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // 配置HTTP请求管道
-//if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Framework Samples API v1");
-        c.RoutePrefix = string.Empty; // 设置Swagger UI为根路径
-    });
+    app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseAuthorization();
 
-// 使用框架（暂时注释掉以测试基本功能）
-// app.UseFramework();
+// 使用框架
+app.UseFramework();
 
 app.MapControllers();
 
-// 演示框架功能
-_ = Task.Run(async () => await DemonstrateFrameworkFeatures(app));
+// Start the host so hosted services (like CommandHandlerRegistrar) run and register handlers
+await app.StartAsync();
 
-app.Run();
+// 演示框架功能
+await DemonstrateFrameworkFeatures(app);
+
+// 等待应用停止（不要再次调用 Start/Run，避免重复启动）
+await app.WaitForShutdownAsync();
 
 /// <summary>
 /// 演示框架功能
@@ -153,7 +129,7 @@ static async Task DemonstrateFrameworkFeatures(WebApplication app)
 
     // 演示访问者模式
     Console.WriteLine("\n=== 演示访问者模式 ===");
-    var user = new User { UserId = Guid.NewGuid(), Name = "王五", Email = "wangwu@example.com", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow };
+    var user = new User { Id = Guid.NewGuid(), Name = "王五", Email = "wangwu@example.com" };
     await framework.VisitorRegistry.VisitAsync(user);
 
     Console.WriteLine("\n=== 框架功能演示完成 ===");

@@ -55,6 +55,6 @@ public interface IConfigurationBuilder
     /// <summary>
     /// 构建配置
     /// </summary>
-    /// <returns>配置根</returns>
-    IConfigurationRoot Build();
+    /// <returns>配置</returns>
+    IConfiguration Build();
 }

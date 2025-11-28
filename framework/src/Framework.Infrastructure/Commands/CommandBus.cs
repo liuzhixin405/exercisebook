@@ -1,6 +1,6 @@
 using Framework.Core.Abstractions.Commands;
-using System.Collections.Concurrent;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Concurrent;
 
 namespace Framework.Infrastructure.Commands;
 
@@ -10,7 +10,7 @@ namespace Framework.Infrastructure.Commands;
 /// </summary>
 public class CommandBus : ICommandBus
 {
-    private readonly ConcurrentDictionary<Type, ICommandHandler> _handlers;
+    private readonly ConcurrentDictionary<Type, IInternalCommandHandler> _handlers;
     private readonly IServiceProvider _serviceProvider;
 
     /// <summary>
@@ -20,101 +20,53 @@ public class CommandBus : ICommandBus
     public CommandBus(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
-        _handlers = new ConcurrentDictionary<Type, ICommandHandler>();
-        
-        // 在构造时立即注册所有命令处理器
-        AutoRegisterHandlers();
+        _handlers = new ConcurrentDictionary<Type, IInternalCommandHandler>();
     }
 
-    /// <summary>
-    /// 自动发现并注册命令处理器
-    /// </summary>
-    private void AutoRegisterHandlers()
+    private void EnsureHandlerRegisteredFromServiceProvider(Type commandType)
     {
+        if (_handlers.ContainsKey(commandType))
+            return;
+
         try
         {
-            Console.WriteLine("开始自动注册命令处理器...");
-            
-            // 通过反射查找所有已注册的 ICommandHandler 服务
-            var allServices = new List<object>();
-            
-            // 获取所有程序集中实现了 ICommandHandler 接口的类型
-            var allTypes = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
-                .SelectMany(a => 
-                {
-                    try { return a.GetTypes(); }
-                    catch { return new Type[0]; }
-                })
-                .Where(t => t.IsClass && !t.IsAbstract)
-                .Where(t => t.GetInterfaces().Any(i => 
-                    i.IsGenericType && 
-                    (i.GetGenericTypeDefinition() == typeof(ICommandHandler<>) ||
-                     i.GetGenericTypeDefinition() == typeof(ICommandHandler<,>))))
-                .ToList();
+            // Try non-result handler ICommandHandler<TCommand>
+            var handlerInterface = typeof(ICommandHandler<>).MakeGenericType(commandType);
 
-            Console.WriteLine($"找到 {allTypes.Count} 个命令处理器类型");
-
-            foreach (var type in allTypes)
+            // If root provider can resolve a singleton/shared instance, register it directly
+            var rootObj = _serviceProvider.GetService(handlerInterface);
+            if (rootObj != null)
             {
-                try
-                {
-                    // 尝试通过泛型接口获取服务
-                    var interfaces = type.GetInterfaces()
-                        .Where(i => i.IsGenericType && 
-                                   (i.GetGenericTypeDefinition() == typeof(ICommandHandler<>) ||
-                                    i.GetGenericTypeDefinition() == typeof(ICommandHandler<,>)))
-                        .ToList();
+                var registerMethod = typeof(CommandBus).GetMethod(nameof(RegisterHandler), System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                var genericRegister = registerMethod!.MakeGenericMethod(commandType);
+                genericRegister.Invoke(this, new[] { rootObj });
+                return;
+            }
 
-                    foreach (var interfaceType in interfaces)
+            // Otherwise check a scoped provider: if a handler is registered as scoped/transient, register a proxy that resolves per-invocation
+            using (var scope = _serviceProvider.CreateScope())
+            {
+                var scopedObj = scope.ServiceProvider.GetService(handlerInterface);
+                if (scopedObj != null)
+                {
+                    var proxyType = typeof(ServiceProviderHandlerProxy<>).MakeGenericType(commandType);
+                    var proxy = Activator.CreateInstance(proxyType, _serviceProvider);
+                    if (proxy != null)
                     {
-                        try
-                        {
-                            var service = _serviceProvider.GetService(interfaceType);
-                            if (service != null)
-                            {
-                                allServices.Add(service);
-                                Console.WriteLine($"通过泛型接口找到服务: {type.Name} -> {interfaceType.Name}");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"通过泛型接口获取服务 {type.Name} 时出错: {ex.Message}");
-                        }
+                        var registerMethod = typeof(CommandBus).GetMethod(nameof(RegisterHandler), System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                        var genericRegister = registerMethod!.MakeGenericMethod(commandType);
+                        genericRegister.Invoke(this, new[] { proxy });
+                        return;
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"处理类型 {type.Name} 时出错: {ex.Message}");
-                }
             }
 
-            Console.WriteLine($"总共发现 {allServices.Count} 个命令处理器");
-
-            foreach (var handler in allServices)
-            {
-                var handlerType = handler.GetType();
-                Console.WriteLine($"处理命令处理器: {handlerType.Name}");
-                
-                var interfaces = handlerType.GetInterfaces()
-                    .Where(i => i.IsGenericType && 
-                               (i.GetGenericTypeDefinition() == typeof(ICommandHandler<>) ||
-                                i.GetGenericTypeDefinition() == typeof(ICommandHandler<,>)))
-                    .ToList();
-
-                foreach (var interfaceType in interfaces)
-                {
-                    var commandType = interfaceType.GetGenericArguments()[0];
-                    Console.WriteLine($"注册命令类型: {commandType.Name} -> 处理器: {handlerType.Name}");
-                    var wrapper = new CommandHandlerWrapper(handler, commandType);
-                    _handlers.AddOrUpdate(commandType, wrapper, (key, existing) => wrapper);
-                }
-            }
+            // Try result handler ICommandHandler<TCommand, TResult> - handled in SendAsync with TResult when needed
         }
-        catch (Exception ex)
+        catch(Exception ex)
         {
-            Console.WriteLine($"自动注册命令处理器时出错: {ex.Message}");
-            Console.WriteLine($"堆栈跟踪: {ex.StackTrace}");
+            // Log or handle exception as needed
+            Console.WriteLine($"Error resolving handler for command type {commandType.Name}: {ex.Message}");
         }
     }
 
@@ -125,36 +77,25 @@ public class CommandBus : ICommandBus
             throw new ArgumentNullException(nameof(command));
 
         var commandType = typeof(TCommand);
-        
         if (!_handlers.TryGetValue(commandType, out var handler))
         {
-            var registeredTypes = string.Join(", ", _handlers.Keys.Select(t => t.Name));
-            throw new InvalidOperationException(
-                $"No handler registered for command type '{commandType.Name}'. " +
-                $"Registered command types: [{registeredTypes}]. " +
-                $"Please ensure the command handler is registered using AddCommandHandler<{commandType.Name}, {commandType.Name}Handler>()");
+            // attempt to resolve handler from DI and register
+            EnsureHandlerRegisteredFromServiceProvider(commandType);
+
+            if (!_handlers.TryGetValue(commandType, out handler))
+            {
+                throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
+            }
         }
 
-        try
+        if (handler.ShouldHandle(command))
         {
-            if (handler.ShouldHandle(command))
-            {
-                await handler.HandleAsync(command);
-            }
-            else
-            {
-                Console.WriteLine($"Command handler '{handler.Name}' determined it should not handle command '{commandType.Name}'");
-            }
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException(
-                $"Error executing command '{commandType.Name}' with handler '{handler.Name}': {ex.Message}", ex);
+            await handler.HandleAsync(command);
         }
     }
 
     /// <inheritdoc />
-    public async Task<TResult> SendAsync<TCommand, TResult>(TCommand command) 
+    public async Task<TResult> SendAsync<TCommand, TResult>(TCommand command)
         where TCommand : class, ICommand<TResult>
     {
         if (command == null)
@@ -163,43 +104,103 @@ public class CommandBus : ICommandBus
         var commandType = typeof(TCommand);
         if (!_handlers.TryGetValue(commandType, out var handler))
         {
-            throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
-        }
+            // attempt to resolve handler from DI and register
+            EnsureHandlerRegisteredFromServiceProvider(commandType);
 
-        if (handler is ICommandHandler<TCommand, TResult> typedHandler)
-        {
-            if (typedHandler.ShouldHandle(command))
+            if (!_handlers.TryGetValue(commandType, out handler))
             {
-                return await typedHandler.HandleAsync(command);
+                // Try to resolve ICommandHandler<TCommand, TResult> specifically
+                try
+                {
+                    var handlerInterface = typeof(ICommandHandler<,>).MakeGenericType(commandType, typeof(TResult));
+
+                    var rootObj = _serviceProvider.GetService(handlerInterface);
+                    if (rootObj != null)
+                    {
+                        var registerMethod = typeof(CommandBus).GetMethod(nameof(RegisterHandler), System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                        var genericRegister = registerMethod!.MakeGenericMethod(commandType, typeof(TResult));
+                        genericRegister.Invoke(this, new[] { rootObj });
+
+                        if (!_handlers.TryGetValue(commandType, out handler))
+                        {
+                            throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
+                        }
+                    }
+                    else
+                    {
+                        using (var scope = _serviceProvider.CreateScope())
+                        {
+                            var scopedObj = scope.ServiceProvider.GetService(handlerInterface);
+                            if (scopedObj != null)
+                            {
+                                var proxyType = typeof(ServiceProviderHandlerWithResultProxy<,>).MakeGenericType(commandType, typeof(TResult));
+                                var proxy = Activator.CreateInstance(proxyType, _serviceProvider);
+                                if (proxy != null)
+                                {
+                                    var registerMethod = typeof(CommandBus).GetMethod(nameof(RegisterHandler), System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                                    var genericRegister = registerMethod!.MakeGenericMethod(commandType, typeof(TResult));
+                                    genericRegister.Invoke(this, new[] { proxy });
+
+                                    if (!_handlers.TryGetValue(commandType, out handler))
+                                    {
+                                        throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
+                                    }
+                                }
+                                else
+                                {
+                                    throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
+                                }
+                            }
+                            else
+                            {
+                                throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    throw new InvalidOperationException($"No handler registered for command type {commandType.Name}");
+                }
             }
         }
 
-        throw new InvalidOperationException($"Handler for command type {commandType.Name} does not support result type {typeof(TResult).Name}");
+        if (handler.ShouldHandle(command))
+        {
+            var resultObj = await handler.HandleAsync(command);
+            if (resultObj is TResult result)
+                return result;
+
+            // allow null/default cast
+            return default!;
+        }
+
+        throw new InvalidOperationException($"Handler for command type {commandType.Name} did not handle the command or returned incompatible result.");
     }
 
     /// <inheritdoc />
-    public ICommandBus RegisterHandler<TCommand>(ICommandHandler<TCommand> handler) 
+    public ICommandBus RegisterHandler<TCommand>(ICommandHandler<TCommand> handler)
         where TCommand : class, ICommand
     {
         if (handler == null)
             throw new ArgumentNullException(nameof(handler));
 
         var commandType = typeof(TCommand);
-        var wrapper = new CommandHandlerWrapper<TCommand>(handler);
-        _handlers.AddOrUpdate(commandType, wrapper, (key, existing) => wrapper);
+        var adapter = new CommandHandlerAdapter<TCommand>(handler);
+        _handlers.AddOrUpdate(commandType, adapter, (key, existing) => adapter);
         return this;
     }
 
     /// <inheritdoc />
-    public ICommandBus RegisterHandler<TCommand, TResult>(ICommandHandler<TCommand, TResult> handler) 
+    public ICommandBus RegisterHandler<TCommand, TResult>(ICommandHandler<TCommand, TResult> handler)
         where TCommand : class, ICommand<TResult>
     {
         if (handler == null)
             throw new ArgumentNullException(nameof(handler));
 
         var commandType = typeof(TCommand);
-        var wrapper = new CommandHandlerWrapper<TCommand, TResult>(handler);
-        _handlers.AddOrUpdate(commandType, wrapper, (key, existing) => wrapper);
+        var adapter = new CommandHandlerWithResultAdapter<TCommand, TResult>(handler);
+        _handlers.AddOrUpdate(commandType, adapter, (key, existing) => adapter);
         return this;
     }
 
@@ -220,142 +221,127 @@ public class CommandBus : ICommandBus
 }
 
 /// <summary>
-/// 命令处理器基类
+/// 内部命令处理器适配器，统一返回 object? 结果并接收 object 参数
 /// </summary>
-internal abstract class CommandHandler
+internal interface IInternalCommandHandler
 {
-    public abstract string Name { get; }
-    public abstract int Priority { get; }
-    public abstract Task HandleAsync(object command);
-    public abstract bool ShouldHandle(object command);
-}
-
-/// <summary>
-/// 命令处理器接口（非泛型）
-/// </summary>
-internal interface ICommandHandler
-{
-    string Name { get; }
-    int Priority { get; }
-    Task HandleAsync(object command);
+    Task<object?> HandleAsync(object command);
     bool ShouldHandle(object command);
 }
 
-/// <summary>
-/// 命令处理器包装器
-/// </summary>
-/// <typeparam name="TCommand">命令类型</typeparam>
-internal class CommandHandlerWrapper<TCommand> : ICommandHandler where TCommand : class, ICommand
+internal class CommandHandlerAdapter<TCommand> : IInternalCommandHandler where TCommand : class, ICommand
 {
-    private readonly ICommandHandler<TCommand> _handler;
+    private readonly ICommandHandler<TCommand> _inner;
 
-    public CommandHandlerWrapper(ICommandHandler<TCommand> handler)
+    public CommandHandlerAdapter(ICommandHandler<TCommand> inner)
     {
-        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+        _inner = inner ?? throw new ArgumentNullException(nameof(inner));
     }
 
-    public string Name => _handler.Name;
-    public int Priority => _handler.Priority;
-
-    public async Task HandleAsync(object command)
+    public async Task<object?> HandleAsync(object command)
     {
-        if (command is TCommand typedCommand)
+        if (command is TCommand typed)
         {
-            await _handler.HandleAsync(typedCommand);
+            await _inner.HandleAsync(typed);
+            return null;
         }
+
+        throw new InvalidOperationException($"Command type mismatch. Expected {typeof(TCommand).Name}");
     }
 
     public bool ShouldHandle(object command)
     {
-        return command is TCommand typedCommand && _handler.ShouldHandle(typedCommand);
+        if (command is TCommand typed)
+        {
+            return _inner.ShouldHandle(typed);
+        }
+        return false;
     }
 }
 
-/// <summary>
-/// 命令处理器包装器（带结果）
-/// </summary>
-/// <typeparam name="TCommand">命令类型</typeparam>
-/// <typeparam name="TResult">结果类型</typeparam>
-internal class CommandHandlerWrapper<TCommand, TResult> : ICommandHandler where TCommand : class, ICommand<TResult>
+internal class CommandHandlerWithResultAdapter<TCommand, TResult> : IInternalCommandHandler where TCommand : class, ICommand<TResult>
 {
-    private readonly ICommandHandler<TCommand, TResult> _handler;
+    private readonly ICommandHandler<TCommand, TResult> _inner;
 
-    public CommandHandlerWrapper(ICommandHandler<TCommand, TResult> handler)
+    public CommandHandlerWithResultAdapter(ICommandHandler<TCommand, TResult> inner)
     {
-        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
+        _inner = inner ?? throw new ArgumentNullException(nameof(inner));
     }
 
-    public string Name => _handler.Name;
-    public int Priority => _handler.Priority;
-
-    public async Task HandleAsync(object command)
+    public async Task<object?> HandleAsync(object command)
     {
-        if (command is TCommand typedCommand)
+        if (command is TCommand typed)
         {
-            await _handler.HandleAsync(typedCommand);
+            var result = await _inner.HandleAsync(typed);
+            return (object?)result;
         }
+
+        throw new InvalidOperationException($"Command type mismatch. Expected {typeof(TCommand).Name}");
     }
 
     public bool ShouldHandle(object command)
     {
-        return command is TCommand typedCommand && _handler.ShouldHandle(typedCommand);
+        if (command is TCommand typed)
+        {
+            return _inner.ShouldHandle(typed);
+        }
+        return false;
     }
 }
 
-/// <summary>
-/// 通用命令处理器包装器
-/// </summary>
-internal class CommandHandlerWrapper : ICommandHandler
+// Proxy implementations that resolve actual handlers from IServiceProvider per invocation
+internal class ServiceProviderHandlerProxy<TCommand> : ICommandHandler<TCommand> where TCommand : class, ICommand
 {
-    private readonly object _handler;
-    private readonly Type _commandType;
+    private readonly IServiceProvider _provider;
 
-    public CommandHandlerWrapper(object handler, Type commandType)
+    public ServiceProviderHandlerProxy(IServiceProvider provider)
     {
-        _handler = handler ?? throw new ArgumentNullException(nameof(handler));
-        _commandType = commandType ?? throw new ArgumentNullException(nameof(commandType));
+        _provider = provider ?? throw new ArgumentNullException(nameof(provider));
     }
 
-    public string Name => GetPropertyValue<string>("Name");
-    public int Priority => GetPropertyValue<int>("Priority");
+    public string Name => "ServiceProviderProxy";
 
-    public async Task HandleAsync(object command)
+    public int Priority => 100;
+
+    public async Task HandleAsync(TCommand command)
     {
-        if (command?.GetType() == _commandType)
-        {
-            var handleMethod = _handler.GetType().GetMethod("HandleAsync", new[] { _commandType });
-            if (handleMethod != null)
-            {
-                var task = (Task)handleMethod.Invoke(_handler, new[] { command });
-                if (task != null)
-                {
-                    await task;
-                }
-            }
-        }
+        using var scope = _provider.CreateScope();
+        var handler = (ICommandHandler<TCommand>)scope.ServiceProvider.GetRequiredService(typeof(ICommandHandler<TCommand>));
+        await handler.HandleAsync(command);
     }
 
-    public bool ShouldHandle(object command)
+    public bool ShouldHandle(TCommand command)
     {
-        if (command?.GetType() != _commandType)
-            return false;
+        using var scope = _provider.CreateScope();
+        var handler = (ICommandHandler<TCommand>)scope.ServiceProvider.GetRequiredService(typeof(ICommandHandler<TCommand>));
+        return handler.ShouldHandle(command);
+    }
+}
 
-        var shouldHandleMethod = _handler.GetType().GetMethod("ShouldHandle", new[] { _commandType });
-        if (shouldHandleMethod != null)
-        {
-            return (bool)shouldHandleMethod.Invoke(_handler, new[] { command });
-        }
+internal class ServiceProviderHandlerWithResultProxy<TCommand, TResult> : ICommandHandler<TCommand, TResult> where TCommand : class, ICommand<TResult>
+{
+    private readonly IServiceProvider _provider;
 
-        return true;
+    public ServiceProviderHandlerWithResultProxy(IServiceProvider provider)
+    {
+        _provider = provider ?? throw new ArgumentNullException(nameof(provider));
     }
 
-    private T GetPropertyValue<T>(string propertyName)
+    public string Name => "ServiceProviderProxy";
+
+    public int Priority => 100;
+
+    public async Task<TResult> HandleAsync(TCommand command)
     {
-        var property = _handler.GetType().GetProperty(propertyName);
-        if (property != null)
-        {
-            return (T)property.GetValue(_handler);
-        }
-        return default(T);
+        using var scope = _provider.CreateScope();
+        var handler = (ICommandHandler<TCommand, TResult>)scope.ServiceProvider.GetRequiredService(typeof(ICommandHandler<TCommand, TResult>));
+        return await handler.HandleAsync(command);
+    }
+
+    public bool ShouldHandle(TCommand command)
+    {
+        using var scope = _provider.CreateScope();
+        var handler = (ICommandHandler<TCommand, TResult>)scope.ServiceProvider.GetRequiredService(typeof(ICommandHandler<TCommand, TResult>));
+        return handler.ShouldHandle(command);
     }
 }

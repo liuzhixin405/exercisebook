@@ -5,7 +5,7 @@ namespace Framework.Samples.Strategies;
 /// <summary>
 /// 密码验证策略
 /// </summary>
-public class PasswordValidationStrategy : IStrategy
+public class PasswordValidationStrategy : IStrategy<bool>
 {
     /// <inheritdoc />
     public string Name => "PasswordValidationStrategy";
@@ -17,7 +17,7 @@ public class PasswordValidationStrategy : IStrategy
     public int Priority => 100;
 
     /// <inheritdoc />
-    public async Task<object?> ExecuteAsync(params object[] parameters)
+    public async Task<bool> ExecuteAsync(params object[] parameters)
     {
         if (parameters.Length == 0 || parameters[0] is not string password)
         {
@@ -29,6 +29,13 @@ public class PasswordValidationStrategy : IStrategy
 
         // 密码验证规则
         return IsValidPassword(password);
+    }
+
+    // Explicit non-generic interface implementation
+    async Task<object?> Framework.Core.Abstractions.Strategies.IStrategy.ExecuteAsync(params object[] parameters)
+    {
+        var result = await ExecuteAsync(parameters);
+        return (object?)result;
     }
 
     /// <inheritdoc />
