@@ -295,4 +295,40 @@ cd samples/Framework.Samples
 dotnet run
 ```
 
+程序将自动演示所有 17 种设计模式的使用示例，包括：
+- **创建型模式**: 单例、工厂、建造者等
+- **结构型模式**: 装饰器、代理、外观等  
+- **行为型模式**: 策略、观察者、命令、状态、访问者、迭代器、中介者、备忘录、模板方法等
+
+详细的设计模式说明和示例代码请查看 [DESIGN_PATTERNS.md](./DESIGN_PATTERNS.md)。
+
 访问 `https://localhost:5001/swagger` 查看API文档。
+
+## 📚 设计模式完整文档
+
+本框架实现了 17 种经典设计模式，每种模式都有完整的示例代码：
+
+### 创建型模式（5种）
+- ✅ [单例模式](./DESIGN_PATTERNS.md#1-单例模式-singleton) - 3种实现方式（饿汉式、懒汉式、Lazy<T>）
+- ✅ [简单工厂模式](./DESIGN_PATTERNS.md#2-简单工厂模式-simple-factory) - 通知系统示例
+- ✅ [工厂方法模式](./DESIGN_PATTERNS.md#3-工厂方法模式-factory-method) - 日志系统示例
+- ✅ [抽象工厂模式](./DESIGN_PATTERNS.md#4-抽象工厂模式-abstract-factory) - UI组件系统示例
+- ✅ [建造者模式](./DESIGN_PATTERNS.md#5-建造者模式-builder) - 电脑配置和HTTP请求构建
+
+### 结构型模式（3种）
+- ✅ [装饰器模式](./DESIGN_PATTERNS.md#6-装饰器模式-decorator) - 缓存、性能监控、异常处理、审计日志
+- ✅ [代理模式](./DESIGN_PATTERNS.md#7-代理模式-proxy) - 动态代理和拦截器
+- ✅ [外观模式](./DESIGN_PATTERNS.md#8-外观模式-facade) - ApplicationFramework统一接口
+
+### 行为型模式（9种）
+- ✅ [策略模式](./DESIGN_PATTERNS.md#9-策略模式-strategy) - 验证策略系统
+- ✅ [观察者模式](./DESIGN_PATTERNS.md#10-观察者模式-observer) - 事件总线系统
+- ✅ [命令模式](./DESIGN_PATTERNS.md#11-命令模式-command) - 命令总线和CQRS
+- ✅ [状态模式](./DESIGN_PATTERNS.md#12-状态模式-state) - 用户状态管理
+- ✅ [访问者模式](./DESIGN_PATTERNS.md#13-访问者模式-visitor) - 对象审计访问
+- ✅ [迭代器模式](./DESIGN_PATTERNS.md#14-迭代器模式-iterator) - 集合遍历和过滤
+- ✅ [中介者模式](./DESIGN_PATTERNS.md#15-中介者模式-mediator) - 订单支付通知系统
+- ✅ [备忘录模式](./DESIGN_PATTERNS.md#16-备忘录模式-memento) - 文档编辑器和游戏存档
+- ✅ [模板方法模式](./DESIGN_PATTERNS.md#17-模板方法模式-template-method) - 用户注册和订单处理流程
+
+**查看完整文档**: [DESIGN_PATTERNS.md](./DESIGN_PATTERNS.md)
