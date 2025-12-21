@@ -24,6 +24,11 @@ namespace PipelinePattern
         {
             request.Content.Content = TransferRequestForRest.Transfer(request.Content.Content);
         }
+
+        public static void ReduceRequest(Request request)
+        {
+            ReduceRequestBody.Reduce(request);
+        }
     }
 
     class TransferRequestForRest
@@ -31,6 +36,14 @@ namespace PipelinePattern
         internal static string Transfer(string content)
         {
            return ("Transferring request content to REST format...");
+        }
+    }
+
+    class ReduceRequestBody
+    {
+        internal static void Reduce(Request request)
+        {
+            Console.WriteLine("Reducing request body size...");
         }
     }
 }

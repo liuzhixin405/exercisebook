@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomObserver", "CustomObs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderForLog", "ProviderForLog\ProviderForLog.csproj", "{DCBDC5EF-1921-4B43-A618-B8CB4734A630}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipelinePattern", "PipelinePattern\PipelinePattern.csproj", "{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DCBDC5EF-1921-4B43-A618-B8CB4734A630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCBDC5EF-1921-4B43-A618-B8CB4734A630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCBDC5EF-1921-4B43-A618-B8CB4734A630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
