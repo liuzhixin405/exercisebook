@@ -1,6 +1,6 @@
 
 using ECommerce.API.Application;
-using ECommerce.API.Infrastucture;
+using ECommerce.API.Infrastructure;
 using ECommerce.API.Models;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -51,7 +51,7 @@ namespace ECommerce.API
                 .Build();
 
             builder.Services.AddSingleton<IAppConfiguration>(config);
-
+     
             // 策略模式
             builder.Services.AddScoped<CreditCardPayment>();
             builder.Services.AddScoped<PayPalPayment>();
@@ -86,9 +86,16 @@ namespace ECommerce.API
 
             // 仓储
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
             var app = builder.Build();
-
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
             // 配置事件订阅
             var eventBus = app.Services.GetRequiredService<IEventBus>();
             eventBus.Subscribe<OrderCreatedEvent, OrderCreatedEmailHandler>();

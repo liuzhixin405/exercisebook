@@ -1,11 +1,15 @@
 ﻿using ECommerce.API.Application;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // 订单组合
     public class OrderComposite : IOrderComponent
     {
         private readonly List<IOrderComponent> _components = new();
+        public OrderComposite()
+        {
+            _components.Clear();
+        }
 
         public void AddComponent(IOrderComponent component) => _components.Add(component);
         public void RemoveComponent(IOrderComponent component) => _components.Remove(component);

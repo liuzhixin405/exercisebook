@@ -2,7 +2,7 @@
 using ECommerce.API.Models;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // 装饰器 - 缓存增强
     public class CachedOrderService : IOrderService

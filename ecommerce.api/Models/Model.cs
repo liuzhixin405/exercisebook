@@ -1,4 +1,4 @@
-﻿using ECommerce.API.Infrastucture;
+﻿using ECommerce.API.Infrastructure;
 
 namespace ECommerce.API.Models
 {

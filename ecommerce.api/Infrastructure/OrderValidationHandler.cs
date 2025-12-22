@@ -1,7 +1,7 @@
 ﻿using ECommerce.API.Application;
 using ECommerce.API.Models;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // 订单验证责任链
     public class OrderValidationHandler : IValidationHandler<OrderRequest>

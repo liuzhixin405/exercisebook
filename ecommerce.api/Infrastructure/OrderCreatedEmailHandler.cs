@@ -1,6 +1,6 @@
 ﻿using ECommerce.API.Application;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // 具体事件处理器
     public class OrderCreatedEmailHandler : IEventHandler<OrderCreatedEvent>

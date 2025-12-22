@@ -1,7 +1,7 @@
 ﻿using ECommerce.API.Application;
 using ECommerce.API.Models;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // PayPal支付
     public class PayPalPayment : IPaymentStrategy

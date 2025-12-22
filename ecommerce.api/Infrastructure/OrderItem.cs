@@ -1,6 +1,6 @@
 ﻿using ECommerce.API.Application;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // 单个订单项
     public class OrderItem : IOrderComponent

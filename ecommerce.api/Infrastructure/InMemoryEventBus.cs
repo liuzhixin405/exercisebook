@@ -1,7 +1,7 @@
 ﻿using ECommerce.API.Application;
 using System.Collections.Concurrent;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // 内存事件总线实现
     public class InMemoryEventBus : IEventBus

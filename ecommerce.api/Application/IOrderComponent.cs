@@ -5,5 +5,6 @@
     {
         decimal GetTotal();
         void Display(int indent = 0);
+
     }
 }

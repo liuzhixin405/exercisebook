@@ -2,7 +2,7 @@
 using ECommerce.API.Models;
 using System.Diagnostics;
 
-namespace ECommerce.API.Infrastucture
+namespace ECommerce.API.Infrastructure
 {
     // 装饰器 - 日志增强
     public class LoggingOrderService : IOrderService
