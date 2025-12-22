@@ -1,53 +1,33 @@
-
 using ECommerce.API.Application;
 using ECommerce.API.Infrastructure;
 using ECommerce.API.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace ECommerce.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            //var builder = WebApplication.CreateBuilder(args);
-
-            //// Add services to the container.
-
-            //builder.Services.AddControllers();
-            //// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            //builder.Services.AddEndpointsApiExplorer();
-            //builder.Services.AddSwaggerGen();
-
-            //var app = builder.Build();
-
-            //// Configure the HTTP request pipeline.
-            //if (app.Environment.IsDevelopment())
-            //{
-            //    app.UseSwagger();
-            //    app.UseSwaggerUI();
-            //}
-
-            //app.UseHttpsRedirection();
-
-            //app.UseAuthorization();
-
-
-            //app.MapControllers();
-
-            //app.Run();
-
             var builder = WebApplication.CreateBuilder(args);
 
-            // 依赖注入配置
+            // 添加注册服务
             builder.Services.AddControllers();
             builder.Services.AddMemoryCache();
 
-            // 单例配置
+            // 配置数据库连接
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<ECommerceDbContext>(options =>
+                options.UseMySql(connectionString, 
+                    ServerVersion.AutoDetect(connectionString))
+            );
+
+            // 配置应用设置
             var config = new AppConfiguration.Builder()
-                .WithDatabaseConnection(builder.Configuration["ConnectionString"])
-                .WithServiceUrl(builder.Configuration["ServiceUrl"])
-                .WithTimeout(30)
+                .WithDatabaseConnection(connectionString)
+                .WithServiceUrl(builder.Configuration["AppSettings:ServiceUrl"])
+                .WithTimeout(builder.Configuration.GetValue<int>("AppSettings:TimeoutSeconds"))
                 .Build();
 
             builder.Services.AddSingleton<IAppConfiguration>(config);
@@ -86,17 +66,38 @@ namespace ECommerce.API
 
             // 仓储
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+            
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            
             var app = builder.Build();
+
+            // 初始化数据库
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+                try
+                {
+                    await dbInitializer.InitializeAsync();
+                }
+                catch (Exception ex)
+                {
+                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while initializing the database.");
+                    throw;
+                }
+            }
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            // 配置事件订阅
+
+            // 订阅事件处理
             var eventBus = app.Services.GetRequiredService<IEventBus>();
             eventBus.Subscribe<OrderCreatedEvent, OrderCreatedEmailHandler>();
             eventBus.Subscribe<OrderCreatedEvent, OrderCreatedInventoryHandler>();
