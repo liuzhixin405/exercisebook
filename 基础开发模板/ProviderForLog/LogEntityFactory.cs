@@ -13,7 +13,7 @@ namespace ProviderForLog
             return new LogEntity
             {
                 Type = logType,
-                Levle = logLevel,
+                Level = logLevel,
                 Content = new LogContent
                 {
                     Message = message,

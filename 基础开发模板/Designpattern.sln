@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderForLog", "ProviderF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipelinePattern", "PipelinePattern\PipelinePattern.csproj", "{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadeDesgin", "FacadeDesgin\FacadeDesgin.csproj", "{6FCA05BD-72E1-4358-B782-7D17B9D2E797}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F2CBAAD-8404-45C1-AE04-B26FBE43E5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FCA05BD-72E1-4358-B782-7D17B9D2E797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FCA05BD-72E1-4358-B782-7D17B9D2E797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FCA05BD-72E1-4358-B782-7D17B9D2E797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FCA05BD-72E1-4358-B782-7D17B9D2E797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

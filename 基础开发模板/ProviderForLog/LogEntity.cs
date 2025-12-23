@@ -10,7 +10,7 @@ namespace ProviderForLog
     {
         public LogType Type { get; set; }
 
-        public LogLevel Levle { get; set; }
+        public LogLevel Level { get; set; }
         public LogContent Content { get; set; }
     }
 }
