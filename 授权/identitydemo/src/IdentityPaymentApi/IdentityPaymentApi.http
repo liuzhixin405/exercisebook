@@ -1,0 +1,6 @@
+@IdentityPaymentApi_HostAddress = http://localhost:5161
+
+GET {{IdentityPaymentApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
