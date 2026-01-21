@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -12,6 +12,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11" PrivateAssets="all" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11" PrivateAssets="all" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,9 +23,7 @@
     <ProjectReference Include="..\IdentityPaymentApi.Infrastructure\IdentityPaymentApi.Infrastructure.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityPaymentApi.Domain\IdentityPaymentApi.Domain.csproj" />
-    <ProjectReference Include="..\IdentityPaymentApi.Application\IdentityPaymentApi.Application.csproj" />
-    <ProjectReference Include="..\IdentityPaymentApi.Infrastructure\IdentityPaymentApi.Infrastructure.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

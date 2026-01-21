@@ -8,7 +8,10 @@ public class PaymentRecord
     public string Currency { get; set; } = "USD";
     public PaymentMethod Method { get; set; }
     public string? Description { get; set; }
+    public string Reference { get; set; } = Guid.NewGuid().ToString("N");
     public string UserId { get; set; } = string.Empty;
-    public string Status { get; set; } = "Pending";
+    public PaymentStatus Status { get; set; } = PaymentStatus.Pending;
+    public string? StatusNotes { get; set; }
     public DateTime CreatedAt { get; set; }
+    public DateTime? ProcessedAt { get; set; }
 }

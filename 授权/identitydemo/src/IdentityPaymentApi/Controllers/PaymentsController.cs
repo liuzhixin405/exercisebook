@@ -1,5 +1,7 @@
+using System.Linq;
 using IdentityPaymentApi.Application.DTOs;
 using IdentityPaymentApi.Application.Services;
+using IdentityPaymentApi.Application.Wrappers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +10,6 @@ using AppUser = IdentityPaymentApi.Models.ApplicationUser;
 
 namespace IdentityPaymentApi.Controllers;
 
-[Authorize(Policy = "Payments")]
 [ApiController]
 [Route("api/payments")]
 public class PaymentsController : ControllerBase
@@ -22,61 +23,94 @@ public class PaymentsController : ControllerBase
         _userManager = userManager;
     }
 
-    private static BusinessUser ToBusinessUser(AppUser user)
-        => new() { Id = user.Id ?? string.Empty, UserName = user.UserName };
-
     [HttpPost]
-    public async Task<IActionResult> CreatePayment(PaymentRequest request)
+    [Authorize(Policy = "payments.create")]
+    public async Task<IActionResult> CreatePayment(PaymentCreateRequest request)
     {
-        var user = await _userManager.GetUserAsync(User);
-        if (user == null)
+        var businessUser = await GetBusinessUserAsync();
+        if (businessUser == null)
         {
             return Unauthorized();
         }
-        var businessUser = ToBusinessUser(user);
-        var record = await _paymentService.CreatePaymentAsync(businessUser, request);
-        var response = new PaymentResponse
-        {
-            Id = record.Id,
-            Amount = record.Amount,
-            Currency = record.Currency,
-            Method = record.Method.ToString(),
-            Description = record.Description,
-            Status = record.Status,
-            CreatedAt = record.CreatedAt
-        };
 
-        return CreatedAtAction(nameof(GetPayment), new { id = record.Id }, response);
+        var result = await _paymentService.CreatePaymentAsync(businessUser, request);
+        if (!result.Success)
+        {
+            return BadRequest(result);
+        }
+
+        return CreatedAtAction(nameof(GetPayment), new { id = result.Data!.Id }, result);
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetPayments()
+    [Authorize(Policy = "payments.read")]
+    public async Task<IActionResult> GetPayments([FromQuery] PaymentQueryParameters query)
     {
-        var user = await _userManager.GetUserAsync(User);
-        if (user == null)
+        var businessUser = await GetBusinessUserAsync();
+        if (businessUser == null)
         {
             return Unauthorized();
         }
-        var businessUser = ToBusinessUser(user);
-        var payments = await _paymentService.GetPaymentsAsync(businessUser);
-        return Ok(payments);
+
+        var response = await _paymentService.GetPaymentsAsync(businessUser, query);
+        return Ok(response);
     }
 
     [HttpGet("{id:guid}")]
+    [Authorize(Policy = "payments.view")]
     public async Task<IActionResult> GetPayment(Guid id)
+    {
+        var businessUser = await GetBusinessUserAsync();
+        if (businessUser == null)
+        {
+            return Unauthorized();
+        }
+
+        var result = await _paymentService.GetPaymentAsync(businessUser, id);
+        return HandleResult(result);
+    }
+
+    [HttpPatch("{id:guid}/status")]
+    [Authorize(Policy = "payments.manage")]
+    public async Task<IActionResult> UpdatePaymentStatus(Guid id, PaymentStatusUpdateRequest request)
+    {
+        var businessUser = await GetBusinessUserAsync();
+        if (businessUser == null)
+        {
+            return Unauthorized();
+        }
+
+        var result = await _paymentService.UpdatePaymentStatusAsync(businessUser, id, request);
+        return HandleResult(result);
+    }
+
+    private IActionResult HandleResult(BaseResult<PaymentResponse> result)
+    {
+        if (result.Success)
+        {
+            return Ok(result);
+        }
+
+        if (result.Errors?.Any(e => e.ErrorCode == ErrorCode.NotFound) == true)
+        {
+            return NotFound(result);
+        }
+
+        return BadRequest(result);
+    }
+
+    private async Task<BusinessUser?> GetBusinessUserAsync()
     {
         var user = await _userManager.GetUserAsync(User);
         if (user == null)
         {
-            return Unauthorized();
-        }
-        var businessUser = ToBusinessUser(user);
-        var payment = await _paymentService.GetPaymentAsync(businessUser, id);
-        if (payment == null)
-        {
-            return NotFound();
+            return null;
         }
 
-        return Ok(payment);
+        return new BusinessUser
+        {
+            Id = user.Id ?? string.Empty,
+            UserName = user.UserName
+        };
     }
 }

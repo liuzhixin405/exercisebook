@@ -29,7 +29,9 @@ public class JwtTokenService : ITokenService
     {
         var claims = new List<Claim>
         {
+            // include both standard sub and ClaimTypes.NameIdentifier for robust lookup
             new(JwtRegisteredClaimNames.Sub, user.Id),
+            new(ClaimTypes.NameIdentifier, user.Id),
             new(JwtRegisteredClaimNames.Email, user.Email ?? string.Empty),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
