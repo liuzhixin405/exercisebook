@@ -361,3 +361,4 @@ PipelineFilter/PipelineFilter/obj/project.assets.json
 *.props
 *.cache
 .aider*
+AI/dotnet-agent/agents/generalist.md

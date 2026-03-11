@@ -1,0 +1,4 @@
+# Ignore local agent config that may contain secrets
+agents/generalist.md
+# Optionally ignore all agent files containing keys
+# agents/*.md

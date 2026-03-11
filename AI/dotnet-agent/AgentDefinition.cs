@@ -39,6 +39,12 @@ namespace DotnetAgent
         [JsonPropertyName("model")]
         public string? Model { get; set; }
 
+        [JsonPropertyName("deepseekApiKey")]
+        public string? DeepseekApiKey { get; set; }
+
+        [JsonPropertyName("deepseekBaseUrl")]
+        public string? DeepseekBaseUrl { get; set; }
+
         [JsonPropertyName("inputConfig")]
         public InputConfig? InputConfig { get; set; }
 

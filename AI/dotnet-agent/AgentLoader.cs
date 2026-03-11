@@ -78,6 +78,8 @@ namespace DotnetAgent
                 Description = raw.ContainsKey("description") ? raw["description"]?.ToString() : null,
                 SystemPrompt = body,
                 Model = model,
+                DeepseekApiKey = raw.ContainsKey("deepseek_api_key") ? raw["deepseek_api_key"]?.ToString() : null,
+                DeepseekBaseUrl = raw.ContainsKey("deepseek_base_url") ? raw["deepseek_base_url"]?.ToString() : null,
             };
 
             return new List<AgentDefinition> { adLocal };
