@@ -1,0 +1,1 @@
+global using AgenticCommerceErpDemo.Application.Approvals;

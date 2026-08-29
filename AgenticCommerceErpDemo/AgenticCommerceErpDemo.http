@@ -1,0 +1,20 @@
+@host = http://localhost:5000
+
+POST {{host}}/agent/tasks
+Content-Type: application/json
+
+{
+  "goal": "Analyze East warehouse inventory risk, declining conversion products, customer complaints, and prepare replenishment plus promotion actions."
+}
+
+###
+
+GET {{host}}/state
+
+###
+
+GET {{host}}/audit
+
+###
+
+POST {{host}}/approvals/approval-id-here/approve
