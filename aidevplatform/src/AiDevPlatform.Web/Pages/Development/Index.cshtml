@@ -1,0 +1,47 @@
+@page
+@model AiDevPlatform.Web.Pages.Development.IndexModel
+@{ ViewData["Title"] = "开发工作台"; }
+@section Styles { <link rel="stylesheet" href="~/css/development.css" asp-append-version="true" /> }
+<div class="dev-workspace">
+    <header class="dev-header"><div><span class="dev-eyebrow">本机开发工作区</span><h1>开发工作台</h1></div><a asp-page="./Standards" class="dev-button"><i class="fas fa-sliders-h" aria-hidden="true"></i> 团队规范</a></header>
+    <div id="dev-error" class="dev-alert" role="alert" hidden></div>
+    @if (Model.ErrorMessage != null)
+    {
+        <div class="dev-alert" role="alert">@Model.ErrorMessage <a asp-page="./Index">重试</a></div>
+    }
+    else
+    {
+        <section class="dev-section">
+            <h2>新建开发任务</h2>
+            <form method="post" data-dev-form="create" class="dev-form">
+                @Html.AntiForgeryToken()
+                <div class="dev-grid">
+                    <label>任务名称<input name="title" required maxlength="120" /></label>
+                    <label>语言 / 框架 / 项目类型<input name="technology" required maxlength="200" list="technology-options" placeholder="例如 Rust CLI、Vue 3、Go API，或其他技术栈" /></label>
+                    <label class="dev-full">团队规范版本<select name="standardId" required>@foreach (var standard in Model.Standards) { <option value="@standard.Id">@standard.Name · @standard.Version</option> }</select></label>
+                    <label class="dev-full">需求与验收目标<textarea name="requirement" rows="5" required maxlength="4000"></textarea></label>
+                </div>
+                <details class="dev-context"><summary>已有项目上下文 <span id="context-count">0 个文件</span></summary>
+                    <label>文本源码<input id="context-files" type="file" multiple /></label><ul id="context-list"></ul>
+                </details>
+                <div class="dev-actions"><button type="submit" class="dev-button primary"><i class="fas fa-plus" aria-hidden="true"></i> 创建任务</button><span id="dev-progress" role="status"></span></div>
+            </form>
+            <datalist id="technology-options"><option value="C# / ASP.NET Core"></option><option value="React / TypeScript"></option><option value="Vue 3 / TypeScript"></option><option value="Go"></option><option value="Rust"></option></datalist>
+        </section>
+        <section class="dev-section">
+            <h2>开发任务 <span class="dev-count">@Model.Tasks.Count</span></h2>
+            @if (Model.Tasks.Count == 0) { <div class="dev-empty"><i class="fas fa-code-branch" aria-hidden="true"></i><p>暂无开发任务</p></div> }
+            else
+            {
+                <div class="dev-table-scroll"><table class="dev-table"><thead><tr><th>任务</th><th>技术栈</th><th>规范版本</th><th>状态</th></tr></thead><tbody>
+                @foreach (var task in Model.Tasks)
+                {
+                    var state = task.Changes.LastOrDefault()?.Review;
+                    <tr><td><a asp-page="./Task" asp-route-id="@task.Id">@task.Title</a></td><td>@task.Technology</td><td>@task.Standard.Name · @task.Standard.Version</td><td>@(state == "accepted" ? "人工审阅通过" : state == "changes-requested" ? "待修改" : state == "pending" ? "待审阅" : task.Confirmed ? "需求已确认" : "需求待确认")</td></tr>
+                }
+                </tbody></table></div>
+            }
+        </section>
+    }
+</div>
+@section Scripts { <script src="~/js/development.js" asp-append-version="true"></script> }

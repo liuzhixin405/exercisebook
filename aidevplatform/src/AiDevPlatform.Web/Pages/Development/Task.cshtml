@@ -1,0 +1,141 @@
+@page "{id:guid}"
+@using System.Text.Json
+@model AiDevPlatform.Web.Pages.Development.TaskModel
+@{ ViewData["Title"] = Model.Development?.Title ?? "开发任务"; }
+@section Styles { <link rel="stylesheet" href="~/css/development.css" asp-append-version="true" /> }
+<div class="dev-workspace">
+    @if (Model.Development is not { } task)
+    {
+        <div class="dev-alert" role="alert">@Model.ErrorMessage <a asp-page="./Task" asp-route-id="@RouteData.Values["id"]">重试</a></div>
+    }
+    else
+    {
+        var latest = task.Changes.LastOrDefault();
+        <textarea id="dev-task-data" hidden readonly>@JsonSerializer.Serialize(task, new JsonSerializerOptions(JsonSerializerDefaults.Web))</textarea>
+        <header class="dev-header"><div><span class="dev-eyebrow">@task.Technology · @task.Standard.Name / @task.Standard.Version</span><h1>@task.Title</h1></div><a asp-page="./Index" class="dev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> 工作台</a></header>
+        <div class="dev-status"><span>@(task.Confirmed ? "需求已冻结" : "需求待确认")</span><span>任务修订 @task.Revision</span><span>@task.Changes.Count 个源码版本</span><span id="dev-progress" role="status"></span><button type="button" id="dev-cancel" class="dev-icon" title="取消操作" aria-label="取消操作" hidden><i class="fas fa-stop" aria-hidden="true"></i></button></div>
+        <div id="dev-error" class="dev-alert" role="alert" hidden></div>
+        <nav class="dev-tabs" role="tablist" aria-label="开发任务视图">
+            @foreach (var tab in new[] { ("requirements", "需求"), ("changes", "变更"), ("project", "项目"), ("checks", "检查与审阅"), ("versions", "版本"), ("standard", "规范") })
+            { <button type="button" role="tab" id="tab-@tab.Item1" aria-controls="panel-@tab.Item1" aria-selected="@(tab.Item1 == "requirements" ? "true" : "false")" data-dev-tab="@tab.Item1">@tab.Item2</button> }
+        </nav>
+        <section id="panel-requirements" role="tabpanel" aria-labelledby="tab-requirements" class="dev-panel">
+            <h2>原始需求</h2><pre class="dev-prose">@task.Requirement</pre>
+            @if (!task.Confirmed)
+            { <form method="post" data-dev-form="clarify">@Html.AntiForgeryToken()<button class="dev-button" type="submit"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> @(task.Draft == null ? "AI 澄清需求" : "重新澄清")</button></form> }
+            @if (task.Draft is { } draft)
+            {
+                <form method="post" data-dev-form="confirm" class="dev-form dev-section">
+                    @Html.AntiForgeryToken()
+                    <h2>需求稿</h2><label>规格说明<textarea name="specification" rows="8" required maxlength="6000" readonly="@task.Confirmed">@draft.Specification</textarea></label>
+                    <label>验收标准（每行一项）<textarea name="acceptanceCriteria" rows="4" required maxlength="12000" readonly="@task.Confirmed">@string.Join("\n", draft.AcceptanceCriteria)</textarea></label>
+                    <label>计划文件（每行一个路径）<textarea name="plannedFiles" rows="4" required maxlength="3000" readonly="@task.Confirmed">@string.Join("\n", draft.PlannedFiles)</textarea></label>
+                    <h3>假设</h3><ul>@foreach (var assumption in draft.Assumptions) { <li>@assumption</li> }</ul>
+                    @for (var index = 0; index < draft.Questions.Count; index++)
+                    { <label>@draft.Questions[index]<textarea name="answer" rows="2" required maxlength="1000" readonly="@task.Confirmed">@(task.Answers.ElementAtOrDefault(index))</textarea></label> }
+                    @if (!task.Confirmed)
+                    { <label class="dev-checkbox"><input type="checkbox" required /> 确认需求、回答与上述假设</label><button class="dev-button primary" type="submit"><i class="fas fa-check" aria-hidden="true"></i> 确认并冻结需求</button> }
+                </form>
+            }
+        </section>
+        <section id="panel-changes" role="tabpanel" aria-labelledby="tab-changes" class="dev-panel" hidden>
+            <form method="post" data-dev-form="generate" class="dev-form dev-generation">
+                @Html.AntiForgeryToken()<label>修改意见<textarea name="feedback" rows="2" maxlength="2000"></textarea></label>
+                <button type="submit" class="dev-button primary" disabled="@(!task.Confirmed)" title="@(task.Confirmed ? "生成新的源码版本" : "先确认需求")"><i class="fas fa-code" aria-hidden="true"></i> @(latest == null ? "AI 生成变更" : "AI 生成新版本")</button>
+            </form>
+            @if (latest == null) { <div class="dev-empty">暂无源码版本</div> }
+            else
+            {
+                <label class="dev-version-picker">源码版本<select id="dev-change-select">@for (var index = 0; index < task.Changes.Count; index++) { <option value="@index" selected="@(index == task.Changes.Count - 1)">版本 @(index + 1)</option> }</select></label>
+                <p id="dev-change-summary" class="dev-prose"></p>
+                <div class="dev-source-layout"><div id="dev-file-list" class="dev-file-list" aria-label="源码文件"></div><div class="dev-file-comparison"><h3 id="dev-file-name"></h3><div class="dev-source-pair"><section><h4>基线</h4><pre id="dev-source-before" tabindex="0"></pre></section><section><h4>当前版本</h4><pre id="dev-source-after" tabindex="0"></pre></section></div></div></div>
+            }
+        </section>
+        <section id="panel-project" role="tabpanel" aria-labelledby="tab-project" class="dev-panel" hidden>
+            <h2>项目工作区</h2>
+            @if (task.Confirmed && task.Draft is { } projectPlan)
+            {
+                var projectPaths = projectPlan.PlannedFiles.Concat(task.Standard.RequiredFiles).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+                var existingPaths = (latest?.Files ?? task.ContextFiles).Select(file => file.Path).ToHashSet(StringComparer.OrdinalIgnoreCase);
+                var remaining = projectPaths.Count(path => !existingPaths.Contains(path));
+                <div class="dev-status"><span>计划文件：@(projectPaths.Count - remaining) / @projectPaths.Count</span><span>@(remaining == 0 ? "文件齐全，待业务验证" : "项目生成未完成")</span></div>
+                <form method="post" data-dev-form="generate-project" class="dev-section">@Html.AntiForgeryToken()
+                    <button type="submit" class="dev-button primary" disabled="@(remaining == 0)"><i class="fas fa-code" aria-hidden="true"></i> @(latest == null ? "AI 按计划生成项目" : "AI 继续生成缺失文件")</button>
+                </form>
+                <details class="dev-section"><summary>项目文件计划</summary><ul>@foreach (var path in projectPaths) { <li>@path · @(existingPaths.Contains(path) ? "已有源码" : "尚未生成")</li> }</ul></details>
+            }
+            @if (latest != null)
+            {
+                <form method="post" data-dev-form="generate" class="dev-form dev-section">@Html.AntiForgeryToken()
+                    <h3>定点修复</h3><input type="hidden" name="generationMode" value="repair" />
+                    <label>目标文件<select name="targetPath" required>@foreach (var file in latest.Files) { <option value="@file.Path">@file.Path</option> }</select></label>
+                    <label>修复意见<textarea name="feedback" rows="4" maxlength="2000" required></textarea></label>
+                    @if (!string.IsNullOrWhiteSpace(latest.ReviewComment)) { <p class="dev-prose">@latest.ReviewComment</p> }
+                    <button type="submit" class="dev-button"><i class="fas fa-wrench" aria-hidden="true"></i> AI 修复所选文件</button>
+                </form>
+            }
+            @if (latest == null) { <div class="dev-empty">暂无源码版本</div> }
+            else
+            {
+                <div class="dev-status"><span>当前源码版本 @task.Changes.Count</span><span>@latest.Files.Count 个文件</span><span>运行状态：未运行</span></div>
+                @if (latest.Generation is { } generation)
+                { <p>模型：@generation.Model</p><p>生成记录：@generation.RequestId</p> }
+                else { <p>此版本未记录模型调用来源</p> }
+                @if (latest.Workspace == null)
+                {
+                    <form method="post" data-dev-form="materialize" class="dev-form dev-section">@Html.AntiForgeryToken()
+                        <label class="dev-checkbox"><input type="checkbox" name="riskAcknowledged" required /> 确认将当前源码版本写入本机独立目录，源码尚未执行</label>
+                        <button type="submit" class="dev-button primary"><i class="fas fa-folder-plus" aria-hidden="true"></i> 创建项目工作区</button>
+                    </form>
+                }
+                @for (var index = task.Changes.Count - 1; index >= 0; index--)
+                {
+                    if (task.Changes[index].Workspace is not { } workspace) { continue; }
+                    <article class="dev-version"><h3>版本 @(index + 1) 项目目录</h3><pre class="dev-prose">@workspace.DirectoryPath</pre>
+                        <p>源码版本：@workspace.ChangeId · @workspace.Files.Count 个文件 · 创建于 @workspace.CreatedAt.ToString("yyyy-MM-dd HH:mm") UTC</p>
+                        <p>运行：未运行 · 审阅：@(task.Changes[index].Review == "accepted" ? "已通过" : "未通过")</p>
+                        <details><summary>文件 SHA-256 清单</summary>@foreach (var file in workspace.Files) { <pre class="dev-prose">@file.Path (@file.Utf8Bytes B)
+@file.Sha256
+@file.Origin</pre> }</details>
+                    </article>
+                }
+            }
+        </section>
+        <section id="panel-checks" role="tabpanel" aria-labelledby="tab-checks" class="dev-panel" hidden>
+            <h2>所选源码版本检查</h2><div id="dev-verification-summary" class="dev-status"></div><div id="dev-checks"></div>
+            @if (latest?.Review == "pending" && task.Standard.RequiredChecks.Count > 0)
+            {
+                <form method="post" id="dev-verify-form" data-dev-form="verify" class="dev-section">@Html.AntiForgeryToken()
+                    <button type="submit" class="dev-button" disabled="@(latest.Verifications.Count >= 5)" title="@(latest.Verifications.Count >= 5 ? "此版本已达到 5 次验证上限" : "请求配置的隔离验证器")"><i class="fas fa-vial" aria-hidden="true"></i> 提交隔离验证</button>
+                </form>
+            }
+            <div id="dev-verification-history" class="dev-section"></div>
+            @if (latest?.Review == "pending")
+            {
+                <form method="post" id="dev-review-form" data-dev-form="review" class="dev-form dev-section">@Html.AntiForgeryToken()
+                    <h2>人工审阅</h2><fieldset class="dev-decisions"><legend>审阅结论</legend><label class="dev-checkbox"><input type="radio" name="decision" value="changes-requested" checked /> 要求修改</label><label class="dev-checkbox"><input type="radio" name="decision" value="accepted" /> 通过审阅</label></fieldset>
+                    <label>验收与影响评审记录<textarea name="feedback" rows="4" maxlength="2000" required></textarea></label>
+                    <label class="dev-checkbox"><input type="checkbox" name="riskAcknowledged" /> 已核对依赖、公共接口、验收条件及验证记录，并确认仍未验证项的风险</label>
+                    <button class="dev-button primary" type="submit"><i class="fas fa-clipboard-check" aria-hidden="true"></i> 提交审阅</button>
+                </form>
+            }
+        </section>
+        <section id="panel-versions" role="tabpanel" aria-labelledby="tab-versions" class="dev-panel" hidden>
+            <h2>源码版本记录</h2>
+            @for (var index = task.Changes.Count - 1; index >= 0; index--)
+            {
+                var change = task.Changes[index];
+                <article class="dev-version"><header><h3>版本 @(index + 1)</h3><span>@change.CreatedAt.ToString("yyyy-MM-dd HH:mm") UTC</span><span>@(change.Review == "accepted" ? "人工审阅通过" : change.Review == "changes-requested" ? "要求修改" : "待审阅")</span>
+                    @if (change.Review == "accepted") { <a asp-page-handler="Download" asp-route-id="@task.Id" asp-route-changeId="@change.Id" class="dev-button"><i class="fas fa-download" aria-hidden="true"></i> 下载交付包</a> }
+                </header><p>@change.Summary</p><p>@change.ReviewComment</p>
+                    @if (!string.IsNullOrEmpty(change.GenerationTargetPath)) { <p>修复对象：@change.GenerationTargetPath</p> }
+                    @if (!string.IsNullOrEmpty(change.GenerationFeedback)) { <p>@change.GenerationFeedback</p> }
+                </article>
+            }
+        </section>
+        <section id="panel-standard" role="tabpanel" aria-labelledby="tab-standard" class="dev-panel" hidden>
+            <h2>@task.Standard.Name · @task.Standard.Version</h2><pre class="dev-prose">@task.Standard.Instructions</pre><h3>必需文件</h3><ul>@foreach (var path in task.Standard.RequiredFiles) { <li>@path</li> }</ul><h3>禁用文本</h3><ul>@foreach (var term in task.Standard.ForbiddenTerms) { <li>@term</li> }</ul><h3>必需验证检查</h3><ul>@foreach (var check in task.Standard.RequiredChecks) { <li>@check</li> }</ul>
+        </section>
+    }
+</div>
+@section Scripts { <script src="~/js/development.js" asp-append-version="true"></script> }

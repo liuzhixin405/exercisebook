@@ -1,0 +1,41 @@
+{
+  "enabled": false,
+  "port": 54824,
+  "profiles": [
+    {
+      "name": "go-standard-library",
+      "image": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "matchFiles": ["go.mod"],
+      "excludeFiles": [],
+      "environment": {
+        "HOME": "/tmp",
+        "GOCACHE": "/tmp/go-build",
+        "GOMODCACHE": "/tmp/go-mod",
+        "GOTOOLCHAIN": "local",
+        "GOPROXY": "off",
+        "GOSUMDB": "off",
+        "CGO_ENABLED": "0"
+      },
+      "checks": {
+        "build": ["/usr/local/go/bin/go", "build", "-o", "/tmp/program", "."],
+        "test": ["/usr/local/go/bin/go", "test", "-count=1", "."]
+      }
+    },
+    {
+      "name": "node-commerce",
+      "image": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "matchFiles": ["package.json", "src/database.cjs"],
+      "excludeFiles": ["go.mod"],
+      "environment": {
+        "HOME": "/tmp",
+        "TMPDIR": "/tmp",
+        "NODE_PATH": "/opt/lowcode/node_modules",
+        "NODE_ENV": "test"
+      },
+      "checks": {
+        "build": ["/usr/local/bin/node", "/opt/lowcode/node-check.cjs", "build"],
+        "test": ["/usr/local/bin/node", "/opt/lowcode/node-check.cjs", "test"]
+      }
+    }
+  ]
+}

@@ -362,3 +362,10 @@ PipelineFilter/PipelineFilter/obj/project.assets.json
 *.cache
 .aider*
 AI/dotnet-agent/agents/generalist.md
+
+# Local artifacts for the embedded AI development platform
+aidevplatform/.codeatlas/
+aidevplatform/logs/
+aidevplatform/**/logs/
+aidevplatform/docs/PROJECT-TEST-REPORT.md
+aidevplatform/tools/Rename-Workspace.ps1

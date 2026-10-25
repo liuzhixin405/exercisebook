@@ -1,0 +1,5 @@
+FROM node:22.15.1-bookworm-slim@sha256:ec318fe0dc46b56bcc1ca42a202738aeb4f3e347a7b4dd9f9f1df12ea7aa385a
+RUN npm install --prefix /opt/lowcode --omit=dev --ignore-scripts --no-audit --no-fund express@5.1.0
+COPY node-check.cjs /opt/lowcode/node-check.cjs
+ENV NODE_PATH=/opt/lowcode/node_modules
+USER 10001:10001

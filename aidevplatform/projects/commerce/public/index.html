@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#244d3d">
+    <meta name="description" content="MORI 生活商店">
+    <title>MORI 生活商店</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/vendor/lucide.js" defer></script>
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <div class="service-strip"><span>认真挑选，恰好喜欢</span><span>满 ¥299 包邮 · 未发货订单支持退款</span></div>
+    <header class="site-header"><div class="header-inner">
+        <a class="brand" href="#/" aria-label="MORI 生活商店首页">MORI<span>生活商店</span></a>
+        <nav class="main-nav" aria-label="主导航"><a href="#/" data-nav="shop">逛商店</a><a href="#/orders" data-nav="orders">我的订单</a></nav>
+        <div class="header-actions"><a class="merchant-link" href="#/admin">商家后台<i data-lucide="arrow-up-right"></i></a><button id="account-button" class="account-button" type="button" data-action="account"><i data-lucide="user-round"></i><span id="account-label">登录</span></button><a class="icon-button cart-link" href="#/cart" title="购物车" aria-label="购物车"><i data-lucide="shopping-bag"></i><span id="cart-count" class="cart-count" hidden>0</span></a></div>
+    </div></header>
+    <main id="app" class="page-shell" tabindex="-1"><div class="loading-state" role="status">正在打开商店…</div></main>
+    <footer class="site-footer"><div class="footer-brand">MORI<span>把日常，过成喜欢的样子。</span></div><div><span>© 2026 MORI 生活商店</span><a href="https://unsplash.com" target="_blank" rel="noreferrer">商品图片 · Unsplash</a></div></footer>
+    <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div></dialog>
+    <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

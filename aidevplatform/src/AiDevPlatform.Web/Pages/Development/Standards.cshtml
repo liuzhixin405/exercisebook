@@ -1,0 +1,33 @@
+@page
+@model AiDevPlatform.Web.Pages.Development.StandardsModel
+@{ ViewData["Title"] = "团队规范"; }
+@section Styles { <link rel="stylesheet" href="~/css/development.css" asp-append-version="true" /> }
+<div class="dev-workspace">
+    <header class="dev-header"><h1>团队规范</h1><a asp-page="./Index" class="dev-button"><i class="fas fa-arrow-left" aria-hidden="true"></i> 工作台</a></header>
+    <div id="dev-error" class="dev-alert" role="alert" hidden></div>
+    @if (Model.ErrorMessage != null) { <div class="dev-alert" role="alert">@Model.ErrorMessage <a asp-page="./Standards">重试</a></div> }
+    else
+    {
+        <section class="dev-section"><h2>新增规范版本</h2>
+            <form method="post" data-dev-form="standard" class="dev-form">
+                @Html.AntiForgeryToken()
+                <div class="dev-grid">
+                    <label>规范名称<input name="name" required maxlength="80" /></label><label>版本<input name="version" required maxlength="40" /></label>
+                    <label class="dev-full">工程与流程要求<textarea name="instructions" required maxlength="4000" rows="6"></textarea></label>
+                    <label>必需文件（每行一个路径）<textarea name="requiredFiles" rows="3" maxlength="2200">README.md</textarea></label>
+                    <label>禁用文本（每行一项）<textarea name="forbiddenTerms" rows="3" maxlength="2400">TODO</textarea></label>
+                    <label class="dev-full">必需验证检查（每行一个标识）<textarea name="requiredChecks" rows="3" maxlength="1000">build
+test</textarea></label>
+                </div>
+                <div class="dev-actions"><button class="dev-button primary" type="submit"><i class="fas fa-save" aria-hidden="true"></i> 保存新版本</button><span id="dev-progress" role="status"></span></div>
+            </form>
+        </section>
+        <section class="dev-section"><h2>规范版本</h2>
+            @foreach (var standard in Model.Standards)
+            {
+                <details class="dev-standard"><summary>@standard.Name <span>@standard.Version · 必需验证 @standard.RequiredChecks.Count 项</span></summary><pre>@standard.Instructions</pre><h3>必需文件</h3><ul>@foreach (var path in standard.RequiredFiles) { <li>@path</li> }</ul><h3>禁用文本</h3><ul>@foreach (var term in standard.ForbiddenTerms) { <li>@term</li> }</ul><h3>必需验证检查</h3><ul>@foreach (var check in standard.RequiredChecks) { <li>@check</li> }</ul></details>
+            }
+        </section>
+    }
+</div>
+@section Scripts { <script src="~/js/development.js" asp-append-version="true"></script> }

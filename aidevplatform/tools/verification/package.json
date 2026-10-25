@@ -1,0 +1,8 @@
+{
+  "name": "lowcode-isolated-verifier",
+  "version": "0.1.0",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node server.cjs" },
+  "dependencies": { "tar-stream": "3.1.7" }
+}

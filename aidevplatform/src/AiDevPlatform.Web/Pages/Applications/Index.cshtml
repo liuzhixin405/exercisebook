@@ -1,0 +1,57 @@
+@page
+@model AiDevPlatform.Web.Pages.Applications.IndexModel
+@{
+    ViewData["Title"] = "应用管理";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/applications.css" asp-append-version="true" />
+}
+<section class="application-management">
+    <header class="management-header">
+        <div><span class="environment-label">本机开发</span><h1>应用管理</h1></div>
+        <a asp-page="./Edit" class="btn btn-primary"><i class="fas fa-plus" aria-hidden="true"></i> 新建应用</a>
+    </header>
+    @if (TempData["ApplicationMessage"] is string message)
+    {
+        <div class="management-notice" role="status">@message</div>
+    }
+    <form method="get" class="application-search">
+        <label for="searchTerm">搜索应用</label>
+        <div class="search-controls">
+            <input id="searchTerm" name="searchTerm" type="search" value="@Model.SearchTerm" maxlength="100" placeholder="名称或编码" class="form-control" />
+            <button type="submit" class="btn btn-outline-secondary icon-action" title="搜索" aria-label="搜索"><i class="fas fa-search" aria-hidden="true"></i></button>
+        </div>
+    </form>
+    @if (Model.ErrorMessage != null)
+    {
+        <div class="management-error" role="alert">@Model.ErrorMessage <a asp-page="./Index">重试</a></div>
+    }
+    else if (Model.Applications.Count == 0)
+    {
+        <div class="application-empty"><i class="fas fa-folder-open" aria-hidden="true"></i><p>@(Model.SearchTerm.Length == 0 ? "暂无应用" : "没有匹配的应用")</p></div>
+    }
+    else
+    {
+        <p class="application-count">@Model.Applications.Count 个应用</p>
+        <div class="application-table-scroll">
+            <table class="application-table">
+                <thead><tr><th scope="col">应用</th><th scope="col">编码</th><th scope="col">版本</th><th scope="col">更新时间 (UTC)</th><th scope="col">操作</th></tr></thead>
+                <tbody>
+                @foreach (var application in Model.Applications)
+                {
+                    <tr data-application-id="@application.Id">
+                        <td><a class="application-name" asp-page="./Edit" asp-route-id="@application.Id">@application.Name</a><div class="application-description">@application.Description</div></td>
+                        <td class="application-code">@application.Code</td>
+                        <td>@application.Version</td>
+                        <td class="application-date">@((application.UpdatedAt ?? application.CreatedAt).ToString("yyyy-MM-dd HH:mm"))</td>
+                        <td><div class="row-actions">
+                            <a asp-page="./Edit" asp-route-id="@application.Id" class="btn btn-outline-secondary icon-action" title="编辑应用" aria-label="编辑 @application.Name"><i class="fas fa-pen" aria-hidden="true"></i></a>
+                            <a asp-page="/Designer/Index" asp-route-applicationId="@application.Id" class="btn btn-outline-secondary icon-action" title="进入设计器" aria-label="设计 @application.Name"><i class="fas fa-paint-brush" aria-hidden="true"></i></a>
+                        </div></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

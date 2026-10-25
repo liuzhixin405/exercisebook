@@ -1,0 +1,32 @@
+@page "{id:guid?}"
+@model AiDevPlatform.Web.Pages.Applications.EditModel
+@{
+    ViewData["Title"] = Model.ApplicationId.HasValue ? "编辑应用" : "新建应用";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/applications.css" asp-append-version="true" />
+}
+<section class="application-management application-editor">
+    <a asp-page="./Index" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> 应用管理</a>
+    <header class="management-header"><h1>@ViewData["Title"]</h1><span class="environment-label">本机开发</span></header>
+    @if (Model.LoadError != null)
+    {
+        <div class="management-error" role="alert">@Model.LoadError <a asp-page="./Edit" asp-route-id="@Model.ApplicationId">重试</a></div>
+    }
+    else
+    {
+        <form method="post" class="application-form" asp-route-id="@Model.ApplicationId">
+            <div asp-validation-summary="ModelOnly" class="management-error" role="alert"></div>
+            <div class="application-fields">
+                <div class="application-field"><label asp-for="Input.Name">应用名称</label><input asp-for="Input.Name" class="form-control" required maxlength="200" /><span asp-validation-for="Input.Name"></span></div>
+                <div class="application-field"><label asp-for="Input.Code">应用编码</label><input asp-for="Input.Code" class="form-control" required maxlength="50" pattern="[A-Za-z][A-Za-z0-9_\-]{0,49}" /><span asp-validation-for="Input.Code"></span></div>
+                <div class="application-field"><label asp-for="Input.Version">版本</label><input asp-for="Input.Version" class="form-control" required maxlength="20" /><span asp-validation-for="Input.Version"></span></div>
+                <div class="application-field full-width"><label asp-for="Input.Description">描述</label><textarea asp-for="Input.Description" class="form-control" rows="5" maxlength="1000"></textarea><span asp-validation-for="Input.Description"></span></div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save" aria-hidden="true"></i> 保存应用</button>
+                <a asp-page="./Index" class="btn btn-outline-secondary">取消</a>
+            </div>
+        </form>
+    }
+</section>

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "AiDevPlatform.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54819;http://localhost:54820"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+@page
+@model AiDevPlatform.Web.Pages.Designer.IndexModel
+@{
+    ViewData["Title"] = "页面设计器";
+}
+
+<div class="designer-container" data-application-id="@Model.ApplicationId" data-page-id="@Model.PageId">
+    @if (Model.ApplicationName != null)
+    {
+        <div class="small text-break px-3 pt-2"><a asp-page="/Applications/Index"><i class="fas fa-arrow-left" aria-hidden="true"></i> 应用管理</a> / @Model.ApplicationName</div>
+    }
+    <div class="designer-header">
+        <h1>页面设计器</h1>
+        <div class="designer-actions">
+            <button id="saveBtn" class="btn btn-primary" title="保存本机草稿"><i class="fas fa-save" aria-hidden="true"></i> 本机草稿</button>
+            <button id="previewBtn" class="btn btn-secondary" title="预览"><i class="fas fa-eye" aria-hidden="true"></i> 预览</button>
+        </div>
+    </div>
+    <div id="designerStatus" class="designer-status" role="status" aria-live="polite"></div>
+
+    <div class="designer-content">
+        <div class="designer-sidebar">
+            @if (Model.AiAvailable)
+            {
+                <form id="aiForm" method="post" class="ai-panel" action="@Url.Page("/Designer/Index", "Generate")">
+                    @* [联网-官方: https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-8.0] *@
+                    @Html.AntiForgeryToken()
+                    <h3>AI 页面草稿</h3>
+                    <label for="aiPrompt">页面需求</label>
+                    <textarea id="aiPrompt" name="prompt" rows="5" maxlength="2000" required placeholder="客户登记：姓名、邮箱、联系电话，包含提交按钮"></textarea>
+                    <div class="ai-actions">
+                        <button id="aiGenerateBtn" type="submit" class="btn btn-primary"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> 生成草稿</button>
+                        <button id="aiCancelBtn" type="button" class="btn btn-secondary" title="取消生成" aria-label="取消生成" disabled><i class="fas fa-stop" aria-hidden="true"></i></button>
+                    </div>
+                    <div id="aiStatus" role="status" aria-live="polite"></div>
+                    <div id="aiDraft" hidden>
+                        <h4 id="aiDraftTitle"></h4>
+                        <ul id="aiDraftSummary"></ul>
+                        <button id="aiPreviewBtn" type="button" class="btn btn-secondary"><i class="fas fa-eye" aria-hidden="true"></i> 预览草稿</button>
+                        <button id="aiApplyBtn" type="button" class="btn btn-primary"><i class="fas fa-check" aria-hidden="true"></i> 替换画布</button>
+                    </div>
+                </form>
+            }
+            <div class="component-palette">
+                <h3>组件库</h3>
+                <div class="component-category">
+                    <h4>基础组件</h4>
+                    <div class="component-item" draggable="true" data-component="text">
+                        <i class="fas fa-font"></i>
+                        <span>文本</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-component="button">
+                        <i class="fas fa-square"></i>
+                        <span>按钮</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-component="input">
+                        <i class="fas fa-edit"></i>
+                        <span>输入框</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-component="image">
+                        <i class="fas fa-image"></i>
+                        <span>图片</span>
+                    </div>
+                </div>
+
+                <div class="component-category">
+                    <h4>布局组件</h4>
+                    <div class="component-item" draggable="true" data-component="container">
+                        <i class="fas fa-square"></i>
+                        <span>容器</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-component="row">
+                        <i class="fas fa-grip-lines"></i>
+                        <span>行</span>
+                    </div>
+                    <div class="component-item" draggable="true" data-component="column">
+                        <i class="fas fa-columns"></i>
+                        <span>列</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="designer-canvas">
+            <div class="canvas-toolbar">
+                <div class="toolbar-group">
+                    <button class="btn btn-sm" id="undoBtn" title="撤销">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    <button class="btn btn-sm" id="redoBtn" title="重做">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="btn btn-sm" id="copyBtn" title="复制">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="btn btn-sm" id="pasteBtn" title="粘贴">
+                        <i class="fas fa-paste"></i>
+                    </button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="btn btn-sm" id="deleteBtn" title="删除">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="canvas-area" id="canvasArea">
+                <div class="canvas-drop-zone">
+                    <p>拖拽组件到此处开始设计页面</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="designer-properties">
+            <div class="properties-panel">
+                <h3>属性设置</h3>
+                <div id="propertiesContent">
+                    <p>选择一个组件来编辑其属性</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<dialog id="previewDialog" class="page-preview" aria-labelledby="previewTitle">
+    <div class="preview-header">
+        <h2 id="previewTitle">页面预览</h2>
+        <button id="closePreviewBtn" type="button" class="btn" aria-label="关闭预览" title="关闭预览"><i class="fas fa-times" aria-hidden="true"></i></button>
+    </div>
+    <div class="preview-scroll"><div id="previewCanvas"></div></div>
+</dialog>
+
+@section Scripts {
+    <script src="~/js/designer.js" asp-append-version="true"></script>
+}

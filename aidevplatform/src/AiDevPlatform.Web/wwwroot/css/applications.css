@@ -1,0 +1,53 @@
+body:has(.application-management) { background: #f3f6f5; margin-bottom: 0; }
+body:has(.application-management) .footer { position: static; }
+.application-management { --app-accent: #236044; --app-ink: #25352f; max-width: 1240px; margin: 0 auto; padding: 28px 20px 48px; color: var(--app-ink); min-height: calc(100vh - 160px); }
+.management-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+.management-header h1 { font-size: 26px; margin: 4px 0 0; font-weight: 600; }
+.environment-label { font-size: 12px; color: #53675d; }
+.application-management .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 4px; padding: 9px 14px; font-weight: 500; letter-spacing: 0; text-transform: none; box-shadow: none; transform: none; white-space: nowrap; }
+.application-management .btn::before { display: none; }
+.application-management .btn-primary { background: var(--app-accent); color: #fff; border: 1px solid var(--app-accent); }
+.application-management .btn-primary:hover { background: #194b34; }
+.application-management .btn-outline-secondary { background: #fff; color: #374d43; border: 1px solid #bdcbc3; }
+.application-management .btn-outline-secondary:hover { background: #e8eeea; }
+.application-management .icon-action { width: 36px; height: 36px; padding: 0; flex-shrink: 0; }
+.application-search { margin-bottom: 24px; max-width: 380px; }
+.application-search label { font-size: 13px; margin-bottom: 6px; }
+.search-controls { display: flex; align-items: center; gap: 8px; }
+.search-controls input { min-width: 0; }
+.application-management .form-control { border: 1px solid #bdcbc3; border-radius: 4px; background: #fff; padding: 9px 12px; }
+.application-count { font-size: 13px; color: #5c6e64; }
+.application-table-scroll { width: 100%; overflow-x: auto; }
+.application-table { width: 100%; min-width: 700px; border-collapse: collapse; table-layout: fixed; background: #fff; }
+.application-table th { background: #e8eeea; padding: 12px 16px; font-size: 12px; font-weight: 600; color: #506257; text-align: left; }
+.application-table td { padding: 16px; border-bottom: 1px solid #e1e8e3; vertical-align: middle; overflow-wrap: anywhere; }
+.application-table th:first-child { width: 34%; }
+.application-table th:nth-child(2) { width: 22%; }
+.application-table th:nth-child(3) { width: 12%; }
+.application-table th:nth-child(4) { width: 32%; }
+.application-table th:last-child { width: 112px; }
+.application-name { color: #235f46; font-weight: 600; text-decoration: none; }
+.application-description { color: #64756b; font-size: 13px; margin-top: 5px; white-space: pre-wrap; }
+.application-code { font-family: Consolas, monospace; font-size: 13px; color: #38677e; }
+.application-date { font-size: 13px; }
+.row-actions { display: flex; gap: 6px; }
+.application-empty { padding: 64px 16px; text-align: center; border-top: 1px solid #d4dfd7; color: #61746a; }
+.application-empty i { font-size: 30px; margin-bottom: 12px; }
+.management-error { color: #a3231d; background: #fff1ef; padding: 12px; margin-bottom: 20px; overflow-wrap: anywhere; }
+.management-error.validation-summary-valid { display: none; }
+.management-notice { border-left: 3px solid var(--app-accent); padding: 12px; margin-bottom: 20px; background: #e5f0e9; }
+.application-editor { max-width: 820px; }
+.back-link { display: inline-block; margin-bottom: 24px; color: #38677e; text-decoration: none; }
+.application-fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.application-field { min-width: 0; }
+.application-field label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; }
+.application-field.full-width { grid-column: 1 / -1; }
+.application-field textarea { resize: vertical; }
+.field-validation-error { display: block; color: #a3231d; margin-top: 6px; font-size: 13px; }
+.form-actions { display: flex; gap: 12px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #d4dfd7; }
+@media (max-width: 600px) {
+    .application-management { padding: 18px 4px 32px; }
+    .management-header h1 { font-size: 23px; }
+    .application-fields { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .application-table-scroll { max-width: 100%; }
+}

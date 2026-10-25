@@ -1,0 +1,368 @@
+/* 页面设计器样式 */
+.designer-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+
+.designer-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.designer-header h1 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.designer-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.designer-actions .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.designer-actions .btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.designer-actions .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.designer-actions .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.designer-actions .btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.designer-actions .btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.designer-actions .btn-success:hover {
+    background-color: #1e7e34;
+}
+
+.designer-content {
+    flex: 1;
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.designer-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.component-palette {
+    padding: 20px;
+}
+
+.component-palette h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.component-category {
+    margin-bottom: 20px;
+}
+
+.component-category h4 {
+    margin: 0 0 10px 0;
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.component-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    cursor: grab;
+    transition: all 0.2s;
+}
+
+.component-item:hover {
+    background-color: #e9ecef;
+    border-color: #007bff;
+}
+
+.component-item:active {
+    cursor: grabbing;
+}
+
+.component-item i {
+    margin-right: 8px;
+    color: #666;
+    width: 16px;
+}
+
+.component-item span {
+    font-size: 14px;
+    color: #333;
+}
+
+.designer-canvas {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+.canvas-toolbar {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 5px;
+}
+
+.toolbar-group .btn {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.toolbar-group .btn:hover {
+    background-color: #f8f9fa;
+    border-color: #007bff;
+}
+
+.canvas-area {
+    flex: 1;
+    position: relative;
+    background-color: #fff;
+    margin: 20px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    overflow: auto;
+}
+
+.canvas-drop-zone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #999;
+    pointer-events: none;
+}
+
+.canvas-area.drag-over {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+}
+
+.designer-component {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: move;
+    user-select: none;
+    min-width: 50px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.designer-component:hover {
+    border-color: #007bff;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.2);
+}
+
+.designer-component.selected {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.3);
+}
+
+.designer-properties {
+    width: 300px;
+    flex-shrink: 0;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.designer-status:not(:empty) {
+    padding: 8px 20px;
+    background: #eaf4ed;
+    color: #204c30;
+    border-bottom: 1px solid #b8d2bf;
+}
+
+.ai-panel {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    background: #f4f7f5;
+}
+
+.ai-panel h3 { font-size: 18px; }
+.ai-panel h4 { font-size: 15px; margin-top: 16px; overflow-wrap: anywhere; }
+.ai-panel label { font-size: 14px; margin-bottom: 6px; }
+.ai-panel textarea { width: 100%; resize: vertical; border: 1px solid #aeb8b1; border-radius: 4px; padding: 8px; }
+.ai-panel .btn { font-size: 13px; white-space: normal; }
+.designer-container .btn, .page-preview .btn { border-radius: 4px; padding: 8px 10px; font-weight: 500; box-shadow: none; transform: none; }
+.designer-container .btn::before, .page-preview .btn::before { display: none; }
+.ai-panel .btn-primary { background: #236044; border-color: #236044; }
+.ai-actions #aiGenerateBtn { flex: 1; }
+body:has(.designer-container) { background: #eef1f0; }
+body:has(.designer-container) .footer { position: static; }
+.ai-actions { display: flex; gap: 8px; margin: 10px 0; }
+#aiStatus { font-size: 13px; color: #42564a; overflow-wrap: anywhere; }
+#aiDraftSummary { padding-left: 20px; font-size: 13px; overflow-wrap: anywhere; }
+#aiDraft > .btn { margin-top: 6px; }
+.designer-component, .preview-component { overflow-wrap: anywhere; white-space: pre-wrap; padding: 8px; box-sizing: border-box; }
+.designer-component { transition: none; }
+.designer-component input, .designer-component button, .designer-component img { pointer-events: none; }
+.component-input { width: 100%; height: 100%; min-width: 0; border: 0; background: transparent; font: inherit; }
+.component-button { width: 100%; height: 100%; border: 0; background: transparent; color: inherit; font: inherit; }
+.page-preview { width: min(900px, 94vw); max-height: 90vh; padding: 0; border: 1px solid #aaa; border-radius: 6px; }
+.page-preview::backdrop { background: rgb(0 0 0 / 35%); }
+.preview-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #ddd; }
+.preview-header h2 { font-size: 18px; margin: 0; }
+.preview-scroll { overflow: auto; max-height: 75vh; }
+#previewCanvas { position: relative; }
+.preview-component { display: flex; align-items: center; justify-content: center; background: white; }
+.designer-header { gap: 12px; flex-wrap: wrap; }
+.designer-actions { flex-wrap: wrap; }
+
+
+.properties-panel {
+    padding: 20px;
+}
+
+.properties-panel h3 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.property-group {
+    margin-bottom: 15px;
+}
+
+.property-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.property-group input,
+.property-group select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.property-group input:focus,
+.property-group select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+}
+
+/* 组件特定样式 */
+.container-component {
+    background-color: #f8f9fa;
+    border: 2px dashed #ccc;
+    min-height: 100px;
+}
+
+.row-component {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    min-height: 50px;
+    align-items: center;
+}
+
+.column-component {
+    flex: 1;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .designer-sidebar {
+        width: 200px;
+    }
+
+    .designer-properties {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .designer-content {
+        flex-direction: column;
+    }
+
+    .designer-sidebar,
+    .designer-properties {
+        width: 100%;
+        height: 200px;
+    }
+
+    .designer-canvas {
+        height: calc(100vh - 460px);
+    }
+
+    .designer-content { height: auto; }
+    .designer-sidebar, .designer-properties { height: auto; overflow: visible; }
+    .designer-canvas { min-height: 640px; flex: auto; }
+    .canvas-area { min-height: 540px; }
+    .designer-header h1 { font-size: 20px; }
+}

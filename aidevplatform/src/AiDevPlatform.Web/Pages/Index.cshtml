@@ -1,0 +1,79 @@
+@page
+@model AiDevPlatform.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "首页";
+}
+
+<div class="text-center">
+    <h1 class="display-4">欢迎使用AI 开发平台</h1>
+    <p class="lead">快速构建应用程序，无需编写代码</p>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-cube fa-2x text-primary mb-3"></i>
+                        <br>应用管理
+                    </h5>
+                    <p class="card-text">创建和管理您的应用程序</p>
+                    <a href="/Applications" class="btn btn-primary">开始使用</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-paint-brush fa-2x text-success mb-3"></i>
+                        <br>页面设计器
+                    </h5>
+                    <p class="card-text">可视化设计页面和组件</p>
+                    <a href="/Designer" class="btn btn-success">开始设计</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-database fa-2x text-info mb-3"></i>
+                        <br>数据模型
+                    </h5>
+                    <p class="card-text">设计和管理数据模型</p>
+                    <a href="/DataModels" class="btn btn-info">开始建模</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-cogs fa-2x text-warning mb-3"></i>
+                        <br>工作流
+                    </h5>
+                    <p class="card-text">设计业务流程和工作流</p>
+                    <a href="/Workflows" class="btn btn-warning">开始设计</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-chart-bar fa-2x text-danger mb-3"></i>
+                        <br>报表
+                    </h5>
+                    <p class="card-text">创建数据报表和仪表板</p>
+                    <a href="/Reports" class="btn btn-danger">开始创建</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
