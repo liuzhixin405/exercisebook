@@ -1,0 +1,9 @@
+[
+  {
+    "Name": "Gateway + Backend hk",
+    "Projects": [
+      { "Path": "src\\Backend\\Backend.csproj", "Action": "Start", "DebugTarget": "Backend hk" },
+      { "Path": "src\\Gateway\\Gateway.csproj", "Action": "Start", "DebugTarget": "Gateway" }
+    ]
+  }
+]

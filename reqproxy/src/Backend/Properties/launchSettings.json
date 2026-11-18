@@ -1,0 +1,24 @@
+{
+  "profiles": {
+    "Backend hk": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "commandLineArgs": "--Backend:Region=hk --Backend:ApiKey=hk-key-0123456789",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5200"
+    },
+    "Backend ny": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "commandLineArgs": "--Backend:Region=ny --Backend:ApiKey=ny-key-9876543210",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5201"
+    }
+  }
+}
