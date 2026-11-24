@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Shared/Shared.csproj" />
+    <Project Path="src/Admin/Admin.csproj" />
+    <Project Path="src/Source/Source.csproj" />
+    <Project Path="src/Recorder/Recorder.csproj" />
+    <Project Path="src/Hub/Hub.csproj" />
+    <Project Path="src/Console/Console.csproj" />
+    <Project Path="src/Client/Client.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <title>ColdHub Console</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <strong>ColdHub Console</strong>
+      <nav id="tabs" hidden>
+        <button data-tab="sources" class="active">源</button>
+        <button data-tab="keys">API key</button>
+        <button data-tab="health">健康</button>
+      </nav>
+      <span id="who" hidden></span>
+      <button id="logout" hidden>退出</button>
+    </header>
+
+    <main>
+      <p id="message" role="status"></p>
+
+      <section id="login" hidden>
+        <h2>登录</h2>
+        <form id="login-form">
+          <label>用户名 <input name="name" autocomplete="username" required /></label>
+          <label>密码 <input name="password" type="password" autocomplete="current-password" required /></label>
+          <button>登录</button>
+        </form>
+        <p class="hint">demo 账号：<code>alice / alice-demo-pass</code>（admin，可改）、<code>bob / bob-demo-pass</code>（viewer，只读）</p>
+      </section>
+
+      <section id="sources" hidden>
+        <h2>源</h2>
+        <table>
+          <thead>
+            <tr><th>名字</th><th>连接器</th><th>状态</th><th>配置版本</th><th>设备</th><th>间隔 ms</th><th>每秒上限</th><th></th></tr>
+          </thead>
+          <tbody id="source-rows"></tbody>
+        </table>
+
+        <form id="edit-form" hidden>
+          <h3>编辑 <span id="edit-name"></span> 的配置</h3>
+          <label>设备（逗号分隔） <input name="devices" required /></label>
+          <label>间隔 ms（≥ 50） <input name="intervalMs" type="number" min="50" required /></label>
+          <label>每设备每秒上限（0 = 不限） <input name="maxPerSecond" type="number" min="0" max="1000" required /></label>
+          <button>保存</button>
+          <button type="button" id="edit-cancel">取消</button>
+          <p class="hint">保存后 Source 在约 2 秒内收到新配置，不用重启。</p>
+        </form>
+
+        <form id="source-form" class="admin-only">
+          <h3>注册新源</h3>
+          <label>名字 <input name="name" required pattern="[A-Za-z0-9._-]{1,64}" /></label>
+          <label>连接器（登记用） <input name="connector" value="sine" required /></label>
+          <button>注册</button>
+          <p class="hint">名字注册后永不复用，退役也不行。</p>
+        </form>
+      </section>
+
+      <section id="keys" hidden>
+        <h2>API key</h2>
+        <p id="keys-denied" hidden class="hint">只有 admin 角色能查看和管理 key。</p>
+        <div id="keys-admin">
+          <table>
+            <thead><tr><th>id</th><th>归属</th><th>状态</th><th></th></tr></thead>
+            <tbody id="key-rows"></tbody>
+          </table>
+          <form id="key-form">
+            <h3>创建 key</h3>
+            <label>归属（谁在用） <input name="owner" required /></label>
+            <button>创建</button>
+          </form>
+          <p id="new-key" hidden class="secret"></p>
+          <p class="hint">Hub 每 5 秒同步一次 key 的哈希，所以创建和吊销最多延迟 5 秒生效。</p>
+        </div>
+      </section>
+
+      <section id="health" hidden>
+        <h2>各进程健康</h2>
+        <table>
+          <thead><tr><th>进程</th><th>地址</th><th>就绪</th><th>详情</th></tr></thead>
+          <tbody id="health-rows"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

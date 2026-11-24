@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Hub": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:5410",
+      "environmentVariables": { "ASPNETCORE_ENVIRONMENT": "Development" }
+    }
+  }
+}

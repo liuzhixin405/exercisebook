@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- 各进程共用的线上格式、通道名、健康检查与指标 -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="StackExchange.Redis" />
+  </ItemGroup>
+</Project>

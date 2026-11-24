@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Recorder": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:5330",
+      "environmentVariables": { "ASPNETCORE_ENVIRONMENT": "Development" }
+    }
+  }
+}

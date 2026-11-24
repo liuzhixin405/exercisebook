@@ -1,0 +1,22 @@
+{
+  "profiles": {
+    "warehouse-a (sine)": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:5321",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Source__Name": "warehouse-a",
+        "Source__Connector": "sine"
+      }
+    },
+    "warehouse-b (random)": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:5322",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Source__Name": "warehouse-b",
+        "Source__Connector": "random"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<Project>
+  <!-- 中央包管理（CPM）：版本只写在这里，csproj 的 PackageReference 不带 Version -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="StackExchange.Redis" Version="3.4.35" />
+  </ItemGroup>
+</Project>
